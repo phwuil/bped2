@@ -1,6 +1,5 @@
 import pickle as pkl
-import pandas as pd
-import numpy as np
+
 
 # 0 = PairID -> ID de la famille 
 # 1 = ID -> id propre à la personne 
