@@ -7,12 +7,23 @@ class TestPedigree(unittest.TestCase):
     def test_pedigree(self):
         ped = Pedigree()
         ped.load("../data/fam9.ped")
-        p1 = ped.getPeople('2')
-        p = People(9,2,0,9,0)
-        print(ped.getPedigree().get('2'))
-        print(type(ped.getPeople('2')),ped.getPeople('2'))
-        print(type(p),p)
-        self.assertEqual(p1,p)
+        p = ped.getPeople('2')
+        self.assertEqual   (p,People('9','2','0','9','0'))
+
+    def test_equal(self):
+        p=People('9','2','0','9','0')
+        self.assertEqual   (p,People('9','2','0','9','0'))
+        self.assertNotEqual(p,People('9','3','0','9','0'))
+        self.assertNotEqual(p,People('9','2','1','9','0'))
+        self.assertNotEqual(p,People('9','2','0','5','0'))
+        self.assertNotEqual(p,People('9','2','0','9','1'))
+        self.assertNotEqual(p,People('1','2','0','9','0'))
+
+    def test_insertion(self):
+        ped = Pedigree()
+        with self.assertRaises(self,ValueError):
+            ped.add_people(self,People('1','0','0','9','0'))
+
     # def test_main(self):
     #     ped = Pedigree()
     #     ped.load("../data/fam9.ped")
