@@ -1,6 +1,7 @@
 #!/usr/local/bin/python
 import pickle as pkl
 from typing import Set
+import pickle as pkl
 
 class People:
     def __init__(self, famID: str, pID: str, fatID: str, matID: str, sex: int = 0):
@@ -12,32 +13,33 @@ class People:
         self._child = set()
 
     def __eq__(self, other):
-        return (self.pID == other.pID) and (self.fatID == other.fatID) and (self.matID == other.matID)
+        return (self.famID == other.famID) and (self.pID == other.pID) and (self.fatID == other.fatID) \
+               and (self.matID == other.matID)and (self.sex == other.sex) and (self.child == other.child)
 
     @property
-    def famID(self):
+    def famID(self)-> str:
         # def get_famID(self):
         return self._famID
 
     @famID.setter
-    def famID(self, famID):
+    def famID(self, famID)-> str:
         # self._famID=famID
         raise NameError("Cannot change FamID")
 
     @property
-    def pID(self):
+    def pID(self)-> str:
         return self._pID
 
     @pID.setter
-    def pID(self, pid):
+    def pID(self, pid)-> str:
         raise NameError("Cannot change pid")
 
     @property
-    def fatID(self):
+    def fatID(self)-> str:
         return self._fatID
 
     @fatID.setter
-    def fatID(self, fatID):
+    def fatID(self, fatID)-> str:
         raise NameError("Cannot change FatID")
 
     @property
@@ -49,7 +51,7 @@ class People:
         raise NameError("Cannot change matID")
 
     @property
-    def sex(self):
+    def sex(self)-> int:
         return self._sex
 
     @sex.setter
@@ -57,7 +59,8 @@ class People:
         self.sex = sex
 
     @property
-    def child(self)->Set[People]:
+    #def child(self)->Set[People]:
+    def child(self):
         return self._child
 
     def add_children(self, cID):
@@ -101,15 +104,29 @@ class Pedigree:
         """
         return self._pedigree[idp]
 
+    def load_old(self, fichier):
+        """
+        Read a .ped file and
+        Return a dictionary where the keys are the people's IDs and the values are the People
+        """
+        file = open(fichier)
+        for i in file.readlines():
+            p = People(*i.strip().split())
+            self._pedigree[p.pID] = p
+        file.close()
+        # Version old n'ajoute pas directement les enfants
+
     def load(self, fichier):
         """
         Read a .ped file and
         Return a dictionary where the keys are the people's IDs and the values are the People
         """
-        for i in open(fichier).readlines():
-            self.add_people(*i.strip().split())
-
-    def add_sex(self,pID,sex):
+        f = open(fichier)
+        for i in f.readlines():
+            #print(People(*i.strip().split()))
+            self.add_people(People(*i.strip().split()))
+        f.close()
+    def add_sex(self,pID:str,sex:int):
         """
         Modify the "sex value" for people 'pId'
         sex_undefined = unidentify
@@ -142,7 +159,7 @@ class Pedigree:
         mother = people._matID
         if father in self._pedigree:
             self._pedigree[father].add_children(people._pID)
-        if mother in self._pedigree[mother]:
+        if mother in self._pedigree:
             self._pedigree[mother].add_children(people._pID)
 
 
@@ -155,7 +172,9 @@ class Pedigree:
 
 
     def save(self,filename):
-        raise NotImplemented("plus tard")
+        f = open(filename,"w")
+        f.write(str(self._pedigree.values()))
+        f.close()
 
     def add_people(self,people:People):
         """
@@ -165,10 +184,15 @@ class Pedigree:
         """
         if people._pID=="0":
             raise ValueError('id "0" is not allowed for people')
+        if self._pedigree[people.pID] in self._pedigree.keys():
+            raise ValueError('id already use for another people')
         self._pedigree[people._pID] = people
-        self.add_children(self,people)
+        self.add_children(people)
 
     def remove_people(self,idp:str):
+        """
+        Remove the people 'idp' from the pedigree and from child, famID, and fatID if necessary
+        """
         p=self.get_people(idp)
 
         # deal with parents
@@ -189,21 +213,63 @@ class Pedigree:
 
         del self._pedigree[idp]
 
+
     def roots(self):
+        """
+        Return the olders, people without knowned parents
+        """
         for k,v in self._pedigree.items():
             if v.fatID == '0' and v.matID == '0': # Si l'individu n'a pas de parents -> Racine
                 yield v.pID
 
     def leaves(self):
-        for k,v in self._pedigree.values():
+        """
+        People without childrens are leave
+        """
+        for k,v in self._pedigree.items():
             if len(v.child) == 0: # Si l'individu n'a pas d'enfants -> Feuille
                 yield v.pID
 
     def domain(self):
+        """
+        Return all the different family present in the pedigree
+        """
         dom = set()
-        for k,v in self._pedigree.values():
+        for k,v in self._pedigree.items():
             dom.add(v.famID)
         return dom
+
+    def step_bro_sis(self,pID):
+        """
+        Do the symmetric difference (new set with elements in either father's child or mother's child but not both)
+
+        """
+        father = self.get_people(pID).fatID
+        mother = self.get_people(pID).famID
+        return self.get_people(father).child.symmetric_difference(self.get_people(mother).child)
+
+    def parents(self,pID):
+        """
+        Return a tuple of the parents
+        """
+        return [self.get_people(pID).fatID,self.get_people(pID).famID]
+
+    def grandparents(self,pID): #Probablement inutile
+        """
+        return a tuple of paternal and mather grandparents ((),())
+        """
+        father,mother = self.parents(pID)
+        return [self.parents(father),self.parents(mother)]
+
+    def old_generation(self,pID,nbG):
+        """
+        """
+        if nbG == 1:
+            return self.parents(pID)
+        else:
+            parents = self.parents(pID)
+            [self.old_generation(i,nbG-1) for i in parents]
+
 
     def __str__(self):
         return ", ".join([str(v) for k,v in self._pedigree.items()])
