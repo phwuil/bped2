@@ -126,6 +126,12 @@ class Pedigree:
             #print(People(*i.strip().split()))
             self.add_people(People(*i.strip().split()))
         f.close()
+
+    def save(self,filename):
+        f = open(filename,"w")
+        f.write(str(self._pedigree.values()))
+        f.close()
+
     def add_sex(self,pID:str,sex:int):
         """
         Modify the "sex value" for people 'pId'
@@ -169,12 +175,6 @@ class Pedigree:
         """
         for v in self._pedigree.values():
             self.add_children(v)
-
-
-    def save(self,filename):
-        f = open(filename,"w")
-        f.write(str(self._pedigree.values()))
-        f.close()
 
     def add_people(self,people:People):
         """
@@ -239,6 +239,15 @@ class Pedigree:
             dom.add(v.famID)
         return dom
 
+    def bro_sis(self,pID):
+        """
+        Return brothers and sister of a People, without step family
+        """
+        father = self.get_people(pID).fatID
+        mother = self.get_people(pID).famID
+        return self.get_people(father).child.intersection(self.get_people(mother).child)
+
+
     def step_bro_sis(self,pID):
         """
         Do the symmetric difference (new set with elements in either father's child or mother's child but not both)
@@ -247,6 +256,17 @@ class Pedigree:
         father = self.get_people(pID).fatID
         mother = self.get_people(pID).famID
         return self.get_people(father).child.symmetric_difference(self.get_people(mother).child)
+
+    def uncles_aunts(self,pID):
+        father, mother = self.parents(pID)
+        return self.bro_sis(father).union(self.bro_sis(mother))
+
+    def cousins(self,pID):
+        """
+
+        """
+        uncles_aunts = self.uncles_aunts(pID)
+        return [i.child for i in uncles_aunts]
 
     def parents(self,pID):
         """
@@ -269,6 +289,17 @@ class Pedigree:
         else:
             parents = self.parents(pID)
             [self.old_generation(i,nbG-1) for i in parents]
+
+    def next_generation(self,pID,nbG):
+        if nbG == 1:
+            return  self.get_people(pID).child
+        else:
+            children = self.get_people(pID).child
+            [self.next_generation(i,nbG-1) for i in children]
+    #Pas du tout sur du fonctionnement de ces deux fonctions generation
+
+
+
 
 
     def __str__(self):
