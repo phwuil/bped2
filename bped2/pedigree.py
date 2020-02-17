@@ -4,13 +4,16 @@ from typing import Set
 import pickle as pkl
 
 class People:
-    def __init__(self, famID: str, pID: str, fatID: str, matID: str, sex: int = 0):
+    def __init__(self, famID: str, pID: str, fatID: str, matID: str, sex: int = 0,child = None):
         self._famID = famID
         self._pID = pID
         self._fatID = fatID
         self._matID = matID
         self._sex = sex
-        self._child = set()
+        if child is None:
+            self._child = set()
+        else:
+            self._child = child
 
     def __eq__(self, other):
         return (self.famID == other.famID) and (self.pID == other.pID) and (self.fatID == other.fatID) \
@@ -56,7 +59,7 @@ class People:
 
     @sex.setter
     def sex(self, sex):
-        self.sex = sex
+        self._sex = sex
 
     @property
     #def child(self)->Set[People]:
@@ -70,8 +73,8 @@ class People:
         self._child.remove(cID)
 
     def __str__(self):
-        # return "[%s %s %s %s %s]"%(self._famID,self.pID,self.famID,self.famID,self.sex)
-        return f"[{self._famID} {self._pID} {self._fatID} {self._famID} {self._sex} {self._child}]"
+        # return "[%s %s %s %s %s]"%(self._famID,self.pID,self.matID,self.famID,self.sex)
+        return f"[{self._famID} {self._pID} {self._fatID} {self._matID} {self._sex} {self._child}]"
 
     def __repr__(self):
         return f"People({id(self)} :" + self.__str__()
@@ -102,6 +105,8 @@ class Pedigree:
         """
         Return the People with the key = idp
         """
+        if idp not in self._pedigree.keys():
+            raise ValueError(f"ID: {idp} is not in the pedigree")
         return self._pedigree[idp]
 
     def load_old(self, fichier):
@@ -121,15 +126,15 @@ class Pedigree:
         Read a .ped file and
         Return a dictionary where the keys are the people's IDs and the values are the People
         """
-        f = open(fichier)
-        for i in f.readlines():
-            #print(People(*i.strip().split()))
+        file = open(fichier)
+        for i in file.readlines():
             self.add_people(People(*i.strip().split()))
-        f.close()
+        file.close()
 
     def save(self,filename):
         f = open(filename,"w")
-        f.write(str(self._pedigree.values()))
+        for i in self._pedigree.values():
+            f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\t{i._sex}\t{i._child} \n")
         f.close()
 
     def add_sex(self,pID:str,sex:int):
@@ -161,12 +166,16 @@ class Pedigree:
         """
         Fill the child parameter, due to fatID and MatID knowlege's
         """
-        father = people._fatID
-        mother = people._matID
+        father = people.fatID
+        mother = people.matID
         if father in self._pedigree:
-            self._pedigree[father].add_children(people._pID)
+            self._pedigree[father].child.add(people.pID)
+            #self.get_people(father).child.add(people.pID)
+            #self._pedigree[father].add_children(people._pID)
         if mother in self._pedigree:
-            self._pedigree[mother].add_children(people._pID)
+            self._pedigree[mother].child.add(people.pID)
+            #self.get_people(mother).child.add(people.pID)
+            #self._pedigree[mother].add_children(people._pID)
 
 
     def add_children_all(self):
@@ -176,35 +185,57 @@ class Pedigree:
         for v in self._pedigree.values():
             self.add_children(v)
 
+    def add_parents(self, people):
+        """
+        Fill the fatID and matID if possible due to param child of the people
+        """
+        if len(people.child) != 0 and people.sex != 0: #S'il a au moins un enfant et un sexe connu
+            for i in people.child:
+                print(self.get_people(i).fatID)
+                if self.get_people(i).fatID == '0' and people.sex == 1:
+                    self.get_people(i)._fatID = people.pID
+                if self.get_people(i).matID == '0' and people.sex == 2:
+                    self.get_people(i)._matID = people.pID
+    def add_parents_all(self):
+        """
+        Complete the fat/fam attribute for all the pedigree's people
+        """
+        for k,v in self._pedigree.items():
+            self.add_parents(v)
+
+
     def add_people(self,people:People):
         """
         warning
         -------
         add_people tries hard to update childrens of father and mother but it is not reliable (parents may not already exist)
         """
-        if people._pID=="0":
+        if people.pID=='0':
             raise ValueError('id "0" is not allowed for people')
-        if self._pedigree[people.pID] in self._pedigree.keys():
+        #if self._pedigree[people.pID] in self._pedigree.keys():
+        if people.pID in self._pedigree.keys():
             raise ValueError('id already use for another people')
-        self._pedigree[people._pID] = people
-        self.add_children(people)
+        else:
+            self._pedigree[people.pID] = people
+            self.add_children(people)
+            self.add_parents(people)
 
     def remove_people(self,idp:str):
         """
-        Remove the people 'idp' from the pedigree and from child, famID, and fatID if necessary
+        Remove the people 'idp' from the pedigree and from child, matID, and fatID if necessary
         """
-        p=self.get_people(idp)
+        p = self.get_people(idp)
 
         # deal with parents
-        father=p.fatID
-        mother=p.matID
+        father = p.fatID
+        mother = p.matID
         if father in self._pedigree:
-            self.get_people(father).remove_children(father)
+            self.get_people(father).remove_children(idp)
         if mother in self._pedigree:
-            self.get_people(mother).remove_children(father)
+            self.get_people(mother).remove_children(idp)
 
         # deal with children
-        for chid in p.children:
+        for chid in p.child:
             ch=self.get_people(chid)
             if ch.fatID==idp:
                 ch._fatID="0"
@@ -244,8 +275,10 @@ class Pedigree:
         Return brothers and sister of a People, without step family
         """
         father = self.get_people(pID).fatID
-        mother = self.get_people(pID).famID
-        return self.get_people(father).child.intersection(self.get_people(mother).child)
+        mother = self.get_people(pID).matID
+        bro_sis = self.get_people(father).child.intersection(self.get_people(mother).child)
+        bro_sis.remove(pID)
+        return bro_sis
 
 
     def step_bro_sis(self,pID):
@@ -254,25 +287,34 @@ class Pedigree:
 
         """
         father = self.get_people(pID).fatID
-        mother = self.get_people(pID).famID
-        return self.get_people(father).child.symmetric_difference(self.get_people(mother).child)
+        mother = self.get_people(pID).matID
+        step_bros = self.get_people(father).child.symmetric_difference(self.get_people(mother).child)
+        step_bros.remove(pID)
+        return step_bros
 
     def uncles_aunts(self,pID):
         father, mother = self.parents(pID)
-        return self.bro_sis(father).union(self.bro_sis(mother))
+        print(father,mother)
+        print(self.bro_sis(str(father)))
+        print(self.bro_sis(str(mother)))
+        u = self.bro_sis(father)
+        v = self.bro_sis(mother)
+        print(u.union(v))
+
+        #return self.bro_sis(father).union(self.bro_sis(mother))
 
     def cousins(self,pID):
         """
 
         """
         uncles_aunts = self.uncles_aunts(pID)
-        return [i.child for i in uncles_aunts]
+        return set([i.child for i in uncles_aunts])
 
     def parents(self,pID):
         """
         Return a tuple of the parents
         """
-        return [self.get_people(pID).fatID,self.get_people(pID).famID]
+        return [self.get_people(pID).fatID,self.get_people(pID).matID]
 
     def grandparents(self,pID): #Probablement inutile
         """
@@ -285,9 +327,12 @@ class Pedigree:
         """
         """
         if nbG == 1:
+            print(self.parents(pID))
             return self.parents(pID)
         else:
+            print("je passe dans le else")
             parents = self.parents(pID)
+            print(parents,"parents de ",pID )
             [self.old_generation(i,nbG-1) for i in parents]
 
     def next_generation(self,pID,nbG):
