@@ -76,18 +76,32 @@ class TestPedigree(unittest.TestCase):
         ped.add_people(People('9', '23', '0', '0',1,{'1'})) #Père de 1
         ped.add_people(People('9', '24', '0', '0',2,{'1'})) #Mère de 1
         ped.add_people(People('9', '25', '23', '24',2)) # Soeur de 1
+        ped.add_people(People('9', '26', '2', '25',1)) # Cousin de 8
         ped.add_sex_all()
         ped.add_children_all()
-        ped.uncles_aunts('8')
         self.assertEqual(ped.get_people('1'),People('9','1','23','24',2,{'4','6','8','10'}))
         self.assertEqual(ped.bro_sis('8'),set(['6','10','4']))
         self.assertEqual(ped.grandparents('8'),[['0', '0'], ['23', '24']])
-        #self.assertEqual(ped.uncles_aunts('8'),{'25'})
+        self.assertEqual(ped.uncles_aunts('8'),{'25'})
+        self.assertEqual(ped.cousins('8'),{'26'})
+        self.assertEqual(ped.grandparents('8'),[['0', '0'], ['23','24']])
 
     def test_generation(self):
         ped = Pedigree()
+        # ped.load("../data/test.ped") #Ne fonctionne pas, erreur inconnu
         ped.load("../data/fam9.ped")
-        ped.old_generation('6', 2)
+        ped.add_people(People('9', '23', '0', '0', 1, {'1'}))  # Père de 1
+        ped.add_people(People('9', '24', '0', '0', 2, {'1'}))  # Mère de 1
+        ped.add_people(People('9', '25', '23', '24', 2))  # Soeur de 1
+        ped.add_people(People('9', '26', '2', '25', 1))  # Cousin de 8
+        ped.add_sex_all()
+        ped.add_children_all()
+        print('blabla',ped.old_generation('8', 2))
+
+    def test_graph(self):
+        ped = Pedigree()
+        ped.load("../data/fam9.ped")
+        ped.graph1()
 
 
 

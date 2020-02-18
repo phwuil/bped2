@@ -2,6 +2,8 @@
 import pickle as pkl
 from typing import Set
 import pickle as pkl
+import pygraphviz as pgv
+from graphviz import *
 
 class People:
     def __init__(self, famID: str, pID: str, fatID: str, matID: str, sex: int = 0,child = None):
@@ -191,7 +193,7 @@ class Pedigree:
         """
         if len(people.child) != 0 and people.sex != 0: #S'il a au moins un enfant et un sexe connu
             for i in people.child:
-                print(self.get_people(i).fatID)
+                #print(self.get_people(i).fatID)
                 if self.get_people(i).fatID == '0' and people.sex == 1:
                     self.get_people(i)._fatID = people.pID
                 if self.get_people(i).matID == '0' and people.sex == 2:
@@ -244,6 +246,13 @@ class Pedigree:
 
         del self._pedigree[idp]
 
+    def clear_pedigree(self):
+        """
+        If a people doesn't have any parents and childrens, remove him from the pedigree
+        """
+        for f,v in self._pedigree.items():
+            if v.fatID == '0' and v.matID == '0' and len(v.child)== 0:
+                self.remove_people(v.pID)
 
     def roots(self):
         """
@@ -276,9 +285,12 @@ class Pedigree:
         """
         father = self.get_people(pID).fatID
         mother = self.get_people(pID).matID
-        bro_sis = self.get_people(father).child.intersection(self.get_people(mother).child)
-        bro_sis.remove(pID)
-        return bro_sis
+        if father != '0' or mother != '0': # Au moins 1 des parents est connu
+            bros = self.get_people(father).child.intersection(self.get_people(mother).child)
+            bros.remove(pID)
+        else:
+            bros =  set()
+        return bros
 
 
     def step_bro_sis(self,pID):
@@ -292,23 +304,20 @@ class Pedigree:
         step_bros.remove(pID)
         return step_bros
 
-    def uncles_aunts(self,pID):
+    def uncles_aunts(self,pID)->set:
         father, mother = self.parents(pID)
-        print(father,mother)
-        print(self.bro_sis(str(father)))
-        print(self.bro_sis(str(mother)))
-        u = self.bro_sis(father)
-        v = self.bro_sis(mother)
-        print(u.union(v))
-
-        #return self.bro_sis(father).union(self.bro_sis(mother))
+        return self.bro_sis(father).union(self.bro_sis(mother))
 
     def cousins(self,pID):
         """
 
         """
+        people = set()
         uncles_aunts = self.uncles_aunts(pID)
-        return set([i.child for i in uncles_aunts])
+        for i in uncles_aunts:
+            for j in self.get_people(i).child: # Pas opti mais je vois pas comment faire autrement
+                people.add(j)
+        return people
 
     def parents(self,pID):
         """
@@ -327,13 +336,18 @@ class Pedigree:
         """
         """
         if nbG == 1:
+            parents = self.parents(pID)
             print(self.parents(pID))
-            return self.parents(pID)
+            return parents
         else:
             print("je passe dans le else")
-            parents = self.parents(pID)
-            print(parents,"parents de ",pID )
-            [self.old_generation(i,nbG-1) for i in parents]
+            # parents = self.parents(pID)
+            # print(parents,"parents de ",pID )
+            # [self.old_generation(i,nbG-1) for i in parents]
+            father,mother = self.parents(pID)
+            print("pere",father,"mere",mother)
+            self.old_generation(str(father),nbG-1)
+            self.old_generation(str(mother),nbG-1)
 
     def next_generation(self,pID,nbG):
         if nbG == 1:
@@ -343,10 +357,30 @@ class Pedigree:
             [self.next_generation(i,nbG-1) for i in children]
     #Pas du tout sur du fonctionnement de ces deux fonctions generation
 
-
-
-
-
     def __str__(self):
         return ", ".join([str(v) for k,v in self._pedigree.items()])
 
+    def graph(self):
+        graph = pgv.AGraph()
+        graph.add_edge("Hello", "world!")
+        graph.add_node("Hi!")
+
+        print(graph.string())
+        graph.write('hello_world.dot')
+        graph.layout('dot')
+        graph.draw('hello_world.png')
+
+        graph.close()
+
+    def graph1(self):
+        graph = Digraph(comment='The Round Table')
+        for k,v in self._pedigree.items():
+            graph.node(k)
+            if v.fatID != '0':
+                graph.edge(v.pID,v.fatID)
+            if v.matID != '0':
+                graph.edge(v.pID,v.matID)
+            if len(v.child) > 0:
+                for i in v.child:
+                    graph.edge(v.pID,i)
+        graph.render('test',view=True)
