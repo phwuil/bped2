@@ -96,12 +96,47 @@ class TestPedigree(unittest.TestCase):
         ped.add_people(People('9', '26', '2', '25', 1))  # Cousin de 8
         ped.add_sex_all()
         ped.add_children_all()
-        print('blabla',ped.old_generation('8', 2))
+        print(ped.old_generation('8', 2)) # Semble fonctionner
+        print(ped.next_generation('23',2)) # Ne fonctionne pas
 
-    def test_graph(self):
+    def test_number(self):
         ped = Pedigree()
         ped.load("../data/fam9.ped")
-        ped.graph1()
+        self.assertEqual(len(ped.family_number_members()),1)
+        ped.add_people(People('A', '23', '0', '0', 1, {'1'}))
+        self.assertEqual(len(ped.family_number_members()),2)
+        ped.remove_family('A')
+        self.assertEqual(len(ped.family_number_members()),1)
 
+        ped1 = Pedigree()
+        ped1.load("../data/senegal2013.ped")
+        ped1.remove_family('D1')
+        self.assertNotEqual(sorted(ped.domain())[0],'D1')
+        ped1.keep_one_family('D10')
+        self.assertEqual(len(ped.domain()),1)
+
+    def test_family(self):
+        ped = Pedigree()
+        ped.load("../data/senegal2013.ped")
+        print("avant netoyage",len(ped.domain())) #198 familles
+        ped.clear_pedigree()
+        print("apres nettoyage",len(ped.domain())) #37 familles
+        dico = ped.family_number_members()
+        print(dico)
+
+    def test_graph(self):
+        # ped1 = Pedigree()
+        # ped1.load("../data/fam9.ped")
+        # ped1.graph("fam9")
+        #
+        # ped2 = Pedigree()
+        # ped2.load("../data/famRh.ped")
+        # ped2.graph("famRh")
+
+        ped3 = Pedigree()
+        ped3.load("../data/senegal2013.ped")
+        ped3.keep_one_family('N8')
+        ped3.graph("senegal2013")
+        # Trop volumineux, meme avec une seul famille
 
 

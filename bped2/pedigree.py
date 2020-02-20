@@ -64,14 +64,19 @@ class People:
         self._sex = sex
 
     @property
-    #def child(self)->Set[People]:
     def child(self):
         return self._child
 
     def add_children(self, cID):
+        """
+        Add the children to his parent's set
+        """
         self._child.add(cID)
 
     def remove_children(self, cID):
+        """
+        Remove the children from the child set of his parent
+        """
         self._child.remove(cID)
 
     def __str__(self):
@@ -134,6 +139,9 @@ class Pedigree:
         file.close()
 
     def save(self,filename):
+        """
+        Save the current Pedigree in a file : filename.ped
+        """
         f = open(filename,"w")
         for i in self._pedigree.values():
             f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\t{i._sex}\t{i._child} \n")
@@ -250,7 +258,7 @@ class Pedigree:
         """
         If a people doesn't have any parents and childrens, remove him from the pedigree
         """
-        for f,v in self._pedigree.items():
+        for f,v in list(self._pedigree.items()):
             if v.fatID == '0' and v.matID == '0' and len(v.child)== 0:
                 self.remove_people(v.pID)
 
@@ -289,7 +297,7 @@ class Pedigree:
             bros = self.get_people(father).child.intersection(self.get_people(mother).child)
             bros.remove(pID)
         else:
-            bros =  set()
+            bros = set()
         return bros
 
 
@@ -305,12 +313,15 @@ class Pedigree:
         return step_bros
 
     def uncles_aunts(self,pID)->set:
+        """
+        Return the uncles and aunts of a individu
+        """
         father, mother = self.parents(pID)
         return self.bro_sis(father).union(self.bro_sis(mother))
 
     def cousins(self,pID):
         """
-
+        Return the cousins of an individu
         """
         people = set()
         uncles_aunts = self.uncles_aunts(pID)
@@ -332,50 +343,74 @@ class Pedigree:
         father,mother = self.parents(pID)
         return [self.parents(father),self.parents(mother)]
 
+    def remove_family(self,famID):
+        """
+        Remove an entire family in the Pedigree
+        """
+        for k,v in list(self._pedigree.items()):
+            if v.famID == famID:
+                del self._pedigree[k] # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
+                #self.remove_people(k)
+
+    def keep_one_family(self,famID):
+        """
+        Remove all the families in the Pedigree except famID
+        """
+        for k,v in list(self._pedigree.items()):
+            if v.famID != famID:
+                del self._pedigree[k] # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
+                #self.remove_people(k)
+
+    def family_number_members(self)->dict():
+        """
+        return a dictionary where keys = famID and values = Number of family members
+        """
+        dom = self.domain()
+        fam_nb = dict()
+        for d in dom:
+            fam_nb[d] = 0
+        for k, v in self._pedigree.items():
+            fam_nb[v.famID]+=1
+        return fam_nb
+
     def old_generation(self,pID,nbG):
         """
+        Return a list of list that contains each previous generation of pID, from parents (1st gen) to nbG gen
         """
         if nbG == 1:
             parents = self.parents(pID)
-            print(self.parents(pID))
-            return parents
+            return [parents[0],parents[1]]
         else:
-            print("je passe dans le else")
-            # parents = self.parents(pID)
-            # print(parents,"parents de ",pID )
-            # [self.old_generation(i,nbG-1) for i in parents]
-            father,mother = self.parents(pID)
-            print("pere",father,"mere",mother)
-            self.old_generation(str(father),nbG-1)
-            self.old_generation(str(mother),nbG-1)
+            parents = self.parents(pID)
+            return [self.old_generation(i,nbG-1) for i in parents]
+            # father,mother = self.parents(pID)
+            # print("pere",father,"mere",mother)
+            # return [father,mother] + self.old_generation(str(father),nbG-1)
+            # return [father,mother] + self.old_generation(str(mother),nbG-1)
 
     def next_generation(self,pID,nbG):
+        """
+        Return a list of list that contains each next generation of pID, from children (1st gen) to nbG gen
+        """
         if nbG == 1:
-            return  self.get_people(pID).child
+            return  list(self.get_people(pID).child)
         else:
             children = self.get_people(pID).child
-            [self.next_generation(i,nbG-1) for i in children]
+            return [list(children) + self.next_generation(i,nbG-1) for i in children]
+
     #Pas du tout sur du fonctionnement de ces deux fonctions generation
+    #Plus complexe en pratique qu'il n'y parait, pas sur de l'utilité de ces fonctions 
 
     def __str__(self):
         return ", ".join([str(v) for k,v in self._pedigree.items()])
 
-    def graph(self):
-        graph = pgv.AGraph()
-        graph.add_edge("Hello", "world!")
-        graph.add_node("Hi!")
-
-        print(graph.string())
-        graph.write('hello_world.dot')
-        graph.layout('dot')
-        graph.draw('hello_world.png')
-
-        graph.close()
-
-    def graph1(self):
-        graph = Digraph(comment='The Round Table')
+    def graph(self,name):
+        """
+        Return a graph showing the Pedigree
+        """
+        graph = Graph(name='Pedigree',strict=True,comment=name)
+        graph.attr(label=r'\n\n'+name+' pedigree')
         for k,v in self._pedigree.items():
-            graph.node(k)
             if v.fatID != '0':
                 graph.edge(v.pID,v.fatID)
             if v.matID != '0':
@@ -383,4 +418,5 @@ class Pedigree:
             if len(v.child) > 0:
                 for i in v.child:
                     graph.edge(v.pID,i)
-        graph.render('test',view=True)
+        graph.save(filename=name,directory="../data")
+        graph.view()
