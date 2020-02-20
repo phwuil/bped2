@@ -6,16 +6,13 @@ import pygraphviz as pgv
 from graphviz import *
 
 class People:
-    def __init__(self, famID: str, pID: str, fatID: str, matID: str, sex: int = 0,child = None):
+    def __init__(self, famID: str, pID: str, fatID: str, matID: str):
         self._famID = famID
         self._pID = pID
         self._fatID = fatID
         self._matID = matID
-        self._sex = sex
-        if child is None:
-            self._child = set()
-        else:
-            self._child = child
+        self._sex = None
+        self._child = set()
 
     def _set(self,famID,fatID,matID):
         self._famID= famID
@@ -102,6 +99,7 @@ class Pedigree:
 
     def __init__(self):
         self._pedigree = dict()
+        self._description = dict()
 
     def get_pedigree(self):
         """
@@ -123,15 +121,21 @@ class Pedigree:
             raise ValueError(f"ID: {idp} is not in the pedigree")
         return self._pedigree[idp]
 
+    def get_description(self):
+        """
+
+        """
+        return self._description
     def load_old(self, fichier):
         """
         Read a .ped file and
         Return a dictionary where the keys are the people's IDs and the values are the People
         """
         file = open(fichier)
-        for i in file.readlines():
+        for (line,i) in enumerate(file.readlines()):
             p = People(*i.strip().split())
             self._pedigree[p.pID] = p
+            self._audit[line] = "Création du people "+p.pID
         file.close()
         # Version old n'ajoute pas directement les enfants
 
@@ -141,9 +145,9 @@ class Pedigree:
         Return a dictionary where the keys are the people's IDs and the values are the People
         """
         file = open(fichier)
-        for i in file.readlines():
-            #self.add_people(People(*i.strip().split()))
+        for (line,i) in enumerate(file.readlines()):
             self.add_people(*i.strip().split())
+            self._audit[line] = "Création du people "+i[2]
         file.close()
 
     def save(self,filename):
@@ -152,7 +156,7 @@ class Pedigree:
         """
         f = open(filename,"w")
         for i in self._pedigree.values():
-            f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\t{i._sex}\t{i._child} \n")
+            f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\t{i._sex}\n")
         f.close()
 
     def add_sex(self,pID:str,sex:int):
@@ -180,7 +184,7 @@ class Pedigree:
             if v._matID != '0':
                 self.add_sex(v._matID,self.sex_female)
 
-    def add_children(self,people):
+    def update_children(self, people):
         """
         Fill the child parameter, due to fatID and MatID knowlege's
         """
@@ -196,14 +200,14 @@ class Pedigree:
             #self._pedigree[mother].add_children(people._pID)
 
 
-    def add_children_all(self):
+    def update_children_all(self):
         """
         Complete the child attribute for all the pedigree's people
         """
         for v in self._pedigree.values():
-            self.add_children(v)
+            self.update_children(v)
 
-    def add_parents(self, people):
+    def update_parents(self, people):
         """
         Fill the fatID and matID if possible due to param child of the people
         """
@@ -214,12 +218,13 @@ class Pedigree:
                     self.get_people(i)._fatID = people.pID
                 if self.get_people(i).matID == '0' and people.sex == 2:
                     self.get_people(i)._matID = people.pID
-    def add_parents_all(self):
+
+    def update_parents_all(self):
         """
         Complete the fat/fam attribute for all the pedigree's people
         """
         for k,v in self._pedigree.items():
-            self.add_parents(v)
+            self.update_parents(v)
 
     """
     addPeople(idF,idP,idPapa,idMaman):
@@ -244,25 +249,10 @@ class Pedigree:
             people = self.get_people(pID)
             people._set(famID,famID,matID)
         else:
-            people = People(famID,pID,fatID,fatID)
+            people = People(famID,pID,fatID,matID)
             self._pedigree[pID] = people
-            self.add_children(people)
+            self.update_children(people)
 
-    def add_people(self,people:People):
-        """
-        warning
-        -------
-        add_people tries hard to update childrens of father and mother but it is not reliable (parents may not already exist)
-        """
-        if people.pID=='0':
-            raise ValueError('id "0" is not allowed for people')
-        #if self._pedigree[people.pID] in self._pedigree.keys():
-        if people.pID in self._pedigree.keys():
-            raise ValueError('id already use for another people')
-        else:
-            self._pedigree[people.pID] = people
-            self.add_children(people)
-            self.add_parents(people)
 
     def remove_people(self,idp:str):
         """
@@ -312,7 +302,7 @@ class Pedigree:
             if len(v.child) == 0: # Si l'individu n'a pas d'enfants -> Feuille
                 yield v.pID
 
-    def domain(self):
+    def get_domain(self):
         """
         Return all the different family present in the pedigree
         """
@@ -321,7 +311,7 @@ class Pedigree:
             dom.add(v.famID)
         return dom
 
-    def bro_sis(self,pID):
+    def get_bro_sis(self, pID):
         """
         Return brothers and sister of a People, without step family
         """
@@ -335,7 +325,7 @@ class Pedigree:
         return bros
 
 
-    def step_bro_sis(self,pID):
+    def get_step_bro_sis(self, pID):
         """
         Do the symmetric difference (new set with elements in either father's child or mother's child but not both)
 
@@ -346,36 +336,37 @@ class Pedigree:
         step_bros.remove(pID)
         return step_bros
 
-    def uncles_aunts(self,pID)->set:
+    def get_uncles_aunts(self, pID)->set:
         """
         Return the uncles and aunts of a individu
         """
-        father, mother = self.parents(pID)
-        return self.bro_sis(father).union(self.bro_sis(mother))
+        father, mother = self.get_parents(pID)
+        return self.get_bro_sis(father).union(self.get_bro_sis(mother))
 
-    def cousins(self,pID):
+    def get_cousins(self, pID):
         """
         Return the cousins of an individu
         """
         people = set()
-        uncles_aunts = self.uncles_aunts(pID)
+        uncles_aunts = self.get_uncles_aunts(pID)
         for i in uncles_aunts:
             for j in self.get_people(i).child: # Pas opti mais je vois pas comment faire autrement
                 people.add(j)
         return people
 
-    def parents(self,pID):
+    def get_parents(self, pID):
         """
-        Return a tuple of the parents
+        Return a set of the parents
         """
-        return [self.get_people(pID).fatID,self.get_people(pID).matID]
+        return {self.get_people(pID).fatID,self.get_people(pID).matID}
 
     def grandparents(self,pID): #Probablement inutile
         """
-        return a tuple of paternal and mather grandparents ((),())
+        return a set of paternal and mather grandparents
         """
-        father,mother = self.parents(pID)
-        return [self.parents(father),self.parents(mother)]
+        parents = self.get_parents(pID)
+        return set(parents(i)for i in parents)
+        #return [self.get_parents(father), self.get_parents(mother)]
 
     def remove_family(self,famID):
         """
@@ -386,20 +377,24 @@ class Pedigree:
                 del self._pedigree[k] # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
                 #self.remove_people(k)
 
-    def keep_one_family(self,famID):
+    def get_one_family(self, famID):
         """
-        Remove all the families in the Pedigree except famID
+        Return a new Pedigree with only the family famID
         """
+        ped = Pedigree()
         for k,v in list(self._pedigree.items()):
-            if v.famID != famID:
-                del self._pedigree[k] # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
-                #self.remove_people(k)
+            # if v.famID != famID:
+            #     del self._pedigree[k] # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
+            #     #self.remove_people(k)
+            if v.famID == famID:
+                ped.add_people(v.fatID,v.pID,v.fatID,v.famID)
+        return ped
 
-    def family_number_members(self)->dict():
+    def stat_family(self)->dict():
         """
         return a dictionary where keys = famID and values = Number of family members
         """
-        dom = self.domain()
+        dom = self.get_domain()
         fam_nb = dict()
         for d in dom:
             fam_nb[d] = 0
@@ -412,10 +407,10 @@ class Pedigree:
         Return a list of list that contains each previous generation of pID, from parents (1st gen) to nbG gen
         """
         if nbG == 1:
-            parents = self.parents(pID)
+            parents = self.get_parents(pID)
             return [parents[0],parents[1]]
         else:
-            parents = self.parents(pID)
+            parents = self.get_parents(pID)
             return [self.old_generation(i,nbG-1) for i in parents]
             # father,mother = self.parents(pID)
             # print("pere",father,"mere",mother)
