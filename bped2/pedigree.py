@@ -17,6 +17,11 @@ class People:
         else:
             self._child = child
 
+    def _set(self,famID,fatID,matID):
+        self._famID= famID
+        self._fatID = fatID
+        self._matID = matID
+
     def __eq__(self, other):
         return (self.famID == other.famID) and (self.pID == other.pID) and (self.fatID == other.fatID) \
                and (self.matID == other.matID)and (self.sex == other.sex) and (self.child == other.child)
@@ -93,6 +98,8 @@ class Pedigree:
     sex_female = 2
     sex_malefemale=3
 
+    people_unknown="?"
+
     def __init__(self):
         self._pedigree = dict()
 
@@ -135,7 +142,8 @@ class Pedigree:
         """
         file = open(fichier)
         for i in file.readlines():
-            self.add_people(People(*i.strip().split()))
+            #self.add_people(People(*i.strip().split()))
+            self.add_people(*i.strip().split())
         file.close()
 
     def save(self,filename):
@@ -213,6 +221,32 @@ class Pedigree:
         for k,v in self._pedigree.items():
             self.add_parents(v)
 
+    """
+    addPeople(idF,idP,idPapa,idMaman):
+      si idF==people_unknow alors ERREUR
+      
+      si idP exist déja
+        si idp.idF n'est pas unknonw alors ERREUR
+        people=self.get_people(idP)
+        people._set(idF,idPapa,idMaman)
+      sinon
+        add people(idF,idP,idPapa,idMaman) in dict
+        
+    """
+    def add_people(self,famID,pID,fatID,matID):
+        if pID=='0':
+            raise ValueError('id "0" is not allowed for people')
+        if famID == self.people_unknown:
+            raise ValueError('Cannot add a people with famID = people_unknow')
+        if pID in self._pedigree.keys():
+            if self.get_people(pID).famID != self.people_unknown:
+                raise ValueError('id already use for another people')
+            people = self.get_people(pID)
+            people._set(famID,famID,matID)
+        else:
+            people = People(famID,pID,fatID,fatID)
+            self._pedigree[pID] = people
+            self.add_children(people)
 
     def add_people(self,people:People):
         """
