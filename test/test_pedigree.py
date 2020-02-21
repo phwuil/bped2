@@ -8,7 +8,7 @@ class TestPedigree(unittest.TestCase):
     def test_pedigree(self):#OK
         ped = Pedigree()
         ped.load_old("../data/fam9.ped")
-        print(ped._audit)
+        print(ped._description)
         self.assertEqual    (ped.get_people('2'),People('9','2','0','0'))
         self.assertEqual    (ped.get_people('20'),People('9','20','9','10'))
 
@@ -77,59 +77,60 @@ class TestPedigree(unittest.TestCase):
         ped = Pedigree()
         #ped.load("../data/test.ped") #Ne fonctionne pas, erreur inconnu
         ped.load("../data/fam9.ped")
-        # ped.add_people(People('9', '23', '0', '0',1,{'1'})) #Père de 1
-        # ped.add_people(People('9', '24', '0', '0',2,{'1'})) #Mère de 1
-        ped.add_people('9', '23', '0', '0')
-        ped.add_people('9', '24', '0', '0')
+        ped.add_people('9', '23', '0', '0') #Père de 1
+        ped.add_people('9', '24', '0', '0') #Mère de 1
         ped.get_people('1')._set('9','23','24')
         ped.add_people('9', '25', '23', '24') # Soeur de 1
         ped.add_people('9', '26', '2', '25') # Cousin de 8
         ped.add_sex_all()
         ped.update_children_all()
-        print(ped.get_people('1'))
-        # self.assertEqual(ped.get_people('1'),People('9','1','23','24',2,{'4','6','8','10'}))
-        # self.assertEqual(ped.bro_sis('8'),set(['6','10','4']))
-        # self.assertEqual(ped.grandparents('8'),[['0', '0'], ['23', '24']])
-        # self.assertEqual(ped.uncles_aunts('8'),{'25'})
-        # self.assertEqual(ped.cousins('8'),{'26'})
-        # self.assertEqual(ped.grandparents('8'),[['0', '0'], ['23','24']])
+        self.assertEqual(ped.get_people('1').fatID,'23')
+        self.assertEqual(ped.get_people('1').matID,'24')
+        self.assertEqual(ped.get_bro_sis('8'),set(['6','10','4']))
+        self.assertEqual(ped.get_grand_parents('8'),set(['0','23', '24']))
+        self.assertEqual(ped.get_uncles_aunts('8'),{'25'})
+        self.assertEqual(ped.get_cousins('8'),{'26'})
 
     def test_generation(self):
         ped = Pedigree()
         # ped.load("../data/test.ped") #Ne fonctionne pas, erreur inconnu
         ped.load("../data/fam9.ped")
-        ped.add_people(People('9', '23', '0', '0', 1, {'1'}))  # Père de 1
-        ped.add_people(People('9', '24', '0', '0', 2, {'1'}))  # Mère de 1
-        ped.add_people(People('9', '25', '23', '24', 2))  # Soeur de 1
-        ped.add_people(People('9', '26', '2', '25', 1))  # Cousin de 8
+        ped.add_people('9', '23', '0', '0') #Père de 1
+        ped.add_people('9', '24', '0', '0') #Mère de 1
+        ped.get_people('1')._set('9','23','24')
+        ped.add_people('9', '25', '23', '24') # Soeur de 1
+        ped.add_people('9', '26', '2', '25') # Cousin de 8
         ped.add_sex_all()
         ped.update_children_all()
-        print(ped.old_generation('8', 2)) # Semble fonctionner
-        print(ped.next_generation('23',2)) # Ne fonctionne pas
+        print(ped.old_gen('8', 2))
+        print(ped.next_gen('23', 2))
 
-    def test_number(self):
+
+    def test_number(self): #OK
         ped = Pedigree()
         ped.load("../data/fam9.ped")
-        self.assertEqual(len(ped.family_number_members()),1)
-        ped.add_people(People('A', '23', '0', '0', 1, {'1'}))
-        self.assertEqual(len(ped.family_number_members()),2)
+        self.assertEqual(len(ped.stat_family()),1)
+        ped.add_people('A', '23', '0', '0')
+        ped.add_sex('23',1)
+        ped.get_people('23').add_children('1')
+        self.assertEqual(len(ped.stat_family()),2)
         ped.remove_family('A')
-        self.assertEqual(len(ped.family_number_members()),1)
+        self.assertEqual(len(ped.stat_family()),1)
 
         ped1 = Pedigree()
         ped1.load("../data/senegal2013.ped")
         ped1.remove_family('D1')
         self.assertNotEqual(sorted(ped.get_domain())[0], 'D1')
-        ped1.get_one_family('D10')
+        ped1.gen_family_pedigree('D10')
         self.assertEqual(len(ped.get_domain()), 1)
 
-    def test_clean(self):
+    def test_clean(self): #OK
         ped = Pedigree()
         ped.load("../data/senegal2013.ped")
         print("avant netoyage", len(ped.get_domain())) #198 familles
         ped.clear_pedigree()
         print("apres nettoyage", len(ped.get_domain())) #37 familles
-        dico = ped.family_number_members()
+        dico = ped.stat_family()
         print(dico)
 
     def test_graph(self):
@@ -143,7 +144,7 @@ class TestPedigree(unittest.TestCase):
 
         ped3 = Pedigree()
         ped3.load("../data/senegal2013.ped")
-        ped3.get_one_family('N8')
+        ped3.gen_family_pedigree('N8')
         ped3.graph("senegal2013")
         # Trop volumineux, meme avec une seul famille
 

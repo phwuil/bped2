@@ -11,7 +11,7 @@ class People:
         self._pID = pID
         self._fatID = fatID
         self._matID = matID
-        self._sex = None
+        self._sex = 0
         self._child = set()
 
     def _set(self,famID,fatID,matID):
@@ -135,7 +135,7 @@ class Pedigree:
         for (line,i) in enumerate(file.readlines()):
             p = People(*i.strip().split())
             self._pedigree[p.pID] = p
-            self._audit[line] = "Création du people "+p.pID
+            self._description[line] = "Création du people "+p.pID
         file.close()
         # Version old n'ajoute pas directement les enfants
 
@@ -147,7 +147,7 @@ class Pedigree:
         file = open(fichier)
         for (line,i) in enumerate(file.readlines()):
             self.add_people(*i.strip().split())
-            self._audit[line] = "Création du people "+i[2]
+            self._description[line] = "Création du people "+i[2]
         file.close()
 
     def save(self,filename):
@@ -358,15 +358,24 @@ class Pedigree:
         """
         Return a set of the parents
         """
-        return {self.get_people(pID).fatID,self.get_people(pID).matID}
+        if self.get_people(pID).matID != '0' and self.get_people(pID).fatID != '0':
+            return {self.get_people(pID).fatID,self.get_people(pID).matID}
+        elif self.get_people(pID).matID != '0' and self.get_people(pID).fatID == '0':
+            return {self.get_people(pID).matID}
+        elif self.get_people(pID).fatID != '0' and self.get_people(pID).matID == '0':
+            return {self.get_people(pID).fatID}
+        else:
+            return {}
 
-    def grandparents(self,pID): #Probablement inutile
+    def get_grand_parents(self, pID): #Probablement inutile
         """
         return a set of paternal and mather grandparents
         """
+        grand_parents = set()
         parents = self.get_parents(pID)
-        return set(parents(i)for i in parents)
-        #return [self.get_parents(father), self.get_parents(mother)]
+        for i in parents:
+            grand_parents.update(self.get_parents(i))
+        return grand_parents
 
     def remove_family(self,famID):
         """
@@ -377,7 +386,7 @@ class Pedigree:
                 del self._pedigree[k] # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
                 #self.remove_people(k)
 
-    def get_one_family(self, famID):
+    def gen_family_pedigree(self, famID):
         """
         Return a new Pedigree with only the family famID
         """
@@ -389,6 +398,17 @@ class Pedigree:
             if v.famID == famID:
                 ped.add_people(v.fatID,v.pID,v.fatID,v.famID)
         return ped
+
+    def gen_all_pedigree(self):
+        """
+        Return a dictionnary where the key is a famID and the value is a new Pedigree with only the family famID
+        """
+        ped = dict()
+        dom = self.get_domain()
+        for i in dom:
+            ped[i] = self.gen_family_pedigree(i)
+        return ped
+
 
     def stat_family(self)->dict():
         """
@@ -402,31 +422,78 @@ class Pedigree:
             fam_nb[v.famID]+=1
         return fam_nb
 
-    def old_generation(self,pID,nbG):
+    def old_gen(self,pID,nbG):
         """
         Return a list of list that contains each previous generation of pID, from parents (1st gen) to nbG gen
         """
         if nbG == 1:
-            parents = self.get_parents(pID)
-            return [parents[0],parents[1]]
+            return self.get_parents(pID)
         else:
-            parents = self.get_parents(pID)
-            return [self.old_generation(i,nbG-1) for i in parents]
-            # father,mother = self.parents(pID)
-            # print("pere",father,"mere",mother)
-            # return [father,mother] + self.old_generation(str(father),nbG-1)
-            # return [father,mother] + self.old_generation(str(mother),nbG-1)
+            cpt = 1
+            gen = set ()
+            while cpt <= nbG:
+                if len(gen) == 0:
+                    gen.update(self.get_parents(pID))
+                else:
+                    tmp = set()
+                    for i in gen:
+                        tmp.update(self.get_parents(i))
+                    gen.update(tmp)
+                cpt+=1
+            return gen
 
-    def next_generation(self,pID,nbG):
+    def next_gen(self,pID,nbG):
         """
         Return a list of list that contains each next generation of pID, from children (1st gen) to nbG gen
         """
         if nbG == 1:
-            return  list(self.get_people(pID).child)
+            return self.get_people(pID).child
         else:
-            children = self.get_people(pID).child
-            return [list(children) + self.next_generation(i,nbG-1) for i in children]
+            cpt = 1
+            children = set()
+            while cpt <= nbG:
+                tmp = set()
+                if len(children) == 0:
+                    children.update(self.get_people(pID).child)
+                else:
+                    for i in children:
+                        tmp.update(self.get_people(i).child)
+                    children.update(tmp)
+                cpt +=1
+            return children
 
+    def check_one_people_family(self):
+        """
+        Return the family's number with just one people
+        """
+        dico = self.stat_family()
+        cpt = 0
+        for v in self._pedigree.values():
+            if v == 1:
+                cpt+=1
+        return cpt
+
+    def check_mother_and_father(self):
+        """
+        Check for all people in the pedigree, if someone is a mother and also a father
+        """
+        father = set()
+        mother = set()
+        for v in self._pedigree.values():
+            father.update(v.fatID)
+            mother.update(v.matID)
+        return father.intersection(mother)
+
+    def check_consanguinity(self,pID,nbG):
+        """
+        Check if a people has consanguinous origin by checking in the nbG older generation
+        """
+
+        parent1,parent2 = self.get_parents(pID)
+        print(parent1,parent2)
+        holders1 = self.old_gen(parent1,nbG)
+        holders2 = self.old_gen(parent2,nbG)
+        return holders1.intersection(holders2)
     #Pas du tout sur du fonctionnement de ces deux fonctions generation
     #Plus complexe en pratique qu'il n'y parait, pas sur de l'utilité de ces fonctions 
 
