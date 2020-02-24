@@ -133,6 +133,26 @@ class TestPedigree(unittest.TestCase):
         dico = ped.stat_family()
         print(dico)
 
+    def test_check(self):
+        ped = Pedigree()
+        ped1 = Pedigree()
+        ped.load("../data/senegal2013.ped")
+        ped1.load("../data/fam9.ped")
+        print(len(ped.get_domain()),ped.check_one_people_family()) # 161 membres isolés
+        self.assertEqual(ped.check_one_people_family(),198-37)
+        print(ped.check_mother_and_father()) #Aucun changement de sexe
+        print(ped.check_consanguinity('N501426',5))
+        print(ped.check_consanguinity_family('N1'))
+        print(len(ped.check_famID('N501426')),ped.check_famID('N501426')) #Probablement faux mais compliquer a verifier
+
+
+    def test_generation_pedigree(self):
+        ped = Pedigree()
+        ped.load("../data/senegal2013.ped")
+        N1 = ped.gen_family_pedigree('N1')
+        new = ped.gen_all_pedigree()
+        self.assertEqual(new['N1'],N1)
+
     def test_graph(self):
         # ped1 = Pedigree()
         # ped1.load("../data/fam9.ped")
@@ -148,4 +168,21 @@ class TestPedigree(unittest.TestCase):
         ped3.graph("senegal2013")
         # Trop volumineux, meme avec une seul famille
 
+    def test_graph_pydot(self):
+        ped3 = Pedigree()
+        ped3.load("../data/senegal2013.ped")
+        N8 = ped3.gen_family_pedigree('N8')
+        N8.add_sex_all()
+        N8.update_children_all()
+        N8.update_parents_all()
+        print(N8.get_people('N1210'))
+        print(N8.get_people('N1211'))
+        N8.graph_pydot("N8")
+        fam9 = Pedigree()
+        fam9.load("../data/fam9.ped")
+        fam9.add_sex_all()
+        fam9.update_children_all()
+        fam9.update_parents_all()
+        print(fam9.roots())
+        fam9.graph_pydot("fam9")
 

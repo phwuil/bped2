@@ -4,6 +4,7 @@ from typing import Set
 import pickle as pkl
 import pygraphviz as pgv
 from graphviz import *
+import pydot
 
 class People:
     def __init__(self, famID: str, pID: str, fatID: str, matID: str):
@@ -14,14 +15,14 @@ class People:
         self._sex = 0
         self._child = set()
 
+    def __eq__(self, other):
+        return (self.famID == other.famID) and (self.pID == other.pID) and (self.fatID == other.fatID) \
+               and (self.matID == other.matID)and (self.sex == other.sex) and (self.child == other.child)
+
     def _set(self,famID,fatID,matID):
         self._famID= famID
         self._fatID = fatID
         self._matID = matID
-
-    def __eq__(self, other):
-        return (self.famID == other.famID) and (self.pID == other.pID) and (self.fatID == other.fatID) \
-               and (self.matID == other.matID)and (self.sex == other.sex) and (self.child == other.child)
 
     @property
     def famID(self)-> str:
@@ -101,17 +102,27 @@ class Pedigree:
         self._pedigree = dict()
         self._description = dict()
 
-    def get_pedigree(self):
-        """
-        Return the Pedigree
-        """
-        return self._pedigree
+    def __str__(self):
+        return ", ".join([str(v) for k,v in self._pedigree.items()])
 
     def __len__(self):
         """
         Return the People's number in the pedigree
         """
         return len(self.get_pedigree())
+
+    def __eq__(self, other):
+        for i,j in zip(self._pedigree.values(),other._pedigree.values()):
+            if not ((i.famID == j.famID) and (i.pID == j.pID) and (i.fatID == j.fatID) and (i.matID == j.matID)
+                    and (i.sex == j.sex) and (i.child == j.child)):
+                return False
+        return True
+
+    def get_pedigree(self):
+        """
+        Return the Pedigree
+        """
+        return self._pedigree
 
     def get_people(self,idp:str)->People:
         """
@@ -126,6 +137,7 @@ class Pedigree:
 
         """
         return self._description
+
     def load_old(self, fichier):
         """
         Read a .ped file and
@@ -396,7 +408,7 @@ class Pedigree:
             #     del self._pedigree[k] # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
             #     #self.remove_people(k)
             if v.famID == famID:
-                ped.add_people(v.fatID,v.pID,v.fatID,v.famID)
+                ped.add_people(v.famID,v.pID,v.fatID,v.matID)
         return ped
 
     def gen_all_pedigree(self):
@@ -469,7 +481,7 @@ class Pedigree:
         dico = self.stat_family()
         cpt = 0
         for v in self._pedigree.values():
-            if v == 1:
+            if dico[v.famID] == 1:
                 cpt+=1
         return cpt
 
@@ -480,25 +492,52 @@ class Pedigree:
         father = set()
         mother = set()
         for v in self._pedigree.values():
-            father.update(v.fatID)
-            mother.update(v.matID)
+            father.add(v.fatID)
+            mother.add(v.matID)
         return father.intersection(mother)
 
-    def check_consanguinity(self,pID,nbG):
+    def check_consanguinity(self,pID,nbG): #Peut etre le faire sur une famille entiere et non sur un unique individu
         """
         Check if a people has consanguinous origin by checking in the nbG older generation
         """
+        parents = self.get_parents(pID)
+        if len(parents) == 2:
+            parent1,parent2 = self.get_parents(pID)
+        elif len(parents) == 1:
+            parent1 = parents
+            parents = '0'
+        else:
+            return {}
 
-        parent1,parent2 = self.get_parents(pID)
-        print(parent1,parent2)
-        holders1 = self.old_gen(parent1,nbG)
-        holders2 = self.old_gen(parent2,nbG)
+        holders1 = set()
+        holders2 = set()
+        if parent1 != '0' and parent2 !='0':
+            holders1 = self.old_gen(parent1,nbG)
+            holders2 = self.old_gen(parent2,nbG)
+        elif parent1 != 0 and parent2 == '0':
+            holders1 = self.old_gen(parent1, nbG)
+        else:
+            holders2 = self.old_gen(parent2, nbG)
         return holders1.intersection(holders2)
-    #Pas du tout sur du fonctionnement de ces deux fonctions generation
-    #Plus complexe en pratique qu'il n'y parait, pas sur de l'utilité de ces fonctions 
 
-    def __str__(self):
-        return ", ".join([str(v) for k,v in self._pedigree.items()])
+    def check_consanguinity_family(self,famID):
+        fam = self.gen_family_pedigree(famID)
+        res = set()
+        for v in fam._pedigree.values():
+            res.update(self.check_consanguinity(v.pID,10))
+        return res
+
+
+    def check_famID(self,pID):
+        """
+        Check if people link to the people pID have a different famID
+        """
+        ref = self.get_people(pID).famID
+        errors = set()
+        for k,v in self._pedigree.items():
+            if v.famID != ref:
+                errors.add(k)
+        return errors
 
     def graph(self,name):
         """
@@ -516,3 +555,55 @@ class Pedigree:
                     graph.edge(v.pID,i)
         graph.save(filename=name,directory="../data")
         graph.view()
+
+    def graph_pydot(self,name):
+        graph = pydot.Dot(graph_type='graph',graph_name=name,strict=True)
+        for k,v in self._pedigree.items():
+            if len(v.child) != 0 and v.fatID =='0' and v.matID == '0':
+                if v.sex == 1:
+                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize="10.0", style="filled",color="#00ffff",fillcolor="dark"))
+                if v.sex == 2:
+                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize="10.0", style="filled", color="pink",fillcolor="dark"))
+                if v.sex == 3:
+                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize="10.0", style="filled", color="white",fillcolor="dark"))
+
+            elif len(v.child) == 0 and v.fatID !='0' and v.matID != '0':
+                if v.sex == 1:
+                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize="10.0", style="filled", color="#00ffff", fillcolor="green"))
+                if v.sex == 2:
+                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize="10.0", style="filled", color="pink",fillcolor="green"))
+                if v.sex == 3:
+                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize="10.0", style="filled", color="white",fillcolor="green"))
+
+            else:
+                if v.sex == 1:
+                    graph.add_node(pydot.Node(k, shape='diamond', fontsize="10.0", style="filled", color="#00ffff",fillcolor="blue"))
+                if v.sex == 2:
+                    graph.add_node(pydot.Node(k, shape='diamond', fontsize="10.0", style="filled", color="pink",fillcolor="blue"))
+                if v.sex == 3:
+                    graph.add_node(pydot.Node(k,shape='diamond', fontsize="10.0", style="filled", color="white",fillcolor="blue"))
+
+        for k,v in self._pedigree.items():
+            if v.sex == 1:
+                graph.set_node_defaults(shape="dot")
+
+            if v.sex == 2:
+                graph.set_node_defaults(shape="triangle")
+
+            if v.sex == 3:
+                graph.set_node_defaults(shape="ellipse")
+
+            if v.fatID != '0':
+                edge = pydot.Edge(v.fatID, v.pID)
+                graph.add_edge(edge)
+
+            if v.matID != '0':
+                edge = pydot.Edge(v.matID, v.pID)
+                graph.add_edge(edge)
+
+            if len(v.child) > 0:
+                for i in v.child:
+                    edge = pydot.Edge(v.pID, i)
+                    graph.add_edge(edge)
+
+        graph.write_png("../data/"+ name +'.png')
