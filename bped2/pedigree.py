@@ -1,10 +1,10 @@
 #!/usr/local/bin/python
-import pickle as pkl
 from typing import Set
-import pickle as pkl
 import pygraphviz as pgv
 from graphviz import *
 import pydot
+import math
+import random
 
 class People:
     def __init__(self, famID: str, pID: str, fatID: str, matID: str):
@@ -158,8 +158,9 @@ class Pedigree:
         """
         file = open(fichier)
         for (line,i) in enumerate(file.readlines()):
+            p = People(*i.strip().split())
             self.add_people(*i.strip().split())
-            self._description[line] = "Création du people "+i[2]
+            self._description[line] = "Création du people "+ p.pID
         file.close()
 
     def save(self,filename):
@@ -174,10 +175,10 @@ class Pedigree:
     def add_sex(self,pID:str,sex:int):
         """
         Modify the "sex value" for people 'pId'
-        sex_undefined = unidentify
-        sex_male = Male
-        sex_female = Female
-        sex_malefemale = Male AND Female (why not)
+        sex_undefined = unidentify / 0
+        sex_male = Male / 1
+        sex_female = Female /  2
+        sex_malefemale = Male AND Female (why not) / 3
         """
         # check if sex already filled
         p=self.get_people(pID)
@@ -204,12 +205,8 @@ class Pedigree:
         mother = people.matID
         if father in self._pedigree:
             self._pedigree[father].child.add(people.pID)
-            #self.get_people(father).child.add(people.pID)
-            #self._pedigree[father].add_children(people._pID)
         if mother in self._pedigree:
             self._pedigree[mother].child.add(people.pID)
-            #self.get_people(mother).child.add(people.pID)
-            #self._pedigree[mother].add_children(people._pID)
 
 
     def update_children_all(self):
@@ -336,6 +333,25 @@ class Pedigree:
             bros = set()
         return bros
 
+    def get_male(self):
+        """
+        Return knowed people with male sex
+        """
+        male = set()
+        for v in self._pedigree.values():
+            if v.sex == 1:
+                male.add(v.pID)
+        return male
+
+    def get_female(self):
+        """
+        Return knowed people with female sex
+        """
+        female = set()
+        for v in self._pedigree.values():
+            if v.sex == 2:
+                female.add(v.pID)
+        return female
 
     def get_step_bro_sis(self, pID):
         """
@@ -422,7 +438,7 @@ class Pedigree:
         return ped
 
 
-    def stat_family(self)->dict():
+    def get_stat_family(self)->dict():
         """
         return a dictionary where keys = famID and values = Number of family members
         """
@@ -478,7 +494,7 @@ class Pedigree:
         """
         Return the family's number with just one people
         """
-        dico = self.stat_family()
+        dico = self.get_stat_family()
         cpt = 0
         for v in self._pedigree.values():
             if dico[v.famID] == 1:
@@ -527,6 +543,14 @@ class Pedigree:
             res.update(self.check_consanguinity(v.pID,10))
         return res
 
+    def check_consanguinity_pedigree(self):
+        dom = self.get_domain()
+        res = set()
+        for i in dom:
+            res.update(self.check_consanguinity_family(i))
+        return res
+
+
 
     def check_famID(self,pID):
         """
@@ -538,6 +562,23 @@ class Pedigree:
             if v.famID != ref:
                 errors.add(k)
         return errors
+
+    def pedigree_overview_file(self,filename):
+
+        f = open("../data/"+filename,"w")
+        for k,v in self._description.items():
+            f.write(f"{v} à la ligne {k}\n")
+        stats = self.get_stat_family()
+        f.write("---------------------------------------------------\n")
+        for k,v in stats.items():
+            f.write(f"La famille {k} est composé de {v} personnes \n")
+        f.write("---------------------------------------------------\n")
+        f.write(f"Sur {len(stats)} famille(s) il y en a {self.check_one_people_family()} composées d'un seul membre\n")
+        f.write(f"Dans le pedigree, les peoples suivants apparaissent en tant que mère et père dans le pedigree : {self.check_mother_and_father()}\n")
+        f.write(f"Dans le pedigree, les peoples suivants ont des liens antérieurs de consanguinité : {self.check_consanguinity_pedigree()}\n")
+
+        f.close()
+
 
     def graph(self,name):
         """
@@ -556,43 +597,39 @@ class Pedigree:
         graph.save(filename=name,directory="../data")
         graph.view()
 
-    def graph_pydot(self,name):
+    def graph_pydot(self,name,length):
         graph = pydot.Dot(graph_type='graph',graph_name=name,strict=True)
         for k,v in self._pedigree.items():
             if len(v.child) != 0 and v.fatID =='0' and v.matID == '0':
                 if v.sex == 1:
-                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize="10.0", style="filled",color="#00ffff",fillcolor="dark"))
-                if v.sex == 2:
-                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize="10.0", style="filled", color="pink",fillcolor="dark"))
-                if v.sex == 3:
-                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize="10.0", style="filled", color="white",fillcolor="dark"))
+                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled",color="#00ffff",fillcolor="#227ef0"))
+                elif v.sex == 2:
+                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color="#ff009c",fillcolor="#227ef0"))
+                elif v.sex == 3:
+                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color="white",fillcolor="#227ef0"))
+                else:
+                    graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color="#000000",fillcolor="#227ef0"))
 
-            elif len(v.child) == 0 and v.fatID !='0' and v.matID != '0':
+            elif len(v.child) == 0:
                 if v.sex == 1:
-                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize="10.0", style="filled", color="#00ffff", fillcolor="green"))
-                if v.sex == 2:
-                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize="10.0", style="filled", color="pink",fillcolor="green"))
-                if v.sex == 3:
-                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize="10.0", style="filled", color="white",fillcolor="green"))
-
+                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="#00ffff", fillcolor="#C2F732.0"))
+                elif v.sex == 2:
+                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="#ff009c",fillcolor="#C2F732"))
+                elif v.sex == 3:
+                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="white",fillcolor="#C2F732"))
+                else:
+                    graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="#000000",fillcolor="#C2F732"))
             else:
                 if v.sex == 1:
-                    graph.add_node(pydot.Node(k, shape='diamond', fontsize="10.0", style="filled", color="#00ffff",fillcolor="blue"))
-                if v.sex == 2:
-                    graph.add_node(pydot.Node(k, shape='diamond', fontsize="10.0", style="filled", color="pink",fillcolor="blue"))
-                if v.sex == 3:
-                    graph.add_node(pydot.Node(k,shape='diamond', fontsize="10.0", style="filled", color="white",fillcolor="blue"))
+                    graph.add_node(pydot.Node(k, shape='diamond', fontsize=length, style="filled", color="#00ffff",fillcolor="#ffa600"))
+                elif v.sex == 2:
+                    graph.add_node(pydot.Node(k, shape='diamond', fontsize=length, style="filled", color="#ff009c",fillcolor="#ffa600"))
+                elif v.sex == 3:
+                    graph.add_node(pydot.Node(k,shape='diamond', fontsize=length, style="filled", color="white",fillcolor="#ffa600"))
+                else:
+                    graph.add_node(pydot.Node(k, shape='diamond', fontsize=length, style="filled", color="#000000",fillcolor="#ffa600"))
 
         for k,v in self._pedigree.items():
-            if v.sex == 1:
-                graph.set_node_defaults(shape="dot")
-
-            if v.sex == 2:
-                graph.set_node_defaults(shape="triangle")
-
-            if v.sex == 3:
-                graph.set_node_defaults(shape="ellipse")
-
             if v.fatID != '0':
                 edge = pydot.Edge(v.fatID, v.pID)
                 graph.add_edge(edge)
@@ -607,3 +644,110 @@ class Pedigree:
                     graph.add_edge(edge)
 
         graph.write_png("../data/"+ name +'.png')
+
+    def generation_pedigree(self,famID,nbDepart,nbGeneration):
+        """
+        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
+        """
+        nbChildMax = 10
+        pMariage = 0.8
+        pConsanguinity = 0.05
+        currentID = 1
+        for nb in range(nbGeneration):
+            if nb == 0:
+            #Création de notre génération de départ
+                cpt = 0
+                for i in range(1, nbDepart+1):
+                    self.add_people(famID, str(i), '0', '0')
+                    currentID += 1
+                    if cpt < nbDepart//2 : #Pas en proba si nb individu trop faible, pb d'avoir qu'un seul sexe
+                        self.add_sex(str(i), 1) #Male
+                    else:
+                        self.add_sex(str(i), 2) #Female
+                    cpt=cpt+1
+
+                members = self.get_pedigree()
+                first_male = self.get_male()
+                first_female = self.get_female()
+                print(first_female,first_male)
+
+                # Mariage et enfants
+                nbMariage = nbDepart//2
+                for m in range(nbMariage):
+                    mom,dad = first_female.pop(),first_male.pop()
+                    #Choix du nombre d'enfants (entre 1 et nbChildMax)
+                    child = random.randint(0,nbChildMax)
+                    for i in range(child):
+                        self.add_people(famID,str(currentID),dad,mom)
+                        currentID+=1
+
+            else:
+                while random.random()< pMariage:
+                    #On récupère les feuilles, ie les enfants de la génération précedente
+                    people = {i for i in self.leaves()}
+                    Consanguinity = random.random()
+                    if Consanguinity < pConsanguinity:
+
+                        mom,dad = random.sample(people,2)
+                        while self.get_people(mom).matID != self.get_people(dad).matID or self.get_people(mom).fatID != self.get_people(dad).fatID:
+                            mom, dad = random.sample(people, 2)
+                            # Choix du nombre d'enfants (entre 1 et nbChildMax)
+                            child = random.randint(0, nbChildMax)
+                            for i in range(child):
+                                self.add_people(famID, str(currentID), dad, mom)
+                                currentID += 1
+                                people.remove(mom)
+                                people.remove(dad)
+                                self.add_sex(str(dad), 1)
+                                self.add_sex(str(mom), 2)
+
+                    else:
+
+                        if random.random() < 0.5: # Une chance sur deux de créer un nouvel individu pour le mariage
+                            mom, dad = random.sample(people, 2)
+                            while self.get_people(mom).matID == self.get_people(dad).matID and self.get_people(mom).fatID == self.get_people(dad).fatID:
+                                mom, dad = random.sample(people, 2)
+                                # Choix du nombre d'enfants (entre 1 et nbChildMax)
+                                child = random.randint(0, nbChildMax)
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID), dad, mom)
+                                    currentID += 1
+                                people.remove(mom)
+                                people.remove(dad)
+                                self.add_sex(str(dad), 1)
+                                self.add_sex(str(mom),2)
+
+                        else: # On créer un nouvel individu
+                            random_people = random.sample(people, 1)
+                            tmp = currentID
+                            self.add_people(famID,str(tmp),'0','0')
+                            people.add(tmp)
+                            currentID+=1
+                            # Choix du nombre d'enfants (entre 1 et nbChildMax)
+                            child = random.randint(0, nbChildMax)
+                            if random.random()<0.5:
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID), tmp, random_people[0])
+                                    currentID += 1
+                                people.remove(tmp)
+                                people.remove(random_people[0])
+                                self.add_sex(str(tmp),1)
+                                self.add_sex(str(random_people[0]),2)
+                            else:
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID),random_people[0],tmp)
+                                    currentID += 1
+                                people.remove(random_people[0])
+                                people.remove(tmp)
+                                self.add_sex(str(tmp),2)
+                                self.add_sex(str(random_people[0]),1)
+
+        self.update_children_all()
+        self.update_parents_all()
+
+
+
+
+
+
+

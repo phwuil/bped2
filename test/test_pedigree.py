@@ -55,6 +55,8 @@ class TestPedigree(unittest.TestCase):
         self.assertEqual(ped.get_people('21').sex,0)
         self.assertEqual(ped.get_people('3').sex,1)
         self.assertNotEqual(ped.get_people('3').sex,3)
+        self.assertEqual(len(ped.get_male()),5)
+        self.assertEqual(len(ped.get_female()),5)
 
     def test_children(self):#OK
         ped = Pedigree()
@@ -109,13 +111,13 @@ class TestPedigree(unittest.TestCase):
     def test_number(self): #OK
         ped = Pedigree()
         ped.load("../data/fam9.ped")
-        self.assertEqual(len(ped.stat_family()),1)
+        self.assertEqual(len(ped.get_stat_family()), 1)
         ped.add_people('A', '23', '0', '0')
         ped.add_sex('23',1)
         ped.get_people('23').add_children('1')
-        self.assertEqual(len(ped.stat_family()),2)
+        self.assertEqual(len(ped.get_stat_family()), 2)
         ped.remove_family('A')
-        self.assertEqual(len(ped.stat_family()),1)
+        self.assertEqual(len(ped.get_stat_family()), 1)
 
         ped1 = Pedigree()
         ped1.load("../data/senegal2013.ped")
@@ -130,7 +132,7 @@ class TestPedigree(unittest.TestCase):
         print("avant netoyage", len(ped.get_domain())) #198 familles
         ped.clear_pedigree()
         print("apres nettoyage", len(ped.get_domain())) #37 familles
-        dico = ped.stat_family()
+        dico = ped.get_stat_family()
         print(dico)
 
     def test_check(self):
@@ -175,14 +177,37 @@ class TestPedigree(unittest.TestCase):
         N8.add_sex_all()
         N8.update_children_all()
         N8.update_parents_all()
-        print(N8.get_people('N1210'))
-        print(N8.get_people('N1211'))
-        N8.graph_pydot("N8")
+        N8.graph_pydot("N8","10.0")
+
         fam9 = Pedigree()
         fam9.load("../data/fam9.ped")
         fam9.add_sex_all()
         fam9.update_children_all()
         fam9.update_parents_all()
-        print(fam9.roots())
-        fam9.graph_pydot("fam9")
+        fam9.graph_pydot("fam9","10.0")
 
+        N1 = ped3.gen_family_pedigree('N1')
+        N1.add_sex_all()
+        N1.update_children_all()
+        N1.update_parents_all()
+        N1.graph_pydot("N1","1.0")
+
+    def test_pedigree_file(self):
+        fam9 = Pedigree()
+        fam9.load("../data/fam9.ped")
+        fam9.add_sex_all()
+        fam9.update_children_all()
+        fam9.update_parents_all()
+        fam9.pedigree_overview_file("fam9_overview")
+
+        senegal = Pedigree()
+        senegal.load("../data/senegal2013.ped")
+        senegal.add_sex_all()
+        senegal.update_children_all()
+        senegal.update_parents_all()
+        senegal.pedigree_overview_file("senegal_overview")
+
+    def test_generation(self):
+        ped = Pedigree()
+        ped.generation_pedigree("test",4,4)
+        print(ped)
