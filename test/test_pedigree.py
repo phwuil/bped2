@@ -210,4 +210,4 @@ class TestPedigree(unittest.TestCase):
     def test_generation(self):
         ped = Pedigree()
         ped.generation_pedigree("test",4,4)
-        print(ped)
+        ped.graph_pydot("ped_généré","10.0")

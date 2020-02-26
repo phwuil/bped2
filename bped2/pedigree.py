@@ -91,12 +91,12 @@ class People:
 
 
 class Pedigree:
-    sex_undefined=0
-    sex_male =1
+    sex_undefined = 0
+    sex_male = 1
     sex_female = 2
-    sex_malefemale=3
+    sex_malefemale = 3
 
-    people_unknown="?"
+    people_unknown = "?"
 
     def __init__(self):
         self._pedigree = dict()
@@ -185,7 +185,7 @@ class Pedigree:
         if p.sex==self.sex_undefined:
             p.sex=sex
         elif p.sex!=sex:
-            p.sex=sex.malefemale
+            p.sex = self.sex_malefemale
 
     def add_sex_all(self):
         """
@@ -669,37 +669,37 @@ class Pedigree:
                 members = self.get_pedigree()
                 first_male = self.get_male()
                 first_female = self.get_female()
-                print(first_female,first_male)
+                print(first_female, first_male)
 
                 # Mariage et enfants
                 nbMariage = nbDepart//2
                 for m in range(nbMariage):
-                    mom,dad = first_female.pop(),first_male.pop()
+                    mom,dad = first_female.pop(), first_male.pop()
                     #Choix du nombre d'enfants (entre 1 et nbChildMax)
-                    child = random.randint(0,nbChildMax)
+                    child = random.randint(0, nbChildMax)
                     for i in range(child):
-                        self.add_people(famID,str(currentID),dad,mom)
+                        self.add_people(famID, str(currentID), dad, mom)
                         currentID+=1
 
             else:
                 while random.random()< pMariage:
                     #On récupère les feuilles, ie les enfants de la génération précedente
                     people = {i for i in self.leaves()}
+                    #print("People: ", people)
                     Consanguinity = random.random()
                     if Consanguinity < pConsanguinity:
-
-                        mom,dad = random.sample(people,2)
+                        mom, dad = random.sample(people, 2)
                         while self.get_people(mom).matID != self.get_people(dad).matID or self.get_people(mom).fatID != self.get_people(dad).fatID:
                             mom, dad = random.sample(people, 2)
                             # Choix du nombre d'enfants (entre 1 et nbChildMax)
-                            child = random.randint(0, nbChildMax)
-                            for i in range(child):
-                                self.add_people(famID, str(currentID), dad, mom)
-                                currentID += 1
-                                people.remove(mom)
-                                people.remove(dad)
-                                self.add_sex(str(dad), 1)
-                                self.add_sex(str(mom), 2)
+                        child = random.randint(0, nbChildMax)
+                        for i in range(child):
+                            self.add_people(famID, str(currentID), dad, mom)
+                            currentID += 1
+                        people.remove(mom)
+                        people.remove(dad)
+                        self.add_sex(str(dad), 1)
+                        self.add_sex(str(mom), 2)
 
                     else:
 
@@ -715,12 +715,12 @@ class Pedigree:
                                 people.remove(mom)
                                 people.remove(dad)
                                 self.add_sex(str(dad), 1)
-                                self.add_sex(str(mom),2)
+                                self.add_sex(str(mom), 2)
 
                         else: # On créer un nouvel individu
                             random_people = random.sample(people, 1)
                             tmp = currentID
-                            self.add_people(famID,str(tmp),'0','0')
+                            self.add_people(famID, str(tmp), '0', '0')
                             people.add(tmp)
                             currentID+=1
                             # Choix du nombre d'enfants (entre 1 et nbChildMax)
@@ -731,16 +731,16 @@ class Pedigree:
                                     currentID += 1
                                 people.remove(tmp)
                                 people.remove(random_people[0])
-                                self.add_sex(str(tmp),1)
-                                self.add_sex(str(random_people[0]),2)
+                                self.add_sex(str(tmp), 1)
+                                self.add_sex(str(random_people[0]), 2)
                             else:
                                 for i in range(child):
-                                    self.add_people(famID, str(currentID),random_people[0],tmp)
+                                    self.add_people(famID, str(currentID), random_people[0], tmp)
                                     currentID += 1
                                 people.remove(random_people[0])
                                 people.remove(tmp)
-                                self.add_sex(str(tmp),2)
-                                self.add_sex(str(random_people[0]),1)
+                                self.add_sex(str(random_people[0]), 1)
+                                self.add_sex(str(tmp), 2)
 
         self.update_children_all()
         self.update_parents_all()
