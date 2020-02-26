@@ -61,7 +61,7 @@ class TestPedigree(unittest.TestCase):
     def test_children(self):#OK
         ped = Pedigree()
         ped.load_old("../data/fam9.ped")
-        ped.update_children(ped.get_people('8'))
+        ped.update_children('8')
         self.assertTrue(ped.get_people('1').child=={'8'})
         self.assertTrue(ped.get_people('2').child == {'8'})
         ped.update_children_all()
@@ -144,9 +144,14 @@ class TestPedigree(unittest.TestCase):
         self.assertEqual(ped.check_one_people_family(),198-37)
         print(ped.check_mother_and_father()) #Aucun changement de sexe
         print(ped.check_consanguinity('N501426',5))
-        print(ped.check_consanguinity_family('N1'))
+        print("N1 consanguin",ped.check_consanguinity_family('N1'))
         print(len(ped.check_famID('N501426')),ped.check_famID('N501426')) #Probablement faux mais compliquer a verifier
 
+    def test_consanguinity(self):
+        ped = Pedigree()
+        ped.load("../data/famRh.ped")
+        self.assertTrue(ped.is_consanguineous('5','6',3))
+        self.assertFalse(ped.is_consanguineous('3','4',3))
 
     def test_generation_pedigree(self):
         ped = Pedigree()
@@ -208,6 +213,13 @@ class TestPedigree(unittest.TestCase):
         senegal.pedigree_overview_file("senegal_overview")
 
     def test_generation(self):
-        ped = Pedigree()
-        ped.generation_pedigree("test",4,4)
-        ped.graph_pydot("ped_généré","10.0")
+
+        for i in range(100):
+            ped = Pedigree()
+            ped.generation_pedigree("test",4,4)
+        #ped.graph_pydot("ped_généré","10.0")
+
+    def test_generation2(self):
+        for i in range(100000):
+            ped = Pedigree()
+            ped.generation_ped2("t",4,4)
