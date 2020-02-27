@@ -89,7 +89,7 @@ class TestPedigree(unittest.TestCase):
         self.assertEqual(ped.get_people('1').fatID,'23')
         self.assertEqual(ped.get_people('1').matID,'24')
         self.assertEqual(ped.get_bro_sis('8'),set(['6','10','4']))
-        self.assertEqual(ped.get_grand_parents('8'),set(['0','23', '24']))
+        self.assertEqual(ped.get_grand_parents('8'),set(['23', '24']))
         self.assertEqual(ped.get_uncles_aunts('8'),{'25'})
         self.assertEqual(ped.get_cousins('8'),{'26'})
 
@@ -130,7 +130,7 @@ class TestPedigree(unittest.TestCase):
         ped = Pedigree()
         ped.load("../data/senegal2013.ped")
         print("avant netoyage", len(ped.get_domain())) #198 familles
-        ped.clear_pedigree()
+        ped.remove_singleton()
         print("apres nettoyage", len(ped.get_domain())) #37 familles
         dico = ped.get_stat_family()
         print(dico)
@@ -160,20 +160,20 @@ class TestPedigree(unittest.TestCase):
         new = ped.gen_all_pedigree()
         self.assertEqual(new['N1'],N1)
 
-    def test_graph(self):
-        # ped1 = Pedigree()
-        # ped1.load("../data/fam9.ped")
-        # ped1.graph("fam9")
-        #
-        # ped2 = Pedigree()
-        # ped2.load("../data/famRh.ped")
-        # ped2.graph("famRh")
-
-        ped3 = Pedigree()
-        ped3.load("../data/senegal2013.ped")
-        ped3.gen_family_pedigree('N8')
-        ped3.graph("senegal2013")
-        # Trop volumineux, meme avec une seul famille
+    # def test_graph(self):
+    #     # ped1 = Pedigree()
+    #     # ped1.load("../data/fam9.ped")
+    #     # ped1.graph("fam9")
+    #     #
+    #     # ped2 = Pedigree()
+    #     # ped2.load("../data/famRh.ped")
+    #     # ped2.graph("famRh")
+    #
+    #     ped3 = Pedigree()
+    #     ped3.load("../data/senegal2013.ped")
+    #     ped3.gen_family_pedigree('N8')
+    #     ped3.graph("senegal2013")
+    #     # Trop volumineux, meme avec une seul famille
 
     def test_graph_pydot(self):
         ped3 = Pedigree()
@@ -212,14 +212,14 @@ class TestPedigree(unittest.TestCase):
         senegal.update_parents_all()
         senegal.pedigree_overview_file("senegal_overview")
 
-    def test_generation(self):
+    def xxtest_generation(self):
 
         for i in range(100):
             ped = Pedigree()
             ped.generation_pedigree("test",4,4)
         #ped.graph_pydot("ped_généré","10.0")
 
-    def test_generation2(self):
+    def xxtest_generation2(self):
         for i in range(100000):
             ped = Pedigree()
             ped.generation_ped2("t",4,4)
