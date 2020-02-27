@@ -77,8 +77,8 @@ class TestPedigree(unittest.TestCase):
 
     def test_family(self):
         ped = Pedigree()
-        #ped.load("../data/test.ped") #Ne fonctionne pas, erreur inconnu
         ped.load("../data/fam9.ped")
+        self.assertEqual(ped.get_couple(),{('2','1'),('3','4'),('6','5'),('8','7'),('9','10')})
         ped.add_people('9', '23', '0', '0') #Père de 1
         ped.add_people('9', '24', '0', '0') #Mère de 1
         ped.get_people('1')._set('9','23','24')
@@ -92,6 +92,7 @@ class TestPedigree(unittest.TestCase):
         self.assertEqual(ped.get_grand_parents('8'),set(['23', '24']))
         self.assertEqual(ped.get_uncles_aunts('8'),{'25'})
         self.assertEqual(ped.get_cousins('8'),{'26'})
+
 
     def test_generation(self):
         ped = Pedigree()
@@ -182,20 +183,20 @@ class TestPedigree(unittest.TestCase):
         N8.add_sex_all()
         N8.update_children_all()
         N8.update_parents_all()
-        N8.graph_pydot("N8","10.0")
+        N8.graph_pydot("N8",False)
 
         fam9 = Pedigree()
         fam9.load("../data/fam9.ped")
         fam9.add_sex_all()
         fam9.update_children_all()
         fam9.update_parents_all()
-        fam9.graph_pydot("fam9","10.0")
+        fam9.graph_pydot("fam9",False)
 
         N1 = ped3.gen_family_pedigree('N1')
         N1.add_sex_all()
         N1.update_children_all()
         N1.update_parents_all()
-        N1.graph_pydot("N1","1.0")
+        N1.graph_pydot("N1",True)
 
     def test_pedigree_file(self):
         fam9 = Pedigree()

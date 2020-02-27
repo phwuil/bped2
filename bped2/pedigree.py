@@ -6,892 +6,859 @@ import random
 
 
 class People:
-  def __init__(self, famID: str, pID: str, fatID: str, matID: str):
-    self._famID = famID
-    self._pID = pID
-    self._fatID = fatID
-    self._matID = matID
-    self._sex = 0
-    self._child = set()
+    def __init__(self, famID: str, pID: str, fatID: str, matID: str):
+        self._famID = famID
+        self._pID = pID
+        self._fatID = fatID
+        self._matID = matID
+        self._sex = 0
+        self._child = set()
 
-  def __eq__(self, other):
-    return (self.famID == other.famID) and (self.pID == other.pID) and (self.fatID == other.fatID) \
-           and (self.matID == other.matID) and (self.sex == other.sex) and (self.child == other.child)
+    def __eq__(self, other):
+        return (self.famID == other.famID) and (self.pID == other.pID) and (self.fatID == other.fatID) \
+               and (self.matID == other.matID) and (self.sex == other.sex) and (self.child == other.child)
 
-  def _set(self, famID, fatID, matID):
-    self._famID = famID
-    self._fatID = fatID
-    self._matID = matID
+    def _set(self, famID, fatID, matID):
+        self._famID = famID
+        self._fatID = fatID
+        self._matID = matID
 
-  @property
-  def famID(self) -> str:
-    # def get_famID(self):
-    return self._famID
+    @property
+    def famID(self) -> str:
+        # def get_famID(self):
+        return self._famID
 
-  @famID.setter
-  def famID(self, famID) -> str:
-    # self._famID=famID
-    raise NameError("Cannot change FamID")
+    @famID.setter
+    def famID(self, famID) -> str:
+        # self._famID=famID
+        raise NameError("Cannot change FamID")
 
-  @property
-  def pID(self) -> str:
-    return self._pID
+    @property
+    def pID(self) -> str:
+        return self._pID
 
-  @pID.setter
-  def pID(self, pid) -> str:
-    raise NameError("Cannot change pid")
+    @pID.setter
+    def pID(self, pid) -> str:
+        raise NameError("Cannot change pid")
 
-  @property
-  def fatID(self) -> str:
-    return self._fatID
+    @property
+    def fatID(self) -> str:
+        return self._fatID
 
-  @fatID.setter
-  def fatID(self, fatID) -> str:
-    raise NameError("Cannot change FatID")
+    @fatID.setter
+    def fatID(self, fatID) -> str:
+        raise NameError("Cannot change FatID")
 
-  @property
-  def matID(self) -> str:
-    return self._matID
+    @property
+    def matID(self) -> str:
+        return self._matID
 
-  @matID.setter
-  def matID(self, matID):
-    raise NameError("Cannot change matID")
+    @matID.setter
+    def matID(self, matID):
+        raise NameError("Cannot change matID")
 
-  @property
-  def sex(self) -> int:
-    return self._sex
+    @property
+    def sex(self) -> int:
+        return self._sex
 
-  @sex.setter
-  def sex(self, sex):
-    self._sex = sex
+    @sex.setter
+    def sex(self, sex):
+        self._sex = sex
 
-  @property
-  def child(self):
-    return self._child.copy()
+    @property
+    def child(self):
+        return self._child.copy()
 
-  def nbrChild(self):
-    return len(self._child)
+    def nbrChild(self):
+        return len(self._child)
 
-  @child.setter
-  def child(self):
-    raise NameError("Cannot change child")
+    @child.setter
+    def child(self):
+        raise NameError("Cannot change child")
 
-  def add_children(self, cID):
-    """
-    Add the children to his parent's set
-    """
-    self._child.add(cID)
+    def add_children(self, cID):
+        """
+        Add the children to his parent's set
+        """
+        self._child.add(cID)
 
-  def remove_children(self, cID):
-    """
-    Remove the children from the child set of his parent
-    """
-    self._child.remove(cID)
+    def remove_children(self, cID):
+        """
+        Remove the children from the child set of his parent
+        """
+        self._child.remove(cID)
 
-  def __str__(self):
-    # return "[%s %s %s %s %s]"%(self._famID,self.pID,self.matID,self.famID,self.sex)
-    return f"[{self._famID} {self._pID} {self._fatID} {self._matID} {self._sex} {self._child}]"
+    def __str__(self):
+        # return "[%s %s %s %s %s]"%(self._famID,self.pID,self.matID,self.famID,self.sex)
+        return f"[{self._famID} {self._pID} {self._fatID} {self._matID} {self._sex} {self._child}]"
 
-  def __repr__(self):
-    return f"People({id(self)} :" + self.__str__()
+    def __repr__(self):
+        return f"People({id(self)} :" + self.__str__()
 
 
 class Pedigree:
-  sex_undefined = 0
-  sex_male = 1
-  sex_female = 2
-  sex_malefemale = 3
+    sex_undefined = 0
+    sex_male = 1
+    sex_female = 2
+    sex_malefemale = 3
 
-  people_unknown = "?"
-  no_people = "0"
+    people_unknown = "?"
+    no_people = "0"
 
-  def __init__(self):
-    self._pedigree = dict()
-    self._people2line = dict()
+    def __init__(self):
+        self._pedigree = dict()
+        self._people2line = dict()
 
-  def __str__(self):
-    return ", ".join([str(v) for k, v in self._pedigree.items()])
+    def __str__(self):
+        return ", ".join([str(v) for k, v in self._pedigree.items()])
 
-  def __len__(self):
-    """
-    Return the People's number in the pedigree
-    """
-    return len(self.get_pedigree())
+    def __len__(self):
+        """
+        Return the People's number in the pedigree
+        """
+        return len(self.get_pedigree())
 
-  def __eq__(self, other):
-    if len(self._pedigree) != len(other._pedigree):
-      return False
+    def __eq__(self, other):
+        if len(self._pedigree) != len(other._pedigree):
+            return False
 
-    for i, j in zip(self._pedigree.values(), other._pedigree.values()):
-      if i != j:
-        return False
-    return True
+        for i, j in zip(self._pedigree.values(), other._pedigree.values()):
+            if i != j:
+                return False
+        return True
 
-  def get_pedigree(self):
-    """
-    Return the Pedigree
-    """
-    return self._pedigree.copy()
+    def get_pedigree(self):
+        """
+        Return the Pedigree
+        """
+        return self._pedigree.copy()
 
-  def get_people(self, idp: str) -> People:
-    """
-    Return the People with the key = idp
-    """
-    if idp not in self._pedigree.keys():
-      raise ValueError(f"ID: {idp} is not in the pedigree")
-    return self._pedigree[idp]
+    def get_people(self, idp: str) -> People:
+        """
+        Return the People with the key = idp
+        """
+        if idp not in self._pedigree.keys():
+            raise ValueError(f"ID: {idp} is not in the pedigree")
+        return self._pedigree[idp]
 
-  def get_line(self, idPeople):
-    """
-    return the line of the file where the people has been defined
-    """
-    return self._people2line[idPeople]
+    def get_line(self, idPeople):
+        """
+        return the line of the file where the people has been defined
+        """
+        return self._people2line[idPeople]
 
-  def load_old(self, fichier):
-    """
-    Read a .ped file and
-    Return a dictionary where the keys are the people's IDs and the values are the People
-    """
-    file = open(fichier)
-    for (line, i) in enumerate(file.readlines()):
-      p = People(*i.strip().split())
-      self._pedigree[p.pID] = p
-      self._people2line[p.pID] = line
-    file.close()
-    # Version old n'ajoute pas directement les enfants
+    def load_old(self, fichier):
+        """
+        Read a .ped file and
+        Return a dictionary where the keys are the people's IDs and the values are the People
+        """
+        file = open(fichier)
+        for (line, i) in enumerate(file.readlines()):
+            p = People(*i.strip().split())
+            self._pedigree[p.pID] = p
+            self._people2line[p.pID] = line
+        file.close()
+        # Version old n'ajoute pas directement les enfants
 
-  def load(self, fichier):
-    """
-    Read a .ped file and
-    Return a dictionary where the keys are the people's IDs and the values are the People
-    """
-    with open(fichier, "r") as file:
-      for (line, i) in enumerate(file.readlines()):
-        p = People(*i.strip().split())
-        self.add_people(*i.strip().split())
-        self._people2line[p.pID] = line
+    def load(self, fichier):
+        """
+        Read a .ped file and
+        Return a dictionary where the keys are the people's IDs and the values are the People
+        """
+        with open(fichier, "r") as file:
+            for (line, i) in enumerate(file.readlines()):
+                p = People(*i.strip().split())
+                self.add_people(*i.strip().split())
+                self._people2line[p.pID] = line
 
-  def save(self, filename):
-    """
-    Save the current Pedigree in a file : filename.ped
-    """
-    with open(filename, "w") as f:
-      for i in self._pedigree.values():
-        f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\n")
+    def save(self, filename):
+        """
+        Save the current Pedigree in a file : filename.ped
+        """
+        with open(filename, "w") as f:
+            for i in self._pedigree.values():
+                f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\n")
 
-  def add_sex(self, pID: str, sex: int):
-    """
-    Modify the "sex value" for people 'pId'
-    sex_undefined = unidentify / 0
-    sex_male = Male / 1
-    sex_female = Female /  2
-    sex_malefemale = Male AND Female (why not) / 3
-    """
-    # check if sex already filled
-    p = self.get_people(pID)
-    if p.sex == self.sex_undefined:
-      p.sex = sex
-    elif p.sex != sex:
-      p.sex = self.sex_malefemale
+    def add_sex(self, pID: str, sex: int):
+        """
+        Modify the "sex value" for people 'pId'
+        sex_undefined = unidentify / 0
+        sex_male = Male / 1
+        sex_female = Female /  2
+        sex_malefemale = Male AND Female (why not) / 3
+        """
+        # check if sex already filled
+        p = self.get_people(pID)
+        if p.sex == self.sex_undefined:
+            p.sex = sex
+        elif p.sex != sex:
+            p.sex = self.sex_malefemale
 
-  def add_sex_all(self):
-    """
-    Modify the "sex value" for all people if possible, due to fatID and MatID knowlege's
-    """
-    for k, v in self._pedigree.items():
-      if v.fatID != self.no_people:
-        self.add_sex(v.fatID, self.sex_male)
-      if v.matID != self.no_people:
-        self.add_sex(v.matID, self.sex_female)
+    def add_sex_all(self):
+        """
+        Modify the "sex value" for all people if possible, due to fatID and MatID knowlege's
+        """
+        for k, v in self._pedigree.items():
+            if v.fatID != self.no_people:
+                self.add_sex(v.fatID, self.sex_male)
+            if v.matID != self.no_people:
+                self.add_sex(v.matID, self.sex_female)
 
-  def update_children(self, pID):
-    """
-    Fill the child parameter, due to fatID and MatID knowlege's
-    """
-    father = self.get_people(pID).fatID
-    mother = self.get_people(pID).matID
-    if father in self._pedigree:
-      self._pedigree[father].add_children(pID)
-    if mother in self._pedigree:
-      self._pedigree[mother].add_children(pID)
+    def update_children(self, pID):
+        """
+        Fill the child parameter, due to fatID and MatID knowlege's
+        """
+        father = self.get_people(pID).fatID
+        mother = self.get_people(pID).matID
+        if father in self._pedigree:
+            self._pedigree[father].add_children(pID)
+        if mother in self._pedigree:
+            self._pedigree[mother].add_children(pID)
 
-  def update_children_all(self):
-    """
-    Complete the child attribute for all the pedigree's people
-    """
-    for k in self._pedigree.keys():
-      self.update_children(k)
+    def update_children_all(self):
+        """
+        Complete the child attribute for all the pedigree's people
+        """
+        for k in self._pedigree.keys():
+            self.update_children(k)
 
-  def update_parents(self, pID):
-    """
-    Fill the fatID and matID if possible due to param child of the people
-    """
-    people = self.get_people(pID)
-    if people.nbrChild() != 0 and people.sex != 0:  # S'il a au moins un enfant et un sexe connu
-      for i in people.child:
-        # print(self.get_people(i).fatID)
-        if self.get_people(i).fatID == self.no_people and people.sex == 1:
-          self.get_people(i)._fatID = people.pID
-        if self.get_people(i).matID == self.no_people and people.sex == 2:
-          self.get_people(i)._matID = people.pID
+    def update_parents(self, pID):
+        """
+        Fill the fatID and matID if possible due to param child of the people
+        """
+        people = self.get_people(pID)
+        if people.nbrChild() != 0 and people.sex != 0:  # S'il a au moins un enfant et un sexe connu
+            for i in people.child:
+                # print(self.get_people(i).fatID)
+                if self.get_people(i).fatID == self.no_people and people.sex == 1:
+                    self.get_people(i)._fatID = people.pID
+                if self.get_people(i).matID == self.no_people and people.sex == 2:
+                    self.get_people(i)._matID = people.pID
 
-  def update_parents_all(self):
-    """
-    Complete the fat/fam attribute for all the pedigree's people
-    """
-    for k, v in self._pedigree.items():
-      self.update_parents(k)
+    def update_parents_all(self):
+        """
+        Complete the fat/fam attribute for all the pedigree's people
+        """
+        for k, v in self._pedigree.items():
+            self.update_parents(k)
 
-  def add_people(self, famID, pID, fatID, matID):
-    if pID == self.no_people:
-      raise ValueError(f'id {self.no_people} is not allowed for people')
-    if famID == self.people_unknown:
-      raise ValueError(f'Cannot add a people with famID = {self.people_unknow}')
-    if pID in self._pedigree.keys():
-      if self.get_people(pID).famID != self.people_unknown:
-        raise ValueError('id already use for another people')
-      self.get_people(pID)._set(famID, fatID, matID)
-    else:
-      people = People(famID, pID, fatID, matID)
-      self._pedigree[pID] = people
-      self.update_children(pID)
+    def add_people(self, famID, pID, fatID, matID):
 
-  def remove_people(self, idp: str):
-    """
-    Remove the people 'idp' from the pedigree and from child, matID, and fatID if necessary
-    """
-    p = self.get_people(idp)
+        if pID == self.no_people:
+            raise ValueError(f'id {self.no_people} is not allowed for people')
 
-    # deal with parents
-    father = p.fatID
-    mother = p.matID
-    if father in self._pedigree:
-      self.get_people(father).remove_children(idp)
-    if mother in self._pedigree:
-      self.get_people(mother).remove_children(idp)
+        if famID == self.people_unknown:
+            raise ValueError(f'Cannot add a people with famID = {self.people_unknow}')
 
-    # deal with children
-    for chid in p.child:
-      ch = self.get_people(chid)
-      if ch.fatID == idp:
-        ch._fatID = self.no_people
-      if ch.matID == idp:
-        ch._matID = self.no_people
+        if pID in self._pedigree.keys():
+            if self.get_people(pID).famID != self.people_unknown:
+                raise ValueError('id already use for another people')
+            self.get_people(pID)._set(famID, fatID, matID)
 
-    del self._pedigree[idp]
-
-  def remove_singleton(self):
-    """
-    If a people doesn't have any parents and childrens, remove him from the pedigree
-    """
-    for f, v in list(self._pedigree.items()):
-      if v.fatID == self.no_people and v.matID == self.no_people and v.nbrChild() == 0:
-        self.remove_people(v.pID)
-
-  def roots(self):
-    """
-    Return the olders, people without knowned parents
-    """
-    for k, v in self._pedigree.items():
-      if v.fatID == self.no_people and v.matID == self.no_people:  # Si l'individu n'a pas de parents -> Racine
-        yield v.pID
-
-  def leaves(self):
-    """
-    People without childrens are leave
-    """
-    for k, v in self._pedigree.items():
-      if v.nbrChild() == 0:  # Si l'individu n'a pas d'enfants -> Feuille
-        yield v.pID
-
-  def get_domain(self):
-    """
-    Return all the different family present in the pedigree
-    """
-    dom = set()
-    for k, v in self._pedigree.items():
-      dom.add(v.famID)
-    return dom
-
-  def get_bro_sis(self, pID):
-    """
-    Return brothers and sister of a People, without step family
-    """
-    father = self.get_people(pID).fatID
-    mother = self.get_people(pID).matID
-    if father != self.no_people or mother != self.no_people:  # Au moins 1 des parents est connu
-      bros = self.get_people(father).child.intersection(self.get_people(mother).child)
-      bros.remove(pID)
-    else:
-      bros = set()
-    return bros
-
-  def get_male(self):
-    """
-    Return knowed people with male sex
-    """
-    male = set()
-    for v in self._pedigree.values():
-      if v.sex == 1:
-        male.add(v.pID)
-    return male
-
-  def get_female(self):
-    """
-    Return knowed people with female sex
-    """
-    female = set()
-    for v in self._pedigree.values():
-      if v.sex == 2:
-        female.add(v.pID)
-    return female
-
-  def get_step_bro_sis(self, pID):
-    """
-    Do the symmetric difference (new set with elements in either father's child or mother's child but not both)
-
-    """
-    father = self.get_people(pID).fatID
-    mother = self.get_people(pID).matID
-    step_bros = self.get_people(father).child.symmetric_difference(self.get_people(mother).child)
-    step_bros.remove(pID)
-    return step_bros
-
-  def get_uncles_aunts(self, pID) -> set:
-    """
-    Return the uncles and aunts of a individu
-    """
-    father, mother = self.get_parents(pID)
-    return self.get_bro_sis(father).union(self.get_bro_sis(mother))
-
-  def get_cousins(self, pID):
-    """
-    Return the cousins of an individu
-    """
-    people = set()
-    uncles_aunts = self.get_uncles_aunts(pID)
-    for i in uncles_aunts:
-      for j in self.get_people(i).child:  #  Pas opti mais je vois pas comment faire autrement
-        people.add(j)
-    return people
-
-  def get_parents(self, pID):
-    """
-    Return a set of the parents
-    """
-    s = {}
-    if self.get_people(pID).matID != self.no_people:
-      s.add(self.get_people(pID).matID)
-
-    if self.get_people(pID).fatID != self.no_people:
-      s.add(self.get_people(pID).fatID)
-
-    return s
-
-  def get_grand_parents(self, pID):  # Probablement inutile
-    """
-    return a set of paternal and mather grandparents
-    """
-    grand_parents = set()
-    parents = self.get_parents(pID)
-    for i in parents:
-      grand_parents.update(self.get_parents(i))
-    return grand_parents
-
-  def remove_family(self, famID):
-    """
-    Remove an entire family in the Pedigree
-    """
-    for k, v in list(self._pedigree.items()):
-      if v.famID == famID:
-        # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
-        del self._pedigree[k]
-        # self.remove_people(k)
-
-  def gen_family_pedigree(self, famID):
-    """
-    Return a new Pedigree with only the family famID
-    """
-    ped = Pedigree()
-    for k, v in list(self._pedigree.items()):
-      if v.famID == famID:
-        ped.add_people(v.famID, v.pID, v.fatID, v.matID)
-    return ped
-
-  def gen_all_pedigree(self):
-    """
-    Return a dictionary where the key is a famID and the value is a new Pedigree with only the family famID
-    """
-    ped = dict()
-    dom = self.get_domain()
-    for i in dom:
-      ped[i] = self.gen_family_pedigree(i)
-    return ped
-
-  def get_stat_family(self) -> dict():
-    """
-    return a dictionary where keys = famID and values = Number of family members
-    """
-    dom = self.get_domain()
-    fam_nb = dict()
-    for d in dom:
-      fam_nb[d] = 0
-    for k, v in self._pedigree.items():
-      fam_nb[v.famID] += 1
-    return fam_nb
-
-  def old_gen(self, pID, nbG) -> set:
-    """
-    Return a list of list that contains each previous generation of pID, from parents (1st gen) to nbG gen
-    """
-    if nbG == 1:
-      return self.get_parents(pID)
-    else:
-      cpt = 1
-      gen = set()
-      while cpt <= nbG:
-        if len(gen) == 0:
-          gen.update(self.get_parents(pID))
         else:
-          tmp = set()
-          for i in gen:
-            tmp.update(self.get_parents(i))
-          gen.update(tmp)
-        cpt += 1
-      return gen
+            people = People(famID, pID, fatID, matID)
+            self._pedigree[pID] = people
+            self.update_children(pID)
 
-  def next_gen(self, pID, nbG) -> set:
-    """
-    Return a list of list that contains each next generation of pID, from children (1st gen) to nbG gen
-    """
-    if nbG == 1:
-      return self.get_people(pID).child
-    else:
-      cpt = 1
-      children = set()
-      while cpt <= nbG:
-        tmp = set()
-        if len(children) == 0:
-          children.update(self.get_people(pID).child)
+    def remove_people(self, idp: str):
+        """
+        Remove the people 'idp' from the pedigree and from child, matID, and fatID if necessary
+        """
+        p = self.get_people(idp)
+
+        # deal with parents
+        father = p.fatID
+        mother = p.matID
+        if father in self._pedigree:
+            self.get_people(father).remove_children(idp)
+        if mother in self._pedigree:
+            self.get_people(mother).remove_children(idp)
+
+        # deal with children
+        for chid in p.child:
+            ch = self.get_people(chid)
+            if ch.fatID == idp:
+                ch._fatID = self.no_people
+            if ch.matID == idp:
+                ch._matID = self.no_people
+
+        del self._pedigree[idp]
+
+    def remove_singleton(self):
+        """
+        If a people doesn't have any parents and childrens, remove him from the pedigree
+        """
+        for f, v in list(self._pedigree.items()):
+            if v.fatID == self.no_people and v.matID == self.no_people and v.nbrChild() == 0:
+                self.remove_people(v.pID)
+
+    def roots(self):
+        """
+        Return the olders, people without knowned parents
+        """
+        for k, v in self._pedigree.items():
+            if v.fatID == self.no_people and v.matID == self.no_people:  # Si l'individu n'a pas de parents -> Racine
+                yield v.pID
+
+    def leaves(self):
+        """
+        People without childrens are leave
+        """
+        for k, v in self._pedigree.items():
+            if v.nbrChild() == 0:  # Si l'individu n'a pas d'enfants -> Feuille
+                yield v.pID
+
+    def get_domain(self):
+        """
+        Return all the different family present in the pedigree
+        """
+        dom = set()
+        for k, v in self._pedigree.items():
+            dom.add(v.famID)
+        return dom
+
+    def get_bro_sis(self, pID):
+        """
+        Return brothers and sister of a People, without step family
+        """
+        father = self.get_people(pID).fatID
+        mother = self.get_people(pID).matID
+        if father != self.no_people or mother != self.no_people:  # Au moins 1 des parents est connu
+            bros = self.get_people(father).child.intersection(self.get_people(mother).child)
+            bros.remove(pID)
         else:
-          for i in children:
-            tmp.update(self.get_people(i).child)
-          children.update(tmp)
-        cpt += 1
-      return children
+            bros = set()
+        return bros
 
-  def check_one_people_family(self):
-    """
-    Return the family's number with just one people
-    """
-    dico = self.get_stat_family()
-    cpt = 0
-    for v in self._pedigree.values():
-      if dico[v.famID] == 1:
-        cpt += 1
-    return cpt
+    def get_male(self):
+        """
+        Return knowed people with male sex
+        """
+        male = set()
+        for v in self._pedigree.values():
+            if v.sex == 1:
+                male.add(v.pID)
+        return male
 
-  def check_mother_and_father(self):
-    """
-    Check for all people in the pedigree, if someone is a mother and also a father
-    """
-    father = set()
-    mother = set()
-    for v in self._pedigree.values():
-      father.add(v.fatID)
-      mother.add(v.matID)
-    return father.intersection(mother)
+    def get_female(self):
+        """
+        Return knowed people with female sex
+        """
+        female = set()
+        for v in self._pedigree.values():
+            if v.sex == 2:
+                female.add(v.pID)
+        return female
 
-  def check_consanguinity(self, pID, nbG):  # Peut etre le faire sur une famille entiere et non sur un unique individu
-    """
-    Check if a people has consanguinous origin by checking in the nbG older generation
-    """
-    parents = self.get_parents(pID)
-    if len(parents) == 2:
-      parent1, parent2 = self.get_parents(pID)
-    elif len(parents) == 1:
-      parent1 = parents
-      parents = self.no_people
-    else:
-      return {}
+    def get_step_bro_sis(self, pID):
+        """
+        Do the symmetric difference (new set with elements in either father's child or mother's child but not both)
 
-    holders1 = set()
-    holders2 = set()
-    if parent1 != self.no_people and parent2 != self.no_people:
-      holders1 = self.old_gen(parent1, nbG)
-      holders2 = self.old_gen(parent2, nbG)
-    elif parent1 != 0 and parent2 == self.no_people:
-      holders1 = self.old_gen(parent1, nbG)
-    else:
-      holders2 = self.old_gen(parent2, nbG)
-    return holders1.intersection(holders2)
+        """
+        father = self.get_people(pID).fatID
+        mother = self.get_people(pID).matID
+        step_bros = self.get_people(father).child.symmetric_difference(self.get_people(mother).child)
+        step_bros.remove(pID)
+        return step_bros
 
-  def check_consanguinity_family(self, famID):
-    fam = self.gen_family_pedigree(famID)
-    res = set()
-    for v in fam._pedigree.values():
-      res.update(self.check_consanguinity(v.pID, 10))
-    return res
+    def get_uncles_aunts(self, pID) -> set:
+        """
+        Return the uncles and aunts of a individu
+        """
+        father, mother = self.get_parents(pID)
+        return self.get_bro_sis(father).union(self.get_bro_sis(mother))
 
-  def check_consanguinity_pedigree(self):
-    dom = self.get_domain()
-    res = set()
-    for i in dom:
-      res.update(self.check_consanguinity_family(i))
-    return res
+    def get_cousins(self, pID):
+        """
+        Return the cousins of an individu
+        """
+        people = set()
+        uncles_aunts = self.get_uncles_aunts(pID)
+        for i in uncles_aunts:
+            for j in self.get_people(i).child:  #  Pas opti mais je vois pas comment faire autrement
+                people.add(j)
+        return people
 
-  def is_consanguineous(self, p1, p2, nbG):
-    """
-    In the case where p1 and p2 are supposed to have children, we check their olders
-    Return True if p1 and p2 had common olders, else return False
-    """
-    holders_p1 = set(self.old_gen(p1, nbG))
-    holders_p2 = set(self.old_gen(p2, nbG))
-    x = holders_p1.intersection(holders_p2)
-    return len(x) != 0
+    def get_parents(self, pID):
+        """
+        Return a set of the parents
+        """
+        s = set()
+        if self.get_people(pID).matID != self.no_people:
+            s.add(self.get_people(pID).matID)
 
-  def check_famID(self, pID):
-    """
-    Check if people link to the people pID have a different famID
-    """
-    ref = self.get_people(pID).famID
-    errors = set()
-    for k, v in self._pedigree.items():
-      if v.famID != ref:
-        errors.add(k)
-    return errors
+        if self.get_people(pID).fatID != self.no_people:
+            s.add(self.get_people(pID).fatID)
 
-  def pedigree_overview_file(self, filename):
+        return s
 
-    f = open("../data/" + filename, "w")
-    for k, v in self._people2line.items():
-      f.write(f"{v} à la ligne {k}\n")
-    stats = self.get_stat_family()
-    f.write("---------------------------------------------------\n")
-    for k, v in stats.items():
-      f.write(f"La famille {k} est composé de {v} personnes \n")
-    f.write("---------------------------------------------------\n")
-    f.write(f"Sur {len(stats)} famille(s) il y en a {self.check_one_people_family()} composées d'un seul membre\n")
-    f.write(
-      f"Dans le pedigree, les peoples suivants apparaissent en tant que mère et père dans le pedigree : {self.check_mother_and_father()}\n")
-    f.write(
-      f"Dans le pedigree, les peoples suivants ont des liens antérieurs de consanguinité : {self.check_consanguinity_pedigree()}\n")
+    def get_grand_parents(self, pID):  # Probablement inutile
+        """
+        return a set of paternal and mather grandparents
+        """
+        grand_parents = set()
+        parents = self.get_parents(pID)
+        for i in parents:
+            grand_parents.update(self.get_parents(i))
+        return grand_parents
 
-    f.close()
+    def get_couple(self):
+        couple = set()
+        for k,v in self._pedigree.items():
+            if len(self.get_parents(v.pID))>1:
+                couple.add((v.fatID,v.matID))
+        return couple
 
-  # def graph(self, name):
-  #    """
-  #    Return a graph showing the Pedigree
-  #    """
-  #    graph = pydot.Graph(name='Pedigree', strict=True, comment=name)
-  #    graph.attr(label=r'\n\n' + name + ' pedigree')
-  #    for k, v in self._pedigree.items():
-  #        if v.fatID != self.no_people:
-  #            graph.edge(v.pID, v.fatID)
-  #        if v.matID != self.no_people:
-  #            graph.edge(v.pID, v.matID)
-  #        if v.nbrChild() > 0:
-  #            for i in v.child:
-  #                graph.edge(v.pID, i)
-  #    graph.view()
-  #    graph.save(filename=name, directory="../data")
+    def remove_family(self, famID):
+        """
+        Remove an entire family in the Pedigree
+        """
+        for k, v in list(self._pedigree.items()):
+            if v.famID == famID:
+                # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
+                del self._pedigree[k]
+                # self.remove_people(k)
 
-  def graph_pydot(self, name, length):
-    """
-    DoubleCircle = Roots
-    Box = leaves
-    Diamond = Nodes
-    Color Cyan #00ffff = Male
-    Color Pink #ff009c = Female
-    Color white = MaleFemale
-    Color Dark #000000 = Unknown
-    """
-    col_rac_txt = {self.sex_undefined: "#000000",
-                   self.sex_male: "#00ffff",
-                   self.sex_female: "#ff009c",
-                   self.sex_malefemale: "white"}
-    col_rac_fill= {self.sex_undefined: "#000000",
-                   self.sex_male: "#00ffff",
-                   self.sex_female: "#ff009c",
-                   self.sex_malefemale: "white"}
+    def gen_family_pedigree(self, famID):
+        """
+        Return a new Pedigree with only the family famID
+        """
+        ped = Pedigree()
+        for k, v in list(self._pedigree.items()):
+            if v.famID == famID:
+                ped.add_people(v.famID, v.pID, v.fatID, v.matID)
+        return ped
 
-    roots = {i for i in self.roots()}
-    leaves = {i for i in self.leaves()}
-    graph = pydot.Dot(graph_type='graph', graph_name=name, strict=True)
-    for k, v in self._pedigree.items():
-      if v.pID in roots:
-        #graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color=col_rac_txt[v.sex],
-        #                          fillcolor=col_rac_fill[v.sex]))
+    def gen_all_pedigree(self):
+        """
+        Return a dictionary where the key is a famID and the value is a new Pedigree with only the family famID
+        """
+        ped = dict()
+        dom = self.get_domain()
+        for i in dom:
+            ped[i] = self.gen_family_pedigree(i)
+        return ped
 
-        # if v.nbrChild() != 0 and v.fatID ==self.no_people and v.matID == self.no_people:
-        if v.sex == 1:
-          graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color="#00ffff",
-                                    fillcolor="#227ef0"))
-        elif v.sex == 2:
-          graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color="#ff009c",
-                                    fillcolor="#227ef0"))
-        elif v.sex == 3:
-          graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color="white",
-                                    fillcolor="#227ef0"))
+    def get_stat_family(self) -> dict():
+        """
+        return a dictionary where keys = famID and values = Number of family members
+        """
+        dom = self.get_domain()
+        fam_nb = dict()
+        for d in dom:
+            fam_nb[d] = 0
+        for k, v in self._pedigree.items():
+            fam_nb[v.famID] += 1
+        return fam_nb
+
+    def old_gen(self, pID, nbG) -> set:
+        """
+        Return a list of list that contains each previous generation of pID, from parents (1st gen) to nbG gen
+        """
+        if nbG == 1:
+            return self.get_parents(pID)
         else:
-          graph.add_node(pydot.Node(k, shape='doublecircle', fontsize=length, style="filled", color="#000000",
-                                    fillcolor="#227ef0"))
-
-      elif v.pID in leaves:
-        # elif v.nbrChild() == 0:
-        if v.sex == 1:
-          graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="#00ffff",
-                                    fillcolor="#C2F732.0"))
-        elif v.sex == 2:
-          graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="#ff009c",
-                                    fillcolor="#C2F732"))
-        elif v.sex == 3:
-          graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="white",
-                                    fillcolor="#C2F732"))
-        else:
-          graph.add_node(pydot.Node(k, shape='doublebox', fontsize=length, style="filled", color="#000000",
-                                    fillcolor="#C2F732"))
-      else:
-        if v.sex == 1:
-          graph.add_node(pydot.Node(k, shape='diamond', fontsize=length, style="filled", color="#00ffff",
-                                    fillcolor="#ffa600"))
-        elif v.sex == 2:
-          graph.add_node(pydot.Node(k, shape='diamond', fontsize=length, style="filled", color="#ff009c",
-                                    fillcolor="#ffa600"))
-        elif v.sex == 3:
-          graph.add_node(pydot.Node(k, shape='diamond', fontsize=length, style="filled", color="white",
-                                    fillcolor="#ffa600"))
-        else:
-          graph.add_node(pydot.Node(k, shape='diamond', fontsize=length, style="filled", color="#000000",
-                                    fillcolor="#ffa600"))
-
-    for k, v in self._pedigree.items():
-      if v.fatID != self.no_people:
-        edge = pydot.Edge(v.fatID, v.pID)
-        graph.add_edge(edge)
-
-      if v.matID != self.no_people:
-        edge = pydot.Edge(v.matID, v.pID)
-        graph.add_edge(edge)
-
-      if v.nbrChild() > 0:
-        for i in v.child:
-          edge = pydot.Edge(v.pID, i)
-          graph.add_edge(edge)
-
-    graph.write_png("../data/" + name + '.png')
-
-  def generation_pedigree(self, famID, nbDepart, nbGeneration):
-    """
-    Return a new pedigree, start with a number nbDepart of people and create nbGeneration
-    """
-    nbChildMax = 10  # Nombres d'enfants max que l'on peut avoir
-    pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
-    pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
-    currentID = 1
-    for nb in range(nbGeneration):
-      if nb == 0:
-        # Création de notre génération de départ
-        cpt = 0
-        for i in range(1, nbDepart + 1):
-          self.add_people(famID, str(i), self.no_people, self.no_people)
-          currentID += 1
-          if cpt < nbDepart // 2:  # Pas en proba si nb individu trop faible, pb d'avoir qu'un seul sexe
-            self.add_sex(str(i), 1)  # Male
-          else:
-            self.add_sex(str(i), 2)  # Female
-          cpt = cpt + 1
-
-        members = self.get_pedigree()  # Inutile pour l'instant
-        # On récupère un set des hommes, un autre des femmes afin d'effectuer les premiers mariages
-        first_male = self.get_male()
-        first_female = self.get_female()
-
-        # Mariage et enfants
-        nbMariage = nbDepart // 2  #  Permet d'effectuer le plus de mariage possible
-        for m in range(nbMariage):
-          mom, dad = first_female.pop(), first_male.pop()
-          # Choix du nombre d'enfants (entre 1 et nbChildMax)
-          child = random.randint(1, nbChildMax)
-          for i in range(child):
-            self.add_people(famID, str(currentID), dad, mom)
-            currentID += 1
-
-      else:
-        # On récupère les feuilles, ie les enfants de la génération précedente
-        people = {i for i in self.leaves()}
-
-        # Pour les générations suivantes
-        while random.random() < pMariage and len(people) > 1:
-          Consanguinity = random.random()
-
-          if Consanguinity < pConsanguinity:
-            print("people au tout debut", people)
-            print("ped au tout debut", self._pedigree)
-            mom, dad = random.sample(people, 2)
-            # A refaire, on fait de la consanguinité 'direct'
-            while self.get_people(mom).matID != self.get_people(dad).matID or self.get_people(
-                mom).fatID != self.get_people(dad).fatID:
-              mom, dad = random.sample(people, 2)
-            # while not self.is_consanguineous(mom, dad, nb):
-            #     print('mom',mom in self._pedigree.keys())
-            #     print('dad',dad in self._pedigree.keys())
-            #     mom, dad = random.sample(people, 2)
-            # Choix du nombre d'enfants (entre 1 et nbChildMax)
-            child = random.randint(0, nbChildMax)
-            for i in range(child):
-              self.add_people(famID, str(currentID), dad, mom)
-              self.update_children(str(currentID))
-              currentID += 1
-            print("keys", sorted(set(self._pedigree.keys())))
-            print('len', len(people), "people", sorted(people))
-            print(people.difference(set(self._pedigree.keys())))
-            print('mom', mom, 'dad', dad)
-            people.remove(mom)
-            people.remove(dad)
-            print('len2', len(people), "people", sorted(people))
-            self.add_sex(str(dad), 1)
-            self.add_sex(str(mom), 2)
-
-          else:
-
-            if random.random() < 0.5:  # Une chance sur deux de créer un nouvel individu pour le mariage
-              if len(people) > 2: mom, dad = random.sample(people, 2)
-              while self.get_people(mom).matID == self.get_people(dad).matID and self.get_people(
-                  mom).fatID == self.get_people(dad).fatID:
-                if len(people) > 2: mom, dad = random.sample(people, 2)
-                # Choix du nombre d'enfants (entre 1 et nbChildMax)
-                child = random.randint(0, nbChildMax)
-                for i in range(child):
-                  self.add_people(famID, str(currentID), dad, mom)
-                  currentID += 1
-                people.remove(mom)
-                people.remove(dad)
-                self.add_sex(str(dad), 1)
-                self.add_sex(str(mom), 2)
-
-            else:  # On créer un nouvel individu
-              random_people = random.sample(people, 1)
-              tmp = currentID
-              self.add_people(famID, str(tmp), self.no_people, self.no_people)
-              people.add(tmp)
-              currentID += 1
-              # Choix du nombre d'enfants (entre 1 et nbChildMax)
-              child = random.randint(0, nbChildMax)
-              if random.random() < 0.5:
-                for i in range(child):
-                  self.add_people(famID, str(currentID), tmp, random_people[0])
-                  currentID += 1
-                people.remove(tmp)
-                people.remove(random_people[0])
-                self.add_sex(str(tmp), 1)
-                self.add_sex(str(random_people[0]), 2)
-              else:
-                for i in range(child):
-                  self.add_people(famID, str(currentID), random_people[0], tmp)
-                  currentID += 1
-                people.remove(random_people[0])
-                people.remove(tmp)
-                self.add_sex(str(random_people[0]), 1)
-                self.add_sex(str(tmp), 2)
-
-      self.update_children_all()
-      self.update_parents_all()
-
-  def generation_ped2(self, famID, nbDepart, nbGeneration):
-    """
-    Return a new pedigree, start with a number nbDepart of people and create nbGeneration
-    """
-    nbChildMax = 4  # Nombres d'enfants max que l'on peut avoir
-    pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
-    pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
-    currentID = 1
-    for n in range(nbGeneration):
-      mariage = {i for i in self.leaves()}
-      if n == 0:  # IE generation de depart
-        for p in range(nbDepart):
-          self.add_people(famID, str(currentID), self.no_people, self.no_people)
-          currentID += 1
-
-        mariage = {i for i in self.leaves()}
-        while len(mariage) > 2:
-          p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
-          p1 = str(p1)
-          p2 = str(p2)
-          mariage.remove(p1)
-          mariage.remove(p2)
-          child = random.randint(1, nbChildMax)
-          # Ajout des enfants
-          for c in range(child):
-            self.add_people(famID, str(currentID), p1, p2)
-            self.update_children(str(currentID))
-            currentID += 1
-          self.add_sex(p1, 1)
-          self.add_sex(p2, 2)
-
-      else:
-
-        while random.random() < pMariage:
-          if random.random() < 0.5:  # Mariage entre deux personnes existantes du pedigree
-            if len(mariage) > 1:
-              p1, p2 = random.sample(mariage, 2)
-              p1 = str(p1)
-              p2 = str(p2)
-              bool = self.is_consanguineous(p1, p2, n)
-              if bool:
-                if random.random() < pConsanguinity:
-                  child = random.randint(1, nbChildMax)
-                  # Ajout des enfants
-                  for c in range(child):
-                    self.add_people(famID, str(currentID), p1, p2)
-                    self.update_children(str(currentID))
-                    currentID += 1
-                  self.add_sex(p1, 1)
-                  self.add_sex(p2, 2)
-                  mariage.remove(p1)
-                  mariage.remove(p2)
+            cpt = 1
+            gen = set()
+            while cpt <= nbG:
+                if len(gen) == 0:
+                    gen.update(self.get_parents(pID))
                 else:
-                  pass
-              else:  # Mariage normal entre deux personnes déja présente dans le pedigree
-                child = random.randint(1, nbChildMax)
-                # Ajout des enfants
-                for c in range(child):
-                  self.add_people(famID, str(currentID), p1, p2)
-                  self.update_children(str(currentID))
-                  currentID += 1
-                self.add_sex(p1, 1)
-                self.add_sex(p2, 2)
-                mariage.remove(p1)
-                mariage.remove(p2)
-          else:
-            # Ajout d'un nouveau membre dans le pedigree
-            if len(mariage) > 0:
-              p1 = random.sample(mariage, 1)
-              p1 = str(p1)
-              sex = random.random()
-              child = random.randint(0, nbChildMax)
-              p2 = str(currentID)
-              self.add_people(famID, p2, self.no_people, self.no_people)
-              # mariage.add(p2)
-              currentID += 1
+                    tmp = set()
+                    for i in gen:
+                        tmp.update(self.get_parents(i))
+                    gen.update(tmp)
+                cpt += 1
+            return gen
 
-              if sex < 0.5:  # On créer un homme
+    def next_gen(self, pID, nbG) -> set:
+        """
+        Return a list of list that contains each next generation of pID, from children (1st gen) to nbG gen
+        """
+        if nbG == 1:
+            return self.get_people(pID).child
+        else:
+            cpt = 1
+            children = set()
+            while cpt <= nbG:
+                tmp = set()
+                if len(children) == 0:
+                    children.update(self.get_people(pID).child)
+                else:
+                    for i in children:
+                        tmp.update(self.get_people(i).child)
+                    children.update(tmp)
+                cpt += 1
+            return children
 
-                for i in range(child):
-                  self.add_people(famID, str(currentID), p2, p1)
-                  self.update_children(str(currentID))
-                  currentID += 1
-                self.add_sex(p2, 1)
-                self.add_sex(p1, 2)
-                mariage.remove(p1)
-                mariage.remove(p2)
-              else:  # On créer une femme
+    def check_one_people_family(self):
+        """
+        Return the family's number with just one people
+        """
+        dico = self.get_stat_family()
+        cpt = 0
+        for v in self._pedigree.values():
+            if dico[v.famID] == 1:
+                cpt += 1
+        return cpt
 
-                for i in range(child):
-                  self.add_people(famID, str(currentID), p1, p2)
-                  self.update_children(str(currentID))
-                  currentID += 1
-                self.add_sex(str(p1), 1)
-                self.add_sex(str(p2), 2)
-                mariage.remove(p1)
-                mariage.remove(p2)
+    def check_mother_and_father(self):
+        """
+        Check for all people in the pedigree, if someone is a mother and also a father
+        """
+        father = set()
+        mother = set()
+        for v in self._pedigree.values():
+            father.add(v.fatID)
+            mother.add(v.matID)
+        return father.intersection(mother)
+
+    def check_consanguinity(self, pID, nbG):  # Peut etre le faire sur une famille entiere et non sur un unique individu
+        """
+        Check if a people has consanguinous origin by checking in the nbG older generation
+        """
+        parents = self.get_parents(pID)
+        if len(parents) == 2:
+            parent1, parent2 = self.get_parents(pID)
+        elif len(parents) == 1:
+            parent1 = parents
+            parents = self.no_people
+        else:
+            return {}
+
+        holders1 = set()
+        holders2 = set()
+        if parent1 != self.no_people and parent2 != self.no_people:
+            holders1 = self.old_gen(parent1, nbG)
+            holders2 = self.old_gen(parent2, nbG)
+        elif parent1 != 0 and parent2 == self.no_people:
+            holders1 = self.old_gen(parent1, nbG)
+        else:
+            holders2 = self.old_gen(parent2, nbG)
+        return holders1.intersection(holders2)
+
+    def check_consanguinity_family(self, famID):
+        fam = self.gen_family_pedigree(famID)
+        res = set()
+        for v in fam._pedigree.values():
+            res.update(self.check_consanguinity(v.pID, 10))
+        return res
+
+    def check_consanguinity_pedigree(self):
+        dom = self.get_domain()
+        res = set()
+        for i in dom:
+            res.update(self.check_consanguinity_family(i))
+        return res
+
+    def is_consanguineous(self, p1, p2, nbG):
+        """
+        In the case where p1 and p2 are supposed to have children, we check their olders
+        Return True if p1 and p2 had common olders, else return False
+        """
+        holders_p1 = set(self.old_gen(p1, nbG))
+        holders_p2 = set(self.old_gen(p2, nbG))
+        x = holders_p1.intersection(holders_p2)
+        return len(x) != 0
+
+    def check_famID(self, pID):
+        """
+        Check if people link to the people pID have a different famID
+        """
+        ref = self.get_people(pID).famID
+        errors = set()
+        for k, v in self._pedigree.items():
+            if v.famID != ref:
+                errors.add(k)
+        return errors
+
+    def pedigree_overview_file(self, filename):
+
+        with open("../data/" + filename, "w") as f:
+            for k, v in self._people2line.items():
+                f.write(f"People {k} is defined at line {v}\n")
+            stats = self.get_stat_family()
+            f.write("---------------------------------------------------\n")
+            for k, v in stats.items():
+                f.write(f"The Family {k} is composed by {v} members \n")
+            f.write("---------------------------------------------------\n")
+            f.write(f"Out of  {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
+            f.write(
+                f"In the pedigree, this people appear as mother and also as father : {self.check_mother_and_father()}\n")
+            f.write(
+                f"In the pedigree, this people had consangineous origins : {self.check_consanguinity_pedigree()}\n")
+
+
+    # def graph(self, name):
+    #    """
+    #    Return a graph showing the Pedigree
+    #    """
+    #    graph = pydot.Graph(name='Pedigree', strict=True, comment=name)
+    #    graph.attr(label=r'\n\n' + name + ' pedigree')
+    #    for k, v in self._pedigree.items():
+    #        if v.fatID != self.no_people:
+    #            graph.edge(v.pID, v.fatID)
+    #        if v.matID != self.no_people:
+    #            graph.edge(v.pID, v.matID)
+    #        if v.nbrChild() > 0:
+    #            for i in v.child:
+    #                graph.edge(v.pID, i)
+    #    graph.view()
+    #    graph.save(filename=name, directory="../data")
+
+    def graph_pydot(self, name, bool):
+        """
+        DoubleCircle = Roots
+        Box = leaves
+        Diamond = Nodes
+        """
+        col_rac_fill = {self.sex_undefined: "#C2F732", #Green
+                       self.sex_male: "#00ffff", #Cyan
+                       self.sex_female: "#ff009c", #Pink
+                       self.sex_malefemale: "#000000"} #Dark
+
+        shape_nodes = {False:['circle','box','diamond'],True:['point','point','point']}
+
+        roots = {i for i in self.roots()}
+        leaves = {i for i in self.leaves()}
+        graph = pydot.Dot(graph_type='graph', graph_name=name, strict=True)
+        for k, v in self._pedigree.items():
+
+            if v.pID in roots:
+                #graph.add_node(pydot.Node(k, shape='circle', style="filled", color=col_rac_fill[v.sex]))
+                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][0], style="filled", color=col_rac_fill[v.sex]))
+
+            elif v.pID in leaves:
+                #graph.add_node(pydot.Node(k, shape='box', style="filled", color=col_rac_fill[v.sex]))
+                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][1], style="filled", color=col_rac_fill[v.sex]))
+
+            else:
+                #graph.add_node(pydot.Node(k, shape='diamond', style="filled", color=col_rac_fill[v.sex]))
+                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][2], style="filled", color=col_rac_fill[v.sex]))
+
+        node = -1
+        for f,m in self.get_couple():
+            current_node = node
+            graph.add_node(pydot.Node(current_node, shape='point'))
+            graph.add_edge(pydot.Edge(f, current_node))
+            graph.add_edge(pydot.Edge(m, current_node))
+            node -= 1
+            for c in self.get_people(f).child.intersection(self.get_people(m).child):
+                edge = pydot.Edge(current_node, c)
+                graph.add_edge(edge)
+        graph.write_png("../data/" + name + '.pdf')
+
+    def generation_pedigree(self, famID, nbDepart, nbGeneration):
+        """
+        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
+        """
+        nbChildMax = 10  # Nombres d'enfants max que l'on peut avoir
+        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
+        pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
+        currentID = 1
+        for nb in range(nbGeneration):
+            if nb == 0:
+                # Création de notre génération de départ
+                cpt = 0
+                for i in range(1, nbDepart + 1):
+                    self.add_people(famID, str(i), self.no_people, self.no_people)
+                    currentID += 1
+                    if cpt < nbDepart // 2:  # Pas en proba si nb individu trop faible, pb d'avoir qu'un seul sexe
+                        self.add_sex(str(i), 1)  # Male
+                    else:
+                        self.add_sex(str(i), 2)  # Female
+                    cpt = cpt + 1
+
+                members = self.get_pedigree()  # Inutile pour l'instant
+                # On récupère un set des hommes, un autre des femmes afin d'effectuer les premiers mariages
+                first_male = self.get_male()
+                first_female = self.get_female()
+
+                # Mariage et enfants
+                nbMariage = nbDepart // 2  #  Permet d'effectuer le plus de mariage possible
+                for m in range(nbMariage):
+                    mom, dad = first_female.pop(), first_male.pop()
+                    # Choix du nombre d'enfants (entre 1 et nbChildMax)
+                    child = random.randint(1, nbChildMax)
+                    for i in range(child):
+                        self.add_people(famID, str(currentID), dad, mom)
+                        currentID += 1
+
+            else:
+                # On récupère les feuilles, ie les enfants de la génération précedente
+                people = {i for i in self.leaves()}
+
+                # Pour les générations suivantes
+                while random.random() < pMariage and len(people) > 1:
+                    Consanguinity = random.random()
+
+                    if Consanguinity < pConsanguinity:
+                        print("people au tout debut", people)
+                        print("ped au tout debut", self._pedigree)
+                        mom, dad = random.sample(people, 2)
+                        # A refaire, on fait de la consanguinité 'direct'
+                        while self.get_people(mom).matID != self.get_people(dad).matID or self.get_people(
+                                mom).fatID != self.get_people(dad).fatID:
+                            mom, dad = random.sample(people, 2)
+                        # while not self.is_consanguineous(mom, dad, nb):
+                        #     print('mom',mom in self._pedigree.keys())
+                        #     print('dad',dad in self._pedigree.keys())
+                        #     mom, dad = random.sample(people, 2)
+                        # Choix du nombre d'enfants (entre 1 et nbChildMax)
+                        child = random.randint(0, nbChildMax)
+                        for i in range(child):
+                            self.add_people(famID, str(currentID), dad, mom)
+                            self.update_children(str(currentID))
+                            currentID += 1
+                        print("keys", sorted(set(self._pedigree.keys())))
+                        print('len', len(people), "people", sorted(people))
+                        print(people.difference(set(self._pedigree.keys())))
+                        print('mom', mom, 'dad', dad)
+                        people.remove(mom)
+                        people.remove(dad)
+                        print('len2', len(people), "people", sorted(people))
+                        self.add_sex(str(dad), 1)
+                        self.add_sex(str(mom), 2)
+
+                    else:
+
+                        if random.random() < 0.5:  # Une chance sur deux de créer un nouvel individu pour le mariage
+                            if len(people) > 2: mom, dad = random.sample(people, 2)
+                            while self.get_people(mom).matID == self.get_people(dad).matID and self.get_people(
+                                    mom).fatID == self.get_people(dad).fatID:
+                                if len(people) > 2: mom, dad = random.sample(people, 2)
+                                # Choix du nombre d'enfants (entre 1 et nbChildMax)
+                                child = random.randint(0, nbChildMax)
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID), dad, mom)
+                                    currentID += 1
+                                people.remove(mom)
+                                people.remove(dad)
+                                self.add_sex(str(dad), 1)
+                                self.add_sex(str(mom), 2)
+
+                        else:  # On créer un nouvel individu
+                            random_people = random.sample(people, 1)
+                            tmp = currentID
+                            self.add_people(famID, str(tmp), self.no_people, self.no_people)
+                            people.add(tmp)
+                            currentID += 1
+                            # Choix du nombre d'enfants (entre 1 et nbChildMax)
+                            child = random.randint(0, nbChildMax)
+                            if random.random() < 0.5:
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID), tmp, random_people[0])
+                                    currentID += 1
+                                people.remove(tmp)
+                                people.remove(random_people[0])
+                                self.add_sex(str(tmp), 1)
+                                self.add_sex(str(random_people[0]), 2)
+                            else:
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID), random_people[0], tmp)
+                                    currentID += 1
+                                people.remove(random_people[0])
+                                people.remove(tmp)
+                                self.add_sex(str(random_people[0]), 1)
+                                self.add_sex(str(tmp), 2)
+
+            self.update_children_all()
+            self.update_parents_all()
+
+    def generation_ped2(self, famID, nbDepart, nbGeneration):
+        """
+        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
+        """
+        nbChildMax = 4  # Nombres d'enfants max que l'on peut avoir
+        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
+        pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
+        currentID = 1
+        for n in range(nbGeneration):
+            mariage = {i for i in self.leaves()}
+            if n == 0:  # IE generation de depart
+                for p in range(nbDepart):
+                    self.add_people(famID, str(currentID), self.no_people, self.no_people)
+                    currentID += 1
+
+                mariage = {i for i in self.leaves()}
+                while len(mariage) > 2:
+                    p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
+                    p1 = str(p1)
+                    p2 = str(p2)
+                    mariage.remove(p1)
+                    mariage.remove(p2)
+                    child = random.randint(1, nbChildMax)
+                    # Ajout des enfants
+                    for c in range(child):
+                        self.add_people(famID, str(currentID), p1, p2)
+                        self.update_children(str(currentID))
+                        currentID += 1
+                    self.add_sex(p1, 1)
+                    self.add_sex(p2, 2)
+
+            else:
+
+                while random.random() < pMariage:
+                    if random.random() < 0.5:  # Mariage entre deux personnes existantes du pedigree
+                        if len(mariage) > 1:
+                            p1, p2 = random.sample(mariage, 2)
+                            p1 = str(p1)
+                            p2 = str(p2)
+                            bool = self.is_consanguineous(p1, p2, n)
+                            if bool:
+                                if random.random() < pConsanguinity:
+                                    child = random.randint(1, nbChildMax)
+                                    # Ajout des enfants
+                                    for c in range(child):
+                                        self.add_people(famID, str(currentID), p1, p2)
+                                        self.update_children(str(currentID))
+                                        currentID += 1
+                                    self.add_sex(p1, 1)
+                                    self.add_sex(p2, 2)
+                                    mariage.remove(p1)
+                                    mariage.remove(p2)
+                                else:
+                                    pass
+                            else:  # Mariage normal entre deux personnes déja présente dans le pedigree
+                                child = random.randint(1, nbChildMax)
+                                # Ajout des enfants
+                                for c in range(child):
+                                    self.add_people(famID, str(currentID), p1, p2)
+                                    self.update_children(str(currentID))
+                                    currentID += 1
+                                self.add_sex(p1, 1)
+                                self.add_sex(p2, 2)
+                                mariage.remove(p1)
+                                mariage.remove(p2)
+                    else:
+                        # Ajout d'un nouveau membre dans le pedigree
+                        if len(mariage) > 0:
+                            p1 = random.sample(mariage, 1)
+                            p1 = str(p1)
+                            sex = random.random()
+                            child = random.randint(0, nbChildMax)
+                            p2 = str(currentID)
+                            self.add_people(famID, p2, self.no_people, self.no_people)
+                            # mariage.add(p2)
+                            currentID += 1
+
+                            if sex < 0.5:  # On créer un homme
+
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID), p2, p1)
+                                    self.update_children(str(currentID))
+                                    currentID += 1
+                                self.add_sex(p2, 1)
+                                self.add_sex(p1, 2)
+                                mariage.remove(p1)
+                                mariage.remove(p2)
+                            else:  # On créer une femme
+
+                                for i in range(child):
+                                    self.add_people(famID, str(currentID), p1, p2)
+                                    self.update_children(str(currentID))
+                                    currentID += 1
+                                self.add_sex(str(p1), 1)
+                                self.add_sex(str(p2), 2)
+                                mariage.remove(p1)
+                                mariage.remove(p2)
