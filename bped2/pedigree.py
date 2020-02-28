@@ -147,19 +147,6 @@ class Pedigree:
         """
         return self._people2line[idPeople]
 
-    def load_old(self, fichier):
-        """
-        Read a .ped file and
-        Return a dictionary where the keys are the people's IDs and the values are the People
-        """
-        file = open(fichier)
-        for (line, i) in enumerate(file.readlines()):
-            p = People(*i.strip().split())
-            self._pedigree[p.pID] = p
-            self._people2line[p.pID] = line
-        file.close()
-        # Version old n'ajoute pas directement les enfants
-
     def load(self, fichier):
         """
         Read a .ped file and
@@ -770,21 +757,19 @@ class Pedigree:
         Return a new pedigree, start with a number nbDepart of people and create nbGeneration
         """
         nbChildMax = 4  # Nombres d'enfants max que l'on peut avoir
-        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
+        pMariage = 1  # Probabilité d'effectuer un mariage entre deux peoples
         pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
         currentID = 1
         for n in range(nbGeneration):
-            mariage = {i for i in self.leaves()}
             if n == 0:  # IE generation de depart
                 for p in range(nbDepart):
                     self.add_people(famID, str(currentID), self.no_people, self.no_people)
                     currentID += 1
 
                 mariage = {i for i in self.leaves()}
-                while len(mariage) > 2:
+
+                while len(mariage) > 1:
                     p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
-                    p1 = str(p1)
-                    p2 = str(p2)
                     mariage.remove(p1)
                     mariage.remove(p2)
                     child = random.randint(1, nbChildMax)
@@ -862,3 +847,75 @@ class Pedigree:
                                 self.add_sex(str(p2), 2)
                                 mariage.remove(p1)
                                 mariage.remove(p2)
+
+    def generation_ped(self, famID, nbDepart, nbGeneration):
+        """
+        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
+        """
+        nbChildMax = 4  # Nombres d'enfants max que l'on peut avoir
+        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
+        pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
+        global currentID
+        currentID = 1
+
+        def first_generation(currentID):
+            for p in range(nbDepart):
+                self.add_people(famID, str(currentID), self.no_people, self.no_people)
+                currentID += 1
+
+            mariage = {i for i in self.leaves()}
+
+            while len(mariage) > 1:
+                p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
+                mariage.remove(p1)
+                mariage.remove(p2)
+                child = random.randint(1, nbChildMax)
+                # Ajout des enfants
+                for c in range(child):
+                    self.add_people(famID, str(currentID), p1, p2)
+                    self.update_children(str(currentID))
+                    currentID += 1
+                self.add_sex(p1, 1)
+                self.add_sex(p2, 2)
+            return currentID
+
+        def mariage_1p_exist(currentID,mariage):
+            if len(mariage) > 0:
+                p1 = random.sample(mariage, 1)
+                sex = random.random()
+                child = random.randint(0, nbChildMax)
+                p2 = str(currentID)
+                self.add_people(famID, p2, self.no_people, self.no_people)
+                mariage.add(p2)
+                currentID += 1
+                if sex < 0.5:  # On crée un homme
+                    for i in range(child):
+                        self.add_people(famID, str(currentID), p2, p1)
+                        self.update_children(str(currentID))
+                        currentID += 1
+                    self.add_sex(p2, 1)
+                    self.add_sex(p1, 2)
+                    mariage.remove(p1)
+                    mariage.remove(p2)
+                else:  # On crée une femme
+                    for i in range(child):
+                        self.add_people(famID, str(currentID), p1, p2)
+                        self.update_children(str(currentID))
+                        currentID += 1
+                    self.add_sex(str(p1), 1)
+                    self.add_sex(str(p2), 2)
+                    mariage.remove(p1)
+                    mariage.remove(p2)
+            return currentID
+
+        print('avant:',currentID)
+        currentID = first_generation(currentID)
+        print('apres:', currentID)
+        print(self._pedigree)
+        for n in range(1,nbGeneration):
+            mariage = {i for i in self.leaves()}
+            while random.random() < pMariage:
+                currentID = mariage_1p_exist(currentID,mariage)
+
+
+

@@ -7,8 +7,8 @@ class TestPedigree(unittest.TestCase):
 
     def test_pedigree(self):#OK
         ped = Pedigree()
-        ped.load_old("../data/fam9.ped")
-        print(ped._description)
+        ped.load("../data/fam9.ped")
+        print(ped._people2line)
         self.assertEqual    (ped.get_people('2'),People('9','2','0','0'))
         self.assertEqual    (ped.get_people('20'),People('9','20','9','10'))
 
@@ -47,7 +47,7 @@ class TestPedigree(unittest.TestCase):
 
     def test_sex(self):#OK
         ped = Pedigree()
-        ped.load_old("../data/fam9.ped")
+        ped.load("../data/fam9.ped")
         ped.add_sex_all()
         print(ped)
         self.assertEqual(ped.get_people('1').sex,2)
@@ -60,10 +60,8 @@ class TestPedigree(unittest.TestCase):
 
     def test_children(self):#OK
         ped = Pedigree()
-        ped.load_old("../data/fam9.ped")
+        ped.load("../data/fam9.ped")
         ped.update_children('8')
-        self.assertTrue(ped.get_people('1').child=={'8'})
-        self.assertTrue(ped.get_people('2').child == {'8'})
         ped.update_children_all()
         self.assertTrue(ped.get_people('1').child == {'4','6','8','10'})
         self.assertTrue(ped.get_people('2').child == {'4','6','8','10'})
@@ -71,7 +69,7 @@ class TestPedigree(unittest.TestCase):
 
     def test_save(self):#OK
         ped = Pedigree()
-        ped.load_old("../data/fam9.ped")
+        ped.load("../data/fam9.ped")
         ped.save("../data/tanto.ped")
         self.assertEqual(os.path.exists("../data/tanto.ped"),1)
 
@@ -218,9 +216,15 @@ class TestPedigree(unittest.TestCase):
         for i in range(100):
             ped = Pedigree()
             ped.generation_pedigree("test",4,4)
+
         #ped.graph_pydot("ped_généré","10.0")
 
-    def xxtest_generation2(self):
-        for i in range(100000):
-            ped = Pedigree()
-            ped.generation_ped2("t",4,4)
+    def test_generation2(self):
+        ped = Pedigree()
+        ped.generation_ped2("t",4,4)
+        print(ped)
+
+    def test_test(self):
+        ped = Pedigree()
+        ped.generation_ped('3',4,4)
+        print(ped)
