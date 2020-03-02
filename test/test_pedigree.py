@@ -5,7 +5,7 @@ from bped2.pedigree import *
 
 class TestPedigree(unittest.TestCase):
 
-    def test_pedigree(self):#OK
+    def xxtest_pedigree(self):#OK
         ped = Pedigree()
         ped.load("../data/fam9.ped")
         print(ped._people2line)
@@ -159,42 +159,27 @@ class TestPedigree(unittest.TestCase):
         new = ped.gen_all_pedigree()
         self.assertEqual(new['N1'],N1)
 
-    # def test_graph(self):
-    #     # ped1 = Pedigree()
-    #     # ped1.load("../data/fam9.ped")
-    #     # ped1.graph("fam9")
-    #     #
-    #     # ped2 = Pedigree()
-    #     # ped2.load("../data/famRh.ped")
-    #     # ped2.graph("famRh")
-    #
-    #     ped3 = Pedigree()
-    #     ped3.load("../data/senegal2013.ped")
-    #     ped3.gen_family_pedigree('N8')
-    #     ped3.graph("senegal2013")
-    #     # Trop volumineux, meme avec une seul famille
-
-    def test_graph_pydot(self):
+    def test_graph(self):
         ped3 = Pedigree()
         ped3.load("../data/senegal2013.ped")
         N8 = ped3.gen_family_pedigree('N8')
         N8.add_sex_all()
         N8.update_children_all()
         N8.update_parents_all()
-        N8.graph_pydot("N8",False)
+        N8.graph("N8", False)
 
         fam9 = Pedigree()
         fam9.load("../data/fam9.ped")
         fam9.add_sex_all()
         fam9.update_children_all()
         fam9.update_parents_all()
-        fam9.graph_pydot("fam9",False)
+        fam9.graph("fam9", False)
 
         N1 = ped3.gen_family_pedigree('N1')
         N1.add_sex_all()
         N1.update_children_all()
         N1.update_parents_all()
-        N1.graph_pydot("N1",True)
+        N1.graph("N1", True)
 
     def test_pedigree_file(self):
         fam9 = Pedigree()
@@ -211,21 +196,8 @@ class TestPedigree(unittest.TestCase):
         senegal.update_parents_all()
         senegal.pedigree_overview_file("senegal_overview")
 
-    def xxtest_generation(self):
-
-        for i in range(100):
-            ped = Pedigree()
-            ped.generation_pedigree("test",4,4)
-
-        #ped.graph_pydot("ped_généré","10.0")
-
-    def test_generation2(self):
-        ped = Pedigree()
-        ped.generation_ped2("t",4,4)
-        print(ped)
-
     def test_test(self):
         ped = Pedigree()
-        ped.generation_ped('3',4,4)
+        ped.generation_ped('3',4,10)
         print(ped)
-        ped.graph_pydot('generate_graph',False)
+        ped.graph('generate_graph', False)
