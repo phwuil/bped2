@@ -228,3 +228,4 @@ class TestPedigree(unittest.TestCase):
         ped = Pedigree()
         ped.generation_ped('3',4,4)
         print(ped)
+        ped.graph_pydot('generate_graph',False)

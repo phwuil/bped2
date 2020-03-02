@@ -239,7 +239,7 @@ class Pedigree:
 
         if pID in self._pedigree.keys():
             if self.get_people(pID).famID != self.people_unknown:
-                raise ValueError('id already use for another people')
+                raise ValueError(f'{pID} already use for another people')
             self.get_people(pID)._set(famID, fatID, matID)
 
         else:
@@ -879,9 +879,40 @@ class Pedigree:
                 self.add_sex(p2, 2)
             return currentID
 
+        def mariage_2p_exist(currentID,mariage):
+            if len(mariage) > 1:
+                p1, p2 = random.sample(mariage, 2)
+                bool = self.is_consanguineous(p1, p2, n)
+                if bool:
+                    if random.random() < pConsanguinity:
+                        child = random.randint(1, nbChildMax)
+                        # Ajout des enfants
+                        for c in range(child):
+                            self.add_people(famID, str(currentID), p1, p2)
+                            self.update_children(str(currentID))
+                            currentID += 1
+                        self.add_sex(p1, 1)
+                        self.add_sex(p2, 2)
+                        mariage.remove(p1)
+                        mariage.remove(p2)
+                    else:
+                        pass
+                else:  # Mariage normal entre deux personnes déja présente dans le pedigree
+                    child = random.randint(1, nbChildMax)
+                    # Ajout des enfants
+                    for c in range(child):
+                        self.add_people(famID, str(currentID), p1, p2)
+                        self.update_children(str(currentID))
+                        currentID += 1
+                    self.add_sex(p1, 1)
+                    self.add_sex(p2, 2)
+                    mariage.remove(p1)
+                    mariage.remove(p2)
+            return currentID
+
         def mariage_1p_exist(currentID,mariage):
             if len(mariage) > 0:
-                p1 = random.sample(mariage, 1)
+                p1 = random.sample(mariage, 1)[0]
                 sex = random.random()
                 child = random.randint(0, nbChildMax)
                 p2 = str(currentID)
@@ -908,14 +939,14 @@ class Pedigree:
                     mariage.remove(p2)
             return currentID
 
-        print('avant:',currentID)
         currentID = first_generation(currentID)
-        print('apres:', currentID)
-        print(self._pedigree)
         for n in range(1,nbGeneration):
             mariage = {i for i in self.leaves()}
             while random.random() < pMariage:
-                currentID = mariage_1p_exist(currentID,mariage)
+                if random.random() < 0.5:
+                    currentID = mariage_2p_exist(currentID,mariage)
+                else:
+                    currentID = mariage_1p_exist(currentID,mariage)
 
 
 
