@@ -7,7 +7,7 @@ class TestPedigree(unittest.TestCase):
 
     def xxtest_pedigree(self):#OK
         ped = Pedigree()
-        ped.load("../data/fam9.ped")
+        ped.load("../data/ped/fam9.ped")
         print(ped._people2line)
         self.assertEqual    (ped.get_people('2'),People('9','2','0','0'))
         self.assertEqual    (ped.get_people('20'),People('9','20','9','10'))
@@ -25,7 +25,7 @@ class TestPedigree(unittest.TestCase):
         with self.assertRaises(ValueError):
             ped.add_people('1', '0', '0', '9')
             # ped.add_people(People('1','0','0','9','0'))
-        ped.load("../data/fam9.ped")
+        ped.load("../data/ped/fam9.ped")
         with self.assertRaises(ValueError):
         #     ped.add_people(People('9','2','0','0',0))
         # ped.add_people(People('9','30','0','0',0))
@@ -35,7 +35,7 @@ class TestPedigree(unittest.TestCase):
 
     def test_remove(self):#OK
         ped = Pedigree()
-        ped.load("../data/fam9.ped")
+        ped.load("../data/ped/fam9.ped")
         ped.update_children_all()
         ped.remove_people('2')
         with self.assertRaises(ValueError):
@@ -47,7 +47,7 @@ class TestPedigree(unittest.TestCase):
 
     def test_sex(self):#OK
         ped = Pedigree()
-        ped.load("../data/fam9.ped")
+        ped.load("../data/ped/fam9.ped")
         ped.add_sex_all()
         print(ped)
         self.assertEqual(ped.get_people('1').sex,2)
@@ -60,7 +60,7 @@ class TestPedigree(unittest.TestCase):
 
     def test_children(self):#OK
         ped = Pedigree()
-        ped.load("../data/fam9.ped")
+        ped.load("../data/ped/fam9.ped")
         ped.update_children('8')
         ped.update_children_all()
         self.assertTrue(ped.get_people('1').child == {'4','6','8','10'})
@@ -69,13 +69,13 @@ class TestPedigree(unittest.TestCase):
 
     def test_save(self):#OK
         ped = Pedigree()
-        ped.load("../data/fam9.ped")
-        ped.save("../data/tanto.ped")
-        self.assertEqual(os.path.exists("../data/tanto.ped"),1)
+        ped.load("../data/ped/fam9.ped")
+        ped.save("../data/ped/tanto.ped")
+        self.assertEqual(os.path.exists("../data/ped/tanto.ped"),1)
 
     def test_family(self):
         ped = Pedigree()
-        ped.load("../data/fam9.ped")
+        ped.load("../data/ped/fam9.ped")
         self.assertEqual(ped.get_couple(),{('2','1'),('3','4'),('6','5'),('8','7'),('9','10')})
         ped.add_people('9', '23', '0', '0') #Père de 1
         ped.add_people('9', '24', '0', '0') #Mère de 1
@@ -94,8 +94,8 @@ class TestPedigree(unittest.TestCase):
 
     def test_generation(self):
         ped = Pedigree()
-        # ped.load("../data/test.ped") #Ne fonctionne pas, erreur inconnu
-        ped.load("../data/fam9.ped")
+        # ped.load("../data/ped/test.ped") #Ne fonctionne pas, erreur inconnu
+        ped.load("../data/ped/fam9.ped")
         ped.add_people('9', '23', '0', '0') #Père de 1
         ped.add_people('9', '24', '0', '0') #Mère de 1
         ped.get_people('1')._set('9','23','24')
@@ -109,7 +109,7 @@ class TestPedigree(unittest.TestCase):
 
     def test_number(self): #OK
         ped = Pedigree()
-        ped.load("../data/fam9.ped")
+        ped.load("../data/ped/fam9.ped")
         self.assertEqual(len(ped.get_stat_family()), 1)
         ped.add_people('A', '23', '0', '0')
         ped.add_sex('23',1)
@@ -119,7 +119,7 @@ class TestPedigree(unittest.TestCase):
         self.assertEqual(len(ped.get_stat_family()), 1)
 
         ped1 = Pedigree()
-        ped1.load("../data/senegal2013.ped")
+        ped1.load("../data/ped/senegal2013.ped")
         ped1.remove_family('D1')
         self.assertNotEqual(sorted(ped.get_domain())[0], 'D1')
         ped1.gen_family_pedigree('D10')
@@ -127,7 +127,7 @@ class TestPedigree(unittest.TestCase):
 
     def test_clean(self): #OK
         ped = Pedigree()
-        ped.load("../data/senegal2013.ped")
+        ped.load("../data/ped/senegal2013.ped")
         print("avant netoyage", len(ped.get_domain())) #198 familles
         ped.remove_singleton()
         print("apres nettoyage", len(ped.get_domain())) #37 familles
@@ -137,8 +137,8 @@ class TestPedigree(unittest.TestCase):
     def test_check(self):
         ped = Pedigree()
         ped1 = Pedigree()
-        ped.load("../data/senegal2013.ped")
-        ped1.load("../data/fam9.ped")
+        ped.load("../data/ped/senegal2013.ped")
+        ped1.load("../data/ped/fam9.ped")
         print(len(ped.get_domain()),ped.check_one_people_family()) # 161 membres isolés
         self.assertEqual(ped.check_one_people_family(),198-37)
         print(ped.check_mother_and_father()) #Aucun changement de sexe
@@ -148,20 +148,20 @@ class TestPedigree(unittest.TestCase):
 
     def test_consanguinity(self):
         ped = Pedigree()
-        ped.load("../data/famRh.ped")
+        ped.load("../data/ped/famRh.ped")
         self.assertTrue(ped.is_consanguineous('5','6',3))
         self.assertFalse(ped.is_consanguineous('3','4',3))
 
     def test_generation_pedigree(self):
         ped = Pedigree()
-        ped.load("../data/senegal2013.ped")
+        ped.load("../data/ped/senegal2013.ped")
         N1 = ped.gen_family_pedigree('N1')
         new = ped.gen_all_pedigree()
         self.assertEqual(new['N1'],N1)
 
     def test_graph(self):
         ped3 = Pedigree()
-        ped3.load("../data/senegal2013.ped")
+        ped3.load("../data/ped/senegal2013.ped")
         N8 = ped3.gen_family_pedigree('N8')
         N8.add_sex_all()
         N8.update_children_all()
@@ -169,7 +169,7 @@ class TestPedigree(unittest.TestCase):
         N8.graph("N8", False)
 
         fam9 = Pedigree()
-        fam9.load("../data/fam9.ped")
+        fam9.load("../data/ped/fam9.ped")
         fam9.add_sex_all()
         fam9.update_children_all()
         fam9.update_parents_all()
@@ -183,14 +183,14 @@ class TestPedigree(unittest.TestCase):
 
     def test_pedigree_file(self):
         fam9 = Pedigree()
-        fam9.load("../data/fam9.ped")
+        fam9.load("../data/ped/fam9.ped")
         fam9.add_sex_all()
         fam9.update_children_all()
         fam9.update_parents_all()
         fam9.pedigree_overview_file("fam9_overview")
 
         senegal = Pedigree()
-        senegal.load("../data/senegal2013.ped")
+        senegal.load("../data/ped/senegal2013.ped")
         senegal.add_sex_all()
         senegal.update_children_all()
         senegal.update_parents_all()

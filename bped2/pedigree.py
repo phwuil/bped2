@@ -1,9 +1,10 @@
 #!/usr/local/bin/python
 from typing import Set
 import pydotplus as pydot
-import math
+import matplotlib.pyplot as plt
 import random
-
+import pyAgrum as gum
+import pyAgrum.lib.notebook as gnb
 
 class People:
     def __init__(self, famID: str, pID: str, fatID: str, matID: str):
@@ -561,7 +562,7 @@ class Pedigree:
 
     def pedigree_overview_file(self, filename):
 
-        with open("../data/" + filename, "w") as f:
+        with open("../data/ped/" + filename, "w") as f:
             for k, v in self._people2line.items():
                 f.write(f"People {k} is defined at line {v}\n")
             stats = self.get_stat_family()
@@ -594,15 +595,12 @@ class Pedigree:
         for k, v in self._pedigree.items():
 
             if v.pID in roots:
-                #graph.add_node(pydot.Node(k, shape='circle', style="filled", color=col_rac_fill[v.sex]))
                 graph.add_node(pydot.Node(k, shape=shape_nodes[bool][0], style="filled", color=col_rac_fill[v.sex]))
 
             elif v.pID in leaves:
-                #graph.add_node(pydot.Node(k, shape='box', style="filled", color=col_rac_fill[v.sex]))
                 graph.add_node(pydot.Node(k, shape=shape_nodes[bool][1], style="filled", color=col_rac_fill[v.sex]))
 
             else:
-                #graph.add_node(pydot.Node(k, shape='diamond', style="filled", color=col_rac_fill[v.sex]))
                 graph.add_node(pydot.Node(k, shape=shape_nodes[bool][2], style="filled", color=col_rac_fill[v.sex]))
 
         node = -1
@@ -615,7 +613,7 @@ class Pedigree:
             for c in self.get_people(f).child.intersection(self.get_people(m).child):
                 edge = pydot.Edge(current_node, c)
                 graph.add_edge(edge)
-        graph.write_png("../data/" + name + '.pdf')
+        graph.write_png("../data/graph/" + name + '.pdf')
 
     def generation_ped(self, famID, nbDepart, nbGeneration):
         """
@@ -717,5 +715,55 @@ class Pedigree:
                 else:
                     currentID = mariage_1p_exist(currentID,mariage)
 
+    def create_holders(self,bn, p):
+        """
+        Create 3 nodes, fatXi, matXi and Xi and link fatXi and matXi to Xi
+        """
+        bn.add(gum.LabelizedVariable(f"matX{p.pID}", f"mother of {p.pID}", ["0", "1"]))
+        bn.add(gum.LabelizedVariable(f"fatX{p.pID}", f"father of {p.pID}", ["0", "1"]))
+        bn.add(gum.LabelizedVariable(f"X{p.pID}", f"{p.pID}", ["00", "01", "10", "11"]))
+        bn.addArc(f"fatX{p.pID}", f"X{p.pID}")
+        bn.addArc(f"matX{p.pID}", f"X{p.pID}")
+        bn.cpt(f"X{p.pID}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
+
+    def create_offsprings(self, bn, p, parent):
+        """
+        Create link between a parent and his children
+        """
+
+        # parent = fat ou mat
+        if parent == 'fat':
+            parentID = p.fatID
+        else:
+            parentID = p.matID
+
+        # Creating Selector
+        bn.add(gum.LabelizedVariable(f"S{parent}{p.pID}", f"Selector of {parent}ID", ["mat", "fat"]))
+        bn.cpt(f"S{parent}{p.pID}").fillWith([0.5, 0.5])
+
+        bn.addArc(f"fatX{parentID}", f"{parent}X{p.pID}") # fatXi to Child
+        bn.addArc(f"matX{parentID}", f"{parent}X{p.pID}") # matXi to Child
+        bn.addArc(f"S{parent}{p.pID}", f"{parent}X{p.pID}")  # Selector to fat/mat
 
 
+        bn.cpt(f"{parent}X{p.pID}").fillWith([1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1])
+
+    def ped_to_bn(self, f):
+        bn = gum.BayesNet()
+        for p in self.get_pedigree().values():
+            self.create_holders(bn, p)
+
+            if p.fatID == '0':  # Cas parents inconnu
+                bn.cpt(f"fatX{p.pID}").fillWith([1 - f, f])
+            else:
+                self.create_offsprings(bn, p, 'fat' )
+
+            if p.matID == '0':  # Cas parents inconnu
+                bn.cpt(f"matX{p.pID}").fillWith([1 - f, f])
+            else:
+                self.create_offsprings(bn, p, 'mat')
+
+        gnb.showPotential(bn.cpt("matX4"))
+        gnb.showBN(bn, size=100)
+
+        return bn
