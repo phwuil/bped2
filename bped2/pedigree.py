@@ -607,8 +607,8 @@ class Pedigree:
         for f,m in self.get_couple():
             current_node = node
             graph.add_node(pydot.Node(current_node, shape='point'))
-            graph.add_edge(pydot.Edge(f, current_node))
-            graph.add_edge(pydot.Edge(m, current_node))
+            graph.add_edge(pydot.Edge(f, current_node,color='blue'))
+            graph.add_edge(pydot.Edge(m, current_node,color='pink'))
             node -= 1
             for c in self.get_people(f).child.intersection(self.get_people(m).child):
                 edge = pydot.Edge(current_node, c)
@@ -715,6 +715,107 @@ class Pedigree:
                 else:
                     currentID = mariage_1p_exist(currentID,mariage)
 
+    def new_gen_ped(self,famID, N, nbDepart, nbGeneration , nbChildMax = 4, consanguinity = 4):
+        """
+        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
+        """
+        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
+        pConsanguinity = 0.1  # Probabilité d'effectuer un mariage entre people d'une même lignée
+        global currentID
+        currentID = 1
+
+        def first_generation(currentID):
+            for p in range(nbDepart):
+                self.add_people(famID, str(currentID), self.no_people, self.no_people)
+                currentID += 1
+
+            mariage = {i for i in self.leaves()}
+
+            while len(mariage) > 1:
+                p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
+                mariage.remove(p1)
+                mariage.remove(p2)
+                child = random.randint(1, nbChildMax)
+                # Ajout des enfants
+                for c in range(child):
+                    self.add_people(famID, str(currentID), p1, p2)
+                    self.update_children(str(currentID))
+                    currentID += 1
+                self.add_sex(p1, 1)
+                self.add_sex(p2, 2)
+            return currentID
+
+        def mariage_2p_exist(currentID,mariage):
+            if len(mariage) > 1:
+                p1, p2 = random.sample(mariage, 2)
+                bool = self.is_consanguineous(p1, p2, consanguinity)
+                if bool:
+                    if random.random() < pConsanguinity:
+                        child = random.randint(1, nbChildMax)
+                        # Ajout des enfants
+                        for c in range(child):
+                            self.add_people(famID, str(currentID), p1, p2)
+                            self.update_children(str(currentID))
+                            currentID += 1
+                        self.add_sex(p1, 1)
+                        self.add_sex(p2, 2)
+                        mariage.remove(p1)
+                        mariage.remove(p2)
+                    else:
+                        pass
+                else:  # Mariage normal entre deux personnes déja présente dans le pedigree
+                    child = random.randint(1, nbChildMax)
+                    # Ajout des enfants
+                    for c in range(child):
+                        self.add_people(famID, str(currentID), p1, p2)
+                        self.update_children(str(currentID))
+                        currentID += 1
+                    self.add_sex(p1, 1)
+                    self.add_sex(p2, 2)
+                    mariage.remove(p1)
+                    mariage.remove(p2)
+            return currentID
+
+        def mariage_1p_exist(currentID,mariage):
+            if len(mariage) > 0:
+                p1 = random.sample(mariage, 1)[0]
+                sex = random.random()
+                child = random.randint(0, nbChildMax)
+                p2 = str(currentID)
+                self.add_people(famID, p2, self.no_people, self.no_people)
+                mariage.add(p2)
+                currentID += 1
+                if sex < 0.5:  # On crée un homme
+                    for i in range(child):
+                        self.add_people(famID, str(currentID), p2, p1)
+                        self.update_children(str(currentID))
+                        currentID += 1
+                    self.add_sex(p2, 1)
+                    self.add_sex(p1, 2)
+                    mariage.remove(p1)
+                    mariage.remove(p2)
+                else:  # On crée une femme
+                    for i in range(child):
+                        self.add_people(famID, str(currentID), p1, p2)
+                        self.update_children(str(currentID))
+                        currentID += 1
+                    self.add_sex(str(p1), 1)
+                    self.add_sex(str(p2), 2)
+                    mariage.remove(p1)
+                    mariage.remove(p2)
+            return currentID
+
+        currentID = first_generation(currentID)
+        for n in range(1,nbGeneration):
+            mariage = {i for i in self.leaves()}
+            while random.random() < pMariage and currentID < N:
+                if random.random() < 0.5:
+                    currentID = mariage_2p_exist(currentID,mariage)
+                else:
+                    currentID = mariage_1p_exist(currentID,mariage)
+
+
+### ---------------------------------------------------------------------------
     def create_holders(self,bn, p):
         """
         Create 3 nodes, fatXi, matXi and Xi and link fatXi and matXi to Xi
@@ -767,3 +868,28 @@ class Pedigree:
         gnb.showBN(bn, size=100)
 
         return bn
+
+    def load_evidence(self,file, famID):
+        tab = dict()
+        with open(file, 'r') as f:
+            for (line, i) in enumerate(f.readlines()):
+                ev = i.split()
+                idfam = ev[0].split(':')[0]
+                if ev[0] == famID:
+                    del ev[0], ev[1]
+                    ev = [float(i) for i in ev]
+                    tab[f'X{line + 1}'] = ev
+        return tab
+
+    def load_evidence_out(self, file, famID):
+        tab = dict()
+        with open(file, 'r') as f:
+            for (line, i) in enumerate(f.readlines()):
+                ev = i.split()
+                f_id = ev[0].split(':')[0]
+                if f_id == f'X_{famID}':
+                    key = ev[0].split(':')[1]
+                    del ev[0], ev[1]
+                    ev = [float(i) for i in ev]
+                    tab[f'X{key}'] = ev
+        return tab
