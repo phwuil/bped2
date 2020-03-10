@@ -681,7 +681,7 @@ class Pedigree:
             if len(mariage) > 0:
                 p1 = random.sample(mariage, 1)[0]
                 sex = random.random()
-                child = random.randint(0, nbChildMax)
+                child = random.randint(1, nbChildMax)
                 p2 = str(currentID)
                 self.add_people(famID, p2, self.no_people, self.no_people)
                 mariage.add(p2)
@@ -747,6 +747,7 @@ class Pedigree:
 
         def mariage_2p_exist(currentID,mariage):
             if len(mariage) > 1:
+                print('je passe le 1er if ')
                 p1, p2 = random.sample(mariage, 2)
                 bool = self.is_consanguineous(p1, p2, consanguinity)
                 if bool:
@@ -754,9 +755,13 @@ class Pedigree:
                         child = random.randint(1, nbChildMax)
                         # Ajout des enfants
                         for c in range(child):
-                            self.add_people(famID, str(currentID), p1, p2)
-                            self.update_children(str(currentID))
-                            currentID += 1
+                            if currentID <= N:
+                                self.add_people(famID, str(currentID), p1, p2)
+                                self.update_children(str(currentID))
+                                currentID += 1
+                                print(currentID,'cas consaingain')
+                            else:
+                                return currentID
                         self.add_sex(p1, 1)
                         self.add_sex(p2, 2)
                         mariage.remove(p1)
@@ -767,53 +772,85 @@ class Pedigree:
                     child = random.randint(1, nbChildMax)
                     # Ajout des enfants
                     for c in range(child):
-                        self.add_people(famID, str(currentID), p1, p2)
-                        self.update_children(str(currentID))
-                        currentID += 1
+                        if currentID <= N:
+                            self.add_people(famID, str(currentID), p1, p2)
+                            self.update_children(str(currentID))
+                            currentID += 1
+                            print(currentID, 'cas 2p normal')
+                        else:
+                            return currentID
                     self.add_sex(p1, 1)
                     self.add_sex(p2, 2)
                     mariage.remove(p1)
                     mariage.remove(p2)
+            else:
+                print('je passe pas',len(mariage),currentID)
+                return currentID
             return currentID
 
         def mariage_1p_exist(currentID,mariage):
             if len(mariage) > 0:
+                print('je passe le 1er if ')
                 p1 = random.sample(mariage, 1)[0]
                 sex = random.random()
-                child = random.randint(0, nbChildMax)
+                child = random.randint(1, nbChildMax)
                 p2 = str(currentID)
-                self.add_people(famID, p2, self.no_people, self.no_people)
-                mariage.add(p2)
-                currentID += 1
+                if currentID < N:
+                    self.add_people(famID, p2, self.no_people, self.no_people)
+                    mariage.add(p2)
+                    currentID += 1
+                else:
+                    return currentID
                 if sex < 0.5:  # On crée un homme
                     for i in range(child):
-                        self.add_people(famID, str(currentID), p2, p1)
-                        self.update_children(str(currentID))
-                        currentID += 1
+                        if currentID <= N:
+                            self.add_people(famID, str(currentID), p2, p1)
+                            self.update_children(str(currentID))
+                            currentID += 1
+                            print(currentID, 'cas 1p Male')
+                        else:
+                            return currentID
                     self.add_sex(p2, 1)
                     self.add_sex(p1, 2)
                     mariage.remove(p1)
                     mariage.remove(p2)
                 else:  # On crée une femme
                     for i in range(child):
-                        self.add_people(famID, str(currentID), p1, p2)
-                        self.update_children(str(currentID))
-                        currentID += 1
+                        if currentID <= N:
+                            self.add_people(famID, str(currentID), p1, p2)
+                            self.update_children(str(currentID))
+                            currentID += 1
+                            print(currentID, 'cas 1p Female')
+                        else:
+                            return currentID
                     self.add_sex(str(p1), 1)
                     self.add_sex(str(p2), 2)
                     mariage.remove(p1)
                     mariage.remove(p2)
+            else:
+                print('je passe pas', len(mariage), currentID)
+                return currentID
             return currentID
+
+        if nbDepart > N:
+            raise ValueError(f"nbDepart > N ")
 
         currentID = first_generation(currentID)
         for n in range(1,nbGeneration):
+            print('generation',n)
             mariage = {i for i in self.leaves()}
-            while random.random() < pMariage and currentID < N:
+            if n == nbGeneration-1:
+                pMariage = 0.99
+            while random.random() < pMariage and currentID <= N :
+                print(currentID)
                 if random.random() < 0.5:
+                    print(currentID,'avant 2p')
                     currentID = mariage_2p_exist(currentID,mariage)
+                    print(currentID,'apres 2p')
                 else:
+                    print(currentID,'avant 1p')
                     currentID = mariage_1p_exist(currentID,mariage)
-
+                    print(currentID, 'apres 1p')
 
 ### ---------------------------------------------------------------------------
     def create_holders(self,bn, p):
