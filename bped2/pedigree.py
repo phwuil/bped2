@@ -290,7 +290,7 @@ class Pedigree:
 
     def leaves(self):
         """
-        People without childrens are leave
+        People without childrens are leaves
         """
         for k, v in self._pedigree.items():
             if v.nbrChild() == 0:  # Si l'individu n'a pas d'enfants -> Feuille
@@ -715,142 +715,234 @@ class Pedigree:
                 else:
                     currentID = mariage_1p_exist(currentID,mariage)
 
-    def new_gen_ped(self,famID, N, nbDepart, nbGeneration , nbChildMax = 4, consanguinity = 4):
+    def new_gen_ped(self,famID, nbP, nbDepart, nbG , nbChildMax = 4, consanguinity = 4):
         """
         Return a new pedigree, start with a number nbDepart of people and create nbGeneration
         """
         pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
-        pConsanguinity = 0.1  # Probabilité d'effectuer un mariage entre people d'une même lignée
-        global currentID
+        pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
         currentID = 1
+        for p in range(nbDepart):
+            self.add_people(famID, str(currentID), self.no_people, self.no_people)
+            currentID += 1
 
-        def first_generation(currentID):
-            for p in range(nbDepart):
-                self.add_people(famID, str(currentID), self.no_people, self.no_people)
+        mariage = {i for i in self.leaves()}
+
+        while len(mariage) > 1:
+            p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
+            mariage.remove(p1)
+            mariage.remove(p2)
+            child = random.randint(1, nbChildMax)
+            # Ajout des enfants
+            for c in range(child):
+                if currentID > nbP:
+                    return
+                self.add_people(famID, str(currentID), p1, p2)
+                self.update_children(str(currentID))
                 currentID += 1
+            self.add_sex(p1, 1)
+            self.add_sex(p2, 2)
+            if currentID > nbP:
+                return
 
+    ## Fin 1ere generation
+
+        for i in range(2,nbG):
             mariage = {i for i in self.leaves()}
+            alea = random.random()
+            if alea < 0.5:
+                if len(mariage) > 1:
+                    p1, p2 = random.sample(mariage, 2)
+                    bool = self.is_consanguineous(p1, p2, consanguinity)
+                    if bool:
+                        if random.random() < pConsanguinity:
+                            child = random.randint(1, nbChildMax)
+                            # Ajout des enfants
+                            for c in range(child):
+                                if currentID > nbP :
+                                    return
+                                else:
+                                    self.add_people(famID, str(currentID), p1, p2)
+                                    self.update_children(str(currentID))
+                                    currentID += 1
 
-            while len(mariage) > 1:
-                p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
-                mariage.remove(p1)
-                mariage.remove(p2)
-                child = random.randint(1, nbChildMax)
-                # Ajout des enfants
-                for c in range(child):
-                    self.add_people(famID, str(currentID), p1, p2)
-                    self.update_children(str(currentID))
-                    currentID += 1
-                self.add_sex(p1, 1)
-                self.add_sex(p2, 2)
-            return currentID
-
-        def mariage_2p_exist(currentID,mariage):
-            if len(mariage) > 1:
-                print('je passe le 1er if ')
-                p1, p2 = random.sample(mariage, 2)
-                bool = self.is_consanguineous(p1, p2, consanguinity)
-                if bool:
-                    if random.random() < pConsanguinity:
+                            self.add_sex(p1, 1)
+                            self.add_sex(p2, 2)
+                            if currentID > nbP:
+                                return
+                            mariage.remove(p1)
+                            mariage.remove(p2)
+                        else:
+                            pass
+                    else:  # Mariage normal entre deux personnes déja présente dans le pedigree
                         child = random.randint(1, nbChildMax)
                         # Ajout des enfants
                         for c in range(child):
-                            if currentID <= N:
+                            if currentID > nbP:
+                                return
+                            else:
                                 self.add_people(famID, str(currentID), p1, p2)
                                 self.update_children(str(currentID))
                                 currentID += 1
-                                print(currentID,'cas consaingain')
-                            else:
-                                return currentID
+
                         self.add_sex(p1, 1)
                         self.add_sex(p2, 2)
+                        if currentID > nbP:
+                            return
                         mariage.remove(p1)
                         mariage.remove(p2)
-                    else:
-                        pass
-                else:  # Mariage normal entre deux personnes déja présente dans le pedigree
+
+            else:
+                if len(mariage) > 0:
+                    p1 = random.sample(mariage, 1)[0]
+                    sex = random.random()
                     child = random.randint(1, nbChildMax)
-                    # Ajout des enfants
-                    for c in range(child):
-                        if currentID <= N:
-                            self.add_people(famID, str(currentID), p1, p2)
-                            self.update_children(str(currentID))
-                            currentID += 1
-                            print(currentID, 'cas 2p normal')
-                        else:
-                            return currentID
-                    self.add_sex(p1, 1)
-                    self.add_sex(p2, 2)
-                    mariage.remove(p1)
-                    mariage.remove(p2)
+                    p2 = str(currentID)
+                    if currentID > nbP:
+                        return
+                    else:
+                        self.add_people(famID, p2, self.no_people, self.no_people)
+                        mariage.add(p2)
+                        currentID += 1
+                        if currentID > nbP:
+                            return
+                        if sex < 0.5:  # On crée un homme
+                            for c in range(child):
+                                if currentID > nbP :
+                                    return
+                                else:
+                                    self.add_people(famID, str(currentID), p2, p1)
+                                    self.update_children(str(currentID))
+                                    currentID += 1
+
+                            self.add_sex(p2, 1)
+                            self.add_sex(p1, 2)
+                            if currentID > nbP:
+                                return
+                            mariage.remove(p1)
+                            mariage.remove(p2)
+                        else:  # On crée une femme
+                            for c in range(child):
+                                if currentID > nbP :
+                                    return
+                                else:
+                                    self.add_people(famID, str(currentID), p1, p2)
+                                    self.update_children(str(currentID))
+                                    currentID += 1
+
+                            self.add_sex(str(p1), 1)
+                            self.add_sex(str(p2), 2)
+                            if currentID > nbP:
+                                return
+                            mariage.remove(p1)
+                            mariage.remove(p2)
+
+    def gen_ped_V30(self,famID, nbP, nbDepart, nbG , nbChildMax = 4, consanguinity = 4):
+        """
+        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
+        """
+        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
+        pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
+        currentID = 1
+        for p in range(nbDepart):
+            self.add_people(famID, str(currentID), self.no_people, self.no_people)
+            currentID += 1
+
+        for n in range(1,nbG):
+            leaves = {i for i in self.leaves()}
+            print('leaves',leaves)
+            index = len(leaves)//2
+            tmp = list(leaves)
+            father = set(tmp[:index])
+            mother = set(tmp[index:])
+            # print('father',father)
+            # print('mother',mother)
+            if n == nbG-1 :
+                nb_people_gen = nbP - currentID + 1
+                print(nb_people_gen,nbP, currentID,'nijokpl')
             else:
-                print('je passe pas',len(mariage),currentID)
-                return currentID
-            return currentID
+                nb_people_gen = random.randint(index,nbChildMax*index)
+            print('nb_people_gen', nb_people_gen)
+            # i = 1
+            # while i <= nb_people_gen:
 
-        def mariage_1p_exist(currentID,mariage):
-            if len(mariage) > 0:
-                print('je passe le 1er if ')
-                p1 = random.sample(mariage, 1)[0]
-                sex = random.random()
-                child = random.randint(1, nbChildMax)
-                p2 = str(currentID)
-                if currentID < N:
-                    self.add_people(famID, p2, self.no_people, self.no_people)
-                    mariage.add(p2)
-                    currentID += 1
-                else:
-                    return currentID
-                if sex < 0.5:  # On crée un homme
-                    for i in range(child):
-                        if currentID <= N:
-                            self.add_people(famID, str(currentID), p2, p1)
-                            self.update_children(str(currentID))
-                            currentID += 1
-                            print(currentID, 'cas 1p Male')
+            for i in range (nb_people_gen):
+                print(self._pedigree)
+                choice = random.random()
+                if choice < 0.9: #On crée 1 personnes
+                    if currentID <= nbP:
+                        p1 = random.sample(father, 1)[0]
+                        p2 = random.sample(mother, 1)[0]
+                        bool = self.is_consanguineous(p1, p2, consanguinity)
+                        if bool:
+                            if random.random() < pConsanguinity:
+                                if len(self.get_people(p1).child) < nbChildMax and len(self.get_people(p2).child) < nbChildMax :
+                                    self.add_people(famID, str(currentID), p1, p2)
+                                    currentID += 1
+                                    i+=1
+                                    print('parents dans cas 1p',p1,p2)
+                                    if self.get_people(p1).sex == self.sex_undefined:
+                                        self.add_sex(str(p1), 1)
+                                    if self.get_people(p2).sex == self.sex_undefined:
+                                        self.add_sex(str(p2), 2)
+
                         else:
-                            return currentID
-                    self.add_sex(p2, 1)
-                    self.add_sex(p1, 2)
-                    mariage.remove(p1)
-                    mariage.remove(p2)
-                else:  # On crée une femme
-                    for i in range(child):
-                        if currentID <= N:
-                            self.add_people(famID, str(currentID), p1, p2)
-                            self.update_children(str(currentID))
-                            currentID += 1
-                            print(currentID, 'cas 1p Female')
+                            if len(self.get_people(p1).child) < nbChildMax and len(
+                                    self.get_people(p2).child) < nbChildMax:
+                                self.add_people(famID, str(currentID), p1, p2)
+                                currentID += 1
+                                i+=1
+                                print('parents dans cas 1p', p1, p2)
+                                if self.get_people(p1).sex == self.sex_undefined:
+                                    self.add_sex(str(p1), 1)
+                                if self.get_people(p2).sex == self.sex_undefined:
+                                    self.add_sex(str(p2), 2)
+
+                    else:
+                        return
+                else: # On crée 2 personnes
+                    if currentID <= nbP: # Strict car ajout de 2 personnes
+                        sexe = random.random()
+                        if sexe < 0.5: # On crée une femme
+                            #TEST
+                            p2 = str(currentID)
+                            self.add_people(famID, p2, self.no_people, self.no_people)
+                            mother.add(p2)
+                            currentID+=1
                         else:
-                            return currentID
-                    self.add_sex(str(p1), 1)
-                    self.add_sex(str(p2), 2)
-                    mariage.remove(p1)
-                    mariage.remove(p2)
-            else:
-                print('je passe pas', len(mariage), currentID)
-                return currentID
-            return currentID
-
-        if nbDepart > N:
-            raise ValueError(f"nbDepart > N ")
-
-        currentID = first_generation(currentID)
-        for n in range(1,nbGeneration):
-            print('generation',n)
-            mariage = {i for i in self.leaves()}
-            if n == nbGeneration-1:
-                pMariage = 0.99
-            while random.random() < pMariage and currentID <= N :
-                print(currentID)
-                if random.random() < 0.5:
-                    print(currentID,'avant 2p')
-                    currentID = mariage_2p_exist(currentID,mariage)
-                    print(currentID,'apres 2p')
-                else:
-                    print(currentID,'avant 1p')
-                    currentID = mariage_1p_exist(currentID,mariage)
-                    print(currentID, 'apres 1p')
+                            p2 = str(currentID)
+                            self.add_people(famID, p2, self.no_people, self.no_people)
+                            father.add(p2)
+                            currentID+=1
+                        #     p1 = random.sample(father, 1)[0]
+                        #     p2 = str(currentID)
+                        #     self.add_people(famID, p2, self.no_people, self.no_people)
+                        #     mother.add(p2)
+                        #     currentID += 1
+                        #     if len(self.get_people(p1).child) < nbChildMax and len(self.get_people(p2).child) < nbChildMax:
+                        #         self.add_people(famID, str(currentID), p1, p2)
+                        #         currentID+=1
+                        #         print('parents dans cas 2p 1', p1, p2)
+                        #         if self.get_people(p1).sex == self.sex_undefined:
+                        #             self.add_sex(str(p1), 1)
+                        #         if self.get_people(p2).sex == self.sex_undefined:
+                        #             self.add_sex(str(p2), 2)
+                        # else: # On crée un homme
+                        #     p1 = p1 = random.sample(mother, 1)[0]
+                        #     p2 = str(currentID)
+                        #     self.add_people(famID, p2, self.no_people, self.no_people)
+                        #     mother.add(p2)
+                        #     currentID += 1
+                        #     if len(self.get_people(p1).child) < nbChildMax and len(self.get_people(p2).child) < nbChildMax:
+                        #         self.add_people(famID, str(currentID), p2, p1)
+                        #         currentID+=1
+                        #         print('parents dans cas 2p 2', p1, p2)
+                        #         if self.get_people(p1).sex == self.sex_undefined:
+                        #             self.add_sex(str(p1), 2)
+                        #         if self.get_people(p2).sex == self.sex_undefined:
+                        #             self.add_sex(str(p2), 1)
+                    else:
+                        return
 
 ### ---------------------------------------------------------------------------
     def create_holders(self,bn, p):

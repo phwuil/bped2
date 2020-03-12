@@ -205,7 +205,7 @@ class TestPedigree(unittest.TestCase):
     def test_new_gen(self):
         for i in range(1, 11):
             ped = Pedigree()
-            ped.new_gen_ped(i,10,4,10//4)
+            ped.gen_ped_V30(i,15,4,3)
             print(ped)
             ped.save(f'../cplex/pedigree_10_2_4_4_{i}')
             ped.graph(f'pedigree_10_2_4_4_{i}', False)
