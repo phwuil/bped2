@@ -837,112 +837,139 @@ class Pedigree:
                             mariage.remove(p1)
                             mariage.remove(p2)
 
-    def gen_ped_V30(self,famID, nbP, nbDepart, nbG , nbChildMax = 4, consanguinity = 4):
+    def gen_ped(self, famID, nb, g_max, c_max, cl):
         """
-        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
-        """
-        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
-        pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
-        currentID = 1
-        for p in range(nbDepart):
-            self.add_people(famID, str(currentID), self.no_people, self.no_people)
-            currentID += 1
 
-        for n in range(1,nbG):
-            leaves = {i for i in self.leaves()}
-            print('leaves',leaves)
-            index = len(leaves)//2
-            tmp = list(leaves)
-            father = set(tmp[:index])
-            mother = set(tmp[index:])
-            # print('father',father)
-            # print('mother',mother)
-            if n == nbG-1 :
-                nb_people_gen = nbP - currentID + 1
-                print(nb_people_gen,nbP, currentID,'nijokpl')
+        """
+        gamma = 0.6
+        mea = []
+        profondeur = dict()
+        families = dict()
+
+        for i in range(1,nb+1):
+            profondeur[str(i)] = -1
+            families[str(i)] = dict() #Structure pas encore determiner
+
+        self.add_people(famID, '1', self.no_people, self.no_people)
+        profondeur['1'] = 0
+
+        for p in range(2,nb+1):
+            new_p = str(p)
+            if len(mea) > 0:
+                if self.get_people(mea[0]).sex == self.sex_male:
+                    #Ajout de la mere
+                    self.add_people(famID, new_p, self.no_people, self.no_people)
+                    profondeur[new_p] = profondeur[mea[0]]
+                    families[mea[0]][new_p].append(mea[1])
+                    families[new_p][mea[0]].append(mea[1])
+                    self.add_sex(new_p,2)
+                    self.get_people(new_p).add_children(mea[1])
+                    self.update_children(mea[1])
+                    mea.clear()
+                else:
+                    #Ajout du pere
+                    self.add_people(famID, new_p, self.no_people, self.no_people)
+                    profondeur[new_p] = profondeur[mea[0]]
+                    families[mea[0]][new_p].append(mea[1])
+                    families[new_p][mea[0]].append(mea[1])
+                    self.add_sex(new_p, 1)
+                    self.get_people(new_p).add_children(mea[1])
+                    self.update_children(mea[1])
+                    mea.clear()
+
+            child_pot = [i for i in self.roots() if profondeur[i] > 0 ]
+            parents_pot = []
+            for k,v in self._pedigree.items():
+                if v.nbrChild() < c_max and profondeur[k] < g_max and profondeur[k] > -1:
+                    parents_pot.append(k)
+            #parents_pot = [k for k,v in self._pedigree.items() if v.nbrChild < c_max and profondeur[k] < g_max and profondeur[k]>-1]
+            k1 = len(child_pot)
+            k2 = len(parents_pot)
+            choice = random.random()
+            parent = random.sample(parents_pot, 1)[0]
+            if choice < k1/(k1+k2):
+                #Nouvel enfant
+
+                if families[parent] == {}:
+                    if random.random() < 0.5:
+                        self.add_people(famID, new_p, parent, self.no_people)
+                        profondeur[new_p] = profondeur[parent] + 1
+                        self.get_people(parent).add_children(p)
+                        self.update_children(new_p)
+                        self.add_sex(parent,1)
+                        mea.append(parent, new_p)
+                    else:
+                        self.add_people(famID, new_p, self.no_people, parent)
+                        profondeur[new_p] = profondeur[parent] + 1
+                        self.get_people(parent).add_children(new_p)
+                        self.update_children(p)
+                        self.add_sex(parent, 2)
+                        mea.append(parent, new_p)
+
+                else:
+                    tmp = []
+                    keys = []
+                    for k,v in families[parent].items():
+                        tmp.append(gamma*len(v))
+                        keys.append(k)
+                    index = tmp.index(min(tmp))
+                    families[parent][keys[index]].append(new_p)
+                    families[keys[index]][parent].append(new_p)
+                    self.add_people(famID, new_p, parent, keys[index])
+                    profondeur[new_p] = profondeur[parent] + 1
+                    self.get_people(parent).add_children(new_p)
+                    self.get_people(keys[index]).add_children(new_p)
+                    self.update_children(new_p)
+
+
             else:
-                nb_people_gen = random.randint(index,nbChildMax*index)
-            print('nb_people_gen', nb_people_gen)
-            # i = 1
-            # while i <= nb_people_gen:
-
-            for i in range (nb_people_gen):
-                print(self._pedigree)
-                choice = random.random()
-                if choice < 0.9: #On crée 1 personnes
-                    if currentID <= nbP:
-                        p1 = random.sample(father, 1)[0]
-                        p2 = random.sample(mother, 1)[0]
-                        bool = self.is_consanguineous(p1, p2, consanguinity)
-                        if bool:
-                            if random.random() < pConsanguinity:
-                                if len(self.get_people(p1).child) < nbChildMax and len(self.get_people(p2).child) < nbChildMax :
-                                    self.add_people(famID, str(currentID), p1, p2)
-                                    currentID += 1
-                                    i+=1
-                                    print('parents dans cas 1p',p1,p2)
-                                    if self.get_people(p1).sex == self.sex_undefined:
-                                        self.add_sex(str(p1), 1)
-                                    if self.get_people(p2).sex == self.sex_undefined:
-                                        self.add_sex(str(p2), 2)
-
-                        else:
-                            if len(self.get_people(p1).child) < nbChildMax and len(
-                                    self.get_people(p2).child) < nbChildMax:
-                                self.add_people(famID, str(currentID), p1, p2)
-                                currentID += 1
-                                i+=1
-                                print('parents dans cas 1p', p1, p2)
-                                if self.get_people(p1).sex == self.sex_undefined:
-                                    self.add_sex(str(p1), 1)
-                                if self.get_people(p2).sex == self.sex_undefined:
-                                    self.add_sex(str(p2), 2)
-
+                #Nouveau Parent
+                child = random.sample(child_pot,1)[0]
+                conjoint = [k for k in self._pedigree.keys() if profondeur[k] == profondeur[new_p] -1 ]
+                alea = random.randint(0,len(conjoint))
+                if alea == 0:
+                    if random.random() < 0.5:
+                        self.add_people(famID, new_p, self.no_people, self.no_people)
+                        profondeur[new_p] = profondeur[child] - 1
+                        self.get_people(new_p).add_children(child)
+                        self.update_children(new_p)
+                        self.add_sex(new_p,1)
+                        mea.append(new_p, child)
                     else:
-                        return
-                else: # On crée 2 personnes
-                    if currentID <= nbP: # Strict car ajout de 2 personnes
-                        sexe = random.random()
-                        if sexe < 0.5: # On crée une femme
-                            #TEST
-                            p2 = str(currentID)
-                            self.add_people(famID, p2, self.no_people, self.no_people)
-                            mother.add(p2)
-                            currentID+=1
-                        else:
-                            p2 = str(currentID)
-                            self.add_people(famID, p2, self.no_people, self.no_people)
-                            father.add(p2)
-                            currentID+=1
-                        #     p1 = random.sample(father, 1)[0]
-                        #     p2 = str(currentID)
-                        #     self.add_people(famID, p2, self.no_people, self.no_people)
-                        #     mother.add(p2)
-                        #     currentID += 1
-                        #     if len(self.get_people(p1).child) < nbChildMax and len(self.get_people(p2).child) < nbChildMax:
-                        #         self.add_people(famID, str(currentID), p1, p2)
-                        #         currentID+=1
-                        #         print('parents dans cas 2p 1', p1, p2)
-                        #         if self.get_people(p1).sex == self.sex_undefined:
-                        #             self.add_sex(str(p1), 1)
-                        #         if self.get_people(p2).sex == self.sex_undefined:
-                        #             self.add_sex(str(p2), 2)
-                        # else: # On crée un homme
-                        #     p1 = p1 = random.sample(mother, 1)[0]
-                        #     p2 = str(currentID)
-                        #     self.add_people(famID, p2, self.no_people, self.no_people)
-                        #     mother.add(p2)
-                        #     currentID += 1
-                        #     if len(self.get_people(p1).child) < nbChildMax and len(self.get_people(p2).child) < nbChildMax:
-                        #         self.add_people(famID, str(currentID), p2, p1)
-                        #         currentID+=1
-                        #         print('parents dans cas 2p 2', p1, p2)
-                        #         if self.get_people(p1).sex == self.sex_undefined:
-                        #             self.add_sex(str(p1), 2)
-                        #         if self.get_people(p2).sex == self.sex_undefined:
-                        #             self.add_sex(str(p2), 1)
+                        self.add_people(famID, new_p, self.no_people, self.no_people)
+                        profondeur[new_p] = profondeur[child] - 1
+                        self.get_people(new_p).add_children(child)
+                        self.update_children(child)
+                        self.add_sex(new_p, 2)
+                        mea.append(new_p, child)
+                else:
+                    other_p = random.sample(conjoint,1)[0]
+                    if self.get_people(other_p).sex == self.no_people:
+                        self.add_people(famID, new_p, self.no_people, self.no_people)
+                        profondeur[new_p] = profondeur[child] - 1
+                        self.get_people(new_p).add_children(child)
+                        self.get_people(other_p).add_children(child)
+                        self.add_sex(new_p,1)
+                        self.add_sex(other_p,2)
+                        families[new_p][other_p].append(child)
+                        families[other_p][new_p].append(child)
+
+                    elif self.get_people(other_p).sex == self.sex_male:
+                        self.add_people(famID, new_p, self.no_people, self.no_people)
+                        profondeur[new_p] = profondeur[child] - 1
+                        self.get_people(new_p).add_children(child)
+                        self.get_people(other_p).add_children(child)
+                        self.add_sex(new_p,2)
+                        families[new_p][other_p].append(child)
+                        families[other_p][new_p].append(child)
                     else:
-                        return
+                        self.add_people(famID, new_p, self.no_people, self.no_people)
+                        profondeur[new_p] = profondeur[child] - 1
+                        self.get_people(new_p).add_children(child)
+                        self.get_people(other_p).add_children(child)
+                        self.add_sex(new_p, 1)
+                        families[new_p][other_p].append(child)
+                        families[other_p][new_p].append(child)
 
 ### ---------------------------------------------------------------------------
     def create_holders(self,bn, p):

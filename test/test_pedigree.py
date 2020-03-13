@@ -203,9 +203,6 @@ class TestPedigree(unittest.TestCase):
         ped.graph('generate_graph', False)
 
     def test_new_gen(self):
-        for i in range(1, 11):
-            ped = Pedigree()
-            ped.gen_ped_V30(i,15,4,3)
-            print(ped)
-            ped.save(f'../cplex/pedigree_10_2_4_4_{i}')
-            ped.graph(f'pedigree_10_2_4_4_{i}', False)
+        ped = Pedigree()
+        ped.gen_ped('test',10,3,4,4)
+        print(ped)
