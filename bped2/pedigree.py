@@ -841,6 +841,37 @@ class Pedigree:
         """
 
         """
+
+        def waiting_wedding(famID, mea, people, sex):
+            self.add_people(famID, people, self.no_people, self.no_people)
+            profondeur[people] = profondeur[mea[0]]
+            if self.get_people(people).sex == self.sex_male:
+                if families[(people,mea[0])] is None:
+                    families[(people, mea[0])] = []
+                    families[(people, mea[0])].append(mea[1])
+                else:
+                    families[(people, mea[0])].append(mea[1])
+            else:
+                if families[(mea[0],people)] is None:
+                    families[(mea[0],people)] = []
+                    families[(mea[0],people)].append(mea[1])
+                else:
+                    families[(mea[0],people)].append(mea[1])
+
+            self.add_sex(people, sex)
+            self.get_people(people).add_children(mea[1])
+            self.update_children(mea[1])
+            mea.clear()
+
+        def create_wedding(famID, people1, people2, child, sex):
+            self.add_people(famID, people1, self.no_people, self.no_people)
+            profondeur[people1] = profondeur[child] - 1
+            self.get_people(people1).add_children(child)
+            self.get_people(people2).add_children(child)
+            self.add_sex(people1, 1)
+            families[people1][people2].append(child)
+            families[people2][people1].append(child)
+
         gamma = 0.6
         mea = []
         profondeur = dict()
@@ -848,7 +879,7 @@ class Pedigree:
 
         for i in range(1,nb+1):
             profondeur[str(i)] = -1
-            families[str(i)] = dict() #Structure pas encore determiner
+            #families[str(i)] = dict() #Structure pas encore determiner
 
         self.add_people(famID, '1', self.no_people, self.no_people)
         profondeur['1'] = 0
@@ -858,24 +889,28 @@ class Pedigree:
             if len(mea) > 0:
                 if self.get_people(mea[0]).sex == self.sex_male:
                     #Ajout de la mere
-                    self.add_people(famID, new_p, self.no_people, self.no_people)
-                    profondeur[new_p] = profondeur[mea[0]]
-                    families[mea[0]][new_p].append(mea[1])
-                    families[new_p][mea[0]].append(mea[1])
-                    self.add_sex(new_p,2)
-                    self.get_people(new_p).add_children(mea[1])
-                    self.update_children(mea[1])
-                    mea.clear()
+                    waiting_wedding(famID, mea, new_p, 2)
+                    # self.add_people(famID, new_p, self.no_people, self.no_people)
+                    # print(self._pedigree)
+                    # print('newp',type(new_p),mea)
+                    # profondeur[new_p] = profondeur[mea[0]]
+                    # families[mea[0]][new_p].append(mea[1])
+                    # families[new_p][mea[0]].append(mea[1])
+                    # self.add_sex(new_p,2)
+                    # self.get_people(new_p).add_children(mea[1])
+                    # self.update_children(mea[1])
+                    # mea.clear()
                 else:
                     #Ajout du pere
-                    self.add_people(famID, new_p, self.no_people, self.no_people)
-                    profondeur[new_p] = profondeur[mea[0]]
-                    families[mea[0]][new_p].append(mea[1])
-                    families[new_p][mea[0]].append(mea[1])
-                    self.add_sex(new_p, 1)
-                    self.get_people(new_p).add_children(mea[1])
-                    self.update_children(mea[1])
-                    mea.clear()
+                    waiting_wedding(famID, mea, new_p, 1)
+                    # self.add_people(famID, new_p, self.no_people, self.no_people)
+                    # profondeur[new_p] = profondeur[mea[0]]
+                    # families[mea[0]][new_p].append(mea[1])
+                    # families[new_p][mea[0]].append(mea[1])
+                    # self.add_sex(new_p, 1)
+                    # self.get_people(new_p).add_children(mea[1])
+                    # self.update_children(mea[1])
+                    # mea.clear()
 
             child_pot = [i for i in self.roots() if profondeur[i] > 0 ]
             parents_pot = []
@@ -887,24 +922,25 @@ class Pedigree:
             k2 = len(parents_pot)
             choice = random.random()
             parent = random.sample(parents_pot, 1)[0]
-            if choice < k1/(k1+k2):
+            if choice > k1/(k1+k2):
                 #Nouvel enfant
+
 
                 if families[parent] == {}:
                     if random.random() < 0.5:
                         self.add_people(famID, new_p, parent, self.no_people)
                         profondeur[new_p] = profondeur[parent] + 1
-                        self.get_people(parent).add_children(p)
+                        self.get_people(parent).add_children(new_p)
                         self.update_children(new_p)
                         self.add_sex(parent,1)
-                        mea.append(parent, new_p)
+                        mea.extend([parent, new_p])
                     else:
                         self.add_people(famID, new_p, self.no_people, parent)
                         profondeur[new_p] = profondeur[parent] + 1
                         self.get_people(parent).add_children(new_p)
-                        self.update_children(p)
+                        self.update_children(new_p)
                         self.add_sex(parent, 2)
-                        mea.append(parent, new_p)
+                        mea.extend([parent, new_p])
 
                 else:
                     tmp = []
@@ -955,21 +991,25 @@ class Pedigree:
                         families[other_p][new_p].append(child)
 
                     elif self.get_people(other_p).sex == self.sex_male:
-                        self.add_people(famID, new_p, self.no_people, self.no_people)
-                        profondeur[new_p] = profondeur[child] - 1
-                        self.get_people(new_p).add_children(child)
-                        self.get_people(other_p).add_children(child)
-                        self.add_sex(new_p,2)
-                        families[new_p][other_p].append(child)
-                        families[other_p][new_p].append(child)
+                        create_wedding(famID, new_p, other_p, child, 2)
+                        # self.add_people(famID, new_p, self.no_people, self.no_people)
+                        # profondeur[new_p] = profondeur[child] - 1
+                        # self.get_people(new_p).add_children(child)
+                        # self.get_people(other_p).add_children(child)
+                        # self.add_sex(new_p,2)
+                        # families[new_p][other_p].append(child)
+                        # families[other_p][new_p].append(child)
                     else:
-                        self.add_people(famID, new_p, self.no_people, self.no_people)
-                        profondeur[new_p] = profondeur[child] - 1
-                        self.get_people(new_p).add_children(child)
-                        self.get_people(other_p).add_children(child)
-                        self.add_sex(new_p, 1)
-                        families[new_p][other_p].append(child)
-                        families[other_p][new_p].append(child)
+                        create_wedding(famID, new_p, other_p, child, 1)
+                        # self.add_people(famID, new_p, self.no_people, self.no_people)
+                        # profondeur[new_p] = profondeur[child] - 1
+                        # self.get_people(new_p).add_children(child)
+                        # self.get_people(other_p).add_children(child)
+                        # self.add_sex(new_p, 1)
+                        # families[new_p][other_p].append(child)
+                        # families[other_p][new_p].append(child)
+
+
 
 ### ---------------------------------------------------------------------------
     def create_holders(self,bn, p):
