@@ -595,13 +595,16 @@ class Pedigree:
         for k, v in self._pedigree.items():
 
             if v.pID in roots:
-                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][0], style="filled", color=col_rac_fill[v.sex]))
+                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][0], margin="0", width="0", height="0",
+                                          style="filled", color=col_rac_fill[v.sex]))
 
             elif v.pID in leaves:
-                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][1], style="filled", color=col_rac_fill[v.sex]))
+                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][1], margin="0", width="0", height="0",
+                                          style="filled", color=col_rac_fill[v.sex]))
 
             else:
-                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][2], style="filled", color=col_rac_fill[v.sex]))
+                graph.add_node(pydot.Node(k, shape=shape_nodes[bool][2], margin="0", width="0", height="0",
+                                          style="filled", color=col_rac_fill[v.sex]))
 
         node = -1
         for f,m in self.get_couple():
@@ -978,6 +981,7 @@ class Pedigree:
                         self.add_sex(new_p, 2)
                         mea.extend([new_p, child])
                 else:
+
                     other_p = random.sample(conjoint,1)[0]
                     while child == other_p and self.is_consanguineous(new_p,other_p,cl) is True:
                         other_p = random.sample(conjoint, 1)[0]
