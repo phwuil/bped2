@@ -1000,8 +1000,6 @@ class Pedigree:
                         create_wedding(famID, new_p, other_p, child, 1)
 
 
-
-
 ### ---------------------------------------------------------------------------
     def create_holders(self,bn, p):
         """
