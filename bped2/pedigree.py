@@ -842,14 +842,15 @@ class Pedigree:
 
     def gen_ped(self, famID, nb, g_max, c_max, cl):
         """
-
+        generate a pedigree with nb people
         """
 
         def waiting_wedding(famID, mea, people, sex):
+            #MEA[0] et people -> parents / MEA[1] -> enfant
             self.add_people(famID, people, self.no_people, self.no_people)
             profondeur[people] = profondeur[mea[0]]
-            if self.get_people(people).sex == self.sex_male:
-                if families.get((people,mea[0])) == None:
+            if sex == self.sex_male:
+                if families.get((people, mea[0])) == None:
                     families[(people, mea[0])] = []
                     families[(people, mea[0])].append(mea[1])
                     self.get_people(mea[1])._set(famID, people, mea[0])
@@ -857,7 +858,7 @@ class Pedigree:
                     families[(people, mea[   0])].append(mea[1])
                     self.get_people(mea[1])._set(famID, people, mea[0])
             else:
-                if families.get((mea[0],people)) == None:
+                if families.get((mea[0], people)) == None:
                     families[(mea[0],people)] = []
                     families[(mea[0],people)].append(mea[1])
                     self.get_people(mea[1])._set(famID, mea[0], people)
@@ -867,7 +868,6 @@ class Pedigree:
 
             self.add_sex(people, sex)
             self.get_people(people).add_children(mea[1])
-            #self.update_parents(mea[1])
             mea.clear()
 
         def create_wedding(famID, people1, people2, child, sex):
@@ -876,7 +876,6 @@ class Pedigree:
             self.get_people(people1).add_children(child)
             self.get_people(people2).add_children(child)
             self.add_sex(people1, sex)
-            #self.update_parents(child)
             if sex == self.sex_male:
                 families[(people1,people2)].append(child)
                 self.get_people(child)._set(famID, people1, people2)
@@ -885,20 +884,21 @@ class Pedigree:
                 self.get_people(child)._set(famID, people2, people1)
 
         gamma = 0.6
-        mea = []
-        profondeur = dict()
-        families = dict()
+        mea = [] # Mariage En Attente
+        profondeur = dict() #Niveau de profondeur des noeuds
+        families = dict() # [(père,mère)] -> list(children)
 
         for i in range(1,nb+1):
-            profondeur[str(i)] = -1
-            #families[str(i)] = dict() #Structure pas encore determiner
+            profondeur[str(i)] = -1 #Profondeur pour tous initiale = -1
 
+        #Création du premier people
         self.add_people(famID, '1', self.no_people, self.no_people)
         profondeur['1'] = 0
 
         for p in range(2,nb+1):
             new_p = str(p)
-            if len(mea) > 0:
+
+            if len(mea) > 0:#Si nous avons un mariage en attendre
                 if self.get_people(mea[0]).sex == self.sex_male:
                     #Ajout de la mere
                     waiting_wedding(famID, mea, new_p, 2)
@@ -909,8 +909,8 @@ class Pedigree:
                     continue
 
 
-            child_pot = [i for i in self.roots() if profondeur[i] > 0 ]
-            parents_pot = []
+            child_pot = [i for i in self.roots() if profondeur[i] > 0 ] # Liste des enfants potentiels
+            parents_pot = [] # Liste des parents potentiels
             for k,v in self._pedigree.items():
                 if v.nbrChild() < c_max and profondeur[k] < g_max and profondeur[k] > -1:
                     parents_pot.append(k)
@@ -919,21 +919,20 @@ class Pedigree:
             k2 = len(parents_pot)
             choice = random.random()
             parent = random.sample(parents_pot, 1)[0]
+
             if choice > k1/(k1+k2):
                 #Nouvel enfant
-
                 sex = self.get_people(parent).sex
                 couple = []
-                for p1,p2 in families.keys():
+                for p1,p2 in families.keys(): #Recherche de tous les mariages où parent est présent
                     if p1 == parent or p2 == parent:
                         couple.append((p1,p2))
 
-                if couple == []:
-                    if random.random() < 0.5:
+                if couple == []: # parent n'est dans aucun mariage ie pas d'enfant
+                    if random.random() < 0.5: #Random pour le choix du sexe
                         self.add_people(famID, new_p, parent, self.no_people)
                         profondeur[new_p] = profondeur[parent] + 1
                         self.get_people(parent).add_children(new_p)
-                        #self.update_parents(new_p)
                         self.add_sex(parent,1)
                         mea.extend([parent, new_p])
 
@@ -945,7 +944,7 @@ class Pedigree:
                         self.add_sex(parent, 2)
                         mea.extend([parent, new_p])
 
-                else:
+                else: # On regarde où ajouté l'enfant parmis tous les mariages de parent
                     tmp = []
                     keys = []
                     for k,v in families.items():
@@ -961,27 +960,27 @@ class Pedigree:
 
 
             else:
-                #Nouveau Parent
+                #Nouveau Parent ie Crée une nouvelle famille
                 child = random.sample(child_pot,1)[0]
                 conjoint = [k for k in self._pedigree.keys() if profondeur[k] == profondeur[new_p] -1 ]
                 alea = random.randint(0,len(conjoint))
+
                 if alea == 0:
+                    #On crée un MEA
                     if random.random() < 0.5:
                         self.add_people(famID, new_p, self.no_people, self.no_people)
                         profondeur[new_p] = profondeur[child] - 1
                         self.get_people(new_p).add_children(child)
-                        #self.update_parents(child)
                         self.add_sex(new_p,1)
                         mea.extend([new_p, child])
                     else:
                         self.add_people(famID, new_p, self.no_people, self.no_people)
                         profondeur[new_p] = profondeur[child] - 1
                         self.get_people(new_p).add_children(child)
-                        #self.update_parents(child)
                         self.add_sex(new_p, 2)
                         mea.extend([new_p, child])
                 else:
-
+                    #On lui cherche un conjoint
                     other_p = random.sample(conjoint,1)[0]
                     while child == other_p and self.is_consanguineous(new_p,other_p,cl) is True:
                         other_p = random.sample(conjoint, 1)[0]
@@ -992,7 +991,6 @@ class Pedigree:
                         self.get_people(other_p).add_children(child)
                         self.add_sex(new_p,1)
                         self.add_sex(other_p,2)
-                        #self.update_parents(child)
                         self.get_people(child)._set(famID, new_p, other_p)
                         families[(new_p,other_p)].append(child)
 
@@ -1003,62 +1001,11 @@ class Pedigree:
                     else:
                         create_wedding(famID, new_p, other_p, child, 1)
 
+        self.update_children_all()
+        self.update_parents_all()
 
 ### ---------------------------------------------------------------------------
-    def create_holders(self,bn, p):
-        """
-        Create 3 nodes, fatXi, matXi and Xi and link fatXi and matXi to Xi
-        """
-        bn.add(gum.LabelizedVariable(f"matX{p.pID}", f"mother of {p.pID}", ["0", "1"]))
-        bn.add(gum.LabelizedVariable(f"fatX{p.pID}", f"father of {p.pID}", ["0", "1"]))
-        bn.add(gum.LabelizedVariable(f"X{p.pID}", f"{p.pID}", ["00", "01", "10", "11"]))
-        bn.addArc(f"fatX{p.pID}", f"X{p.pID}")
-        bn.addArc(f"matX{p.pID}", f"X{p.pID}")
-        bn.cpt(f"X{p.pID}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
-
-    def create_offsprings(self, bn, p, parent):
-        """
-        Create link between a parent and his children
-        """
-
-        # parent = fat ou mat
-        if parent == 'fat':
-            parentID = p.fatID
-        else:
-            parentID = p.matID
-
-        # Creating Selector
-        bn.add(gum.LabelizedVariable(f"S{parent}{p.pID}", f"Selector of {parent}ID", ["mat", "fat"]))
-        bn.cpt(f"S{parent}{p.pID}").fillWith([0.5, 0.5])
-
-        bn.addArc(f"fatX{parentID}", f"{parent}X{p.pID}") # fatXi to Child
-        bn.addArc(f"matX{parentID}", f"{parent}X{p.pID}") # matXi to Child
-        bn.addArc(f"S{parent}{p.pID}", f"{parent}X{p.pID}")  # Selector to fat/mat
-
-
-        bn.cpt(f"{parent}X{p.pID}").fillWith([1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1])
-
-    def ped_to_bn(self, f):
-        bn = gum.BayesNet()
-        for p in self.get_pedigree().values():
-            self.create_holders(bn, p)
-
-            if p.fatID == '0':  # Cas parents inconnu
-                bn.cpt(f"fatX{p.pID}").fillWith([1 - f, f])
-            else:
-                self.create_offsprings(bn, p, 'fat' )
-
-            if p.matID == '0':  # Cas parents inconnu
-                bn.cpt(f"matX{p.pID}").fillWith([1 - f, f])
-            else:
-                self.create_offsprings(bn, p, 'mat')
-
-        gnb.showPotential(bn.cpt("matX4"))
-        gnb.showBN(bn, size=100)
-
-        return bn
-
-    def load_evidence(self,file, famID):
+    def load_evidence(self, file, famID):
         tab = dict()
         with open(file, 'r') as f:
             for (line, i) in enumerate(f.readlines()):
@@ -1082,3 +1029,51 @@ class Pedigree:
                     ev = [float(i) for i in ev]
                     tab[f'X{key}'] = ev
         return tab
+
+    def create_holders(self, bn, p, f):
+
+        bn.add(gum.LabelizedVariable(f"matX{p.pID}", f"mother of {p.pID}", ["0", "1"]))
+        bn.add(gum.LabelizedVariable(f"fatX{p.pID}", f"father of {p.pID}", ["0", "1"]))
+        bn.add(gum.LabelizedVariable(f"X{p.pID}", f"{p.pID}", ["00", "01", "10", "11"]))
+        bn.addArc(f"fatX{p.pID}", f"X{p.pID}")
+        bn.addArc(f"matX{p.pID}", f"X{p.pID}")
+        bn.cpt(f"X{p.pID}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
+
+    def create_offsprings(self, bn, p, parent):
+        # parent = fat ou mat
+        if parent == 'fat':
+            parentID = p.fatID
+        else:
+            parentID = p.matID
+
+        # Creating Selector
+        bn.add(gum.LabelizedVariable(f"S{parent}{p.pID}", f"Selector of {parent}ID", ["fat", "mat"]))
+        bn.cpt(f"S{parent}{p.pID}").fillWith([0.5, 0.5])
+
+        bn.addArc(f"fatX{parentID}", f"{parent}X{p.pID}")
+        bn.addArc(f"matX{parentID}", f"{parent}X{p.pID}")
+        bn.addArc(f"S{parent}{p.pID}", f"{parent}X{p.pID}")  # Selector to fat/mat
+
+        bn.cpt(f"{parent}X{p.pID}").fillWith([1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1])
+
+    def ped_to_bn(self, f):
+        bn = gum.BayesNet()
+        for p in self.get_pedigree().values():
+            self.create_holders(bn, p, f)
+            gnb.showBN(bn)
+
+            if p.fatID == '0':  # Cas parents inconnu
+                bn.cpt(f"fatX{p.pID}").fillWith([1 - f, f])
+            else:
+                self.create_offsprings(bn, p, 'fat' )
+
+            if p.matID == '0':  # Cas parents inconnu
+                bn.cpt(f"matX{p.pID}").fillWith([1 - f, f])
+            else:
+                self.create_offsprings(bn, p, 'mat')
+
+        gnb.showBN(bn, size=100)
+
+        return bn
+
+
