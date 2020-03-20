@@ -163,7 +163,7 @@ class Pedigree:
         """
         Save the current Pedigree in a file : filename.ped
         """
-        with open(filename, "w") as f:
+        with open(f'{filename}.ped', "w") as f:
             for i in self._pedigree.values():
                 f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\n")
 
@@ -963,7 +963,12 @@ class Pedigree:
                 #Nouveau Parent ie Crée une nouvelle famille
                 child = random.sample(child_pot,1)[0]
                 conjoint = [k for k in self._pedigree.keys() if profondeur[k] == profondeur[new_p] -1 ]
-                alea = random.randint(0,len(conjoint))
+                if len(conjoint) == 0:
+                    conjoint_weight = [0]
+                else:
+                    conjoint_weight = [0]*len(conjoint) + [i for i in range(1,len(conjoint)+1)]
+                alea = random.choice(conjoint_weight)
+                #alea = random.randint(0,len(conjoint))
 
                 if alea == 0:
                     #On crée un MEA
