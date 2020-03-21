@@ -2,7 +2,7 @@ import unittest
 import os
 
 from bped2.pedigree import *
-
+import bped2.view as pview
 class TestPedigree(unittest.TestCase):
 
     def xxtest_pedigree(self):#OK
@@ -200,16 +200,16 @@ class TestPedigree(unittest.TestCase):
         ped = Pedigree()
         ped.generation_ped('3',4,10)
         print(ped)
-        ped.graph('generate_graph', False)
+        pview.graph(ped,'generate_graph', False)
 
     def test_new_gen(self):
-        ped = Pedigree()
-        ped.gen_ped('f',200,50,4,4)
-        ped.graph(f'generate_graph_test_200_1',False)
-        ped.save(f'../cplex/pedigree_test_200')
-        # for i in range(10):
-        #     ped = Pedigree()
-        #     ped.gen_ped(i, 10, 3, 4, 4)
-        #     print(ped)
-        #     ped.graph(f'generate_graph_10_3_4_4_G{i}',False)
-        #     ped.save(f'../cplex/pedigree_10_3_4_4_G{i}')
+        # ped = Pedigree()
+        # ped.gen_ped('f',200,50,4,4)
+        # ped.graph(f'generate_graph_test_200_1',False)
+        # ped.save(f'../cplex/samples/pedigree_test_200')
+        for i in range(10):
+            ped = Pedigree()
+            ped.gen_ped(i, 200, 30, 4, 4)
+            print(ped)
+            pview.graph(ped,f'../data/graph/"generate_graph_200_30_4_4_G{i}',False)
+            pview.save(ped,f'../cplex/samples/pedigree_200_30_4_4_G{i}')

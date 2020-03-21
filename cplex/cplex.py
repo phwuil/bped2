@@ -1,4 +1,5 @@
 from bped2.pedigree import *
+import bped2.view as pview
 from time import *
 import numpy as np
 import matplotlib.pyplot as plt
@@ -31,11 +32,10 @@ for p,g in zip(nb_people,nb_Gen_Max):
         t1 = process_time()
         ped.gen_ped(nb, p, g, nbChild, cl)
         t2 = process_time()
-        print(ped)
         t3 = process_time()
         ped.ped_to_bn(f)
         t4 = process_time()
-        ped.save(f'../cplex/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
+        pview.save(ped,f'../cplex/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
         t2 = t2 - t1
         t4 = t4 - t3
         tab_ped[nb] = t2
