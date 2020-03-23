@@ -746,10 +746,12 @@ class Pedigree:
 
             k1 = len(child_pot)
             k2 = len(parents_pot)
+            print(k1/(k1+k2))
             choice = random.random()
             parent = random.sample(parents_pot, 1)[0]
 
-            if choice > k1/(k1+k2):
+            ratio = (k1/(k1+k2))
+            if choice > ratio:
                 #Nouvel enfant
                 sex = self.get_people(parent).sex
                 couple = []

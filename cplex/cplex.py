@@ -35,7 +35,7 @@ for p,g in zip(nb_people,nb_Gen_Max):
         t3 = process_time()
         ped.ped_to_bn(f)
         t4 = process_time()
-        pview.save(ped,f'../cplex/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
+        pview.save(ped,f'../cplex/samples/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
         t2 = t2 - t1
         t4 = t4 - t3
         tab_ped[nb] = t2

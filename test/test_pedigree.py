@@ -211,5 +211,5 @@ class TestPedigree(unittest.TestCase):
             ped = Pedigree()
             ped.gen_ped(i, 200, 30, 4, 4)
             print(ped)
-            pview.graph(ped,f'../data/graph/"generate_graph_200_30_4_4_G{i}',False)
-            pview.save(ped,f'../cplex/samples/pedigree_200_30_4_4_G{i}')
+            pview.graph(ped,f'../data/graph/generate_graph_200_30_4_4_G{i}',False)
+            # pview.save(ped,f'../cplex/samples/pedigree_200_30_4_4_G{i}')
