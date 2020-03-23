@@ -125,7 +125,11 @@ def ped_to_bn(ped, f):
         else:
             create_offsprings(ped,bn, p, 'mat')
 
-    gnb.showBN(bn, size=100)
+    #gnb.showBN(bn, size=100)
 
     return bn
+
+def save_bn(bn,name):
+    bn.saveBIF(name+'.bif')
+
 
