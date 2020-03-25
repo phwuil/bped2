@@ -5,8 +5,8 @@ from time import *
 def doLazyProg(bn_name):
     bn = pview.gum.BayesNet()
     bn.loadBIF(bn_name)
-    ie = pview.gum.LazyPropagation(bn)
     try:
+        ie = pview.gum.LazyPropagation(bn)
         t1 = process_time()
         ie.makeInference()
         t2 = process_time()

@@ -2450,27 +2450,19 @@ variable Smat8 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat9 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat9 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat10 {
    type discrete[2] {fat, mat};
 }
 
 variable Smat10 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat11 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat11 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat12 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat12 {
    type discrete[2] {fat, mat};
 }
 
@@ -2522,11 +2514,11 @@ variable Smat18 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat19 {
+variable Sfat20 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat19 {
+variable Smat20 {
    type discrete[2] {fat, mat};
 }
 
@@ -2538,11 +2530,19 @@ variable Smat21 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat22 {
+variable Sfat24 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat22 {
+variable Smat24 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat25 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat25 {
    type discrete[2] {fat, mat};
 }
 
@@ -2570,19 +2570,19 @@ variable Smat28 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat29 {
+variable Sfat30 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat29 {
+variable Smat30 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat32 {
+variable Sfat31 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat32 {
+variable Smat31 {
    type discrete[2] {fat, mat};
 }
 
@@ -2610,22 +2610,6 @@ variable Smat35 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat36 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat36 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat37 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat37 {
-   type discrete[2] {fat, mat};
-}
-
 variable Sfat38 {
    type discrete[2] {fat, mat};
 }
@@ -2639,14 +2623,6 @@ variable Sfat39 {
 }
 
 variable Smat39 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat40 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat40 {
    type discrete[2] {fat, mat};
 }
 
@@ -2666,11 +2642,11 @@ variable Smat42 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat44 {
+variable Sfat43 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat44 {
+variable Smat43 {
    type discrete[2] {fat, mat};
 }
 
@@ -2690,19 +2666,19 @@ variable Smat46 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat47 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat47 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat48 {
    type discrete[2] {fat, mat};
 }
 
 variable Smat48 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat50 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat50 {
    type discrete[2] {fat, mat};
 }
 
@@ -2722,11 +2698,27 @@ variable Smat52 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat53 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat53 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat54 {
    type discrete[2] {fat, mat};
 }
 
 variable Smat54 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat55 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat55 {
    type discrete[2] {fat, mat};
 }
 
@@ -2746,6 +2738,14 @@ variable Smat57 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat58 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat58 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat59 {
    type discrete[2] {fat, mat};
 }
@@ -2754,19 +2754,11 @@ variable Smat59 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat61 {
+variable Sfat60 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat61 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat62 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat62 {
+variable Smat60 {
    type discrete[2] {fat, mat};
 }
 
@@ -2778,11 +2770,11 @@ variable Smat63 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat66 {
+variable Sfat65 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat66 {
+variable Smat65 {
    type discrete[2] {fat, mat};
 }
 
@@ -2799,6 +2791,14 @@ variable Sfat68 {
 }
 
 variable Smat68 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat69 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat69 {
    type discrete[2] {fat, mat};
 }
 
@@ -2826,14 +2826,6 @@ variable Smat74 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat75 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat75 {
-   type discrete[2] {fat, mat};
-}
-
 variable Sfat76 {
    type discrete[2] {fat, mat};
 }
@@ -2842,11 +2834,11 @@ variable Smat76 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat77 {
+variable Sfat78 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat77 {
+variable Smat78 {
    type discrete[2] {fat, mat};
 }
 
@@ -2858,6 +2850,14 @@ variable Smat79 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat80 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat80 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat81 {
    type discrete[2] {fat, mat};
 }
@@ -2866,11 +2866,11 @@ variable Smat81 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat83 {
+variable Sfat82 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat83 {
+variable Smat82 {
    type discrete[2] {fat, mat};
 }
 
@@ -2879,14 +2879,6 @@ variable Sfat84 {
 }
 
 variable Smat84 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat85 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat85 {
    type discrete[2] {fat, mat};
 }
 
@@ -2906,11 +2898,11 @@ variable Smat87 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat88 {
+variable Sfat89 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat88 {
+variable Smat89 {
    type discrete[2] {fat, mat};
 }
 
@@ -2919,6 +2911,14 @@ variable Sfat90 {
 }
 
 variable Smat90 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat91 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat91 {
    type discrete[2] {fat, mat};
 }
 
@@ -2943,6 +2943,14 @@ variable Sfat95 {
 }
 
 variable Smat95 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat96 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat96 {
    type discrete[2] {fat, mat};
 }
 
@@ -2978,6 +2986,22 @@ variable Smat101 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat102 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat102 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat103 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat103 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat104 {
    type discrete[2] {fat, mat};
 }
@@ -3002,6 +3026,14 @@ variable Smat106 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat108 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat108 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat109 {
    type discrete[2] {fat, mat};
 }
@@ -3018,6 +3050,22 @@ variable Smat110 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat111 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat111 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat112 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat112 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat113 {
    type discrete[2] {fat, mat};
 }
@@ -3026,11 +3074,11 @@ variable Smat113 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat115 {
+variable Sfat114 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat115 {
+variable Smat114 {
    type discrete[2] {fat, mat};
 }
 
@@ -3050,19 +3098,11 @@ variable Smat117 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat119 {
+variable Sfat120 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat119 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat121 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat121 {
+variable Smat120 {
    type discrete[2] {fat, mat};
 }
 
@@ -3074,11 +3114,27 @@ variable Smat122 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat124 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat124 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat125 {
    type discrete[2] {fat, mat};
 }
 
 variable Smat125 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat126 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat126 {
    type discrete[2] {fat, mat};
 }
 
@@ -3090,19 +3146,19 @@ variable Smat127 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat128 {
+variable Sfat129 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat128 {
+variable Smat129 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat130 {
+variable Sfat132 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat130 {
+variable Smat132 {
    type discrete[2] {fat, mat};
 }
 
@@ -3114,43 +3170,27 @@ variable Smat134 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat135 {
+variable Sfat137 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat135 {
+variable Smat137 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat136 {
+variable Sfat138 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat136 {
+variable Smat138 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat140 {
+variable Sfat139 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat140 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat141 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat141 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat142 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat142 {
+variable Smat139 {
    type discrete[2] {fat, mat};
 }
 
@@ -3178,6 +3218,14 @@ variable Smat146 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat147 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat147 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat148 {
    type discrete[2] {fat, mat};
 }
@@ -3202,6 +3250,14 @@ variable Smat151 {
    type discrete[2] {fat, mat};
 }
 
+variable Sfat152 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat152 {
+   type discrete[2] {fat, mat};
+}
+
 variable Sfat153 {
    type discrete[2] {fat, mat};
 }
@@ -3210,19 +3266,19 @@ variable Smat153 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat154 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat154 {
-   type discrete[2] {fat, mat};
-}
-
 variable Sfat155 {
    type discrete[2] {fat, mat};
 }
 
 variable Smat155 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat156 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat156 {
    type discrete[2] {fat, mat};
 }
 
@@ -3242,19 +3298,19 @@ variable Smat158 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat159 {
+variable Sfat160 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat159 {
+variable Smat160 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat162 {
+variable Sfat163 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat162 {
+variable Smat163 {
    type discrete[2] {fat, mat};
 }
 
@@ -3274,43 +3330,11 @@ variable Smat166 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat167 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat167 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat168 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat168 {
-   type discrete[2] {fat, mat};
-}
-
 variable Sfat169 {
    type discrete[2] {fat, mat};
 }
 
 variable Smat169 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat170 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat170 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat172 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat172 {
    type discrete[2] {fat, mat};
 }
 
@@ -3362,43 +3386,11 @@ variable Smat181 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat182 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat182 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat183 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat183 {
-   type discrete[2] {fat, mat};
-}
-
 variable Sfat185 {
    type discrete[2] {fat, mat};
 }
 
 variable Smat185 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat187 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat187 {
-   type discrete[2] {fat, mat};
-}
-
-variable Sfat188 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat188 {
    type discrete[2] {fat, mat};
 }
 
@@ -3426,14 +3418,6 @@ variable Smat191 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat193 {
-   type discrete[2] {fat, mat};
-}
-
-variable Smat193 {
-   type discrete[2] {fat, mat};
-}
-
 variable Sfat195 {
    type discrete[2] {fat, mat};
 }
@@ -3442,19 +3426,27 @@ variable Smat195 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat197 {
+variable Sfat196 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat197 {
+variable Smat196 {
    type discrete[2] {fat, mat};
 }
 
-variable Sfat199 {
+variable Sfat198 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat199 {
+variable Smat198 {
+   type discrete[2] {fat, mat};
+}
+
+variable Sfat200 {
+   type discrete[2] {fat, mat};
+}
+
+variable Smat200 {
    type discrete[2] {fat, mat};
 }
 
@@ -3508,7 +3500,7 @@ probability (X3 | fatX3, matX3) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX4 | fatX5, matX5, Smat4) {
+probability (matX4 | fatX3, matX3, Smat4) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3518,7 +3510,7 @@ probability (matX4 | fatX5, matX5, Smat4) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX4 | fatX2, matX2, Sfat4) {
+probability (fatX4 | fatX1, matX1, Sfat4) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3534,7 +3526,7 @@ probability (X4 | fatX4, matX4) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX5 | fatX102, matX102, Smat5) {
+probability (matX5 | fatX6, matX6, Smat5) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3544,7 +3536,7 @@ probability (matX5 | fatX102, matX102, Smat5) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX5 | fatX103, matX103, Sfat5) {
+probability (fatX5 | fatX2, matX2, Sfat5) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3560,7 +3552,7 @@ probability (X5 | fatX5, matX5) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX6 | fatX3, matX3, Smat6) {
+probability (matX6 | fatX12, matX12, Smat6) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3570,7 +3562,7 @@ probability (matX6 | fatX3, matX3, Smat6) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX6 | fatX1, matX1, Sfat6) {
+probability (fatX6 | fatX11, matX11, Sfat6) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3586,7 +3578,7 @@ probability (X6 | fatX6, matX6) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX7 | fatX3, matX3, Smat7) {
+probability (matX7 | fatX6, matX6, Smat7) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3596,7 +3588,7 @@ probability (matX7 | fatX3, matX3, Smat7) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX7 | fatX1, matX1, Sfat7) {
+probability (fatX7 | fatX2, matX2, Sfat7) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3612,7 +3604,7 @@ probability (X7 | fatX7, matX7) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX8 | fatX9, matX9, Smat8) {
+probability (matX8 | fatX3, matX3, Smat8) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3622,7 +3614,7 @@ probability (matX8 | fatX9, matX9, Smat8) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX8 | fatX6, matX6, Sfat8) {
+probability (fatX8 | fatX1, matX1, Sfat8) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3638,19 +3630,7 @@ probability (X8 | fatX8, matX8) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX9) {
-   default 0.95 0.05;
-}
-probability (fatX9) {
-   default 0.95 0.05;
-}
-probability (X9 | fatX9, matX9) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX10 | fatX9, matX9, Smat10) {
+probability (matX9 | fatX7, matX7, Smat9) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3660,7 +3640,33 @@ probability (matX10 | fatX9, matX9, Smat10) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX10 | fatX6, matX6, Sfat10) {
+probability (fatX9 | fatX10, matX10, Sfat9) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X9 | fatX9, matX9) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX10 | fatX23, matX23, Smat10) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX10 | fatX22, matX22, Sfat10) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3676,25 +3682,11 @@ probability (X10 | fatX10, matX10) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX11 | fatX8, matX8, Smat11) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX11) {
+   default 0.95 0.05;
 }
-probability (fatX11 | fatX12, matX12, Sfat11) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX11) {
+   default 0.95 0.05;
 }
 probability (X11 | fatX11, matX11) {
    (0, 0) 1 0 0 0;
@@ -3702,25 +3694,11 @@ probability (X11 | fatX11, matX11) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX12 | fatX24, matX24, Smat12) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX12) {
+   default 0.95 0.05;
 }
-probability (fatX12 | fatX25, matX25, Sfat12) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX12) {
+   default 0.95 0.05;
 }
 probability (X12 | fatX12, matX12) {
    (0, 0) 1 0 0 0;
@@ -3728,7 +3706,7 @@ probability (X12 | fatX12, matX12) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX13 | fatX8, matX8, Smat13) {
+probability (matX13 | fatX6, matX6, Smat13) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3738,7 +3716,7 @@ probability (matX13 | fatX8, matX8, Smat13) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX13 | fatX12, matX12, Sfat13) {
+probability (fatX13 | fatX2, matX2, Sfat13) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3754,7 +3732,7 @@ probability (X13 | fatX13, matX13) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX14 | fatX8, matX8, Smat14) {
+probability (matX14 | fatX13, matX13, Smat14) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3764,7 +3742,7 @@ probability (matX14 | fatX8, matX8, Smat14) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX14 | fatX12, matX12, Sfat14) {
+probability (fatX14 | fatX15, matX15, Sfat14) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3780,7 +3758,7 @@ probability (X14 | fatX14, matX14) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX15 | fatX16, matX16, Smat15) {
+probability (matX15 | fatX167, matX167, Smat15) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3790,7 +3768,7 @@ probability (matX15 | fatX16, matX16, Smat15) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX15 | fatX14, matX14, Sfat15) {
+probability (fatX15 | fatX168, matX168, Sfat15) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3806,7 +3784,7 @@ probability (X15 | fatX15, matX15) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX16 | fatX30, matX30, Smat16) {
+probability (matX16 | fatX3, matX3, Smat16) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3816,7 +3794,7 @@ probability (matX16 | fatX30, matX30, Smat16) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX16 | fatX31, matX31, Sfat16) {
+probability (fatX16 | fatX1, matX1, Sfat16) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3832,7 +3810,7 @@ probability (X16 | fatX16, matX16) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX17 | fatX8, matX8, Smat17) {
+probability (matX17 | fatX13, matX13, Smat17) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3842,7 +3820,7 @@ probability (matX17 | fatX8, matX8, Smat17) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX17 | fatX12, matX12, Sfat17) {
+probability (fatX17 | fatX15, matX15, Sfat17) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3858,7 +3836,7 @@ probability (X17 | fatX17, matX17) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX18 | fatX16, matX16, Smat18) {
+probability (matX18 | fatX4, matX4, Smat18) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3868,7 +3846,7 @@ probability (matX18 | fatX16, matX16, Smat18) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX18 | fatX14, matX14, Sfat18) {
+probability (fatX18 | fatX19, matX19, Sfat18) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3884,25 +3862,11 @@ probability (X18 | fatX18, matX18) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX19 | fatX20, matX20, Smat19) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX19) {
+   default 0.95 0.05;
 }
-probability (fatX19 | fatX4, matX4, Sfat19) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX19) {
+   default 0.95 0.05;
 }
 probability (X19 | fatX19, matX19) {
    (0, 0) 1 0 0 0;
@@ -3910,19 +3874,7 @@ probability (X19 | fatX19, matX19) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX20) {
-   default 0.95 0.05;
-}
-probability (fatX20) {
-   default 0.95 0.05;
-}
-probability (X20 | fatX20, matX20) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX21 | fatX9, matX9, Smat21) {
+probability (matX20 | fatX21, matX21, Smat20) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3932,7 +3884,33 @@ probability (matX21 | fatX9, matX9, Smat21) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX21 | fatX6, matX6, Sfat21) {
+probability (fatX20 | fatX9, matX9, Sfat20) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X20 | fatX20, matX20) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX21 | fatX44, matX44, Smat21) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX21 | fatX43, matX43, Sfat21) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -3948,25 +3926,11 @@ probability (X21 | fatX21, matX21) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX22 | fatX10, matX10, Smat22) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX22) {
+   default 0.95 0.05;
 }
-probability (fatX22 | fatX23, matX23, Sfat22) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX22) {
+   default 0.95 0.05;
 }
 probability (X22 | fatX22, matX22) {
    (0, 0) 1 0 0 0;
@@ -3986,31 +3950,7 @@ probability (X23 | fatX23, matX23) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX24) {
-   default 0.95 0.05;
-}
-probability (fatX24) {
-   default 0.95 0.05;
-}
-probability (X24 | fatX24, matX24) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX25) {
-   default 0.95 0.05;
-}
-probability (fatX25) {
-   default 0.95 0.05;
-}
-probability (X25 | fatX25, matX25) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX26 | fatX16, matX16, Smat26) {
+probability (matX24 | fatX6, matX6, Smat24) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4020,7 +3960,59 @@ probability (matX26 | fatX16, matX16, Smat26) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX26 | fatX14, matX14, Sfat26) {
+probability (fatX24 | fatX2, matX2, Sfat24) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X24 | fatX24, matX24) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX25 | fatX4, matX4, Smat25) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX25 | fatX19, matX19, Sfat25) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X25 | fatX25, matX25) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX26 | fatX12, matX12, Smat26) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX26 | fatX11, matX11, Sfat26) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4036,7 +4028,7 @@ probability (X26 | fatX26, matX26) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX27 | fatX20, matX20, Smat27) {
+probability (matX27 | fatX13, matX13, Smat27) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4046,7 +4038,7 @@ probability (matX27 | fatX20, matX20, Smat27) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX27 | fatX4, matX4, Sfat27) {
+probability (fatX27 | fatX15, matX15, Sfat27) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4062,7 +4054,7 @@ probability (X27 | fatX27, matX27) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX28 | fatX20, matX20, Smat28) {
+probability (matX28 | fatX27, matX27, Smat28) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4072,7 +4064,7 @@ probability (matX28 | fatX20, matX20, Smat28) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX28 | fatX4, matX4, Sfat28) {
+probability (fatX28 | fatX29, matX29, Sfat28) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4088,25 +4080,11 @@ probability (X28 | fatX28, matX28) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX29 | fatX9, matX9, Smat29) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX29) {
+   default 0.95 0.05;
 }
-probability (fatX29 | fatX6, matX6, Sfat29) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX29) {
+   default 0.95 0.05;
 }
 probability (X29 | fatX29, matX29) {
    (0, 0) 1 0 0 0;
@@ -4114,11 +4092,25 @@ probability (X29 | fatX29, matX29) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX30) {
-   default 0.95 0.05;
+probability (matX30 | fatX13, matX13, Smat30) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX30) {
-   default 0.95 0.05;
+probability (fatX30 | fatX15, matX15, Sfat30) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X30 | fatX30, matX30) {
    (0, 0) 1 0 0 0;
@@ -4126,11 +4118,25 @@ probability (X30 | fatX30, matX30) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX31) {
-   default 0.95 0.05;
+probability (matX31 | fatX17, matX17, Smat31) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX31) {
-   default 0.95 0.05;
+probability (fatX31 | fatX32, matX32, Sfat31) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X31 | fatX31, matX31) {
    (0, 0) 1 0 0 0;
@@ -4138,25 +4144,11 @@ probability (X31 | fatX31, matX31) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX32 | fatX24, matX24, Smat32) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX32) {
+   default 0.95 0.05;
 }
-probability (fatX32 | fatX25, matX25, Sfat32) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX32) {
+   default 0.95 0.05;
 }
 probability (X32 | fatX32, matX32) {
    (0, 0) 1 0 0 0;
@@ -4164,7 +4156,7 @@ probability (X32 | fatX32, matX32) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX33 | fatX34, matX34, Smat33) {
+probability (matX33 | fatX20, matX20, Smat33) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4174,7 +4166,7 @@ probability (matX33 | fatX34, matX34, Smat33) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX33 | fatX26, matX26, Sfat33) {
+probability (fatX33 | fatX34, matX34, Sfat33) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4190,7 +4182,7 @@ probability (X33 | fatX33, matX33) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX34 | fatX65, matX65, Smat34) {
+probability (matX34 | fatX37, matX37, Smat34) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4200,7 +4192,7 @@ probability (matX34 | fatX65, matX65, Smat34) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX34 | fatX64, matX64, Sfat34) {
+probability (fatX34 | fatX38, matX38, Sfat34) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4216,7 +4208,7 @@ probability (X34 | fatX34, matX34) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX35 | fatX15, matX15, Smat35) {
+probability (matX35 | fatX36, matX36, Smat35) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4226,7 +4218,7 @@ probability (matX35 | fatX15, matX15, Smat35) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX35 | fatX36, matX36, Sfat35) {
+probability (fatX35 | fatX18, matX18, Sfat35) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4242,25 +4234,11 @@ probability (X35 | fatX35, matX35) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX36 | fatX60, matX60, Smat36) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX36) {
+   default 0.95 0.05;
 }
-probability (fatX36 | fatX61, matX61, Sfat36) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX36) {
+   default 0.95 0.05;
 }
 probability (X36 | fatX36, matX36) {
    (0, 0) 1 0 0 0;
@@ -4268,25 +4246,11 @@ probability (X36 | fatX36, matX36) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX37 | fatX30, matX30, Smat37) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX37) {
+   default 0.95 0.05;
 }
-probability (fatX37 | fatX31, matX31, Sfat37) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX37) {
+   default 0.95 0.05;
 }
 probability (X37 | fatX37, matX37) {
    (0, 0) 1 0 0 0;
@@ -4294,7 +4258,7 @@ probability (X37 | fatX37, matX37) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX38 | fatX3, matX3, Smat38) {
+probability (matX38 | fatX83, matX83, Smat38) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4304,7 +4268,7 @@ probability (matX38 | fatX3, matX3, Smat38) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX38 | fatX1, matX1, Sfat38) {
+probability (fatX38 | fatX82, matX82, Sfat38) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4320,7 +4284,7 @@ probability (X38 | fatX38, matX38) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX39 | fatX40, matX40, Smat39) {
+probability (matX39 | fatX25, matX25, Smat39) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4330,7 +4294,7 @@ probability (matX39 | fatX40, matX40, Smat39) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX39 | fatX22, matX22, Sfat39) {
+probability (fatX39 | fatX40, matX40, Sfat39) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4346,25 +4310,11 @@ probability (X39 | fatX39, matX39) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX40 | fatX71, matX71, Smat40) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX40) {
+   default 0.95 0.05;
 }
-probability (fatX40 | fatX72, matX72, Sfat40) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX40) {
+   default 0.95 0.05;
 }
 probability (X40 | fatX40, matX40) {
    (0, 0) 1 0 0 0;
@@ -4372,7 +4322,7 @@ probability (X40 | fatX40, matX40) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX41 | fatX15, matX15, Smat41) {
+probability (matX41 | fatX7, matX7, Smat41) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4382,7 +4332,7 @@ probability (matX41 | fatX15, matX15, Smat41) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX41 | fatX36, matX36, Sfat41) {
+probability (fatX41 | fatX10, matX10, Sfat41) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4398,7 +4348,7 @@ probability (X41 | fatX41, matX41) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX42 | fatX43, matX43, Smat42) {
+probability (matX42 | fatX37, matX37, Smat42) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4408,7 +4358,7 @@ probability (matX42 | fatX43, matX43, Smat42) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX42 | fatX21, matX21, Sfat42) {
+probability (fatX42 | fatX38, matX38, Sfat42) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4424,11 +4374,25 @@ probability (X42 | fatX42, matX42) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX43) {
-   default 0.95 0.05;
+probability (matX43 | fatX61, matX61, Smat43) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX43) {
-   default 0.95 0.05;
+probability (fatX43 | fatX62, matX62, Sfat43) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X43 | fatX43, matX43) {
    (0, 0) 1 0 0 0;
@@ -4436,25 +4400,11 @@ probability (X43 | fatX43, matX43) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX44 | fatX17, matX17, Smat44) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX44) {
+   default 0.95 0.05;
 }
-probability (fatX44 | fatX45, matX45, Sfat44) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX44) {
+   default 0.95 0.05;
 }
 probability (X44 | fatX44, matX44) {
    (0, 0) 1 0 0 0;
@@ -4462,7 +4412,7 @@ probability (X44 | fatX44, matX44) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX45 | fatX133, matX133, Smat45) {
+probability (matX45 | fatX35, matX35, Smat45) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4472,7 +4422,7 @@ probability (matX45 | fatX133, matX133, Smat45) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX45 | fatX132, matX132, Sfat45) {
+probability (fatX45 | fatX46, matX46, Sfat45) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4488,7 +4438,7 @@ probability (X45 | fatX45, matX45) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX46 | fatX47, matX47, Smat46) {
+probability (matX46 | fatX49, matX49, Smat46) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4498,7 +4448,7 @@ probability (matX46 | fatX47, matX47, Smat46) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX46 | fatX32, matX32, Sfat46) {
+probability (fatX46 | fatX50, matX50, Sfat46) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4514,19 +4464,7 @@ probability (X46 | fatX46, matX46) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX47) {
-   default 0.95 0.05;
-}
-probability (fatX47) {
-   default 0.95 0.05;
-}
-probability (X47 | fatX47, matX47) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX48 | fatX49, matX49, Smat48) {
+probability (matX47 | fatX35, matX35, Smat47) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4536,7 +4474,33 @@ probability (matX48 | fatX49, matX49, Smat48) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX48 | fatX37, matX37, Sfat48) {
+probability (fatX47 | fatX46, matX46, Sfat47) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X47 | fatX47, matX47) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX48 | fatX23, matX23, Smat48) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX48 | fatX22, matX22, Sfat48) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4564,25 +4528,11 @@ probability (X49 | fatX49, matX49) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX50 | fatX5, matX5, Smat50) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX50) {
+   default 0.95 0.05;
 }
-probability (fatX50 | fatX2, matX2, Sfat50) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX50) {
+   default 0.95 0.05;
 }
 probability (X50 | fatX50, matX50) {
    (0, 0) 1 0 0 0;
@@ -4590,7 +4540,7 @@ probability (X50 | fatX50, matX50) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX51 | fatX47, matX47, Smat51) {
+probability (matX51 | fatX49, matX49, Smat51) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4600,7 +4550,7 @@ probability (matX51 | fatX47, matX47, Smat51) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX51 | fatX32, matX32, Sfat51) {
+probability (fatX51 | fatX50, matX50, Sfat51) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4616,7 +4566,7 @@ probability (X51 | fatX51, matX51) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX52 | fatX53, matX53, Smat52) {
+probability (matX52 | fatX51, matX51, Smat52) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4626,7 +4576,7 @@ probability (matX52 | fatX53, matX53, Smat52) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX52 | fatX42, matX42, Sfat52) {
+probability (fatX52 | fatX53, matX53, Sfat52) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4642,19 +4592,7 @@ probability (X52 | fatX52, matX52) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX53) {
-   default 0.95 0.05;
-}
-probability (fatX53) {
-   default 0.95 0.05;
-}
-probability (X53 | fatX53, matX53) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX54 | fatX13, matX13, Smat54) {
+probability (matX53 | fatX141, matX141, Smat53) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4664,7 +4602,33 @@ probability (matX54 | fatX13, matX13, Smat54) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX54 | fatX55, matX55, Sfat54) {
+probability (fatX53 | fatX140, matX140, Sfat53) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X53 | fatX53, matX53) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX54 | fatX17, matX17, Smat54) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX54 | fatX32, matX32, Sfat54) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4680,19 +4644,7 @@ probability (X54 | fatX54, matX54) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX55) {
-   default 0.95 0.05;
-}
-probability (fatX55) {
-   default 0.95 0.05;
-}
-probability (X55 | fatX55, matX55) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX56 | fatX10, matX10, Smat56) {
+probability (matX55 | fatX37, matX37, Smat55) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4702,7 +4654,33 @@ probability (matX56 | fatX10, matX10, Smat56) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX56 | fatX23, matX23, Sfat56) {
+probability (fatX55 | fatX38, matX38, Sfat55) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X55 | fatX55, matX55) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX56 | fatX21, matX21, Smat56) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX56 | fatX9, matX9, Sfat56) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4718,7 +4696,7 @@ probability (X56 | fatX56, matX56) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX57 | fatX48, matX48, Smat57) {
+probability (matX57 | fatX56, matX56, Smat57) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4744,19 +4722,7 @@ probability (X57 | fatX57, matX57) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX58) {
-   default 0.95 0.05;
-}
-probability (fatX58) {
-   default 0.95 0.05;
-}
-probability (X58 | fatX58, matX58) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX59 | fatX20, matX20, Smat59) {
+probability (matX58 | fatX183, matX183, Smat58) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4766,7 +4732,33 @@ probability (matX59 | fatX20, matX20, Smat59) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX59 | fatX4, matX4, Sfat59) {
+probability (fatX58 | fatX184, matX184, Sfat58) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X58 | fatX58, matX58) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX59 | fatX57, matX57, Smat59) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX59 | fatX60, matX60, Sfat59) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4782,11 +4774,25 @@ probability (X59 | fatX59, matX59) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX60) {
-   default 0.95 0.05;
+probability (matX60 | fatX92, matX92, Smat60) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX60) {
-   default 0.95 0.05;
+probability (fatX60 | fatX91, matX91, Sfat60) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X60 | fatX60, matX60) {
    (0, 0) 1 0 0 0;
@@ -4794,25 +4800,11 @@ probability (X60 | fatX60, matX60) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX61 | fatX123, matX123, Smat61) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX61) {
+   default 0.95 0.05;
 }
-probability (fatX61 | fatX124, matX124, Sfat61) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX61) {
+   default 0.95 0.05;
 }
 probability (X61 | fatX61, matX61) {
    (0, 0) 1 0 0 0;
@@ -4820,25 +4812,11 @@ probability (X61 | fatX61, matX61) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX62 | fatX16, matX16, Smat62) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX62) {
+   default 0.95 0.05;
 }
-probability (fatX62 | fatX14, matX14, Sfat62) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX62) {
+   default 0.95 0.05;
 }
 probability (X62 | fatX62, matX62) {
    (0, 0) 1 0 0 0;
@@ -4846,7 +4824,7 @@ probability (X62 | fatX62, matX62) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX63 | fatX48, matX48, Smat63) {
+probability (matX63 | fatX64, matX64, Smat63) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4856,7 +4834,7 @@ probability (matX63 | fatX48, matX48, Smat63) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX63 | fatX58, matX58, Sfat63) {
+probability (fatX63 | fatX54, matX54, Sfat63) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4884,11 +4862,25 @@ probability (X64 | fatX64, matX64) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX65) {
-   default 0.95 0.05;
+probability (matX65 | fatX66, matX66, Smat65) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX65) {
-   default 0.95 0.05;
+probability (fatX65 | fatX16, matX16, Sfat65) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X65 | fatX65, matX65) {
    (0, 0) 1 0 0 0;
@@ -4896,25 +4888,11 @@ probability (X65 | fatX65, matX65) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX66 | fatX63, matX63, Smat66) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX66) {
+   default 0.95 0.05;
 }
-probability (fatX66 | fatX67, matX67, Sfat66) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX66) {
+   default 0.95 0.05;
 }
 probability (X66 | fatX66, matX66) {
    (0, 0) 1 0 0 0;
@@ -4922,7 +4900,7 @@ probability (X66 | fatX66, matX66) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX67 | fatX92, matX92, Smat67) {
+probability (matX67 | fatX68, matX68, Smat67) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4932,7 +4910,7 @@ probability (matX67 | fatX92, matX92, Smat67) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX67 | fatX91, matX91, Sfat67) {
+probability (fatX67 | fatX33, matX33, Sfat67) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4948,7 +4926,7 @@ probability (X67 | fatX67, matX67) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX68 | fatX19, matX19, Smat68) {
+probability (matX68 | fatX73, matX73, Smat68) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4958,7 +4936,7 @@ probability (matX68 | fatX19, matX19, Smat68) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX68 | fatX69, matX69, Sfat68) {
+probability (fatX68 | fatX72, matX72, Sfat68) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4974,19 +4952,7 @@ probability (X68 | fatX68, matX68) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX69) {
-   default 0.95 0.05;
-}
-probability (fatX69) {
-   default 0.95 0.05;
-}
-probability (X69 | fatX69, matX69) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX70 | fatX65, matX65, Smat70) {
+probability (matX69 | fatX36, matX36, Smat69) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -4996,7 +4962,33 @@ probability (matX70 | fatX65, matX65, Smat70) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX70 | fatX64, matX64, Sfat70) {
+probability (fatX69 | fatX18, matX18, Sfat69) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X69 | fatX69, matX69) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX70 | fatX30, matX30, Smat70) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX70 | fatX71, matX71, Sfat70) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5036,7 +5028,7 @@ probability (X72 | fatX72, matX72) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX73 | fatX59, matX59, Smat73) {
+probability (matX73 | fatX88, matX88, Smat73) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5046,7 +5038,7 @@ probability (matX73 | fatX59, matX59, Smat73) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX73 | fatX74, matX74, Sfat73) {
+probability (fatX73 | fatX89, matX89, Sfat73) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5062,7 +5054,7 @@ probability (X73 | fatX73, matX73) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX74 | fatX160, matX160, Smat74) {
+probability (matX74 | fatX75, matX75, Smat74) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5072,7 +5064,7 @@ probability (matX74 | fatX160, matX160, Smat74) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX74 | fatX161, matX161, Sfat74) {
+probability (fatX74 | fatX42, matX42, Sfat74) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5088,25 +5080,11 @@ probability (X74 | fatX74, matX74) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX75 | fatX28, matX28, Smat75) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX75) {
+   default 0.95 0.05;
 }
-probability (fatX75 | fatX76, matX76, Sfat75) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX75) {
+   default 0.95 0.05;
 }
 probability (X75 | fatX75, matX75) {
    (0, 0) 1 0 0 0;
@@ -5114,7 +5092,7 @@ probability (X75 | fatX75, matX75) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX76 | fatX88, matX88, Smat76) {
+probability (matX76 | fatX28, matX28, Smat76) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5124,7 +5102,7 @@ probability (matX76 | fatX88, matX88, Smat76) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX76 | fatX89, matX89, Sfat76) {
+probability (fatX76 | fatX77, matX77, Sfat76) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5140,25 +5118,11 @@ probability (X76 | fatX76, matX76) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX77 | fatX78, matX78, Smat77) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX77) {
+   default 0.95 0.05;
 }
-probability (fatX77 | fatX33, matX33, Sfat77) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX77) {
+   default 0.95 0.05;
 }
 probability (X77 | fatX77, matX77) {
    (0, 0) 1 0 0 0;
@@ -5166,19 +5130,7 @@ probability (X77 | fatX77, matX77) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX78) {
-   default 0.95 0.05;
-}
-probability (fatX78) {
-   default 0.95 0.05;
-}
-probability (X78 | fatX78, matX78) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX79 | fatX80, matX80, Smat79) {
+probability (matX78 | fatX25, matX25, Smat78) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5188,7 +5140,33 @@ probability (matX79 | fatX80, matX80, Smat79) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX79 | fatX7, matX7, Sfat79) {
+probability (fatX78 | fatX40, matX40, Sfat78) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X78 | fatX78, matX78) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX79 | fatX27, matX27, Smat79) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX79 | fatX29, matX29, Sfat79) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5204,19 +5182,7 @@ probability (X79 | fatX79, matX79) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX80) {
-   default 0.95 0.05;
-}
-probability (fatX80) {
-   default 0.95 0.05;
-}
-probability (X80 | fatX80, matX80) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX81 | fatX82, matX82, Smat81) {
+probability (matX80 | fatX73, matX73, Smat80) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5226,7 +5192,33 @@ probability (matX81 | fatX82, matX82, Smat81) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX81 | fatX18, matX18, Sfat81) {
+probability (fatX80 | fatX72, matX72, Sfat80) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X80 | fatX80, matX80) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX81 | fatX37, matX37, Smat81) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX81 | fatX38, matX38, Sfat81) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5242,11 +5234,25 @@ probability (X81 | fatX81, matX81) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX82) {
-   default 0.95 0.05;
+probability (matX82 | fatX131, matX131, Smat82) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX82) {
-   default 0.95 0.05;
+probability (fatX82 | fatX130, matX130, Sfat82) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X82 | fatX82, matX82) {
    (0, 0) 1 0 0 0;
@@ -5254,25 +5260,11 @@ probability (X82 | fatX82, matX82) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX83 | fatX75, matX75, Smat83) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX83) {
+   default 0.95 0.05;
 }
-probability (fatX83 | fatX84, matX84, Sfat83) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX83) {
+   default 0.95 0.05;
 }
 probability (X83 | fatX83, matX83) {
    (0, 0) 1 0 0 0;
@@ -5280,7 +5272,7 @@ probability (X83 | fatX83, matX83) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX84 | fatX98, matX98, Smat84) {
+probability (matX84 | fatX85, matX85, Smat84) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5290,7 +5282,7 @@ probability (matX84 | fatX98, matX98, Smat84) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX84 | fatX99, matX99, Sfat84) {
+probability (fatX84 | fatX26, matX26, Sfat84) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5306,25 +5298,11 @@ probability (X84 | fatX84, matX84) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX85 | fatX57, matX57, Smat85) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX85) {
+   default 0.95 0.05;
 }
-probability (fatX85 | fatX86, matX86, Sfat85) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX85) {
+   default 0.95 0.05;
 }
 probability (X85 | fatX85, matX85) {
    (0, 0) 1 0 0 0;
@@ -5332,7 +5310,7 @@ probability (X85 | fatX85, matX85) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX86 | fatX131, matX131, Smat86) {
+probability (matX86 | fatX61, matX61, Smat86) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5342,7 +5320,7 @@ probability (matX86 | fatX131, matX131, Smat86) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX86 | fatX130, matX130, Sfat86) {
+probability (fatX86 | fatX62, matX62, Sfat86) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5358,7 +5336,7 @@ probability (X86 | fatX86, matX86) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX87 | fatX71, matX71, Smat87) {
+probability (matX87 | fatX68, matX68, Smat87) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5368,7 +5346,7 @@ probability (matX87 | fatX71, matX71, Smat87) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX87 | fatX72, matX72, Sfat87) {
+probability (fatX87 | fatX33, matX33, Sfat87) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5384,25 +5362,11 @@ probability (X87 | fatX87, matX87) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX88 | fatX111, matX111, Smat88) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX88) {
+   default 0.95 0.05;
 }
-probability (fatX88 | fatX112, matX112, Sfat88) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX88) {
+   default 0.95 0.05;
 }
 probability (X88 | fatX88, matX88) {
    (0, 0) 1 0 0 0;
@@ -5410,19 +5374,7 @@ probability (X88 | fatX88, matX88) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX89) {
-   default 0.95 0.05;
-}
-probability (fatX89) {
-   default 0.95 0.05;
-}
-probability (X89 | fatX89, matX89) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX90 | fatX71, matX71, Smat90) {
+probability (matX89 | fatX187, matX187, Smat89) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5432,7 +5384,33 @@ probability (matX90 | fatX71, matX71, Smat90) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX90 | fatX72, matX72, Sfat90) {
+probability (fatX89 | fatX188, matX188, Sfat89) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X89 | fatX89, matX89) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX90 | fatX51, matX51, Smat90) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX90 | fatX53, matX53, Sfat90) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5448,11 +5426,25 @@ probability (X90 | fatX90, matX90) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX91) {
-   default 0.95 0.05;
+probability (matX91 | fatX122, matX122, Smat91) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX91) {
-   default 0.95 0.05;
+probability (fatX91 | fatX123, matX123, Sfat91) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X91 | fatX91, matX91) {
    (0, 0) 1 0 0 0;
@@ -5472,7 +5464,7 @@ probability (X92 | fatX92, matX92) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX93 | fatX34, matX34, Smat93) {
+probability (matX93 | fatX75, matX75, Smat93) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5482,7 +5474,7 @@ probability (matX93 | fatX34, matX34, Smat93) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX93 | fatX26, matX26, Sfat93) {
+probability (fatX93 | fatX42, matX42, Sfat93) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5498,7 +5490,7 @@ probability (X93 | fatX93, matX93) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX94 | fatX78, matX78, Smat94) {
+probability (matX94 | fatX95, matX95, Smat94) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5508,7 +5500,7 @@ probability (matX94 | fatX78, matX78, Smat94) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX94 | fatX33, matX33, Sfat94) {
+probability (fatX94 | fatX93, matX93, Sfat94) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5524,7 +5516,7 @@ probability (X94 | fatX94, matX94) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX95 | fatX52, matX52, Smat95) {
+probability (matX95 | fatX180, matX180, Smat95) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5534,7 +5526,7 @@ probability (matX95 | fatX52, matX52, Smat95) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX95 | fatX96, matX96, Sfat95) {
+probability (fatX95 | fatX179, matX179, Sfat95) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5550,19 +5542,7 @@ probability (X95 | fatX95, matX95) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX96) {
-   default 0.95 0.05;
-}
-probability (fatX96) {
-   default 0.95 0.05;
-}
-probability (X96 | fatX96, matX96) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX97 | fatX82, matX82, Smat97) {
+probability (matX96 | fatX65, matX65, Smat96) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5572,7 +5552,33 @@ probability (matX97 | fatX82, matX82, Smat97) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX97 | fatX18, matX18, Sfat97) {
+probability (fatX96 | fatX97, matX97, Sfat96) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X96 | fatX96, matX96) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX97 | fatX136, matX136, Smat97) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX97 | fatX135, matX135, Sfat97) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5588,7 +5594,7 @@ probability (X97 | fatX97, matX97) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX98 | fatX107, matX107, Smat98) {
+probability (matX98 | fatX99, matX99, Smat98) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5598,7 +5604,7 @@ probability (matX98 | fatX107, matX107, Smat98) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX98 | fatX108, matX108, Sfat98) {
+probability (fatX98 | fatX39, matX39, Sfat98) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5626,7 +5632,7 @@ probability (X99 | fatX99, matX99) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX100 | fatX82, matX82, Smat100) {
+probability (matX100 | fatX83, matX83, Smat100) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5636,7 +5642,7 @@ probability (matX100 | fatX82, matX82, Smat100) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX100 | fatX18, matX18, Sfat100) {
+probability (fatX100 | fatX82, matX82, Sfat100) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5652,7 +5658,7 @@ probability (X100 | fatX100, matX100) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX101 | fatX40, matX40, Smat101) {
+probability (matX101 | fatX61, matX61, Smat101) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5662,7 +5668,7 @@ probability (matX101 | fatX40, matX40, Smat101) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX101 | fatX22, matX22, Sfat101) {
+probability (fatX101 | fatX62, matX62, Sfat101) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5678,31 +5684,7 @@ probability (X101 | fatX101, matX101) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX102) {
-   default 0.95 0.05;
-}
-probability (fatX102) {
-   default 0.95 0.05;
-}
-probability (X102 | fatX102, matX102) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX103) {
-   default 0.95 0.05;
-}
-probability (fatX103) {
-   default 0.95 0.05;
-}
-probability (X103 | fatX103, matX103) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX104 | fatX65, matX65, Smat104) {
+probability (matX102 | fatX66, matX66, Smat102) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5712,7 +5694,59 @@ probability (matX104 | fatX65, matX65, Smat104) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX104 | fatX64, matX64, Sfat104) {
+probability (fatX102 | fatX16, matX16, Sfat102) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X102 | fatX102, matX102) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX103 | fatX21, matX21, Smat103) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX103 | fatX9, matX9, Sfat103) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X103 | fatX103, matX103) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX104 | fatX100, matX100, Smat104) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX104 | fatX105, matX105, Sfat104) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5728,7 +5762,7 @@ probability (X104 | fatX104, matX104) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX105 | fatX15, matX15, Smat105) {
+probability (matX105 | fatX142, matX142, Smat105) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5738,7 +5772,7 @@ probability (matX105 | fatX15, matX15, Smat105) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX105 | fatX36, matX36, Sfat105) {
+probability (fatX105 | fatX143, matX143, Sfat105) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5754,7 +5788,7 @@ probability (X105 | fatX105, matX105) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX106 | fatX65, matX65, Smat106) {
+probability (matX106 | fatX47, matX47, Smat106) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5764,7 +5798,7 @@ probability (matX106 | fatX65, matX65, Smat106) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX106 | fatX64, matX64, Sfat106) {
+probability (fatX106 | fatX107, matX107, Sfat106) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5792,19 +5826,7 @@ probability (X107 | fatX107, matX107) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX108) {
-   default 0.95 0.05;
-}
-probability (fatX108) {
-   default 0.95 0.05;
-}
-probability (X108 | fatX108, matX108) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX109 | fatX80, matX80, Smat109) {
+probability (matX108 | fatX95, matX95, Smat108) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5814,7 +5836,33 @@ probability (matX109 | fatX80, matX80, Smat109) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX109 | fatX7, matX7, Sfat109) {
+probability (fatX108 | fatX93, matX93, Sfat108) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X108 | fatX108, matX108) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX109 | fatX68, matX68, Smat109) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX109 | fatX33, matX33, Sfat109) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5830,7 +5878,7 @@ probability (X109 | fatX109, matX109) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX110 | fatX40, matX40, Smat110) {
+probability (matX110 | fatX25, matX25, Smat110) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5840,7 +5888,7 @@ probability (matX110 | fatX40, matX40, Smat110) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX110 | fatX22, matX22, Sfat110) {
+probability (fatX110 | fatX40, matX40, Sfat110) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5856,31 +5904,7 @@ probability (X110 | fatX110, matX110) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX111) {
-   default 0.95 0.05;
-}
-probability (fatX111) {
-   default 0.95 0.05;
-}
-probability (X111 | fatX111, matX111) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX112) {
-   default 0.95 0.05;
-}
-probability (fatX112) {
-   default 0.95 0.05;
-}
-probability (X112 | fatX112, matX112) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX113 | fatX114, matX114, Smat113) {
+probability (matX111 | fatX85, matX85, Smat111) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5890,7 +5914,59 @@ probability (matX113 | fatX114, matX114, Smat113) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX113 | fatX85, matX85, Sfat113) {
+probability (fatX111 | fatX26, matX26, Sfat111) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X111 | fatX111, matX111) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX112 | fatX84, matX84, Smat112) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX112 | fatX113, matX113, Sfat112) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X112 | fatX112, matX112) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX113 | fatX119, matX119, Smat113) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX113 | fatX118, matX118, Sfat113) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5906,11 +5982,25 @@ probability (X113 | fatX113, matX113) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX114) {
-   default 0.95 0.05;
+probability (matX114 | fatX112, matX112, Smat114) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX114) {
-   default 0.95 0.05;
+probability (fatX114 | fatX115, matX115, Sfat114) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X114 | fatX114, matX114) {
    (0, 0) 1 0 0 0;
@@ -5918,25 +6008,11 @@ probability (X114 | fatX114, matX114) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX115 | fatX48, matX48, Smat115) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX115) {
+   default 0.95 0.05;
 }
-probability (fatX115 | fatX58, matX58, Sfat115) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX115) {
+   default 0.95 0.05;
 }
 probability (X115 | fatX115, matX115) {
    (0, 0) 1 0 0 0;
@@ -5944,7 +6020,7 @@ probability (X115 | fatX115, matX115) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX116 | fatX78, matX78, Smat116) {
+probability (matX116 | fatX75, matX75, Smat116) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5954,7 +6030,7 @@ probability (matX116 | fatX78, matX78, Smat116) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX116 | fatX33, matX33, Sfat116) {
+probability (fatX116 | fatX42, matX42, Sfat116) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5970,7 +6046,7 @@ probability (X116 | fatX116, matX116) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX117 | fatX118, matX118, Smat117) {
+probability (matX117 | fatX17, matX17, Smat117) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -5980,7 +6056,7 @@ probability (matX117 | fatX118, matX118, Smat117) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX117 | fatX90, matX90, Sfat117) {
+probability (fatX117 | fatX32, matX32, Sfat117) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6008,25 +6084,11 @@ probability (X118 | fatX118, matX118) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX119 | fatX54, matX54, Smat119) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX119) {
+   default 0.95 0.05;
 }
-probability (fatX119 | fatX120, matX120, Sfat119) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX119) {
+   default 0.95 0.05;
 }
 probability (X119 | fatX119, matX119) {
    (0, 0) 1 0 0 0;
@@ -6034,11 +6096,25 @@ probability (X119 | fatX119, matX119) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX120) {
-   default 0.95 0.05;
+probability (matX120 | fatX94, matX94, Smat120) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX120) {
-   default 0.95 0.05;
+probability (fatX120 | fatX121, matX121, Sfat120) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X120 | fatX120, matX120) {
    (0, 0) 1 0 0 0;
@@ -6046,25 +6122,11 @@ probability (X120 | fatX120, matX120) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX121 | fatX54, matX54, Smat121) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX121) {
+   default 0.95 0.05;
 }
-probability (fatX121 | fatX120, matX120, Sfat121) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX121) {
+   default 0.95 0.05;
 }
 probability (X121 | fatX121, matX121) {
    (0, 0) 1 0 0 0;
@@ -6072,7 +6134,7 @@ probability (X121 | fatX121, matX121) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX122 | fatX19, matX19, Smat122) {
+probability (matX122 | fatX162, matX162, Smat122) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6082,7 +6144,7 @@ probability (matX122 | fatX19, matX19, Smat122) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX122 | fatX69, matX69, Sfat122) {
+probability (fatX122 | fatX161, matX161, Sfat122) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6110,19 +6172,7 @@ probability (X123 | fatX123, matX123) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX124) {
-   default 0.95 0.05;
-}
-probability (fatX124) {
-   default 0.95 0.05;
-}
-probability (X124 | fatX124, matX124) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX125 | fatX126, matX126, Smat125) {
+probability (matX124 | fatX68, matX68, Smat124) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6132,7 +6182,33 @@ probability (matX125 | fatX126, matX126, Smat125) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX125 | fatX105, matX105, Sfat125) {
+probability (fatX124 | fatX33, matX33, Sfat124) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X124 | fatX124, matX124) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX125 | fatX17, matX17, Smat125) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX125 | fatX32, matX32, Sfat125) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6148,19 +6224,7 @@ probability (X125 | fatX125, matX125) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX126) {
-   default 0.95 0.05;
-}
-probability (fatX126) {
-   default 0.95 0.05;
-}
-probability (X126 | fatX126, matX126) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX127 | fatX49, matX49, Smat127) {
+probability (matX126 | fatX112, matX112, Smat126) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6170,7 +6234,33 @@ probability (matX127 | fatX49, matX49, Smat127) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX127 | fatX37, matX37, Sfat127) {
+probability (fatX126 | fatX115, matX115, Sfat126) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X126 | fatX126, matX126) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX127 | fatX8, matX8, Smat127) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX127 | fatX128, matX128, Sfat127) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6186,25 +6276,11 @@ probability (X127 | fatX127, matX127) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX128 | fatX129, matX129, Smat128) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX128) {
+   default 0.95 0.05;
 }
-probability (fatX128 | fatX125, matX125, Sfat128) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX128) {
+   default 0.95 0.05;
 }
 probability (X128 | fatX128, matX128) {
    (0, 0) 1 0 0 0;
@@ -6212,11 +6288,25 @@ probability (X128 | fatX128, matX128) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX129) {
-   default 0.95 0.05;
+probability (matX129 | fatX95, matX95, Smat129) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX129) {
-   default 0.95 0.05;
+probability (fatX129 | fatX93, matX93, Sfat129) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X129 | fatX129, matX129) {
    (0, 0) 1 0 0 0;
@@ -6224,25 +6314,11 @@ probability (X129 | fatX129, matX129) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX130 | fatX139, matX139, Smat130) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX130) {
+   default 0.95 0.05;
 }
-probability (fatX130 | fatX138, matX138, Sfat130) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX130) {
+   default 0.95 0.05;
 }
 probability (X130 | fatX130, matX130) {
    (0, 0) 1 0 0 0;
@@ -6262,11 +6338,25 @@ probability (X131 | fatX131, matX131) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX132) {
-   default 0.95 0.05;
+probability (matX132 | fatX133, matX133, Smat132) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX132) {
-   default 0.95 0.05;
+probability (fatX132 | fatX79, matX79, Sfat132) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X132 | fatX132, matX132) {
    (0, 0) 1 0 0 0;
@@ -6286,7 +6376,7 @@ probability (X133 | fatX133, matX133) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX134 | fatX92, matX92, Smat134) {
+probability (matX134 | fatX44, matX44, Smat134) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6296,7 +6386,7 @@ probability (matX134 | fatX92, matX92, Smat134) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX134 | fatX91, matX91, Sfat134) {
+probability (fatX134 | fatX43, matX43, Sfat134) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6312,25 +6402,11 @@ probability (X134 | fatX134, matX134) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX135 | fatX49, matX49, Smat135) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX135) {
+   default 0.95 0.05;
 }
-probability (fatX135 | fatX37, matX37, Sfat135) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX135) {
+   default 0.95 0.05;
 }
 probability (X135 | fatX135, matX135) {
    (0, 0) 1 0 0 0;
@@ -6338,25 +6414,11 @@ probability (X135 | fatX135, matX135) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX136 | fatX137, matX137, Smat136) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX136) {
+   default 0.95 0.05;
 }
-probability (fatX136 | fatX35, matX35, Sfat136) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX136) {
+   default 0.95 0.05;
 }
 probability (X136 | fatX136, matX136) {
    (0, 0) 1 0 0 0;
@@ -6364,11 +6426,25 @@ probability (X136 | fatX136, matX136) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX137) {
-   default 0.95 0.05;
+probability (matX137 | fatX84, matX84, Smat137) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX137) {
-   default 0.95 0.05;
+probability (fatX137 | fatX113, matX113, Sfat137) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X137 | fatX137, matX137) {
    (0, 0) 1 0 0 0;
@@ -6376,11 +6452,25 @@ probability (X137 | fatX137, matX137) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX138) {
-   default 0.95 0.05;
+probability (matX138 | fatX88, matX88, Smat138) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX138) {
-   default 0.95 0.05;
+probability (fatX138 | fatX89, matX89, Sfat138) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X138 | fatX138, matX138) {
    (0, 0) 1 0 0 0;
@@ -6388,11 +6478,25 @@ probability (X138 | fatX138, matX138) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX139) {
-   default 0.95 0.05;
+probability (matX139 | fatX49, matX49, Smat139) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX139) {
-   default 0.95 0.05;
+probability (fatX139 | fatX50, matX50, Sfat139) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X139 | fatX139, matX139) {
    (0, 0) 1 0 0 0;
@@ -6400,25 +6504,11 @@ probability (X139 | fatX139, matX139) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX140 | fatX123, matX123, Smat140) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX140) {
+   default 0.95 0.05;
 }
-probability (fatX140 | fatX124, matX124, Sfat140) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX140) {
+   default 0.95 0.05;
 }
 probability (X140 | fatX140, matX140) {
    (0, 0) 1 0 0 0;
@@ -6426,25 +6516,11 @@ probability (X140 | fatX140, matX140) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX141 | fatX30, matX30, Smat141) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX141) {
+   default 0.95 0.05;
 }
-probability (fatX141 | fatX31, matX31, Sfat141) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX141) {
+   default 0.95 0.05;
 }
 probability (X141 | fatX141, matX141) {
    (0, 0) 1 0 0 0;
@@ -6452,25 +6528,11 @@ probability (X141 | fatX141, matX141) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX142 | fatX136, matX136, Smat142) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX142) {
+   default 0.95 0.05;
 }
-probability (fatX142 | fatX143, matX143, Sfat142) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX142) {
+   default 0.95 0.05;
 }
 probability (X142 | fatX142, matX142) {
    (0, 0) 1 0 0 0;
@@ -6490,7 +6552,7 @@ probability (X143 | fatX143, matX143) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX144 | fatX40, matX40, Smat144) {
+probability (matX144 | fatX145, matX145, Smat144) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6500,7 +6562,7 @@ probability (matX144 | fatX40, matX40, Smat144) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX144 | fatX22, matX22, Sfat144) {
+probability (fatX144 | fatX127, matX127, Sfat144) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6516,7 +6578,7 @@ probability (X144 | fatX144, matX144) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX145 | fatX28, matX28, Smat145) {
+probability (matX145 | fatX172, matX172, Smat145) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6526,7 +6588,7 @@ probability (matX145 | fatX28, matX28, Smat145) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX145 | fatX76, matX76, Sfat145) {
+probability (fatX145 | fatX171, matX171, Sfat145) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6542,7 +6604,7 @@ probability (X145 | fatX145, matX145) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX146 | fatX70, matX70, Smat146) {
+probability (matX146 | fatX99, matX99, Smat146) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6552,7 +6614,7 @@ probability (matX146 | fatX70, matX70, Smat146) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX146 | fatX147, matX147, Sfat146) {
+probability (fatX146 | fatX39, matX39, Sfat146) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6568,19 +6630,7 @@ probability (X146 | fatX146, matX146) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX147) {
-   default 0.95 0.05;
-}
-probability (fatX147) {
-   default 0.95 0.05;
-}
-probability (X147 | fatX147, matX147) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX148 | fatX15, matX15, Smat148) {
+probability (matX147 | fatX131, matX131, Smat147) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6590,7 +6640,33 @@ probability (matX148 | fatX15, matX15, Smat148) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX148 | fatX36, matX36, Sfat148) {
+probability (fatX147 | fatX130, matX130, Sfat147) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X147 | fatX147, matX147) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX148 | fatX66, matX66, Smat148) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX148 | fatX16, matX16, Sfat148) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6606,7 +6682,7 @@ probability (X148 | fatX148, matX148) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX149 | fatX145, matX145, Smat149) {
+probability (matX149 | fatX86, matX86, Smat149) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6644,7 +6720,7 @@ probability (X150 | fatX150, matX150) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX151 | fatX113, matX113, Smat151) {
+probability (matX151 | fatX80, matX80, Smat151) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6670,19 +6746,7 @@ probability (X151 | fatX151, matX151) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX152) {
-   default 0.95 0.05;
-}
-probability (fatX152) {
-   default 0.95 0.05;
-}
-probability (X152 | fatX152, matX152) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX153 | fatX137, matX137, Smat153) {
+probability (matX152 | fatX193, matX193, Smat152) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6692,7 +6756,33 @@ probability (matX153 | fatX137, matX137, Smat153) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX153 | fatX35, matX35, Sfat153) {
+probability (fatX152 | fatX194, matX194, Sfat152) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X152 | fatX152, matX152) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX153 | fatX154, matX154, Smat153) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX153 | fatX74, matX74, Sfat153) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6708,25 +6798,11 @@ probability (X153 | fatX153, matX153) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX154 | fatX10, matX10, Smat154) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX154) {
+   default 0.95 0.05;
 }
-probability (fatX154 | fatX23, matX23, Sfat154) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX154) {
+   default 0.95 0.05;
 }
 probability (X154 | fatX154, matX154) {
    (0, 0) 1 0 0 0;
@@ -6734,7 +6810,7 @@ probability (X154 | fatX154, matX154) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX155 | fatX144, matX144, Smat155) {
+probability (matX155 | fatX44, matX44, Smat155) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6744,7 +6820,7 @@ probability (matX155 | fatX144, matX144, Smat155) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX155 | fatX156, matX156, Sfat155) {
+probability (fatX155 | fatX43, matX43, Sfat155) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6760,19 +6836,7 @@ probability (X155 | fatX155, matX155) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX156) {
-   default 0.95 0.05;
-}
-probability (fatX156) {
-   default 0.95 0.05;
-}
-probability (X156 | fatX156, matX156) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX157 | fatX83, matX83, Smat157) {
+probability (matX156 | fatX73, matX73, Smat156) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6782,7 +6846,33 @@ probability (matX157 | fatX83, matX83, Smat157) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX157 | fatX158, matX158, Sfat157) {
+probability (fatX156 | fatX72, matX72, Sfat156) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X156 | fatX156, matX156) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX157 | fatX145, matX145, Smat157) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX157 | fatX127, matX127, Sfat157) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6798,7 +6888,7 @@ probability (X157 | fatX157, matX157) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX158 | fatX179, matX179, Smat158) {
+probability (matX158 | fatX59, matX59, Smat158) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6808,7 +6898,7 @@ probability (matX158 | fatX179, matX179, Smat158) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX158 | fatX180, matX180, Sfat158) {
+probability (fatX158 | fatX159, matX159, Sfat158) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6824,25 +6914,11 @@ probability (X158 | fatX158, matX158) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX159 | fatX83, matX83, Smat159) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX159) {
+   default 0.95 0.05;
 }
-probability (fatX159 | fatX158, matX158, Sfat159) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX159) {
+   default 0.95 0.05;
 }
 probability (X159 | fatX159, matX159) {
    (0, 0) 1 0 0 0;
@@ -6850,11 +6926,25 @@ probability (X159 | fatX159, matX159) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX160) {
-   default 0.95 0.05;
+probability (matX160 | fatX145, matX145, Smat160) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX160) {
-   default 0.95 0.05;
+probability (fatX160 | fatX127, matX127, Sfat160) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X160 | fatX160, matX160) {
    (0, 0) 1 0 0 0;
@@ -6874,25 +6964,11 @@ probability (X161 | fatX161, matX161) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX162 | fatX41, matX41, Smat162) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX162) {
+   default 0.95 0.05;
 }
-probability (fatX162 | fatX163, matX163, Sfat162) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX162) {
+   default 0.95 0.05;
 }
 probability (X162 | fatX162, matX162) {
    (0, 0) 1 0 0 0;
@@ -6900,19 +6976,7 @@ probability (X162 | fatX162, matX162) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX163) {
-   default 0.95 0.05;
-}
-probability (fatX163) {
-   default 0.95 0.05;
-}
-probability (X163 | fatX163, matX163) {
-   (0, 0) 1 0 0 0;
-   (1, 0) 0 1 0 0;
-   (0, 1) 0 0 1 0;
-   (1, 1) 0 0 0 1;
-}
-probability (matX164 | fatX165, matX165, Smat164) {
+probability (matX163 | fatX75, matX75, Smat163) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6922,7 +6986,33 @@ probability (matX164 | fatX165, matX165, Smat164) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX164 | fatX141, matX141, Sfat164) {
+probability (fatX163 | fatX42, matX42, Sfat163) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (X163 | fatX163, matX163) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX164 | fatX125, matX125, Smat164) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
+}
+probability (fatX164 | fatX165, matX165, Sfat164) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6950,7 +7040,7 @@ probability (X165 | fatX165, matX165) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX166 | fatX48, matX48, Smat166) {
+probability (matX166 | fatX99, matX99, Smat166) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6960,7 +7050,7 @@ probability (matX166 | fatX48, matX48, Smat166) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX166 | fatX58, matX58, Sfat166) {
+probability (fatX166 | fatX39, matX39, Sfat166) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -6976,25 +7066,11 @@ probability (X166 | fatX166, matX166) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX167 | fatX123, matX123, Smat167) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX167) {
+   default 0.95 0.05;
 }
-probability (fatX167 | fatX124, matX124, Sfat167) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX167) {
+   default 0.95 0.05;
 }
 probability (X167 | fatX167, matX167) {
    (0, 0) 1 0 0 0;
@@ -7002,25 +7078,11 @@ probability (X167 | fatX167, matX167) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX168 | fatX145, matX145, Smat168) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX168) {
+   default 0.95 0.05;
 }
-probability (fatX168 | fatX150, matX150, Sfat168) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX168) {
+   default 0.95 0.05;
 }
 probability (X168 | fatX168, matX168) {
    (0, 0) 1 0 0 0;
@@ -7028,7 +7090,7 @@ probability (X168 | fatX168, matX168) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX169 | fatX60, matX60, Smat169) {
+probability (matX169 | fatX170, matX170, Smat169) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7038,7 +7100,7 @@ probability (matX169 | fatX60, matX60, Smat169) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX169 | fatX61, matX61, Sfat169) {
+probability (fatX169 | fatX5, matX5, Sfat169) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7054,25 +7116,11 @@ probability (X169 | fatX169, matX169) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX170 | fatX171, matX171, Smat170) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX170) {
+   default 0.95 0.05;
 }
-probability (fatX170 | fatX50, matX50, Sfat170) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX170) {
+   default 0.95 0.05;
 }
 probability (X170 | fatX170, matX170) {
    (0, 0) 1 0 0 0;
@@ -7092,25 +7140,11 @@ probability (X171 | fatX171, matX171) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX172 | fatX145, matX145, Smat172) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX172) {
+   default 0.95 0.05;
 }
-probability (fatX172 | fatX150, matX150, Sfat172) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX172) {
+   default 0.95 0.05;
 }
 probability (X172 | fatX172, matX172) {
    (0, 0) 1 0 0 0;
@@ -7118,7 +7152,7 @@ probability (X172 | fatX172, matX172) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX173 | fatX59, matX59, Smat173) {
+probability (matX173 | fatX99, matX99, Smat173) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7128,7 +7162,7 @@ probability (matX173 | fatX59, matX59, Smat173) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX173 | fatX74, matX74, Sfat173) {
+probability (fatX173 | fatX39, matX39, Sfat173) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7144,7 +7178,7 @@ probability (X173 | fatX173, matX173) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX174 | fatX109, matX109, Smat174) {
+probability (matX174 | fatX48, matX48, Smat174) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7182,7 +7216,7 @@ probability (X175 | fatX175, matX175) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX176 | fatX28, matX28, Smat176) {
+probability (matX176 | fatX92, matX92, Smat176) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7192,7 +7226,7 @@ probability (matX176 | fatX28, matX28, Smat176) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX176 | fatX76, matX76, Sfat176) {
+probability (fatX176 | fatX91, matX91, Sfat176) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7208,7 +7242,7 @@ probability (X176 | fatX176, matX176) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX177 | fatX43, matX43, Smat177) {
+probability (matX177 | fatX20, matX20, Smat177) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7218,7 +7252,7 @@ probability (matX177 | fatX43, matX43, Smat177) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX177 | fatX21, matX21, Sfat177) {
+probability (fatX177 | fatX34, matX34, Sfat177) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7234,7 +7268,7 @@ probability (X177 | fatX177, matX177) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX178 | fatX123, matX123, Smat178) {
+probability (matX178 | fatX131, matX131, Smat178) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7244,7 +7278,7 @@ probability (matX178 | fatX123, matX123, Smat178) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX178 | fatX124, matX124, Sfat178) {
+probability (fatX178 | fatX130, matX130, Sfat178) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7284,7 +7318,7 @@ probability (X180 | fatX180, matX180) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX181 | fatX114, matX114, Smat181) {
+probability (matX181 | fatX182, matX182, Smat181) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7294,7 +7328,7 @@ probability (matX181 | fatX114, matX114, Smat181) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX181 | fatX85, matX85, Sfat181) {
+probability (fatX181 | fatX178, matX178, Sfat181) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7310,25 +7344,11 @@ probability (X181 | fatX181, matX181) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX182 | fatX78, matX78, Smat182) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX182) {
+   default 0.95 0.05;
 }
-probability (fatX182 | fatX33, matX33, Sfat182) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX182) {
+   default 0.95 0.05;
 }
 probability (X182 | fatX182, matX182) {
    (0, 0) 1 0 0 0;
@@ -7336,25 +7356,11 @@ probability (X182 | fatX182, matX182) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX183 | fatX184, matX184, Smat183) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX183) {
+   default 0.95 0.05;
 }
-probability (fatX183 | fatX157, matX157, Sfat183) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX183) {
+   default 0.95 0.05;
 }
 probability (X183 | fatX183, matX183) {
    (0, 0) 1 0 0 0;
@@ -7374,7 +7380,7 @@ probability (X184 | fatX184, matX184) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX185 | fatX87, matX87, Smat185) {
+probability (matX185 | fatX186, matX186, Smat185) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7384,7 +7390,7 @@ probability (matX185 | fatX87, matX87, Smat185) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX185 | fatX186, matX186, Sfat185) {
+probability (fatX185 | fatX14, matX14, Sfat185) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7412,25 +7418,11 @@ probability (X186 | fatX186, matX186) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX187 | fatX92, matX92, Smat187) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX187) {
+   default 0.95 0.05;
 }
-probability (fatX187 | fatX91, matX91, Sfat187) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX187) {
+   default 0.95 0.05;
 }
 probability (X187 | fatX187, matX187) {
    (0, 0) 1 0 0 0;
@@ -7438,25 +7430,11 @@ probability (X187 | fatX187, matX187) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX188 | fatX133, matX133, Smat188) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX188) {
+   default 0.95 0.05;
 }
-probability (fatX188 | fatX132, matX132, Sfat188) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX188) {
+   default 0.95 0.05;
 }
 probability (X188 | fatX188, matX188) {
    (0, 0) 1 0 0 0;
@@ -7464,7 +7442,7 @@ probability (X188 | fatX188, matX188) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX189 | fatX80, matX80, Smat189) {
+probability (matX189 | fatX186, matX186, Smat189) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7474,7 +7452,7 @@ probability (matX189 | fatX80, matX80, Smat189) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX189 | fatX7, matX7, Sfat189) {
+probability (fatX189 | fatX14, matX14, Sfat189) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7490,7 +7468,7 @@ probability (X189 | fatX189, matX189) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX190 | fatX10, matX10, Smat190) {
+probability (matX190 | fatX23, matX23, Smat190) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7500,7 +7478,7 @@ probability (matX190 | fatX10, matX10, Smat190) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX190 | fatX23, matX23, Sfat190) {
+probability (fatX190 | fatX22, matX22, Sfat190) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7526,7 +7504,7 @@ probability (matX191 | fatX192, matX192, Smat191) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX191 | fatX116, matX116, Sfat191) {
+probability (fatX191 | fatX45, matX45, Sfat191) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7554,25 +7532,11 @@ probability (X192 | fatX192, matX192) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX193 | fatX194, matX194, Smat193) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX193) {
+   default 0.95 0.05;
 }
-probability (fatX193 | fatX191, matX191, Sfat193) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX193) {
+   default 0.95 0.05;
 }
 probability (X193 | fatX193, matX193) {
    (0, 0) 1 0 0 0;
@@ -7592,7 +7556,7 @@ probability (X194 | fatX194, matX194) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX195 | fatX196, matX196, Smat195) {
+probability (matX195 | fatX122, matX122, Smat195) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7602,7 +7566,7 @@ probability (matX195 | fatX196, matX196, Smat195) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX195 | fatX167, matX167, Sfat195) {
+probability (fatX195 | fatX123, matX123, Sfat195) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -7618,11 +7582,25 @@ probability (X195 | fatX195, matX195) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX196) {
-   default 0.95 0.05;
+probability (matX196 | fatX197, matX197, Smat196) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX196) {
-   default 0.95 0.05;
+probability (fatX196 | fatX164, matX164, Sfat196) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X196 | fatX196, matX196) {
    (0, 0) 1 0 0 0;
@@ -7630,25 +7608,11 @@ probability (X196 | fatX196, matX196) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX197 | fatX164, matX164, Smat197) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX197) {
+   default 0.95 0.05;
 }
-probability (fatX197 | fatX198, matX198, Sfat197) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX197) {
+   default 0.95 0.05;
 }
 probability (X197 | fatX197, matX197) {
    (0, 0) 1 0 0 0;
@@ -7656,11 +7620,25 @@ probability (X197 | fatX197, matX197) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX198) {
-   default 0.95 0.05;
+probability (matX198 | fatX55, matX55, Smat198) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX198) {
-   default 0.95 0.05;
+probability (fatX198 | fatX199, matX199, Sfat198) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X198 | fatX198, matX198) {
    (0, 0) 1 0 0 0;
@@ -7668,25 +7646,11 @@ probability (X198 | fatX198, matX198) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX199 | fatX146, matX146, Smat199) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX199) {
+   default 0.95 0.05;
 }
-probability (fatX199 | fatX200, matX200, Sfat199) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (fatX199) {
+   default 0.95 0.05;
 }
 probability (X199 | fatX199, matX199) {
    (0, 0) 1 0 0 0;
@@ -7694,11 +7658,25 @@ probability (X199 | fatX199, matX199) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX200) {
-   default 0.95 0.05;
+probability (matX200 | fatX122, matX122, Smat200) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
-probability (fatX200) {
-   default 0.95 0.05;
+probability (fatX200 | fatX123, matX123, Sfat200) {
+   (0, 0, fat) 1 0;
+   (1, 0, fat) 1 0;
+   (0, 1, fat) 0 1;
+   (1, 1, fat) 0 1;
+   (0, 0, mat) 1 0;
+   (1, 0, mat) 0 1;
+   (0, 1, mat) 1 0;
+   (1, 1, mat) 0 1;
 }
 probability (X200 | fatX200, matX200) {
    (0, 0) 1 0 0 0;
@@ -7742,22 +7720,16 @@ probability (Sfat8) {
 probability (Smat8) {
    default 0.5 0.5;
 }
+probability (Sfat9) {
+   default 0.5 0.5;
+}
+probability (Smat9) {
+   default 0.5 0.5;
+}
 probability (Sfat10) {
    default 0.5 0.5;
 }
 probability (Smat10) {
-   default 0.5 0.5;
-}
-probability (Sfat11) {
-   default 0.5 0.5;
-}
-probability (Smat11) {
-   default 0.5 0.5;
-}
-probability (Sfat12) {
-   default 0.5 0.5;
-}
-probability (Smat12) {
    default 0.5 0.5;
 }
 probability (Sfat13) {
@@ -7796,10 +7768,10 @@ probability (Sfat18) {
 probability (Smat18) {
    default 0.5 0.5;
 }
-probability (Sfat19) {
+probability (Sfat20) {
    default 0.5 0.5;
 }
-probability (Smat19) {
+probability (Smat20) {
    default 0.5 0.5;
 }
 probability (Sfat21) {
@@ -7808,10 +7780,16 @@ probability (Sfat21) {
 probability (Smat21) {
    default 0.5 0.5;
 }
-probability (Sfat22) {
+probability (Sfat24) {
    default 0.5 0.5;
 }
-probability (Smat22) {
+probability (Smat24) {
+   default 0.5 0.5;
+}
+probability (Sfat25) {
+   default 0.5 0.5;
+}
+probability (Smat25) {
    default 0.5 0.5;
 }
 probability (Sfat26) {
@@ -7832,16 +7810,16 @@ probability (Sfat28) {
 probability (Smat28) {
    default 0.5 0.5;
 }
-probability (Sfat29) {
+probability (Sfat30) {
    default 0.5 0.5;
 }
-probability (Smat29) {
+probability (Smat30) {
    default 0.5 0.5;
 }
-probability (Sfat32) {
+probability (Sfat31) {
    default 0.5 0.5;
 }
-probability (Smat32) {
+probability (Smat31) {
    default 0.5 0.5;
 }
 probability (Sfat33) {
@@ -7862,18 +7840,6 @@ probability (Sfat35) {
 probability (Smat35) {
    default 0.5 0.5;
 }
-probability (Sfat36) {
-   default 0.5 0.5;
-}
-probability (Smat36) {
-   default 0.5 0.5;
-}
-probability (Sfat37) {
-   default 0.5 0.5;
-}
-probability (Smat37) {
-   default 0.5 0.5;
-}
 probability (Sfat38) {
    default 0.5 0.5;
 }
@@ -7884,12 +7850,6 @@ probability (Sfat39) {
    default 0.5 0.5;
 }
 probability (Smat39) {
-   default 0.5 0.5;
-}
-probability (Sfat40) {
-   default 0.5 0.5;
-}
-probability (Smat40) {
    default 0.5 0.5;
 }
 probability (Sfat41) {
@@ -7904,10 +7864,10 @@ probability (Sfat42) {
 probability (Smat42) {
    default 0.5 0.5;
 }
-probability (Sfat44) {
+probability (Sfat43) {
    default 0.5 0.5;
 }
-probability (Smat44) {
+probability (Smat43) {
    default 0.5 0.5;
 }
 probability (Sfat45) {
@@ -7922,16 +7882,16 @@ probability (Sfat46) {
 probability (Smat46) {
    default 0.5 0.5;
 }
+probability (Sfat47) {
+   default 0.5 0.5;
+}
+probability (Smat47) {
+   default 0.5 0.5;
+}
 probability (Sfat48) {
    default 0.5 0.5;
 }
 probability (Smat48) {
-   default 0.5 0.5;
-}
-probability (Sfat50) {
-   default 0.5 0.5;
-}
-probability (Smat50) {
    default 0.5 0.5;
 }
 probability (Sfat51) {
@@ -7946,10 +7906,22 @@ probability (Sfat52) {
 probability (Smat52) {
    default 0.5 0.5;
 }
+probability (Sfat53) {
+   default 0.5 0.5;
+}
+probability (Smat53) {
+   default 0.5 0.5;
+}
 probability (Sfat54) {
    default 0.5 0.5;
 }
 probability (Smat54) {
+   default 0.5 0.5;
+}
+probability (Sfat55) {
+   default 0.5 0.5;
+}
+probability (Smat55) {
    default 0.5 0.5;
 }
 probability (Sfat56) {
@@ -7964,22 +7936,22 @@ probability (Sfat57) {
 probability (Smat57) {
    default 0.5 0.5;
 }
+probability (Sfat58) {
+   default 0.5 0.5;
+}
+probability (Smat58) {
+   default 0.5 0.5;
+}
 probability (Sfat59) {
    default 0.5 0.5;
 }
 probability (Smat59) {
    default 0.5 0.5;
 }
-probability (Sfat61) {
+probability (Sfat60) {
    default 0.5 0.5;
 }
-probability (Smat61) {
-   default 0.5 0.5;
-}
-probability (Sfat62) {
-   default 0.5 0.5;
-}
-probability (Smat62) {
+probability (Smat60) {
    default 0.5 0.5;
 }
 probability (Sfat63) {
@@ -7988,10 +7960,10 @@ probability (Sfat63) {
 probability (Smat63) {
    default 0.5 0.5;
 }
-probability (Sfat66) {
+probability (Sfat65) {
    default 0.5 0.5;
 }
-probability (Smat66) {
+probability (Smat65) {
    default 0.5 0.5;
 }
 probability (Sfat67) {
@@ -8004,6 +7976,12 @@ probability (Sfat68) {
    default 0.5 0.5;
 }
 probability (Smat68) {
+   default 0.5 0.5;
+}
+probability (Sfat69) {
+   default 0.5 0.5;
+}
+probability (Smat69) {
    default 0.5 0.5;
 }
 probability (Sfat70) {
@@ -8024,22 +8002,16 @@ probability (Sfat74) {
 probability (Smat74) {
    default 0.5 0.5;
 }
-probability (Sfat75) {
-   default 0.5 0.5;
-}
-probability (Smat75) {
-   default 0.5 0.5;
-}
 probability (Sfat76) {
    default 0.5 0.5;
 }
 probability (Smat76) {
    default 0.5 0.5;
 }
-probability (Sfat77) {
+probability (Sfat78) {
    default 0.5 0.5;
 }
-probability (Smat77) {
+probability (Smat78) {
    default 0.5 0.5;
 }
 probability (Sfat79) {
@@ -8048,28 +8020,28 @@ probability (Sfat79) {
 probability (Smat79) {
    default 0.5 0.5;
 }
+probability (Sfat80) {
+   default 0.5 0.5;
+}
+probability (Smat80) {
+   default 0.5 0.5;
+}
 probability (Sfat81) {
    default 0.5 0.5;
 }
 probability (Smat81) {
    default 0.5 0.5;
 }
-probability (Sfat83) {
+probability (Sfat82) {
    default 0.5 0.5;
 }
-probability (Smat83) {
+probability (Smat82) {
    default 0.5 0.5;
 }
 probability (Sfat84) {
    default 0.5 0.5;
 }
 probability (Smat84) {
-   default 0.5 0.5;
-}
-probability (Sfat85) {
-   default 0.5 0.5;
-}
-probability (Smat85) {
    default 0.5 0.5;
 }
 probability (Sfat86) {
@@ -8084,16 +8056,22 @@ probability (Sfat87) {
 probability (Smat87) {
    default 0.5 0.5;
 }
-probability (Sfat88) {
+probability (Sfat89) {
    default 0.5 0.5;
 }
-probability (Smat88) {
+probability (Smat89) {
    default 0.5 0.5;
 }
 probability (Sfat90) {
    default 0.5 0.5;
 }
 probability (Smat90) {
+   default 0.5 0.5;
+}
+probability (Sfat91) {
+   default 0.5 0.5;
+}
+probability (Smat91) {
    default 0.5 0.5;
 }
 probability (Sfat93) {
@@ -8112,6 +8090,12 @@ probability (Sfat95) {
    default 0.5 0.5;
 }
 probability (Smat95) {
+   default 0.5 0.5;
+}
+probability (Sfat96) {
+   default 0.5 0.5;
+}
+probability (Smat96) {
    default 0.5 0.5;
 }
 probability (Sfat97) {
@@ -8138,6 +8122,18 @@ probability (Sfat101) {
 probability (Smat101) {
    default 0.5 0.5;
 }
+probability (Sfat102) {
+   default 0.5 0.5;
+}
+probability (Smat102) {
+   default 0.5 0.5;
+}
+probability (Sfat103) {
+   default 0.5 0.5;
+}
+probability (Smat103) {
+   default 0.5 0.5;
+}
 probability (Sfat104) {
    default 0.5 0.5;
 }
@@ -8156,6 +8152,12 @@ probability (Sfat106) {
 probability (Smat106) {
    default 0.5 0.5;
 }
+probability (Sfat108) {
+   default 0.5 0.5;
+}
+probability (Smat108) {
+   default 0.5 0.5;
+}
 probability (Sfat109) {
    default 0.5 0.5;
 }
@@ -8168,16 +8170,28 @@ probability (Sfat110) {
 probability (Smat110) {
    default 0.5 0.5;
 }
+probability (Sfat111) {
+   default 0.5 0.5;
+}
+probability (Smat111) {
+   default 0.5 0.5;
+}
+probability (Sfat112) {
+   default 0.5 0.5;
+}
+probability (Smat112) {
+   default 0.5 0.5;
+}
 probability (Sfat113) {
    default 0.5 0.5;
 }
 probability (Smat113) {
    default 0.5 0.5;
 }
-probability (Sfat115) {
+probability (Sfat114) {
    default 0.5 0.5;
 }
-probability (Smat115) {
+probability (Smat114) {
    default 0.5 0.5;
 }
 probability (Sfat116) {
@@ -8192,16 +8206,10 @@ probability (Sfat117) {
 probability (Smat117) {
    default 0.5 0.5;
 }
-probability (Sfat119) {
+probability (Sfat120) {
    default 0.5 0.5;
 }
-probability (Smat119) {
-   default 0.5 0.5;
-}
-probability (Sfat121) {
-   default 0.5 0.5;
-}
-probability (Smat121) {
+probability (Smat120) {
    default 0.5 0.5;
 }
 probability (Sfat122) {
@@ -8210,10 +8218,22 @@ probability (Sfat122) {
 probability (Smat122) {
    default 0.5 0.5;
 }
+probability (Sfat124) {
+   default 0.5 0.5;
+}
+probability (Smat124) {
+   default 0.5 0.5;
+}
 probability (Sfat125) {
    default 0.5 0.5;
 }
 probability (Smat125) {
+   default 0.5 0.5;
+}
+probability (Sfat126) {
+   default 0.5 0.5;
+}
+probability (Smat126) {
    default 0.5 0.5;
 }
 probability (Sfat127) {
@@ -8222,16 +8242,16 @@ probability (Sfat127) {
 probability (Smat127) {
    default 0.5 0.5;
 }
-probability (Sfat128) {
+probability (Sfat129) {
    default 0.5 0.5;
 }
-probability (Smat128) {
+probability (Smat129) {
    default 0.5 0.5;
 }
-probability (Sfat130) {
+probability (Sfat132) {
    default 0.5 0.5;
 }
-probability (Smat130) {
+probability (Smat132) {
    default 0.5 0.5;
 }
 probability (Sfat134) {
@@ -8240,34 +8260,22 @@ probability (Sfat134) {
 probability (Smat134) {
    default 0.5 0.5;
 }
-probability (Sfat135) {
+probability (Sfat137) {
    default 0.5 0.5;
 }
-probability (Smat135) {
+probability (Smat137) {
    default 0.5 0.5;
 }
-probability (Sfat136) {
+probability (Sfat138) {
    default 0.5 0.5;
 }
-probability (Smat136) {
+probability (Smat138) {
    default 0.5 0.5;
 }
-probability (Sfat140) {
+probability (Sfat139) {
    default 0.5 0.5;
 }
-probability (Smat140) {
-   default 0.5 0.5;
-}
-probability (Sfat141) {
-   default 0.5 0.5;
-}
-probability (Smat141) {
-   default 0.5 0.5;
-}
-probability (Sfat142) {
-   default 0.5 0.5;
-}
-probability (Smat142) {
+probability (Smat139) {
    default 0.5 0.5;
 }
 probability (Sfat144) {
@@ -8288,6 +8296,12 @@ probability (Sfat146) {
 probability (Smat146) {
    default 0.5 0.5;
 }
+probability (Sfat147) {
+   default 0.5 0.5;
+}
+probability (Smat147) {
+   default 0.5 0.5;
+}
 probability (Sfat148) {
    default 0.5 0.5;
 }
@@ -8306,22 +8320,28 @@ probability (Sfat151) {
 probability (Smat151) {
    default 0.5 0.5;
 }
+probability (Sfat152) {
+   default 0.5 0.5;
+}
+probability (Smat152) {
+   default 0.5 0.5;
+}
 probability (Sfat153) {
    default 0.5 0.5;
 }
 probability (Smat153) {
    default 0.5 0.5;
 }
-probability (Sfat154) {
-   default 0.5 0.5;
-}
-probability (Smat154) {
-   default 0.5 0.5;
-}
 probability (Sfat155) {
    default 0.5 0.5;
 }
 probability (Smat155) {
+   default 0.5 0.5;
+}
+probability (Sfat156) {
+   default 0.5 0.5;
+}
+probability (Smat156) {
    default 0.5 0.5;
 }
 probability (Sfat157) {
@@ -8336,16 +8356,16 @@ probability (Sfat158) {
 probability (Smat158) {
    default 0.5 0.5;
 }
-probability (Sfat159) {
+probability (Sfat160) {
    default 0.5 0.5;
 }
-probability (Smat159) {
+probability (Smat160) {
    default 0.5 0.5;
 }
-probability (Sfat162) {
+probability (Sfat163) {
    default 0.5 0.5;
 }
-probability (Smat162) {
+probability (Smat163) {
    default 0.5 0.5;
 }
 probability (Sfat164) {
@@ -8360,34 +8380,10 @@ probability (Sfat166) {
 probability (Smat166) {
    default 0.5 0.5;
 }
-probability (Sfat167) {
-   default 0.5 0.5;
-}
-probability (Smat167) {
-   default 0.5 0.5;
-}
-probability (Sfat168) {
-   default 0.5 0.5;
-}
-probability (Smat168) {
-   default 0.5 0.5;
-}
 probability (Sfat169) {
    default 0.5 0.5;
 }
 probability (Smat169) {
-   default 0.5 0.5;
-}
-probability (Sfat170) {
-   default 0.5 0.5;
-}
-probability (Smat170) {
-   default 0.5 0.5;
-}
-probability (Sfat172) {
-   default 0.5 0.5;
-}
-probability (Smat172) {
    default 0.5 0.5;
 }
 probability (Sfat173) {
@@ -8426,34 +8422,10 @@ probability (Sfat181) {
 probability (Smat181) {
    default 0.5 0.5;
 }
-probability (Sfat182) {
-   default 0.5 0.5;
-}
-probability (Smat182) {
-   default 0.5 0.5;
-}
-probability (Sfat183) {
-   default 0.5 0.5;
-}
-probability (Smat183) {
-   default 0.5 0.5;
-}
 probability (Sfat185) {
    default 0.5 0.5;
 }
 probability (Smat185) {
-   default 0.5 0.5;
-}
-probability (Sfat187) {
-   default 0.5 0.5;
-}
-probability (Smat187) {
-   default 0.5 0.5;
-}
-probability (Sfat188) {
-   default 0.5 0.5;
-}
-probability (Smat188) {
    default 0.5 0.5;
 }
 probability (Sfat189) {
@@ -8474,28 +8446,28 @@ probability (Sfat191) {
 probability (Smat191) {
    default 0.5 0.5;
 }
-probability (Sfat193) {
-   default 0.5 0.5;
-}
-probability (Smat193) {
-   default 0.5 0.5;
-}
 probability (Sfat195) {
    default 0.5 0.5;
 }
 probability (Smat195) {
    default 0.5 0.5;
 }
-probability (Sfat197) {
+probability (Sfat196) {
    default 0.5 0.5;
 }
-probability (Smat197) {
+probability (Smat196) {
    default 0.5 0.5;
 }
-probability (Sfat199) {
+probability (Sfat198) {
    default 0.5 0.5;
 }
-probability (Smat199) {
+probability (Smat198) {
+   default 0.5 0.5;
+}
+probability (Sfat200) {
+   default 0.5 0.5;
+}
+probability (Smat200) {
    default 0.5 0.5;
 }
 

@@ -2,7 +2,16 @@
 import pyAgrum as gum
 import pyAgrum.lib.notebook as gnb
 import pydotplus as pydot
+import matplotlib.pyplot as plt
 
+mycmap=plt.get_cmap('Pastel1')
+
+def nodevalue(n):
+    cols={"X":0.5,
+              "S":0.9,
+              "m":0.7,
+              "f":0.75}
+    return cols[n[0]]
 
 def save(ped, filename):
     """
@@ -129,7 +138,13 @@ def ped_to_bn(ped, f):
 
     return bn
 
+def show_proba(bn):
+    gnb.showInference(bn,size=15,nodeColor={n:nodevalue(n) for n in bn.names()},cmap=mycmap)
+
 def save_bn(bn,name):
     bn.saveBIF(name+'.bif')
+
+
+
 
 
