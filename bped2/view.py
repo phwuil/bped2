@@ -67,28 +67,27 @@ def graph(ped, name, bool):
     graph.write_pdf(name + '.pdf')
 
 
-def load_evidence(file, famID):
+def load_evidence(file,famID):
     tab = dict()
-    with open(file, 'r') as f:
-        for (line, i) in enumerate(f.readlines()):
+    with open(file,'r') as f:
+        for (line,i) in enumerate(f.readlines()):
             ev = i.split()
             idfam = ev[0].split(':')[0]
             if ev[0] == famID:
-                del ev[0], ev[1]
-                ev = [float(i) for i in ev]
-                tab[f'X{line + 1}'] = ev
+                # del ev[0],ev[1]
+                ev = [float(i) for i in ev[2:]]
+                tab[f'X{line+1}'] = ev
     return tab
 
-def load_evidence_out(file, famID):
+def load_evidence_out(file,famID):
     tab = dict()
-    with open(file, 'r') as f:
-        for (line, i) in enumerate(f.readlines()):
+    with open(file,'r') as f:
+        for (line,i) in enumerate(f.readlines()):
             ev = i.split()
             f_id = ev[0].split(':')[0]
             if f_id == f'X_{famID}':
                 key = ev[0].split(':')[1]
-                del ev[0], ev[1]
-                ev = [float(i) for i in ev]
+                ev = [float(i) for i in ev[1:]]
                 tab[f'X{key}'] = ev
     return tab
 
@@ -118,6 +117,18 @@ def create_offsprings(ped, bn, p, parent):
 
     bn.cpt(f"{parent}X{p.pID}").fillWith([1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1])
 
+def create_offsprings_compact(ped, bn, p, parent):
+    # parent = fat ou mat
+    if parent == 'fat':
+        parentID = p.fatID
+    else:
+        parentID = p.matID
+
+    bn.addArc(f"fatX{parentID}", f"{parent}X{p.pID}")
+    bn.addArc(f"matX{parentID}", f"{parent}X{p.pID}")
+
+    bn.cpt(f"{parent}X{p.pID}").fillWith([1,0,0.5,0.5,0.5,0.5,0,1])
+
 def ped_to_bn(ped, f):
     bn = gum.BayesNet()
     for p in ped.get_pedigree().values():
@@ -138,6 +149,25 @@ def ped_to_bn(ped, f):
 
     return bn
 
+def ped_to_bn_compact(ped,f):
+    bn = gum.BayesNet()
+    for p in ped.get_pedigree().values():
+        create_holders(ped,bn, p, f)
+
+    for p in ped.get_pedigree().values():
+        if p.fatID == '0':  # Cas parents inconnu
+            bn.cpt(f"fatX{p.pID}").fillWith([1 - f, f])
+        else:
+            create_offsprings_compact(ped,bn, p, 'fat' )
+
+        if p.matID == '0':  # Cas parents inconnu
+            bn.cpt(f"matX{p.pID}").fillWith([1 - f, f])
+        else:
+            create_offsprings_compact(ped,bn, p, 'mat')
+
+    #gnb.showBN(bn, size=100)
+
+    return bn
 def show_proba(bn):
     gnb.showInference(bn,size=15,nodeColor={n:nodevalue(n) for n in bn.names()},cmap=mycmap)
 

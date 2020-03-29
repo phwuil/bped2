@@ -559,7 +559,12 @@ class Pedigree:
             f.write("---------------------------------------------------\n")
             for k, v in stats.items():
                 f.write(f"The Family {k} is composed by {v} members \n")
+
             f.write("---------------------------------------------------\n")
+            f.write(f'There is{len(self._pedigree)} people in this pedigree ')
+            f.write(f'There is{self.depth()} generation in this pedigree ')
+            f.write(f'There is{len([i for i in self.roots()])} people without parents in this pedigree ')
+            f.write(f'There is{len([i for i in self.leaves()])} people without childrens in this pedigree ')
             f.write(f"Out of  {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
             f.write(
                 f"In the pedigree, this people appear as mother and also as father : {self.check_mother_and_father()}\n")
@@ -567,106 +572,26 @@ class Pedigree:
                 f"In the pedigree, this people had consangineous origins : {self.check_consanguinity_pedigree()}\n")
 
 
-    def generation_ped(self, famID, nbDepart, nbGeneration):
-        """
-        Return a new pedigree, start with a number nbDepart of people and create nbGeneration
-        """
-        nbChildMax = 4  # Nombres d'enfants max que l'on peut avoir
-        pMariage = 0.8  # Probabilité d'effectuer un mariage entre deux peoples
-        pConsanguinity = 0.5  # Probabilité d'effectuer un mariage entre people d'une même lignée
-        global currentID
-        currentID = 1
-
-        def first_generation(currentID):
-            for p in range(nbDepart):
-                self.add_people(famID, str(currentID), self.no_people, self.no_people)
-                currentID += 1
-
-            mariage = {i for i in self.leaves()}
-
-            while len(mariage) > 1:
-                p1, p2 = random.sample(mariage, 2)  # On choisi 2 personnes au hasard
-                mariage.remove(p1)
-                mariage.remove(p2)
-                child = random.randint(1, nbChildMax)
-                # Ajout des enfants
-                for c in range(child):
-                    self.add_people(famID, str(currentID), p1, p2)
-                    self.update_children(str(currentID))
-                    currentID += 1
-                self.add_sex(p1, 1)
-                self.add_sex(p2, 2)
-            return currentID
-
-        def mariage_2p_exist(currentID,mariage):
-            if len(mariage) > 1:
-                p1, p2 = random.sample(mariage, 2)
-                bool = self.is_consanguineous(p1, p2, n)
-                if bool:
-                    if random.random() < pConsanguinity:
-                        child = random.randint(1, nbChildMax)
-                        # Ajout des enfants
-                        for c in range(child):
-                            self.add_people(famID, str(currentID), p1, p2)
-                            self.update_children(str(currentID))
-                            currentID += 1
-                        self.add_sex(p1, 1)
-                        self.add_sex(p2, 2)
-                        mariage.remove(p1)
-                        mariage.remove(p2)
-                    else:
-                        pass
-                else:  # Mariage normal entre deux personnes déja présente dans le pedigree
-                    child = random.randint(1, nbChildMax)
-                    # Ajout des enfants
-                    for c in range(child):
-                        self.add_people(famID, str(currentID), p1, p2)
-                        self.update_children(str(currentID))
-                        currentID += 1
-                    self.add_sex(p1, 1)
-                    self.add_sex(p2, 2)
-                    mariage.remove(p1)
-                    mariage.remove(p2)
-            return currentID
-
-        def mariage_1p_exist(currentID,mariage):
-            if len(mariage) > 0:
-                p1 = random.sample(mariage, 1)[0]
-                sex = random.random()
-                child = random.randint(1, nbChildMax)
-                p2 = str(currentID)
-                self.add_people(famID, p2, self.no_people, self.no_people)
-                mariage.add(p2)
-                currentID += 1
-                if sex < 0.5:  # On crée un homme
-                    for i in range(child):
-                        self.add_people(famID, str(currentID), p2, p1)
-                        self.update_children(str(currentID))
-                        currentID += 1
-                    self.add_sex(p2, 1)
-                    self.add_sex(p1, 2)
-                    mariage.remove(p1)
-                    mariage.remove(p2)
-                else:  # On crée une femme
-                    for i in range(child):
-                        self.add_people(famID, str(currentID), p1, p2)
-                        self.update_children(str(currentID))
-                        currentID += 1
-                    self.add_sex(str(p1), 1)
-                    self.add_sex(str(p2), 2)
-                    mariage.remove(p1)
-                    mariage.remove(p2)
-            return currentID
-
-        currentID = first_generation(currentID)
-        for n in range(1,nbGeneration):
-            mariage = {i for i in self.leaves()}
-            while random.random() < pMariage:
-                if random.random() < 0.5:
-                    currentID = mariage_2p_exist(currentID,mariage)
-                else:
-                    currentID = mariage_1p_exist(currentID,mariage)
-
+    def depth(self):
+        holders = [i for i in self.roots()]
+        children = set()
+        for i in holders:
+            for j in list(self.get_people(i).child):
+                children.add(j)
+        if len(children) != 0:
+            gen = 2
+        else:
+            return 1
+        while True:
+            tmp = set()
+            for i in children:
+                for j in list(self.get_people(i).child):
+                    tmp.add(j)
+            children = list(tmp)
+            if len(tmp) == 0 :
+                return gen
+            else:
+                gen += 1
 
     def gen_ped(self, famID, nb, g_max, c_max, cl):
         """

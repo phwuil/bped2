@@ -170,10 +170,6 @@ variable Smat9 {
    type discrete[2] {fat, mat};
 }
 
-variable Smat10 {
-   type discrete[2] {fat, mat};
-}
-
 probability (matX1) {
    default 0.95 0.05;
 }
@@ -340,7 +336,7 @@ probability (X8 | fatX8, matX8) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX9 | fatX1, matX1, Smat9) {
+probability (matX9 | fatX10, matX10, Smat9) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -350,7 +346,7 @@ probability (matX9 | fatX1, matX1, Smat9) {
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
 }
-probability (fatX9 | fatX3, matX3, Sfat9) {
+probability (fatX9 | fatX8, matX8, Sfat9) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
    (0, 1, fat) 0 1;
@@ -366,15 +362,8 @@ probability (X9 | fatX9, matX9) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX10 | fatX9, matX9, Smat10) {
-   (0, 0, fat) 1 0;
-   (1, 0, fat) 1 0;
-   (0, 1, fat) 0 1;
-   (1, 1, fat) 0 1;
-   (0, 0, mat) 1 0;
-   (1, 0, mat) 0 1;
-   (0, 1, mat) 1 0;
-   (1, 1, mat) 0 1;
+probability (matX10) {
+   default 0.95 0.05;
 }
 probability (fatX10) {
    default 0.95 0.05;
@@ -419,9 +408,6 @@ probability (Sfat9) {
    default 0.5 0.5;
 }
 probability (Smat9) {
-   default 0.5 0.5;
-}
-probability (Smat10) {
    default 0.5 0.5;
 }
 

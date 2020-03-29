@@ -15,6 +15,7 @@ def main(args=None):
   [--peddot dotfile] export the pedigree into a dot file
   [--audit textfile] introspect pedigree into a text file
   [--verbose] display error/warning messages in stderr
+  [--compact] decide which version between normal and compact version of a  BN
     """
     parser = OptionParser(version="%prog 0.1", usage="usage: %prog [options] pedfile")
     parser.add_option("", "--ev", dest="evfile",
@@ -32,6 +33,8 @@ def main(args=None):
     parser.add_option("", "--verbose", dest="verbose", help="messages while processing", default=False,
                       action="store_true")
     parser.add_option("", "--bn", dest="bnfile", help="Export the BN into a BIF file", metavar="FILE")
+    parser.add_option("","--compact",dest="compact",
+                      help="Decided if the BN is conpacted or not")
 
     if args is None:
         (options, arguments) = parser.parse_args()
@@ -58,42 +61,65 @@ def main(args=None):
         current_ped.load(str(pedfile))
         print(current_ped)
         famID = current_ped.get_domain()
-        bn = pview.ped_to_bn(current_ped,options.f)
 
-        if options.evfile:
-            pview.load_evidence(options.evfile,famID)
-            print(f"{options.evfile} loaded")
-
+        if options.compact:
+            bn = pview.ped_to_bn_compact(current_ped,options.f)
+        else:
+            bn = pview.ped_to_bn(current_ped,options.f)
 
         if options.peddotfile:
             pview.save(current_ped,options.peddotfile)
-            print('ped saved')
+            if options.verbose:
+                print('ped saved in'+options.peddotfile)
 
         if options.bndotfile:
             pview.gum.saveBN(bn, options.bndotfile)
-            print('bn_dot_file saved')
-
-        if options.verbose:
-            pass
+            if options.verbose:
+                print('bndotfile saved in'+options.bndotfile)
 
         if options.bnfile:
             pview.save_bn(options.bndotfile)
-            print('bn saved')
+            if options.verbose:
+                print('bn saved in'+options.bndotfile)
+
 
         if options.auditfile:
             ped.Pedigree.pedigree_overview_file(options.auditfile)
 
         if options.targets:
-            ie = pview.gum.LazyPropagation(bn)
-            ie.makeInference()
-            for i in current_ped.get_pedigree().keys():
-                if i in options.targets:
-                    pview.gnb.showProba(ie.posterior(f"X{i}"))
+            if options.evfile:
+                evidence = pview.load_evidence(options.evfile, famID)
+                if options.verbose:
+                    print(f"{options.evfile} loaded")
+
+                ie = pview.gum.LazyPropagation(bn)
+                ie.setEvidence(evidence)
+                ie.makeInference()
+                for i in current_ped.get_pedigree().keys():
+                    if i in options.targets:
+                        pview.gnb.showProba(ie.posterior(f"X{i}"))
+            else:
+                ie = pview.gum.LazyPropagation(bn)
+                ie.makeInference()
+                for i in current_ped.get_pedigree().keys():
+                    if i in options.targets:
+                        pview.gnb.showProba(ie.posterior(f"X{i}"))
         else:
-            ie = pview.gum.LazyPropagation(bn)
-            ie.makeInference()
-            for i in current_ped.get_pedigree().keys():
-                pview.gnb.showProba(ie.posterior(f"X{i}"))
+            if options.evfile:
+                evidence = pview.load_evidence(options.evfile, famID)
+                if options.verbose:
+                    print(f"{options.evfile} loaded")
+
+                ie = pview.gum.LazyPropagation(bn)
+                ie.setEvidence(evidence)
+                ie.makeInference()
+                for i in current_ped.get_pedigree().keys():
+                    pview.gnb.showProba(ie.posterior(f"X{i}"))
+            else:
+                ie = pview.gum.LazyPropagation(bn)
+                ie.makeInference()
+                for i in current_ped.get_pedigree().keys():
+                    pview.gnb.showProba(ie.posterior(f"X{i}"))
 
 
 if __name__ == "__main__":

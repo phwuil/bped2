@@ -213,3 +213,8 @@ class TestPedigree(unittest.TestCase):
             print(ped)
             pview.graph(ped,f'../data/graph/generate_graph_200_30_4_4_G{i}',False)
             # pview.save(ped,f'../cplex/samples/pedigree_200_30_4_4_G{i}')
+
+    def test_depth(self):
+        ped = Pedigree()
+        ped.load("../data/ped/fam9.ped")
+        print(ped.depth())

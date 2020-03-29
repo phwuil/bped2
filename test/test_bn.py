@@ -15,4 +15,12 @@ class TestPedigree(unittest.TestCase):
         #pview.save_bn(bn,'toto')
         print(lazy.doLazyProg("../cplex/bn/bn_2500_44_4_4_G2.bif"))
 
+    def test_bn_compact(self):
+        ped = Pedigree()
+        ped.load('../cplex/samples/pedigree_50_7_4_4_G8.ped')
+        bn_no = pview.ped_to_bn(ped,0.05)
+        bn_compact = pview.ped_to_bn_compact()
+        ie_no = pview.gum.LazyPropagation(bn_no)
+        ie_compact = pview.gum.LazyPropagation(bn_compact)
+
 
