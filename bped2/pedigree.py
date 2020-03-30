@@ -552,7 +552,7 @@ class Pedigree:
 
     def pedigree_overview_file(self, filename):
 
-        with open("../data/ped/" + filename, "w") as f:
+        with open(filename, "w") as f:
             for k, v in self._people2line.items():
                 f.write(f"People {k} is defined at line {v}\n")
             stats = self.get_stat_family()
@@ -561,10 +561,10 @@ class Pedigree:
                 f.write(f"The Family {k} is composed by {v} members \n")
 
             f.write("---------------------------------------------------\n")
-            f.write(f'There is{len(self._pedigree)} people in this pedigree ')
-            f.write(f'There is{self.depth()} generation in this pedigree ')
-            f.write(f'There is{len([i for i in self.roots()])} people without parents in this pedigree ')
-            f.write(f'There is{len([i for i in self.leaves()])} people without childrens in this pedigree ')
+            f.write(f'There is {len(self._pedigree)} people in this pedigree\n')
+            f.write(f'There is {self.depth()} generation in this pedigree\n')
+            f.write(f'There is {len([i for i in self.roots()])} people without parents in this pedigree\n')
+            f.write(f'There is {len([i for i in self.leaves()])} people without childrens in this pedigree \n')
             f.write(f"Out of  {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
             f.write(
                 f"In the pedigree, this people appear as mother and also as father : {self.check_mother_and_father()}\n")

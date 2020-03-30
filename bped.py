@@ -64,27 +64,33 @@ def main(args=None):
 
         if options.compact:
             bn = pview.ped_to_bn_compact(current_ped,options.f)
+            if options.verbose:
+                pview.gnb.showBN(bn,size=100)
         else:
             bn = pview.ped_to_bn(current_ped,options.f)
+            if options.verbose:
+                pview.gnb.showBN(bn,size=100)
 
         if options.peddotfile:
             pview.save(current_ped,options.peddotfile)
             if options.verbose:
-                print('ped saved in'+options.peddotfile)
+                print('ped saved in '+options.peddotfile)
 
         if options.bndotfile:
             pview.gum.saveBN(bn, options.bndotfile)
             if options.verbose:
-                print('bndotfile saved in'+options.bndotfile)
+                print('bndotfile saved in '+options.bndotfile)
 
         if options.bnfile:
             pview.save_bn(options.bndotfile)
             if options.verbose:
-                print('bn saved in'+options.bndotfile)
+                print('bn saved in '+options.bndotfile)
 
 
         if options.auditfile:
-            ped.Pedigree.pedigree_overview_file(options.auditfile)
+            current_ped.pedigree_overview_file(options.auditfile)
+            if options.verbose:
+                print('audti file ' + options.auditfile + ' created')
 
         if options.targets:
             if options.evfile:

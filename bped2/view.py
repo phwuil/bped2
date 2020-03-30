@@ -168,6 +168,7 @@ def ped_to_bn_compact(ped,f):
     #gnb.showBN(bn, size=100)
 
     return bn
+
 def show_proba(bn):
     gnb.showInference(bn,size=15,nodeColor={n:nodevalue(n) for n in bn.names()},cmap=mycmap)
 
