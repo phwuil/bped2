@@ -565,6 +565,8 @@ class Pedigree:
             f.write(f'There is {self.depth()} generation in this pedigree\n')
             f.write(f'There is {len([i for i in self.roots()])} people without parents in this pedigree\n')
             f.write(f'There is {len([i for i in self.leaves()])} people without childrens in this pedigree \n')
+            f.write(f'The brotherhood\'s mean size is {self.mean_child()} in this pedigree \n')
+            f.write(f'The biggest brotherhood is composed by {self.max_child()[1]} people \n')
             f.write(f"Out of  {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
             f.write(
                 f"In the pedigree, this people appear as mother and also as father : {self.check_mother_and_father()}\n")
@@ -592,6 +594,21 @@ class Pedigree:
                 return gen
             else:
                 gen += 1
+
+    def mean_child(self):
+        mean = 0
+        for k,v in self._pedigree.items():
+            mean += self.get_people(k).nbrChild()
+        return mean/len(self._pedigree)
+
+    def max_child(self):
+        nb = 0
+        people = '0'
+        for k, v in self._pedigree.items():
+            if self.get_people(k).nbrChild() > nb:
+                nb = self.get_people(k).nbrChild()
+                people = k
+        return people,nb
 
     def gen_ped(self, famID, nb, g_max, c_max, cl):
         """

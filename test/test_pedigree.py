@@ -207,9 +207,9 @@ class TestPedigree(unittest.TestCase):
         # ped.gen_ped('f',200,50,4,4)
         # ped.graph(f'generate_graph_test_200_1',False)
         # ped.save(f'../cplex/samples/pedigree_test_200')
-        for i in range(10):
+        for i in range(5):
             ped = Pedigree()
-            ped.gen_ped(i, 200, 30, 4, 4)
+            ped.gen_ped(i, 20, 4, 4, 4)
             print(ped)
             pview.graph(ped,f'../data/graph/generate_graph_200_30_4_4_G{i}',False)
             # pview.save(ped,f'../cplex/samples/pedigree_200_30_4_4_G{i}')

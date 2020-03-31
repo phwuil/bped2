@@ -175,6 +175,10 @@ def show_proba(bn):
 def save_bn(bn,name):
     bn.saveBIF(name+'.bif')
 
+def max_clique_size(bn):
+    jte = gum.JunctionTreeGenerator()
+    jt = jte.junctionTree(bn)
+    return max([len(jt.clique(cl)) for cl in jt.nodes()])
 
 
 

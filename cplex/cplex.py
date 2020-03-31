@@ -8,8 +8,8 @@ import os, psutil
 
 f = 0.05
 nb_ped = 50
-nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2500]
-nb_Gen_Max = [3,5,13,15,20,25,35,50,57,65,75]
+nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2500,3000,4000,5000]
+nb_Gen_Max = [3,5,10,15,20,25,35,40,50,60,70,90,100,120]
 nb_Gen_Min = [x//2 for x in nb_Gen_Max]
 nbChild = 4
 cl = 4
@@ -19,24 +19,28 @@ mean_gen_bn = []
 mean_gen_inf = []
 mean_gen_bn_compact = []
 mean_gen_inf_compact = []
+mean_clique = []
 
 errorValues_ped = []
 errorValues_bn = []
 errorValues_inf = []
 errorValues_bn_compact = []
 errorValues_inf_compact = []
+errorValues_clique = []
 
 max_ped = []
 max_bn = []
 max_inf = []
 max_bn_compact = []
-mac_inf_compact = []
+max_inf_compact = []
+max_clique = []
 
 min_ped = []
 min_bn = []
 min_inf = []
 min_bn_compact = []
 min_inf_compact = []
+min_clique = []
 
 pid = os.getpid()
 py = psutil.Process(pid)
@@ -48,6 +52,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     tab_mem = np.zeros(nb_ped)
     tab_bn_compact = np.zeros(nb_ped)
     tab_inf_compact = np.zeros(nb_ped)
+    tab_clique = np.zeros(nb_ped)
 
     for nb in range(nb_ped):
         g = random.randint(g_min,g_max)
@@ -87,30 +92,35 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
         tab_inf[nb] = t6
         tab_bn_compact[nb] = t8
         tab_inf_compact[nb] = t10
+        tab_clique[nb] = pview.max_clique_size(bn_compact)
 
     max_ped.append(tab_ped.max())
     max_bn.append(tab_bn.max())
     max_inf.append(tab_inf.max())
     max_bn_compact.append(tab_bn_compact.max())
-    mac_inf_compact.append(tab_inf_compact.max())
+    max_inf_compact.append(tab_inf_compact.max())
+    max_clique.append(tab_clique.max())
 
     min_ped.append(tab_ped.min())
     min_bn.append(tab_bn.min())
     min_inf.append(tab_inf.min())
     min_bn_compact.append(tab_bn_compact.min())
     min_inf_compact.append(tab_inf_compact.min())
+    min_clique.append(tab_clique.min())
 
     errorValues_ped.append(tab_ped.std())
     errorValues_bn.append(tab_bn.std())
     errorValues_inf.append(tab_inf.std())
     errorValues_bn_compact.append(tab_bn_compact.std())
     errorValues_inf_compact.append(tab_inf_compact.std())
+    errorValues_clique.append(tab_clique.std())
 
     mean_gen_ped.append(tab_ped.mean())
     mean_gen_bn.append(tab_bn.mean())
     mean_gen_inf.append(tab_inf.mean())
     mean_gen_bn_compact.append(tab_bn_compact.mean())
     mean_gen_inf_compact.append(tab_inf_compact.mean())
+    mean_clique.append(tab_clique.mean())
 
 
 f1 = plt.figure(1)
@@ -208,7 +218,7 @@ f10.show()
 
 f11 = plt.figure(11)
 plt.plot(nb_people, mean_gen_inf_compact, label='mean')
-plt.plot(nb_people, mac_inf_compact, label='max')
+plt.plot(nb_people, max_inf_compact, label='max')
 plt.plot(nb_people, min_inf_compact, label='min')
 plt.legend(['mean','max','min'])
 plt.title('Temps de calcul de l\'inférence d\'un BN compact en fonction de la taille du pedigree')
@@ -216,6 +226,18 @@ plt.xlabel('Taille du pedigree')
 plt.ylabel('Temps en sec')
 plt.savefig('../cplex/figure/Temps de calcul de l\'inférence moyenne d\'un BN compact , min et max en fonction de la taille du pedigree')
 f11.show()
+
+f12 = plt.figure(12)
+plt.plot(nb_people, mean_clique, label='mean')
+plt.plot(nb_people, max_clique, label='max')
+plt.plot(nb_people, min_clique, label='min')
+plt.legend(['mean','max','min'])
+plt.title('Taille de la clique en fonction de la taille du pedigree')
+plt.xlabel('Taille du pedigree')
+plt.ylabel('Taille de la clique')
+plt.savefig('../cplex/figure/Taille de la clique moyenne, min et max en fonction de la taille du pedigree')
+f12.show()
+
 
 
 plt.show()
