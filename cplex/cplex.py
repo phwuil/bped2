@@ -5,14 +5,15 @@ from time import *
 import numpy as np
 import matplotlib.pyplot as plt
 import os, psutil
+import math
 
 f = 0.05
 nb_ped = 50
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2500,3000,4000,5000]
-nb_Gen_Max = [3,5,10,15,20,25,35,40,50,60,70,90,100,120]
-nb_Gen_Min = [x//2 for x in nb_Gen_Max]
-nbChild = 4
-cl = 4
+#nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
+nb_Gen_Max = [3,3,3,4,4,4,4,5,5,6,7,8,9,10]
+nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
+cl = 2
 
 mean_gen_ped = []
 mean_gen_bn = []
@@ -55,6 +56,9 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     tab_clique = np.zeros(nb_ped)
 
     for nb in range(nb_ped):
+
+        nbChild = random.randint(6,12)
+
         g = random.randint(g_min,g_max)
         ped = Pedigree()
         t1 = process_time()

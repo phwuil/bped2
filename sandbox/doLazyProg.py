@@ -13,3 +13,5 @@ def doLazyProg(bn_name):
         return t2 - t1
     except RuntimeError:
         print('too long')
+
+

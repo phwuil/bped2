@@ -102,6 +102,7 @@ class Pedigree:
 
     people_unknown = "?"
     no_people = "0"
+    cl = 2
 
     def __init__(self):
         self._pedigree = dict()
@@ -155,7 +156,6 @@ class Pedigree:
                 p = People(*i.strip().split())
                 self.add_people(*i.strip().split())
                 self._people2line[p.pID] = line
-
 
     def add_sex(self, pID: str, sex: int):
         """
@@ -382,9 +382,9 @@ class Pedigree:
 
     def get_couple(self):
         couple = set()
-        for k,v in self._pedigree.items():
-            if len(self.get_parents(v.pID))>1:
-                couple.add((v.fatID,v.matID))
+        for k, v in self._pedigree.items():
+            if len(self.get_parents(v.pID)) > 1:
+                couple.add((v.fatID, v.matID))
         return couple
 
     def remove_family(self, famID):
@@ -431,7 +431,7 @@ class Pedigree:
 
     def old_gen(self, pID, nbG) -> set:
         """
-        Return a list of list that contains each previous generation of pID, from parents (1st gen) to nbG gen
+        Return a set that contains each previous generation of pID, from parents (1st gen) to nbG gen
         """
         if nbG == 1:
             return self.get_parents(pID)
@@ -443,7 +443,8 @@ class Pedigree:
                     gen.update(self.get_parents(pID))
                 else:
                     tmp = set()
-                    for i in gen:
+                    for i in list(gen):
+                        self.get_parents(i)
                         tmp.update(self.get_parents(i))
                     gen.update(tmp)
                 cpt += 1
@@ -463,7 +464,7 @@ class Pedigree:
                 if len(children) == 0:
                     children.update(self.get_people(pID).child)
                 else:
-                    for i in children:
+                    for i in list(children):
                         tmp.update(self.get_people(i).child)
                     children.update(tmp)
                 cpt += 1
@@ -499,10 +500,10 @@ class Pedigree:
         if len(parents) == 2:
             parent1, parent2 = self.get_parents(pID)
         elif len(parents) == 1:
-            parent1 = parents
-            parents = self.no_people
+            parent1 = list(parents)[0]
+            parent2 = self.no_people
         else:
-            return {}
+            return set()
 
         holders1 = set()
         holders2 = set()
@@ -511,7 +512,7 @@ class Pedigree:
             holders2 = self.old_gen(parent2, nbG)
         elif parent1 != 0 and parent2 == self.no_people:
             holders1 = self.old_gen(parent1, nbG)
-        else:
+        elif parent2 != 0 and parent1 == self.no_people:
             holders2 = self.old_gen(parent2, nbG)
         return holders1.intersection(holders2)
 
@@ -519,7 +520,7 @@ class Pedigree:
         fam = self.gen_family_pedigree(famID)
         res = set()
         for v in fam._pedigree.values():
-            res.update(self.check_consanguinity(v.pID, 10))
+            res.update(self.check_consanguinity(v.pID, self.cl))
         return res
 
     def check_consanguinity_pedigree(self):
@@ -563,16 +564,17 @@ class Pedigree:
             f.write("---------------------------------------------------\n")
             f.write(f'There is {len(self._pedigree)} people in this pedigree\n')
             f.write(f'There is {self.depth()} generation in this pedigree\n')
+            f.write(f'There is {len(self._pedigree) / self.depth()} people by generation in average\n')
             f.write(f'There is {len([i for i in self.roots()])} people without parents in this pedigree\n')
             f.write(f'There is {len([i for i in self.leaves()])} people without childrens in this pedigree \n')
             f.write(f'The brotherhood\'s mean size is {self.mean_child()} in this pedigree \n')
             f.write(f'The biggest brotherhood is composed by {self.max_child()[1]} people \n')
-            f.write(f"Out of  {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
+            f.write(
+                f"Out of  {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
             f.write(
                 f"In the pedigree, this people appear as mother and also as father : {self.check_mother_and_father()}\n")
             f.write(
                 f"In the pedigree, this people had consangineous origins : {self.check_consanguinity_pedigree()}\n")
-
 
     def depth(self):
         holders = [i for i in self.roots()]
@@ -590,16 +592,16 @@ class Pedigree:
                 for j in list(self.get_people(i).child):
                     tmp.add(j)
             children = list(tmp)
-            if len(tmp) == 0 :
+            if len(tmp) == 0:
                 return gen
             else:
                 gen += 1
 
     def mean_child(self):
         mean = 0
-        for k,v in self._pedigree.items():
+        for k, v in self._pedigree.items():
             mean += self.get_people(k).nbrChild()
-        return mean/len(self._pedigree)
+        return mean / len(self._pedigree)
 
     def max_child(self):
         nb = 0
@@ -608,7 +610,7 @@ class Pedigree:
             if self.get_people(k).nbrChild() > nb:
                 nb = self.get_people(k).nbrChild()
                 people = k
-        return people,nb
+        return people, nb
 
     def gen_ped(self, famID, nb, g_max, c_max, cl):
         """
@@ -616,7 +618,7 @@ class Pedigree:
         """
 
         def waiting_wedding(famID, mea, people, sex):
-            #MEA[0] et people -> parents / MEA[1] -> enfant
+            # MEA[0] et people -> parents / MEA[1] -> enfant
             self.add_people(famID, people, self.no_people, self.no_people)
             profondeur[people] = profondeur[mea[0]]
             if sex == self.sex_male:
@@ -625,15 +627,15 @@ class Pedigree:
                     families[(people, mea[0])].append(mea[1])
                     self.get_people(mea[1])._set(famID, people, mea[0])
                 else:
-                    families[(people, mea[   0])].append(mea[1])
+                    families[(people, mea[0])].append(mea[1])
                     self.get_people(mea[1])._set(famID, people, mea[0])
             else:
                 if families.get((mea[0], people)) == None:
-                    families[(mea[0],people)] = []
-                    families[(mea[0],people)].append(mea[1])
+                    families[(mea[0], people)] = []
+                    families[(mea[0], people)].append(mea[1])
                     self.get_people(mea[1])._set(famID, mea[0], people)
                 else:
-                    families[(mea[0],people)].append(mea[1])
+                    families[(mea[0], people)].append(mea[1])
                     self.get_people(mea[1])._set(famID, mea[0], people)
 
             self.add_sex(people, sex)
@@ -647,82 +649,86 @@ class Pedigree:
             self.get_people(people2).add_children(child)
             self.add_sex(people1, sex)
             if sex == self.sex_male:
-                families[(people1,people2)].append(child)
+                families[(people1, people2)].append(child)
                 self.get_people(child)._set(famID, people1, people2)
             else:
-                families[(people2,people1)].append(child)
+                families[(people2, people1)].append(child)
                 self.get_people(child)._set(famID, people2, people1)
 
         prof_mariage_max = 2
         gamma = 0.8
-        mea = [] # Mariage En Attente
-        profondeur = dict() #Niveau de profondeur des noeuds
-        families = dict() # [(père,mère)] -> list(children)
+        mea = []  # Mariage En Attente
+        profondeur = dict()  # Niveau de profondeur des noeuds
+        families = dict()  # [(père,mère)] -> list(children)
 
-        for i in range(1,nb+1):
-            profondeur[str(i)] = -1 #Profondeur pour tous initiale = -1
+        for i in range(1, nb + 1):
+            profondeur[str(i)] = -1  # Profondeur pour tous initiale = -1
 
-        #Création du premier people
+        # Création du premier people
         self.add_people(famID, '1', self.no_people, self.no_people)
         profondeur['1'] = 0
 
-        for p in range(2,nb+1):
+        for p in range(2, nb + 1):
             new_p = str(p)
 
-            if len(mea) > 0:#Si nous avons un mariage en attendre
+            if len(mea) > 0:  # Si nous avons un mariage en attendre
                 if self.get_people(mea[0]).sex == self.sex_male:
-                    #Ajout de la mere
+                    # Ajout de la mere
                     waiting_wedding(famID, mea, new_p, 2)
                     continue
                 else:
-                    #Ajout du pere
+                    # Ajout du pere
                     waiting_wedding(famID, mea, new_p, 1)
                     continue
 
-
-            child_pot = [i for i in self.roots() if profondeur[i] > 0 ] # Liste des enfants potentiels
-            parents_pot = [] # Liste des parents potentiels
-            for k,v in self._pedigree.items():
-                if v.nbrChild() < c_max and profondeur[k] < g_max and profondeur[k] > -1:
+            child_pot = [i for i in self.roots() if profondeur[i] > 0]  # Liste des enfants potentiels
+            parents_pot = []  # Liste des parents potentiels
+            for k, v in self._pedigree.items():
+                if v.nbrChild() < c_max and g_max-1 > profondeur[k] > -1:
                     parents_pot.append(k)
-
+            # print(self._pedigree, profondeur['1'])
+            # print(child_pot, parents_pot)
             k1 = len(child_pot)
             k2 = len(parents_pot)
             # print(k1/(k1+k2))
             choice = random.random()
-            parent = random.sample(parents_pot, 1)[0]
-
-            ratio = (k1/(k1+k2))
+            if k1+k2 == 0:
+                self.add_people(famID, new_p, self.no_people, self.no_people)
+                profondeur[new_p] = random.randint(0,g_max-1)
+                continue
+            else:
+                ratio = (k1 / (k1 + k2))
             if choice > ratio:
-                #Nouvel enfant
+                parent = random.sample(parents_pot, 1)[0]
+                # Nouvel enfant
                 sex = self.get_people(parent).sex
                 couple = []
-                for p1,p2 in families.keys(): #Recherche de tous les mariages où parent est présent
+                for p1, p2 in families.keys():  # Recherche de tous les mariages où parent est présent
                     if p1 == parent or p2 == parent:
-                        couple.append((p1,p2))
+                        couple.append((p1, p2))
 
-                if couple == []: # parent n'est dans aucun mariage ie pas d'enfant
-                    if random.random() < 0.5: #Random pour le choix du sexe
+                if couple == []:  # parent n'est dans aucun mariage ie pas d'enfant
+                    if random.random() < 0.5:  # Random pour le choix du sexe
                         self.add_people(famID, new_p, parent, self.no_people)
                         profondeur[new_p] = profondeur[parent] + 1
                         self.get_people(parent).add_children(new_p)
-                        self.add_sex(parent,1)
+                        self.add_sex(parent, 1)
                         mea.extend([parent, new_p])
 
                     else:
                         self.add_people(famID, new_p, self.no_people, parent)
                         profondeur[new_p] = profondeur[parent] + 1
                         self.get_people(parent).add_children(new_p)
-                        #self.update_parents(new_p)
+                        # self.update_parents(new_p)
                         self.add_sex(parent, 2)
                         mea.extend([parent, new_p])
 
-                else: # On regarde où ajouté l'enfant parmis tous les mariages de parent
+                else:  # On regarde où ajouté l'enfant parmis tous les mariages de parent
                     tmp = []
                     keys = []
-                    for k,v in families.items():
-                        if k in couple :
-                            tmp.append(gamma*len(v))
+                    for k, v in families.items():
+                        if k in couple:
+                            tmp.append(gamma * len(v))
                             keys.append(k)
                     index = tmp.index(min(tmp))
                     families[keys[index]].append(new_p)
@@ -730,32 +736,32 @@ class Pedigree:
                     self.get_people(keys[index][0]).add_children(new_p)
                     self.get_people(keys[index][1]).add_children(new_p)
                     self.get_people(new_p)._set(famID, keys[index][0], keys[index][1])
-                    profondeur[new_p] = profondeur[keys[index][0]]
+                    profondeur[new_p] = profondeur[keys[index][0]] + 1
 
 
             else:
-                #Nouveau Parent ie Crée une nouvelle famille
-                child = random.sample(child_pot,1)[0]
-                #conjoint = [k for k in self._pedigree.keys() if profondeur[k] == profondeur[new_p] -1]
-                conjoint = [k for k in self._pedigree.keys() if profondeur[k] <= profondeur[new_p] -1
-                            and profondeur[k] >= profondeur[new_p] - prof_mariage_max ]
-                conjoint_bis = [conjoint[i].pop() for i in conjoint if profondeur[i] == profondeur[new_p]-1]
+                # Nouveau Parent ie Crée une nouvelle famille
+                child = random.sample(child_pot, 1)[0]
+                # conjoint = [k for k in self._pedigree.keys() if profondeur[k] == profondeur[new_p] -1]
+                conjoint = [k for k in self._pedigree.keys() if profondeur[k] <= profondeur[new_p] - 1
+                            and profondeur[k] >= profondeur[new_p] - prof_mariage_max]
+                conjoint_bis = [conjoint[i].pop() for i in conjoint if profondeur[i] == profondeur[new_p] - 1]
                 # print(conjoint)
                 # print(conjoint_bis)
                 if len(conjoint) == 0:
                     conjoint_weight = [0]
                 else:
-                    conjoint_weight = [0]*len(conjoint) + [i for i in range(1,len(conjoint)+1)]
+                    conjoint_weight = [0] * len(conjoint) + [i for i in range(1, len(conjoint) + 1)]
                 alea = random.choice(conjoint_weight)
-                #alea = random.randint(0,len(conjoint))
+                # alea = random.randint(0,len(conjoint))
 
                 if alea == 0:
-                    #On crée un MEA
+                    # On crée un MEA
                     if random.random() < 0.5:
                         self.add_people(famID, new_p, self.no_people, self.no_people)
                         profondeur[new_p] = profondeur[child] - 1
                         self.get_people(new_p).add_children(child)
-                        self.add_sex(new_p,1)
+                        self.add_sex(new_p, 1)
                         mea.extend([new_p, child])
                     else:
                         self.add_people(famID, new_p, self.no_people, self.no_people)
@@ -764,19 +770,19 @@ class Pedigree:
                         self.add_sex(new_p, 2)
                         mea.extend([new_p, child])
                 else:
-                    #On lui cherche un conjoint
-                    other_p = random.sample(conjoint,1)[0]
-                    while child == other_p and self.is_consanguineous(new_p,other_p,cl) is True:
+                    # On lui cherche un conjoint
+                    other_p = random.sample(conjoint, 1)[0]
+                    while child == other_p and self.is_consanguineous(new_p, other_p, cl) is True:
                         other_p = random.sample(conjoint, 1)[0]
                     if self.get_people(other_p).sex == self.no_people:
                         self.add_people(famID, new_p, self.no_people, self.no_people)
                         profondeur[new_p] = profondeur[child] - 1
                         self.get_people(new_p).add_children(child)
                         self.get_people(other_p).add_children(child)
-                        self.add_sex(new_p,1)
-                        self.add_sex(other_p,2)
+                        self.add_sex(new_p, 1)
+                        self.add_sex(other_p, 2)
                         self.get_people(child)._set(famID, new_p, other_p)
-                        families[(new_p,other_p)].append(child)
+                        families[(new_p, other_p)].append(child)
 
 
                     elif self.get_people(other_p).sex == self.sex_male:
