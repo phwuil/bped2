@@ -90,7 +90,7 @@ def main(args=None):
         if options.auditfile:
             current_ped.pedigree_overview_file(options.auditfile)
             if options.verbose:
-                print('audti file ' + options.auditfile + ' created')
+                print('audit file ' + options.auditfile + ' created')
 
         if options.targets:
             if options.evfile:

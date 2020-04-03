@@ -181,5 +181,9 @@ def max_clique_size(bn):
     return max([len(jt.clique(cl)) for cl in jt.nodes()])
 
 
-
+def audit(bn, ped, filename):
+    with open(filename, "w") as f:
+        ped.pedigree_overview_file(filename)
+        f.write("---------------------------------------------------\n")
+        f.write(f'The size of the bn is {bn.size()}\n')
 

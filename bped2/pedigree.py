@@ -564,6 +564,8 @@ class Pedigree:
             f.write("---------------------------------------------------\n")
             f.write(f'There is {len(self._pedigree)} people in this pedigree\n')
             f.write(f'There is {self.depth()} generation in this pedigree\n')
+            nb_sex = self.nb_sexe_ped()
+            f.write(f'There is {nb_sex[0]} men and {nb_sex[1]} women in this pedigree\n')
             f.write(f'There is {len(self._pedigree) / self.depth()} people by generation in average\n')
             f.write(f'There is {len([i for i in self.roots()])} people without parents in this pedigree\n')
             f.write(f'There is {len([i for i in self.leaves()])} people without childrens in this pedigree \n')
@@ -577,6 +579,10 @@ class Pedigree:
                 f"In the pedigree, this people had consangineous origins : {self.check_consanguinity_pedigree()}\n")
 
     def depth(self):
+        """
+        Count the depth of the pedigree, ie largest path between roots and leaves
+        :return: int
+        """
         holders = [i for i in self.roots()]
         children = set()
         for i in holders:
@@ -598,12 +604,17 @@ class Pedigree:
                 gen += 1
 
     def mean_child(self):
+
         mean = 0
         for k, v in self._pedigree.items():
             mean += self.get_people(k).nbrChild()
         return mean / len(self._pedigree)
 
     def max_child(self):
+        """
+        Return the people who got the largest brotherhood and it number
+        :return: (str,int)
+        """
         nb = 0
         people = '0'
         for k, v in self._pedigree.items():
@@ -611,6 +622,20 @@ class Pedigree:
                 nb = self.get_people(k).nbrChild()
                 people = k
         return people, nb
+
+    def nb_sexe_ped(self):
+        """
+        Calculte the nombers of men and women in the pedigree
+        :return: (int,int)
+        """
+        father = 0
+        mother = 0
+        for v in self._pedigree.values():
+            if v.sex == self.sex_male:
+                father+=1
+            if v.sex == self.sex_female:
+                mother+=1
+        return (father,mother)
 
     def gen_ped(self, famID, nb, g_max, c_max, cl):
         """
