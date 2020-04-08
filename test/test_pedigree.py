@@ -211,11 +211,13 @@ class TestPedigree(unittest.TestCase):
         # ped.gen_ped('f',200,50,4,4)
         # ped.graph(f'generate_graph_test_200_1',False)
         # ped.save(f'../cplex/samples/pedigree_test_200')
-        nb_ped = 5
-        nb_people = [10, 20, 50, 100, 200, 300, 500, 1000]
-        # nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
-        nb_Gen_Max = [3, 3, 3, 3, 4, 4, 4, 5]
-        nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
+        nb_ped = 2
+        # nb_people = [20, 50, 100, 200, 300, 500, 1000]
+        # # nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
+        # nb_Gen_Max = [3, 3, 3, 4, 4, 4, 5]
+        nb_people = [100]
+        nb_Gen_Max = [6]
+        nb_Gen_Min = [3] #[math.ceil(x/2) for x in nb_Gen_Max]
         cl = 2
         for p, g_max, g_min in zip(nb_people, nb_Gen_Max, nb_Gen_Min):
             for nb in range(nb_ped):
@@ -223,18 +225,34 @@ class TestPedigree(unittest.TestCase):
                 g = random.randint(g_min, g_max)
                 ped = Pedigree()
                 ped.gen_ped(nb, p, g, nbChild, cl)
-                pview.save(ped, f'../cplex/samples/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
-                pview.graph(ped, f'../cplex/generate_graph_{p}_{g}_{nbChild}_{cl}_G{nb}', True)
-        # for i in range(5):
-        #     ped = Pedigree()
-        #     ped.gen_ped(i, 200, 4, 2, 2)
-        #     print(ped.depth())
-            # pview.graph(ped,f'../generate_graph_200_30_4_4_G{i}',False)
-            # pview.save(ped,f'../pedigree_200_4_4_4_G{i}')
-            # ped.pedigree_overview_file(f'../audit_200_4_4_4_G{i}')
+                print('-------------------------')
+                print(ped)
+                print('-------------------------')
+                print('uho',ped.all_consanguineous_ped(cl))
+                print('-------------------------')
+                pview.save(ped, f'../cplex/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
+                pview.graph(ped, f'../cplex/generate_graph_{p}_{g}_{nbChild}_{cl}_G{nb}', False)
 
     def test_depth(self):
         ped = Pedigree()
         ped.load("../data/ped/fam9.ped")
-        print(ped.depth())
+        ped1 = Pedigree()
+        ped1.load("../data/ped/senegal2013.ped")
+        print(ped1.mean_weeding())
+        print(len(ped1.check_consanguinity_pedigree()))
+        print(ped1)
+        ped2 = Pedigree()
+        ped2.gen_ped('test',1900,5,10,2,0.1)
+        print(ped2.mean_weeding())
+        print(len(ped2.check_consanguinity_pedigree()))
 
+    def test_random_ped(self):
+        ped = Pedigree()
+        #ped.load('../cplex/pedigree_50_3_6_4_G1.ped')
+        ped.load('../cplex/pedigree_50_3_10_1_G1.ped')
+        print(ped.check_consanguinity_pedigree())
+        print(ped.is_consanguineous('2','10',1))
+        print(ped.old_gen('2',1))
+        print(ped.old_gen('10', 1))
+        print(ped.check_consanguinity('9',4))
+        print(ped.all_consanguineous_ped(4))
