@@ -9,11 +9,11 @@ import math
 
 f = 0.05
 nb_ped = 50
-nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2500,3000,4000,5000]
+nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 #nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
-nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,7,8,9,10]
+nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
-cl = 1
+cl = 3
 
 mean_gen_ped = []
 mean_gen_bn = []
@@ -21,6 +21,7 @@ mean_gen_inf = []
 mean_gen_bn_compact = []
 mean_gen_inf_compact = []
 mean_clique = []
+mean_csg = []
 
 errorValues_ped = []
 errorValues_bn = []
@@ -28,6 +29,7 @@ errorValues_inf = []
 errorValues_bn_compact = []
 errorValues_inf_compact = []
 errorValues_clique = []
+errorValues_csg = []
 
 max_ped = []
 max_bn = []
@@ -35,6 +37,7 @@ max_inf = []
 max_bn_compact = []
 max_inf_compact = []
 max_clique = []
+max_csg = []
 
 min_ped = []
 min_bn = []
@@ -42,6 +45,7 @@ min_inf = []
 min_bn_compact = []
 min_inf_compact = []
 min_clique = []
+min_csg = []
 
 pid = os.getpid()
 py = psutil.Process(pid)
@@ -54,6 +58,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     tab_bn_compact = np.zeros(nb_ped)
     tab_inf_compact = np.zeros(nb_ped)
     tab_clique = np.zeros(nb_ped)
+    tab_csg = np.zeros(nb_ped)
 
     for nb in range(nb_ped):
 
@@ -62,7 +67,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
         g = random.randint(g_min,g_max)
         ped = Pedigree()
         t1 = process_time()
-        ped.gen_ped(nb, p, g, nbChild, cl)
+        ped.gen_ped(nb, p, g, nbChild, cl, 0.03)
         t2 = process_time()
 
         t3 = process_time()
@@ -73,12 +78,12 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
         bn_compact = pview.ped_to_bn_compact(ped,f)
         t8 = process_time()
 
-        pview.save(ped,f'../cplex/samples/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
-        #pview.save_bn(bn,f'../cplex/bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
+        pview.save(ped,f'../cplex/samples/no_compact/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
+        #pview.save_bn(bn,f'../cplex/bn/no_compact/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
         pview.save_bn(bn_compact,f'../cplex/bn/bn_compact_{p}_{g}_{nbChild}_{cl}_G{nb}')
 
         t5 = process_time()
-        #laz.doLazyProg(f"../cplex/bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
+        #laz.doLazyProg(f"../cplex/bn/no_compact/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
         t6 = process_time()
 
         t9 = process_time()
@@ -97,6 +102,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
         tab_bn_compact[nb] = t8
         tab_inf_compact[nb] = t10
         tab_clique[nb] = pview.max_clique_size(bn_compact)
+        tab_csg[nb] = len(ped.all_consanguineous_ped(g))/p
 
     max_ped.append(tab_ped.max())
     max_bn.append(tab_bn.max())
@@ -104,6 +110,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     max_bn_compact.append(tab_bn_compact.max())
     max_inf_compact.append(tab_inf_compact.max())
     max_clique.append(tab_clique.max())
+    max_csg.append(tab_csg.max())
 
     min_ped.append(tab_ped.min())
     min_bn.append(tab_bn.min())
@@ -111,6 +118,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     min_bn_compact.append(tab_bn_compact.min())
     min_inf_compact.append(tab_inf_compact.min())
     min_clique.append(tab_clique.min())
+    min_csg.append(tab_csg.min())
 
     errorValues_ped.append(tab_ped.std())
     errorValues_bn.append(tab_bn.std())
@@ -118,6 +126,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     errorValues_bn_compact.append(tab_bn_compact.std())
     errorValues_inf_compact.append(tab_inf_compact.std())
     errorValues_clique.append(tab_clique.std())
+    errorValues_csg.append(tab_csg.std())
 
     mean_gen_ped.append(tab_ped.mean())
     mean_gen_bn.append(tab_bn.mean())
@@ -125,6 +134,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     mean_gen_bn_compact.append(tab_bn_compact.mean())
     mean_gen_inf_compact.append(tab_inf_compact.mean())
     mean_clique.append(tab_clique.mean())
+    mean_csg.append(tab_csg.mean())
 
 
 f1 = plt.figure(1)
@@ -153,7 +163,7 @@ plt.xlabel('Taille du pedigree')
 plt.ylabel('Temps en sec')
 plt.savefig('../cplex/figure/Temps d\'execution moyen, min et max en fonction de la taille du pedigree')
 f3.show()
-
+#
 # f4 = plt.figure(4)
 # plt.errorbar(nb_people, mean_gen_bn, yerr = errorValues_bn, ecolor='red')
 # plt.title('Temps de génération du BN en fonction de la taille du pedigree')
@@ -161,7 +171,7 @@ f3.show()
 # plt.ylabel('Temps en sec')
 # plt.savefig('../cplex/figure/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
 # f4.show()
-
+#
 # f5 = plt.figure(5)
 # plt.plot(nb_people, mean_gen_bn, label='mean')
 # plt.plot(nb_people, max_bn, label='max')
@@ -180,7 +190,7 @@ f3.show()
 # plt.ylabel('Temps en sec')
 # plt.savefig('../cplex/figure/Temps de calcul de l\'inférence en fonction de la taille du pedigree avec ecart-type')
 # f6.show()
-
+#
 # f7 = plt.figure(7)
 # plt.plot(nb_people, mean_gen_inf, label='mean')
 # plt.plot(nb_people, max_inf, label='max')
@@ -239,9 +249,18 @@ plt.legend(['mean','max','min'])
 plt.title('Taille de la clique en fonction de la taille du pedigree')
 plt.xlabel('Taille du pedigree')
 plt.ylabel('Taille de la clique')
-plt.savefig('../cplex/figure/Taille de la clique moyenne, min et max en fonction de la taille du pedigree')
+plt.savefig('../cplex/figure/Taille de la clique moyenne, min et max en fonction de la taille du pedigree pour bn compact')
 f12.show()
 
-
+f13 = plt.figure(13)
+plt.plot(nb_people, mean_csg, label='mean')
+plt.plot(nb_people, max_csg, label='max')
+plt.plot(nb_people, min_csg, label='min')
+plt.legend(['mean','max','min'])
+plt.title('Nombre de consanguins en fonction de la taille du pedigree')
+plt.xlabel('Taille du pedigree')
+plt.ylabel('Nombre de consanguins')
+plt.savefig('../cplex/figure/Proportion de consanguins moyen, min et max en fonction de la taille du pedigree pour bn compact')
+f13.show()
 
 plt.show()

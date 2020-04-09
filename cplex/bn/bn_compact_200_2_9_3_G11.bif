@@ -1,0 +1,5726 @@
+network "unnamedBN" {
+// written by aGrUM 0.17.1
+}
+
+variable matX1 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX1 {
+   type discrete[2] {0, 1};
+}
+
+variable X1 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX2 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX2 {
+   type discrete[2] {0, 1};
+}
+
+variable X2 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX3 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX3 {
+   type discrete[2] {0, 1};
+}
+
+variable X3 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX4 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX4 {
+   type discrete[2] {0, 1};
+}
+
+variable X4 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX5 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX5 {
+   type discrete[2] {0, 1};
+}
+
+variable X5 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX6 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX6 {
+   type discrete[2] {0, 1};
+}
+
+variable X6 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX7 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX7 {
+   type discrete[2] {0, 1};
+}
+
+variable X7 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX8 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX8 {
+   type discrete[2] {0, 1};
+}
+
+variable X8 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX9 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX9 {
+   type discrete[2] {0, 1};
+}
+
+variable X9 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX10 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX10 {
+   type discrete[2] {0, 1};
+}
+
+variable X10 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX11 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX11 {
+   type discrete[2] {0, 1};
+}
+
+variable X11 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX12 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX12 {
+   type discrete[2] {0, 1};
+}
+
+variable X12 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX13 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX13 {
+   type discrete[2] {0, 1};
+}
+
+variable X13 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX14 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX14 {
+   type discrete[2] {0, 1};
+}
+
+variable X14 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX15 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX15 {
+   type discrete[2] {0, 1};
+}
+
+variable X15 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX16 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX16 {
+   type discrete[2] {0, 1};
+}
+
+variable X16 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX17 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX17 {
+   type discrete[2] {0, 1};
+}
+
+variable X17 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX18 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX18 {
+   type discrete[2] {0, 1};
+}
+
+variable X18 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX19 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX19 {
+   type discrete[2] {0, 1};
+}
+
+variable X19 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX20 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX20 {
+   type discrete[2] {0, 1};
+}
+
+variable X20 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX21 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX21 {
+   type discrete[2] {0, 1};
+}
+
+variable X21 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX22 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX22 {
+   type discrete[2] {0, 1};
+}
+
+variable X22 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX23 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX23 {
+   type discrete[2] {0, 1};
+}
+
+variable X23 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX24 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX24 {
+   type discrete[2] {0, 1};
+}
+
+variable X24 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX25 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX25 {
+   type discrete[2] {0, 1};
+}
+
+variable X25 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX26 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX26 {
+   type discrete[2] {0, 1};
+}
+
+variable X26 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX27 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX27 {
+   type discrete[2] {0, 1};
+}
+
+variable X27 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX28 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX28 {
+   type discrete[2] {0, 1};
+}
+
+variable X28 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX29 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX29 {
+   type discrete[2] {0, 1};
+}
+
+variable X29 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX30 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX30 {
+   type discrete[2] {0, 1};
+}
+
+variable X30 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX31 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX31 {
+   type discrete[2] {0, 1};
+}
+
+variable X31 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX32 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX32 {
+   type discrete[2] {0, 1};
+}
+
+variable X32 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX33 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX33 {
+   type discrete[2] {0, 1};
+}
+
+variable X33 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX34 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX34 {
+   type discrete[2] {0, 1};
+}
+
+variable X34 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX35 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX35 {
+   type discrete[2] {0, 1};
+}
+
+variable X35 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX36 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX36 {
+   type discrete[2] {0, 1};
+}
+
+variable X36 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX37 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX37 {
+   type discrete[2] {0, 1};
+}
+
+variable X37 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX38 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX38 {
+   type discrete[2] {0, 1};
+}
+
+variable X38 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX39 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX39 {
+   type discrete[2] {0, 1};
+}
+
+variable X39 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX40 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX40 {
+   type discrete[2] {0, 1};
+}
+
+variable X40 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX41 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX41 {
+   type discrete[2] {0, 1};
+}
+
+variable X41 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX42 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX42 {
+   type discrete[2] {0, 1};
+}
+
+variable X42 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX43 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX43 {
+   type discrete[2] {0, 1};
+}
+
+variable X43 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX44 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX44 {
+   type discrete[2] {0, 1};
+}
+
+variable X44 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX45 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX45 {
+   type discrete[2] {0, 1};
+}
+
+variable X45 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX46 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX46 {
+   type discrete[2] {0, 1};
+}
+
+variable X46 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX47 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX47 {
+   type discrete[2] {0, 1};
+}
+
+variable X47 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX48 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX48 {
+   type discrete[2] {0, 1};
+}
+
+variable X48 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX49 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX49 {
+   type discrete[2] {0, 1};
+}
+
+variable X49 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX50 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX50 {
+   type discrete[2] {0, 1};
+}
+
+variable X50 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX51 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX51 {
+   type discrete[2] {0, 1};
+}
+
+variable X51 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX52 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX52 {
+   type discrete[2] {0, 1};
+}
+
+variable X52 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX53 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX53 {
+   type discrete[2] {0, 1};
+}
+
+variable X53 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX54 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX54 {
+   type discrete[2] {0, 1};
+}
+
+variable X54 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX55 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX55 {
+   type discrete[2] {0, 1};
+}
+
+variable X55 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX56 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX56 {
+   type discrete[2] {0, 1};
+}
+
+variable X56 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX57 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX57 {
+   type discrete[2] {0, 1};
+}
+
+variable X57 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX58 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX58 {
+   type discrete[2] {0, 1};
+}
+
+variable X58 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX59 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX59 {
+   type discrete[2] {0, 1};
+}
+
+variable X59 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX60 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX60 {
+   type discrete[2] {0, 1};
+}
+
+variable X60 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX61 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX61 {
+   type discrete[2] {0, 1};
+}
+
+variable X61 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX62 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX62 {
+   type discrete[2] {0, 1};
+}
+
+variable X62 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX63 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX63 {
+   type discrete[2] {0, 1};
+}
+
+variable X63 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX64 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX64 {
+   type discrete[2] {0, 1};
+}
+
+variable X64 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX65 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX65 {
+   type discrete[2] {0, 1};
+}
+
+variable X65 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX66 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX66 {
+   type discrete[2] {0, 1};
+}
+
+variable X66 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX67 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX67 {
+   type discrete[2] {0, 1};
+}
+
+variable X67 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX68 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX68 {
+   type discrete[2] {0, 1};
+}
+
+variable X68 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX69 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX69 {
+   type discrete[2] {0, 1};
+}
+
+variable X69 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX70 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX70 {
+   type discrete[2] {0, 1};
+}
+
+variable X70 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX71 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX71 {
+   type discrete[2] {0, 1};
+}
+
+variable X71 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX72 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX72 {
+   type discrete[2] {0, 1};
+}
+
+variable X72 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX73 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX73 {
+   type discrete[2] {0, 1};
+}
+
+variable X73 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX74 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX74 {
+   type discrete[2] {0, 1};
+}
+
+variable X74 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX75 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX75 {
+   type discrete[2] {0, 1};
+}
+
+variable X75 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX76 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX76 {
+   type discrete[2] {0, 1};
+}
+
+variable X76 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX77 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX77 {
+   type discrete[2] {0, 1};
+}
+
+variable X77 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX78 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX78 {
+   type discrete[2] {0, 1};
+}
+
+variable X78 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX79 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX79 {
+   type discrete[2] {0, 1};
+}
+
+variable X79 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX80 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX80 {
+   type discrete[2] {0, 1};
+}
+
+variable X80 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX81 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX81 {
+   type discrete[2] {0, 1};
+}
+
+variable X81 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX82 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX82 {
+   type discrete[2] {0, 1};
+}
+
+variable X82 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX83 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX83 {
+   type discrete[2] {0, 1};
+}
+
+variable X83 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX84 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX84 {
+   type discrete[2] {0, 1};
+}
+
+variable X84 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX85 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX85 {
+   type discrete[2] {0, 1};
+}
+
+variable X85 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX86 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX86 {
+   type discrete[2] {0, 1};
+}
+
+variable X86 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX87 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX87 {
+   type discrete[2] {0, 1};
+}
+
+variable X87 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX88 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX88 {
+   type discrete[2] {0, 1};
+}
+
+variable X88 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX89 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX89 {
+   type discrete[2] {0, 1};
+}
+
+variable X89 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX90 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX90 {
+   type discrete[2] {0, 1};
+}
+
+variable X90 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX91 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX91 {
+   type discrete[2] {0, 1};
+}
+
+variable X91 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX92 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX92 {
+   type discrete[2] {0, 1};
+}
+
+variable X92 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX93 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX93 {
+   type discrete[2] {0, 1};
+}
+
+variable X93 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX94 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX94 {
+   type discrete[2] {0, 1};
+}
+
+variable X94 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX95 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX95 {
+   type discrete[2] {0, 1};
+}
+
+variable X95 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX96 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX96 {
+   type discrete[2] {0, 1};
+}
+
+variable X96 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX97 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX97 {
+   type discrete[2] {0, 1};
+}
+
+variable X97 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX98 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX98 {
+   type discrete[2] {0, 1};
+}
+
+variable X98 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX99 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX99 {
+   type discrete[2] {0, 1};
+}
+
+variable X99 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX100 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX100 {
+   type discrete[2] {0, 1};
+}
+
+variable X100 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX101 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX101 {
+   type discrete[2] {0, 1};
+}
+
+variable X101 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX102 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX102 {
+   type discrete[2] {0, 1};
+}
+
+variable X102 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX103 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX103 {
+   type discrete[2] {0, 1};
+}
+
+variable X103 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX104 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX104 {
+   type discrete[2] {0, 1};
+}
+
+variable X104 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX105 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX105 {
+   type discrete[2] {0, 1};
+}
+
+variable X105 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX106 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX106 {
+   type discrete[2] {0, 1};
+}
+
+variable X106 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX107 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX107 {
+   type discrete[2] {0, 1};
+}
+
+variable X107 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX108 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX108 {
+   type discrete[2] {0, 1};
+}
+
+variable X108 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX109 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX109 {
+   type discrete[2] {0, 1};
+}
+
+variable X109 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX110 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX110 {
+   type discrete[2] {0, 1};
+}
+
+variable X110 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX111 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX111 {
+   type discrete[2] {0, 1};
+}
+
+variable X111 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX112 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX112 {
+   type discrete[2] {0, 1};
+}
+
+variable X112 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX113 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX113 {
+   type discrete[2] {0, 1};
+}
+
+variable X113 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX114 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX114 {
+   type discrete[2] {0, 1};
+}
+
+variable X114 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX115 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX115 {
+   type discrete[2] {0, 1};
+}
+
+variable X115 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX116 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX116 {
+   type discrete[2] {0, 1};
+}
+
+variable X116 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX117 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX117 {
+   type discrete[2] {0, 1};
+}
+
+variable X117 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX118 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX118 {
+   type discrete[2] {0, 1};
+}
+
+variable X118 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX119 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX119 {
+   type discrete[2] {0, 1};
+}
+
+variable X119 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX120 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX120 {
+   type discrete[2] {0, 1};
+}
+
+variable X120 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX121 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX121 {
+   type discrete[2] {0, 1};
+}
+
+variable X121 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX122 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX122 {
+   type discrete[2] {0, 1};
+}
+
+variable X122 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX123 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX123 {
+   type discrete[2] {0, 1};
+}
+
+variable X123 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX124 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX124 {
+   type discrete[2] {0, 1};
+}
+
+variable X124 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX125 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX125 {
+   type discrete[2] {0, 1};
+}
+
+variable X125 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX126 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX126 {
+   type discrete[2] {0, 1};
+}
+
+variable X126 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX127 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX127 {
+   type discrete[2] {0, 1};
+}
+
+variable X127 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX128 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX128 {
+   type discrete[2] {0, 1};
+}
+
+variable X128 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX129 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX129 {
+   type discrete[2] {0, 1};
+}
+
+variable X129 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX130 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX130 {
+   type discrete[2] {0, 1};
+}
+
+variable X130 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX131 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX131 {
+   type discrete[2] {0, 1};
+}
+
+variable X131 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX132 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX132 {
+   type discrete[2] {0, 1};
+}
+
+variable X132 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX133 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX133 {
+   type discrete[2] {0, 1};
+}
+
+variable X133 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX134 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX134 {
+   type discrete[2] {0, 1};
+}
+
+variable X134 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX135 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX135 {
+   type discrete[2] {0, 1};
+}
+
+variable X135 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX136 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX136 {
+   type discrete[2] {0, 1};
+}
+
+variable X136 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX137 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX137 {
+   type discrete[2] {0, 1};
+}
+
+variable X137 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX138 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX138 {
+   type discrete[2] {0, 1};
+}
+
+variable X138 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX139 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX139 {
+   type discrete[2] {0, 1};
+}
+
+variable X139 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX140 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX140 {
+   type discrete[2] {0, 1};
+}
+
+variable X140 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX141 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX141 {
+   type discrete[2] {0, 1};
+}
+
+variable X141 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX142 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX142 {
+   type discrete[2] {0, 1};
+}
+
+variable X142 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX143 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX143 {
+   type discrete[2] {0, 1};
+}
+
+variable X143 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX144 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX144 {
+   type discrete[2] {0, 1};
+}
+
+variable X144 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX145 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX145 {
+   type discrete[2] {0, 1};
+}
+
+variable X145 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX146 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX146 {
+   type discrete[2] {0, 1};
+}
+
+variable X146 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX147 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX147 {
+   type discrete[2] {0, 1};
+}
+
+variable X147 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX148 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX148 {
+   type discrete[2] {0, 1};
+}
+
+variable X148 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX149 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX149 {
+   type discrete[2] {0, 1};
+}
+
+variable X149 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX150 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX150 {
+   type discrete[2] {0, 1};
+}
+
+variable X150 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX151 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX151 {
+   type discrete[2] {0, 1};
+}
+
+variable X151 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX152 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX152 {
+   type discrete[2] {0, 1};
+}
+
+variable X152 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX153 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX153 {
+   type discrete[2] {0, 1};
+}
+
+variable X153 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX154 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX154 {
+   type discrete[2] {0, 1};
+}
+
+variable X154 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX155 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX155 {
+   type discrete[2] {0, 1};
+}
+
+variable X155 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX156 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX156 {
+   type discrete[2] {0, 1};
+}
+
+variable X156 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX157 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX157 {
+   type discrete[2] {0, 1};
+}
+
+variable X157 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX158 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX158 {
+   type discrete[2] {0, 1};
+}
+
+variable X158 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX159 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX159 {
+   type discrete[2] {0, 1};
+}
+
+variable X159 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX160 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX160 {
+   type discrete[2] {0, 1};
+}
+
+variable X160 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX161 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX161 {
+   type discrete[2] {0, 1};
+}
+
+variable X161 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX162 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX162 {
+   type discrete[2] {0, 1};
+}
+
+variable X162 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX163 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX163 {
+   type discrete[2] {0, 1};
+}
+
+variable X163 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX164 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX164 {
+   type discrete[2] {0, 1};
+}
+
+variable X164 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX165 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX165 {
+   type discrete[2] {0, 1};
+}
+
+variable X165 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX166 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX166 {
+   type discrete[2] {0, 1};
+}
+
+variable X166 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX167 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX167 {
+   type discrete[2] {0, 1};
+}
+
+variable X167 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX168 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX168 {
+   type discrete[2] {0, 1};
+}
+
+variable X168 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX169 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX169 {
+   type discrete[2] {0, 1};
+}
+
+variable X169 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX170 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX170 {
+   type discrete[2] {0, 1};
+}
+
+variable X170 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX171 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX171 {
+   type discrete[2] {0, 1};
+}
+
+variable X171 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX172 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX172 {
+   type discrete[2] {0, 1};
+}
+
+variable X172 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX173 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX173 {
+   type discrete[2] {0, 1};
+}
+
+variable X173 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX174 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX174 {
+   type discrete[2] {0, 1};
+}
+
+variable X174 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX175 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX175 {
+   type discrete[2] {0, 1};
+}
+
+variable X175 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX176 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX176 {
+   type discrete[2] {0, 1};
+}
+
+variable X176 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX177 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX177 {
+   type discrete[2] {0, 1};
+}
+
+variable X177 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX178 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX178 {
+   type discrete[2] {0, 1};
+}
+
+variable X178 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX179 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX179 {
+   type discrete[2] {0, 1};
+}
+
+variable X179 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX180 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX180 {
+   type discrete[2] {0, 1};
+}
+
+variable X180 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX181 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX181 {
+   type discrete[2] {0, 1};
+}
+
+variable X181 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX182 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX182 {
+   type discrete[2] {0, 1};
+}
+
+variable X182 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX183 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX183 {
+   type discrete[2] {0, 1};
+}
+
+variable X183 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX184 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX184 {
+   type discrete[2] {0, 1};
+}
+
+variable X184 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX185 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX185 {
+   type discrete[2] {0, 1};
+}
+
+variable X185 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX186 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX186 {
+   type discrete[2] {0, 1};
+}
+
+variable X186 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX187 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX187 {
+   type discrete[2] {0, 1};
+}
+
+variable X187 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX188 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX188 {
+   type discrete[2] {0, 1};
+}
+
+variable X188 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX189 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX189 {
+   type discrete[2] {0, 1};
+}
+
+variable X189 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX190 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX190 {
+   type discrete[2] {0, 1};
+}
+
+variable X190 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX191 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX191 {
+   type discrete[2] {0, 1};
+}
+
+variable X191 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX192 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX192 {
+   type discrete[2] {0, 1};
+}
+
+variable X192 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX193 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX193 {
+   type discrete[2] {0, 1};
+}
+
+variable X193 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX194 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX194 {
+   type discrete[2] {0, 1};
+}
+
+variable X194 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX195 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX195 {
+   type discrete[2] {0, 1};
+}
+
+variable X195 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX196 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX196 {
+   type discrete[2] {0, 1};
+}
+
+variable X196 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX197 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX197 {
+   type discrete[2] {0, 1};
+}
+
+variable X197 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX198 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX198 {
+   type discrete[2] {0, 1};
+}
+
+variable X198 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX199 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX199 {
+   type discrete[2] {0, 1};
+}
+
+variable X199 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX200 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX200 {
+   type discrete[2] {0, 1};
+}
+
+variable X200 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+probability (matX1) {
+   default 0.95 0.05;
+}
+probability (fatX1) {
+   default 0.95 0.05;
+}
+probability (X1 | fatX1, matX1) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX2 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX2 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X2 | fatX2, matX2) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX3) {
+   default 0.95 0.05;
+}
+probability (fatX3) {
+   default 0.95 0.05;
+}
+probability (X3 | fatX3, matX3) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX4 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX4 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X4 | fatX4, matX4) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX5 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX5 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X5 | fatX5, matX5) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX6 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX6 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X6 | fatX6, matX6) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX7 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX7 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X7 | fatX7, matX7) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX8 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX8 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X8 | fatX8, matX8) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX9 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX9 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X9 | fatX9, matX9) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX10 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX10 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X10 | fatX10, matX10) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX11 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX11 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X11 | fatX11, matX11) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX12) {
+   default 0.95 0.05;
+}
+probability (fatX12) {
+   default 0.95 0.05;
+}
+probability (X12 | fatX12, matX12) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX13 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX13 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X13 | fatX13, matX13) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX14) {
+   default 0.95 0.05;
+}
+probability (fatX14) {
+   default 0.95 0.05;
+}
+probability (X14 | fatX14, matX14) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX15 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX15 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X15 | fatX15, matX15) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX16 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX16 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X16 | fatX16, matX16) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX17 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX17 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X17 | fatX17, matX17) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX18 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX18 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X18 | fatX18, matX18) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX19 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX19 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X19 | fatX19, matX19) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX20 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX20 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X20 | fatX20, matX20) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX21 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX21 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X21 | fatX21, matX21) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX22 | fatX14, matX14) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX22 | fatX12, matX12) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X22 | fatX22, matX22) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX23) {
+   default 0.95 0.05;
+}
+probability (fatX23) {
+   default 0.95 0.05;
+}
+probability (X23 | fatX23, matX23) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX24 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX24 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X24 | fatX24, matX24) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX25) {
+   default 0.95 0.05;
+}
+probability (fatX25) {
+   default 0.95 0.05;
+}
+probability (X25 | fatX25, matX25) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX26 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX26 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X26 | fatX26, matX26) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX27 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX27 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X27 | fatX27, matX27) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX28 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX28 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X28 | fatX28, matX28) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX29 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX29 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X29 | fatX29, matX29) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX30 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX30 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X30 | fatX30, matX30) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX31 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX31 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X31 | fatX31, matX31) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX32 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX32 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X32 | fatX32, matX32) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX33 | fatX23, matX23) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX33 | fatX25, matX25) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X33 | fatX33, matX33) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX34) {
+   default 0.95 0.05;
+}
+probability (fatX34) {
+   default 0.95 0.05;
+}
+probability (X34 | fatX34, matX34) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX35) {
+   default 0.95 0.05;
+}
+probability (fatX35) {
+   default 0.95 0.05;
+}
+probability (X35 | fatX35, matX35) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX36 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX36 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X36 | fatX36, matX36) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX37) {
+   default 0.95 0.05;
+}
+probability (fatX37) {
+   default 0.95 0.05;
+}
+probability (X37 | fatX37, matX37) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX38 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX38 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X38 | fatX38, matX38) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX39 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX39 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X39 | fatX39, matX39) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX40 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX40 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X40 | fatX40, matX40) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX41 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX41 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X41 | fatX41, matX41) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX42 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX42 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X42 | fatX42, matX42) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX43 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX43 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X43 | fatX43, matX43) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX44 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX44 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X44 | fatX44, matX44) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX45 | fatX35, matX35) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX45 | fatX37, matX37) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X45 | fatX45, matX45) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX46) {
+   default 0.95 0.05;
+}
+probability (fatX46) {
+   default 0.95 0.05;
+}
+probability (X46 | fatX46, matX46) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX47 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX47 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X47 | fatX47, matX47) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX48) {
+   default 0.95 0.05;
+}
+probability (fatX48) {
+   default 0.95 0.05;
+}
+probability (X48 | fatX48, matX48) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX49 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX49 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X49 | fatX49, matX49) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX50 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX50 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X50 | fatX50, matX50) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX51 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX51 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X51 | fatX51, matX51) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX52 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX52 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X52 | fatX52, matX52) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX53 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX53 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X53 | fatX53, matX53) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX54 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX54 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X54 | fatX54, matX54) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX55 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX55 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X55 | fatX55, matX55) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX56 | fatX46, matX46) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX56 | fatX48, matX48) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X56 | fatX56, matX56) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX57) {
+   default 0.95 0.05;
+}
+probability (fatX57) {
+   default 0.95 0.05;
+}
+probability (X57 | fatX57, matX57) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX58 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX58 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X58 | fatX58, matX58) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX59) {
+   default 0.95 0.05;
+}
+probability (fatX59) {
+   default 0.95 0.05;
+}
+probability (X59 | fatX59, matX59) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX60 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX60 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X60 | fatX60, matX60) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX61 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX61 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X61 | fatX61, matX61) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX62 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX62 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X62 | fatX62, matX62) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX63 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX63 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X63 | fatX63, matX63) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX64 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX64 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X64 | fatX64, matX64) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX65 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX65 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X65 | fatX65, matX65) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX66 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX66 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X66 | fatX66, matX66) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX67 | fatX57, matX57) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX67 | fatX59, matX59) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X67 | fatX67, matX67) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX68) {
+   default 0.95 0.05;
+}
+probability (fatX68) {
+   default 0.95 0.05;
+}
+probability (X68 | fatX68, matX68) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX69 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX69 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X69 | fatX69, matX69) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX70) {
+   default 0.95 0.05;
+}
+probability (fatX70) {
+   default 0.95 0.05;
+}
+probability (X70 | fatX70, matX70) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX71 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX71 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X71 | fatX71, matX71) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX72 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX72 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X72 | fatX72, matX72) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX73 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX73 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X73 | fatX73, matX73) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX74 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX74 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X74 | fatX74, matX74) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX75 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX75 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X75 | fatX75, matX75) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX76 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX76 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X76 | fatX76, matX76) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX77 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX77 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X77 | fatX77, matX77) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX78 | fatX68, matX68) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX78 | fatX70, matX70) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X78 | fatX78, matX78) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX79) {
+   default 0.95 0.05;
+}
+probability (fatX79) {
+   default 0.95 0.05;
+}
+probability (X79 | fatX79, matX79) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX80 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX80 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X80 | fatX80, matX80) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX81) {
+   default 0.95 0.05;
+}
+probability (fatX81) {
+   default 0.95 0.05;
+}
+probability (X81 | fatX81, matX81) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX82 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX82 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X82 | fatX82, matX82) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX83 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX83 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X83 | fatX83, matX83) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX84 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX84 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X84 | fatX84, matX84) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX85 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX85 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X85 | fatX85, matX85) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX86 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX86 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X86 | fatX86, matX86) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX87 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX87 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X87 | fatX87, matX87) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX88 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX88 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X88 | fatX88, matX88) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX89 | fatX81, matX81) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX89 | fatX79, matX79) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X89 | fatX89, matX89) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX90) {
+   default 0.95 0.05;
+}
+probability (fatX90) {
+   default 0.95 0.05;
+}
+probability (X90 | fatX90, matX90) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX91) {
+   default 0.95 0.05;
+}
+probability (fatX91) {
+   default 0.95 0.05;
+}
+probability (X91 | fatX91, matX91) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX92 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX92 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X92 | fatX92, matX92) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX93) {
+   default 0.95 0.05;
+}
+probability (fatX93) {
+   default 0.95 0.05;
+}
+probability (X93 | fatX93, matX93) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX94 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX94 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X94 | fatX94, matX94) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX95 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX95 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X95 | fatX95, matX95) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX96 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX96 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X96 | fatX96, matX96) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX97 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX97 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X97 | fatX97, matX97) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX98 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX98 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X98 | fatX98, matX98) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX99 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX99 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X99 | fatX99, matX99) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX100 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX100 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X100 | fatX100, matX100) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX101 | fatX91, matX91) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX101 | fatX93, matX93) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X101 | fatX101, matX101) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX102) {
+   default 0.95 0.05;
+}
+probability (fatX102) {
+   default 0.95 0.05;
+}
+probability (X102 | fatX102, matX102) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX103 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX103 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X103 | fatX103, matX103) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX104) {
+   default 0.95 0.05;
+}
+probability (fatX104) {
+   default 0.95 0.05;
+}
+probability (X104 | fatX104, matX104) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX105 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX105 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X105 | fatX105, matX105) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX106 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX106 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X106 | fatX106, matX106) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX107 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX107 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X107 | fatX107, matX107) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX108 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX108 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X108 | fatX108, matX108) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX109 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX109 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X109 | fatX109, matX109) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX110 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX110 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X110 | fatX110, matX110) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX111 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX111 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X111 | fatX111, matX111) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX112 | fatX104, matX104) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX112 | fatX102, matX102) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X112 | fatX112, matX112) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX113) {
+   default 0.95 0.05;
+}
+probability (fatX113) {
+   default 0.95 0.05;
+}
+probability (X113 | fatX113, matX113) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX114) {
+   default 0.95 0.05;
+}
+probability (fatX114) {
+   default 0.95 0.05;
+}
+probability (X114 | fatX114, matX114) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX115) {
+   default 0.95 0.05;
+}
+probability (fatX115) {
+   default 0.95 0.05;
+}
+probability (X115 | fatX115, matX115) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX116 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX116 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X116 | fatX116, matX116) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX117) {
+   default 0.95 0.05;
+}
+probability (fatX117) {
+   default 0.95 0.05;
+}
+probability (X117 | fatX117, matX117) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX118 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX118 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X118 | fatX118, matX118) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX119 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX119 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X119 | fatX119, matX119) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX120 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX120 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X120 | fatX120, matX120) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX121 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX121 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X121 | fatX121, matX121) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX122 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX122 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X122 | fatX122, matX122) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX123 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX123 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X123 | fatX123, matX123) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX124 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX124 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X124 | fatX124, matX124) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX125 | fatX117, matX117) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX125 | fatX115, matX115) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X125 | fatX125, matX125) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX126) {
+   default 0.95 0.05;
+}
+probability (fatX126) {
+   default 0.95 0.05;
+}
+probability (X126 | fatX126, matX126) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX127) {
+   default 0.95 0.05;
+}
+probability (fatX127) {
+   default 0.95 0.05;
+}
+probability (X127 | fatX127, matX127) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX128 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX128 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X128 | fatX128, matX128) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX129) {
+   default 0.95 0.05;
+}
+probability (fatX129) {
+   default 0.95 0.05;
+}
+probability (X129 | fatX129, matX129) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX130 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX130 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X130 | fatX130, matX130) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX131 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX131 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X131 | fatX131, matX131) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX132 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX132 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X132 | fatX132, matX132) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX133 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX133 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X133 | fatX133, matX133) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX134 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX134 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X134 | fatX134, matX134) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX135 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX135 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X135 | fatX135, matX135) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX136 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX136 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X136 | fatX136, matX136) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX137 | fatX127, matX127) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX137 | fatX129, matX129) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X137 | fatX137, matX137) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX138) {
+   default 0.95 0.05;
+}
+probability (fatX138) {
+   default 0.95 0.05;
+}
+probability (X138 | fatX138, matX138) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX139) {
+   default 0.95 0.05;
+}
+probability (fatX139) {
+   default 0.95 0.05;
+}
+probability (X139 | fatX139, matX139) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX140) {
+   default 0.95 0.05;
+}
+probability (fatX140) {
+   default 0.95 0.05;
+}
+probability (X140 | fatX140, matX140) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX141) {
+   default 0.95 0.05;
+}
+probability (fatX141) {
+   default 0.95 0.05;
+}
+probability (X141 | fatX141, matX141) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX142 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX142 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X142 | fatX142, matX142) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX143) {
+   default 0.95 0.05;
+}
+probability (fatX143) {
+   default 0.95 0.05;
+}
+probability (X143 | fatX143, matX143) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX144 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX144 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X144 | fatX144, matX144) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX145 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX145 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X145 | fatX145, matX145) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX146 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX146 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X146 | fatX146, matX146) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX147 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX147 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X147 | fatX147, matX147) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX148 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX148 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X148 | fatX148, matX148) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX149 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX149 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X149 | fatX149, matX149) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX150 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX150 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X150 | fatX150, matX150) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX151 | fatX141, matX141) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX151 | fatX143, matX143) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X151 | fatX151, matX151) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX152) {
+   default 0.95 0.05;
+}
+probability (fatX152) {
+   default 0.95 0.05;
+}
+probability (X152 | fatX152, matX152) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX153) {
+   default 0.95 0.05;
+}
+probability (fatX153) {
+   default 0.95 0.05;
+}
+probability (X153 | fatX153, matX153) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX154) {
+   default 0.95 0.05;
+}
+probability (fatX154) {
+   default 0.95 0.05;
+}
+probability (X154 | fatX154, matX154) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX155) {
+   default 0.95 0.05;
+}
+probability (fatX155) {
+   default 0.95 0.05;
+}
+probability (X155 | fatX155, matX155) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX156 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX156 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X156 | fatX156, matX156) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX157) {
+   default 0.95 0.05;
+}
+probability (fatX157) {
+   default 0.95 0.05;
+}
+probability (X157 | fatX157, matX157) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX158 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX158 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X158 | fatX158, matX158) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX159 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX159 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X159 | fatX159, matX159) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX160 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX160 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X160 | fatX160, matX160) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX161 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX161 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X161 | fatX161, matX161) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX162 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX162 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X162 | fatX162, matX162) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX163 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX163 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X163 | fatX163, matX163) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX164 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX164 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X164 | fatX164, matX164) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX165 | fatX157, matX157) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX165 | fatX155, matX155) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X165 | fatX165, matX165) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX166) {
+   default 0.95 0.05;
+}
+probability (fatX166) {
+   default 0.95 0.05;
+}
+probability (X166 | fatX166, matX166) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX167 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX167 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X167 | fatX167, matX167) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX168) {
+   default 0.95 0.05;
+}
+probability (fatX168) {
+   default 0.95 0.05;
+}
+probability (X168 | fatX168, matX168) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX169 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX169 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X169 | fatX169, matX169) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX170 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX170 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X170 | fatX170, matX170) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX171 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX171 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X171 | fatX171, matX171) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX172 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX172 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X172 | fatX172, matX172) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX173 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX173 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X173 | fatX173, matX173) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX174 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX174 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X174 | fatX174, matX174) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX175 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX175 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X175 | fatX175, matX175) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX176 | fatX168, matX168) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX176 | fatX166, matX166) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X176 | fatX176, matX176) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX177) {
+   default 0.95 0.05;
+}
+probability (fatX177) {
+   default 0.95 0.05;
+}
+probability (X177 | fatX177, matX177) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX178 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX178 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X178 | fatX178, matX178) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX179) {
+   default 0.95 0.05;
+}
+probability (fatX179) {
+   default 0.95 0.05;
+}
+probability (X179 | fatX179, matX179) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX180 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX180 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X180 | fatX180, matX180) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX181 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX181 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X181 | fatX181, matX181) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX182 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX182 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X182 | fatX182, matX182) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX183 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX183 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X183 | fatX183, matX183) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX184 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX184 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X184 | fatX184, matX184) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX185 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX185 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X185 | fatX185, matX185) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX186 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX186 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X186 | fatX186, matX186) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX187 | fatX177, matX177) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX187 | fatX179, matX179) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X187 | fatX187, matX187) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX188) {
+   default 0.95 0.05;
+}
+probability (fatX188) {
+   default 0.95 0.05;
+}
+probability (X188 | fatX188, matX188) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX189 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX189 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X189 | fatX189, matX189) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX190) {
+   default 0.95 0.05;
+}
+probability (fatX190) {
+   default 0.95 0.05;
+}
+probability (X190 | fatX190, matX190) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX191 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX191 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X191 | fatX191, matX191) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX192 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX192 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X192 | fatX192, matX192) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX193 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX193 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X193 | fatX193, matX193) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX194 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX194 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X194 | fatX194, matX194) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX195 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX195 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X195 | fatX195, matX195) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX196 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX196 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X196 | fatX196, matX196) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX197 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX197 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X197 | fatX197, matX197) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX198 | fatX190, matX190) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX198 | fatX188, matX188) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X198 | fatX198, matX198) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX199) {
+   default 0.95 0.05;
+}
+probability (fatX199) {
+   default 0.95 0.05;
+}
+probability (X199 | fatX199, matX199) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX200) {
+   default 0.95 0.05;
+}
+probability (fatX200 | fatX199, matX199) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X200 | fatX200, matX200) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+
