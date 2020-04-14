@@ -578,17 +578,18 @@ class Pedigree:
                 errors.add(k)
         return errors
 
-    def pedigree_overview_file(self, filename):
+    def pedigree_overview_file(self, filename, compact):
 
         with open(filename, "w") as f:
-            for k, v in self._people2line.items():
-                f.write(f"People {k} is defined at line {v}\n")
-            stats = self.get_stat_family()
-            f.write("---------------------------------------------------\n")
-            for k, v in stats.items():
-                f.write(f"The Family {k} is composed by {v} members \n")
+            if compact is False:
+                for k, v in self._people2line.items():
+                    f.write(f"People {k} is defined at line {v}\n")
+                stats = self.get_stat_family()
+                f.write("---------------------------------------------------\n")
+                for k, v in stats.items():
+                    f.write(f"The Family {k} is composed by {v} members \n")
+                f.write("---------------------------------------------------\n")
 
-            f.write("---------------------------------------------------\n")
             f.write(f'There is {len(self._pedigree)} people in this pedigree\n')
             f.write(f'There is {self.depth()} generation in this pedigree\n')
             nb_sex = self.nb_sexe_ped()

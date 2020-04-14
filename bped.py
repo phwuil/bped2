@@ -16,6 +16,8 @@ def main(args=None):
   [--audit textfile] introspect pedigree into a text file
   [--verbose] display error/warning messages in stderr
   [--compact] decide which version between normal and compact version of a  BN
+  [--inference] Decide which inference use, LazyPropagation or LoobyBeliefPropagation
+  [--complete] Decice which version between complete and compact for the audit file
     """
     parser = OptionParser(version="%prog 0.1", usage="usage: %prog [options] pedfile")
     parser.add_option("", "--ev", dest="evfile",
@@ -35,6 +37,10 @@ def main(args=None):
     parser.add_option("", "--bn", dest="bnfile", help="Export the BN into a BIF file", metavar="FILE")
     parser.add_option("","--compact",dest="compact",
                       help="Decided if the BN is conpacted or not")
+    parser.add_option("","--inference",dest="inference",
+                      help="Choose between LP and LBP")
+    parser.add_option("","--complete",dest="complete",
+                      help="Decide if the audit is a complete version or a compact version")
 
     if args is None:
         (options, arguments) = parser.parse_args()
@@ -88,7 +94,10 @@ def main(args=None):
 
 
         if options.auditfile:
-            current_ped.pedigree_overview_file(options.auditfile)
+            if options.complete == False:
+                current_ped.pedigree_overview_file(options.auditfile)
+            else:
+                current_ped.pedigree_overview_file(options.auditfile,True)
             if options.verbose:
                 print('audit file ' + options.auditfile + ' created')
 
@@ -98,14 +107,20 @@ def main(args=None):
                 if options.verbose:
                     print(f"{options.evfile} loaded")
 
-                ie = pview.gum.LazyPropagation(bn)
+                if options.inference == 'LBP':
+                    ie = pview.gum.LoopyBeliefPropagation(bn)
+                else:
+                    ie = pview.gum.LazyPropagation(bn)
                 ie.setEvidence(evidence)
                 ie.makeInference()
                 for i in current_ped.get_pedigree().keys():
                     if i in options.targets:
                         pview.gnb.showProba(ie.posterior(f"X{i}"))
             else:
-                ie = pview.gum.LazyPropagation(bn)
+                if options.inference == 'LBP':
+                    ie = pview.gum.LoopyBeliefPropagation(bn)
+                else:
+                    ie = pview.gum.LazyPropagation(bn)
                 ie.makeInference()
                 for i in current_ped.get_pedigree().keys():
                     if i in options.targets:
@@ -116,13 +131,19 @@ def main(args=None):
                 if options.verbose:
                     print(f"{options.evfile} loaded")
 
-                ie = pview.gum.LazyPropagation(bn)
+                if options.inference == 'LBP':
+                    ie = pview.gum.LoopyBeliefPropagation(bn)
+                else:
+                    ie = pview.gum.LazyPropagation(bn)
                 ie.setEvidence(evidence)
                 ie.makeInference()
                 for i in current_ped.get_pedigree().keys():
                     pview.gnb.showProba(ie.posterior(f"X{i}"))
             else:
-                ie = pview.gum.LazyPropagation(bn)
+                if options.inference == 'LBP':
+                    ie = pview.gum.LoopyBeliefPropagation(bn)
+                else:
+                    ie = pview.gum.LazyPropagation(bn)
                 ie.makeInference()
                 for i in current_ped.get_pedigree().keys():
                     pview.gnb.showProba(ie.posterior(f"X{i}"))
