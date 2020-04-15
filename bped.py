@@ -41,6 +41,8 @@ def main(args=None):
                       help="Choose between LP and LBP")
     parser.add_option("","--complete",dest="complete",
                       help="Decide if the audit is a complete version or a compact version")
+    parser.add_option("","--out",dest="out",
+                      help="Export the evidence into a out file")
 
     if args is None:
         (options, arguments) = parser.parse_args()
@@ -65,7 +67,6 @@ def main(args=None):
         print(f"working on file : {pedfile}")
         current_ped = ped.Pedigree()
         current_ped.load(str(pedfile))
-        print(current_ped)
         famID = current_ped.get_domain()
 
         if options.compact:
@@ -83,12 +84,14 @@ def main(args=None):
                 print('ped saved in '+options.peddotfile)
 
         if options.bndotfile:
-            pview.gum.saveBN(bn, options.bndotfile)
+            bn.saveBIF(options.bndotfile)
+            pview.gum.availableBNExts()
+            pview.gum.saveBN(bn, options.bndotfile+'.bif')
             if options.verbose:
                 print('bndotfile saved in '+options.bndotfile)
 
         if options.bnfile:
-            pview.save_bn(options.bndotfile)
+            pview.save_bn(bn,options.bndotfile)
             if options.verbose:
                 print('bn saved in '+options.bndotfile)
 
@@ -115,7 +118,8 @@ def main(args=None):
                 ie.makeInference()
                 for i in current_ped.get_pedigree().keys():
                     if i in options.targets:
-                        pview.gnb.showProba(ie.posterior(f"X{i}"))
+                        print(ie.posterior(f"X{i}"))
+                pview.create_out(options.out, current_ped, ie)
             else:
                 if options.inference == 'LBP':
                     ie = pview.gum.LoopyBeliefPropagation(bn)
@@ -124,7 +128,8 @@ def main(args=None):
                 ie.makeInference()
                 for i in current_ped.get_pedigree().keys():
                     if i in options.targets:
-                        pview.gnb.showProba(ie.posterior(f"X{i}"))
+                        print(ie.posterior(f"X{i}"))
+                pview.create_out(options.out, current_ped, ie)
         else:
             if options.evfile:
                 evidence = pview.load_evidence(options.evfile, famID)
@@ -137,17 +142,14 @@ def main(args=None):
                     ie = pview.gum.LazyPropagation(bn)
                 ie.setEvidence(evidence)
                 ie.makeInference()
-                for i in current_ped.get_pedigree().keys():
-                    pview.gnb.showProba(ie.posterior(f"X{i}"))
+                pview.create_out(options.out,current_ped,ie)
             else:
                 if options.inference == 'LBP':
                     ie = pview.gum.LoopyBeliefPropagation(bn)
                 else:
                     ie = pview.gum.LazyPropagation(bn)
                 ie.makeInference()
-                for i in current_ped.get_pedigree().keys():
-                    pview.gnb.showProba(ie.posterior(f"X{i}"))
-
+                pview.create_out(options.out,current_ped,ie)
 
 if __name__ == "__main__":
     main(sys.argv)

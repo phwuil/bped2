@@ -578,13 +578,13 @@ class Pedigree:
                 errors.add(k)
         return errors
 
-    def pedigree_overview_file(self, filename, compact):
+    def pedigree_overview_file(self, filename, complete):
 
         with open(filename, "w") as f:
-            if compact is False:
+            stats = self.get_stat_family()
+            if complete is True :
                 for k, v in self._people2line.items():
                     f.write(f"People {k} is defined at line {v}\n")
-                stats = self.get_stat_family()
                 f.write("---------------------------------------------------\n")
                 for k, v in stats.items():
                     f.write(f"The Family {k} is composed by {v} members \n")
@@ -593,7 +593,7 @@ class Pedigree:
             f.write(f'There is {len(self._pedigree)} people in this pedigree\n')
             f.write(f'There is {self.depth()} generation in this pedigree\n')
             nb_sex = self.nb_sexe_ped()
-            f.write(f'There is {nb_sex[0]} men and {nb_sex[1]} women in this pedigree\n')
+            f.write(f'There is {nb_sex[0]} men and {nb_sex[1]} women identify in this pedigree\n')
             f.write(f'There is {len(self._pedigree) / self.depth()} people by generation in average\n')
             f.write(f'There is {len([i for i in self.roots()])} people without parents in this pedigree\n')
             f.write(f'There is {len([i for i in self.leaves()])} people without childrens in this pedigree \n')
@@ -657,14 +657,14 @@ class Pedigree:
         Calculte the nombers of men and women in the pedigree
         :return: (int,int)
         """
-        father = 0
-        mother = 0
+        father = set()
+        mother = set()
         for v in self._pedigree.values():
-            if v.sex == self.sex_male:
-                father += 1
-            if v.sex == self.sex_female:
-                mother += 1
-        return (father, mother)
+            if v.fatID != self.no_people :
+                father.add(v.fatID)
+            if v.matID != self.no_people:
+                mother.add(v.matID)
+        return (len(father), len(mother))
 
     def mean_weeding(self):
         """

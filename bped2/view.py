@@ -180,6 +180,12 @@ def max_clique_size(bn):
     jt = jte.junctionTree(bn)
     return max([len(jt.clique(cl)) for cl in jt.nodes()])
 
+def create_out(filename, ped, inference):
+    fam = list(ped.get_domain())[0]
+    with open(filename+'.out', "w") as f:
+        for i in ped.get_pedigree().keys():
+            inf = inference.posterior(f'X{i}')
+            f.write(f'{fam}:{i}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
 
 def audit(bn, ped, filename):
     with open(filename, "w") as f:
