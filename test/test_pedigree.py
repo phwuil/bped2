@@ -211,14 +211,15 @@ class TestPedigree(unittest.TestCase):
         # ped.gen_ped('f',200,50,4,4)
         # ped.graph(f'generate_graph_test_200_1',False)
         # ped.save(f'../cplex/samples/pedigree_test_200')
-        nb_ped = 10
-        # nb_people = [20, 50, 100, 200, 300, 500, 1000]
-        # # nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
-        # nb_Gen_Max = [3, 3, 3, 4, 4, 4, 5]
-        nb_people = [1900]
-        nb_Gen_Max = [5]
-        nb_Gen_Min = [5] #[math.ceil(x/2) for x in nb_Gen_Max]
-        cl = 4
+        nb_ped = 5
+        nb_people = [20, 50, 100, 200, 300, 500, 1000]
+        # nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
+        nb_Gen_Max = [3, 3, 3, 4, 4, 4, 5]
+        # nb_people = [1900]
+        # nb_Gen_Max = [5]
+        # nb_Gen_Min = [5]
+        nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
+        cl = 3
         ped1 = Pedigree()
         ped1.load("../data/ped/senegal2013.ped")
         bn_sen = pview.ped_to_bn_compact(ped1,0.05)
@@ -226,7 +227,7 @@ class TestPedigree(unittest.TestCase):
         print('uho', ped1.all_consanguineous_ped(cl))
         for p, g_max, g_min in zip(nb_people, nb_Gen_Max, nb_Gen_Min):
             for nb in range(nb_ped):
-                nbChild = random.randint(6, 12)
+                nbChild = random.randint(4, 8)
                 g = random.randint(g_min, g_max)
                 ped = Pedigree()
                 ped.gen_ped(nb, p, g, nbChild, cl)
@@ -238,7 +239,7 @@ class TestPedigree(unittest.TestCase):
                 print('clique',pview.max_clique_size(bn))
                 print('-------------------------')
                 pview.save(ped, f'../cplex/pedigree_{p}_{g}_{nbChild}_{cl-1}_G{nb}')
-                pview.graph(ped, f'../cplex/generate_graph_{p}_{g}_{nbChild}_{cl-1}_G{nb}', True)
+                pview.graph(ped, f'../cplex/generate_graph_{p}_{g}_{nbChild}_{cl-1}_G{nb}', False)
 
     def test_depth(self):
         ped = Pedigree()

@@ -6,8 +6,8 @@ def doLBP(bn_name):
     bn = pview.gum.BayesNet()
     bn.loadBIF(bn_name)
     try:
-        ie = pview.gum.LoopyBeliefPropagation(bn)
         t1 = process_time()
+        ie = pview.gum.LoopyBeliefPropagation(bn)
         ie.makeInference()
         t2 = process_time()
         return t2 - t1

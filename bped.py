@@ -15,9 +15,10 @@ def main(args=None):
   [--peddot dotfile] export the pedigree into a dot file
   [--audit textfile] introspect pedigree into a text file
   [--verbose] display error/warning messages in stderr
-  [--compact] decide which version between normal and compact version of a  BN
-  [--inference] Decide which inference use, LazyPropagation or LoobyBeliefPropagation
-  [--complete] Decice which version between complete and compact for the audit file
+  [--compact Bool] decide which version between normal and compact version of a  BN
+  [--inference ] Decide which inference use, LazyPropagation or LoobyBeliefPropagation
+  [--complete Bool] Decice which version between complete and compact for the audit file
+  [--out outfile] export probabilities into a out file
     """
     parser = OptionParser(version="%prog 0.1", usage="usage: %prog [options] pedfile")
     parser.add_option("", "--ev", dest="evfile",
@@ -42,7 +43,7 @@ def main(args=None):
     parser.add_option("","--complete",dest="complete",
                       help="Decide if the audit is a complete version or a compact version")
     parser.add_option("","--out",dest="out",
-                      help="Export the evidence into a out file")
+                      help="Export the evidence into a out file",metavar="FILE")
 
     if args is None:
         (options, arguments) = parser.parse_args()
@@ -78,22 +79,30 @@ def main(args=None):
             if options.verbose:
                 pview.gnb.showBN(bn,size=100)
 
-        if options.peddotfile:
-            pview.save(current_ped,options.peddotfile)
-            if options.verbose:
-                print('ped saved in '+options.peddotfile)
+        # if options.peddotfile:
+        #     pview.save(current_ped,options.peddotfile)
+        #     if options.verbose:
+        #         print('ped saved in '+options.peddotfile)
 
-        if options.bndotfile:
+        if options.bnfile:
             bn.saveBIF(options.bndotfile)
             pview.gum.availableBNExts()
-            pview.gum.saveBN(bn, options.bndotfile+'.bif')
+            pview.gum.saveBN(bn, options.bndotfile)
             if options.verbose:
                 print('bndotfile saved in '+options.bndotfile)
 
-        if options.bnfile:
-            pview.save_bn(bn,options.bndotfile)
+        if options.bndotfile:
+            pview.save_dot(bn,options.bndotfile)
             if options.verbose:
                 print('bn saved in '+options.bndotfile)
+
+        if options.peddotfile:
+            if (len(current_ped)) > 1000 :
+                pview.graph(current_ped,options.graph,True)
+            else:
+                pview.graph(current_ped, options.graph, False)
+            if options.verbose:
+                print("graph save in "+ options.peddotfile)
 
 
         if options.auditfile:

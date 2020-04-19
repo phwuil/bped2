@@ -1,6 +1,7 @@
 #!/usr/local/bin/python
 import pyAgrum as gum
 import pyAgrum.lib.notebook as gnb
+import pyAgrum.lib.bn2graph as bng
 import pydotplus as pydot
 import matplotlib.pyplot as plt
 
@@ -158,7 +159,7 @@ def ped_to_bn_compact(ped,f):
         if p.fatID == '0':  # Cas parents inconnu
             bn.cpt(f"fatX{p.pID}").fillWith([1 - f, f])
         else:
-            create_offsprings_compact(ped,bn, p, 'fat' )
+            create_offsprings_compact(ped,bn, p, 'fat')
 
         if p.matID == '0':  # Cas parents inconnu
             bn.cpt(f"matX{p.pID}").fillWith([1 - f, f])
@@ -174,6 +175,9 @@ def show_proba(bn):
 
 def save_bn(bn,name):
     bn.saveBIF(name+'.bif')
+
+def save_dot(bn,name):
+    bng.BN2dot(bn).write_pdf(name)
 
 def max_clique_size(bn):
     jte = gum.JunctionTreeGenerator()

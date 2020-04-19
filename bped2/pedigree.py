@@ -102,7 +102,7 @@ class Pedigree:
 
     people_unknown = "?"
     no_people = "0"
-    cl = 2
+    cl = 3
 
     def __init__(self):
         self._pedigree = dict()
@@ -601,7 +601,7 @@ class Pedigree:
             f.write(f'The biggest brotherhood is composed by {self.max_child()[1]} people \n')
             f.write(f'There is {self.mean_weeding()} weeding by people in average\n')
             f.write(
-                f"Out of  {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
+                f"Out of {len(stats)} families, there are {self.check_one_people_family()} composed by one people\n")
             f.write(
                 f"In the pedigree, this people appear as mother and also as father : {self.check_mother_and_father()}\n")
             f.write(
