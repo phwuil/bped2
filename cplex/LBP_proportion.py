@@ -15,7 +15,7 @@ nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,6]
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
 
-data = np.zeros((len(nb_people),5),dtype=float)
+data = np.zeros((len(nb_people),7),dtype=float)
 
 mean_gen_diff = []
 errorValues_diff = []
@@ -48,17 +48,21 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             p2 = ie2.posterior(f'X{i}')
             x = [abs(p1[0] - p2[0]),abs(p1[1] - p2[1]),abs(p1[2] - p2[2]),abs(p1[3] - p2[3])]
             v = max(x)
-            if v < 0.01:
+            if v < 10**-5:
                 data[w][0] += 100/(nb_ped*p)
-            elif v < 0.02:
+            elif v < 10**-4:
                 data[w][1] += 100/(nb_ped*p)
-            elif v < 0.05:
+            elif v < 10**-3:
                 data[w][2] += 100/(nb_ped*p)
-            elif v < 0.4:
+            elif v < 10**-2:
                 data[w][3] += 100/(nb_ped*p)
-            else:
+            # else:
+            elif v < 10 ** -1:
                 data[w][4] += 100/(nb_ped*p)
-
+            elif v < 0.4:
+                data[w][5] += 100 / (nb_ped * p)
+            elif v < 0.5:
+                data[w][6] += 100 / (nb_ped * p)
             #error_lbp_laz.append(max(x))
 
         #error_lbp_laz = np.array(error_lbp_laz)
@@ -80,7 +84,8 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 columns = nb_people
 # les seuils testés
 #values=[80,50,20,10,5]
-values=[50,40,5,2,1]
+#values=[50,40,5,1,0.1]
+values = [50,40,10,1,10**-1,10**-2,10**-3]
 # data = données à produire
 # en supposant qu'il y a
 # dans le cas N=1000 :
@@ -98,7 +103,7 @@ values=[50,40,5,2,1]
 #                  [ 25, 36, 24, 10, 5],
 #                  [  8, 32, 36, 20, 4]])
 data=data.transpose()
-rows = ['<=%3.2f' % (x/100) for x in values]
+rows = ['<=%3.4f' % (x/100) for x in values]
 
 colors = plt.cm.BuPu(np.linspace(0.2, 0.8, len(rows)))
 n_rows = len(data)
@@ -114,7 +119,7 @@ cell_text = []
 for row in range(n_rows):
     plt.bar(index, data[row], bar_width, bottom=y_offset, color=colors[row])
     y_offset = y_offset + data[row]
-    cell_text.append(['%1.1f' % x if x!=0 else "" for x in data[row]])
+    cell_text.append(['%1.4f' % x if x!=0 else "" for x in data[row]])
 # Reverse colors and text labels to display the last value at the top.
 colors = colors[::-1]
 cell_text.reverse()
@@ -132,5 +137,5 @@ plt.subplots_adjust(left=0.2, bottom=0.2)
 plt.ylabel("Proportion %")
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)')
-plt.savefig('../cplex/figure/LBP/proportion')
+plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
 plt.show()
