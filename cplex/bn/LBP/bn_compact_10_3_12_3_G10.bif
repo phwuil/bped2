@@ -218,7 +218,7 @@ probability (X6 | fatX6, matX6) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX7 | fatX6, matX6) {
+probability (matX7 | fatX4, matX4) {
    (0, 0) 1 0;
    (1, 0) 0.5 0.5;
    (0, 1) 0.5 0.5;
@@ -266,13 +266,13 @@ probability (X9 | fatX9, matX9) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
-probability (matX10 | fatX6, matX6) {
+probability (matX10 | fatX3, matX3) {
    (0, 0) 1 0;
    (1, 0) 0.5 0.5;
    (0, 1) 0.5 0.5;
    (1, 1) 0 1;
 }
-probability (fatX10 | fatX8, matX8) {
+probability (fatX10 | fatX1, matX1) {
    (0, 0) 1 0;
    (1, 0) 0.5 0.5;
    (0, 1) 0.5 0.5;

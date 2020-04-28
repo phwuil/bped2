@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os, psutil
 import math
+import matplotlib.ticker as ticker
 
 f = 0.05
 nb_ped = 50
@@ -130,12 +131,15 @@ the_table = plt.table(cellText=cell_text,
                       rowColours=colors,
                       colLabels=columns,
                       loc='bottom')
-
 # Adjust layout to make room for the table:
 plt.subplots_adjust(left=0.2, bottom=0.2)
 
-plt.ylabel("Proportion %")
+plt.ylabel("Proportion % (logarithmic)")
+plt.ylim(90)
+plt.yscale('log')
+plt.gca().get_yaxis().set_minor_formatter(ticker.FormatStrFormatter('%.2f'))
+plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
-plt.title('Distribution des erreurs (en %)')
+plt.title('Distribution des erreurs (en %)');
 plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
 plt.show()

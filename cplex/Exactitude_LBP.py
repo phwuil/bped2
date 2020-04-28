@@ -6,9 +6,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os, psutil
 import math
+import matplotlib.ticker as ticker
 
 f = 0.05
-nb_ped = 50
+nb_ped = 3
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 #nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
 nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,6]
@@ -127,8 +128,12 @@ the_table = plt.table(cellText=cell_text,
 # Adjust layout to make room for the table:
 plt.subplots_adjust(left=0.2, bottom=0.2)
 
-plt.ylabel("Proportion %")
+plt.ylabel("Proportion % (logarithmic)")
+plt.ylim(70)
+plt.yscale('log')
+plt.gca().get_yaxis().set_minor_formatter(ticker.FormatStrFormatter('%.2f'))
+plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
-plt.title('Distribution des erreurs (en %)')
+plt.title('Distribution des erreurs (en %)');
 
 plt.show()
