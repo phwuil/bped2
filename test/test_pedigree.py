@@ -1,6 +1,6 @@
 import unittest
 import os
-
+import math
 from bped2.pedigree import *
 import bped2.view as pview
 class TestPedigree(unittest.TestCase):
@@ -206,15 +206,14 @@ class TestPedigree(unittest.TestCase):
         pview.graph(ped,'generate_graph', False)
 
     def test_new_gen(self):
-        import math
         # ped = Pedigree()
         # ped.gen_ped('f',200,50,4,4)
         # ped.graph(f'generate_graph_test_200_1',False)
         # ped.save(f'../cplex/samples/pedigree_test_200')
         nb_ped = 5
-        nb_people = [20, 50, 100, 200, 300, 500, 1000]
+        nb_people = [50]
         # nb_Gen_Max = [3,4,7,10,15,20,25,30,35,40,50,60,70,80]
-        nb_Gen_Max = [3, 3, 3, 4, 4, 4, 5]
+        nb_Gen_Max = [4]
         # nb_people = [1900]
         # nb_Gen_Max = [5]
         # nb_Gen_Min = [5]
@@ -234,12 +233,12 @@ class TestPedigree(unittest.TestCase):
                 # print('-------------------------')
                 # print(ped)
                 print('-------------------------')
-                print('uho',ped.all_consanguineous_ped(cl))
+                print('Consanguin',ped.all_consanguineous_ped(cl))
                 bn = pview.ped_to_bn_compact(ped,0.05)
                 print('clique',pview.max_clique_size(bn))
                 print('-------------------------')
-                pview.save(ped, f'../cplex/pedigree_{p}_{g}_{nbChild}_{cl-1}_G{nb}')
-                pview.graph(ped, f'../cplex/generate_graph_{p}_{g}_{nbChild}_{cl-1}_G{nb}', False)
+                pview.save(ped, f'../pedigree_{p}_{g}_{nbChild}_{cl-1}_G{nb}')
+                pview.graph(ped, f'../generate_graph_{p}_{g}_{nbChild}_{cl-1}_G{nb}', False)
 
     def test_depth(self):
         ped = Pedigree()
@@ -263,3 +262,42 @@ class TestPedigree(unittest.TestCase):
         print(ped.old_gen('10', 1))
         print(ped.check_consanguinity('9',4))
         print(ped.all_consanguineous_ped(4))
+
+    def test_check_consanguinity(self):
+        ped = Pedigree()
+        ped.load('../cplex/pedigree_50_4_8_2_G3.ped')
+        print(ped.all_consanguineous_ped(3))
+        print(ped.is_consanguineous('1','7',2))
+        print(ped.old_gen('1',4).intersection(ped.old_gen('7',4)))
+        print(ped.old_gen('7', 4))
+        print('---------------------------')
+        nb_ped = 50
+        nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2200,2400]
+        nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6]
+        # nb_people = [50]
+        # nb_Gen_Max = [4]
+        nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
+        cl = 3
+        cpt = 0
+        for p, g_max, g_min in zip(nb_people, nb_Gen_Max, nb_Gen_Min):
+            for nb in range(nb_ped):
+                nbChild = random.randint(4, 8)
+                g = random.randint(g_min, g_max)
+                ped = Pedigree()
+                ped.gen_ped(nb, p, g, nbChild, cl)
+
+                if len(ped.all_consanguineous_ped(cl)) != 0:
+                    cpt+=1
+                    print('ICI IL Y A UN PB',ped.all_consanguineous_ped(3))
+                    print('le pedigree en question',ped)
+                    pview.save(ped, f'../pedigree_{p}_{g}_{nbChild}_{cl - 1}_G{nb}')
+                    pview.graph(ped, f'../generate_graph_{p}_{g}_{nbChild}_{cl - 1}_G{nb}', False)
+            print(cpt)
+            self.assertEqual(cpt,0)
+
+    def test_check_pedigree(self):
+        ped = Pedigree()
+        #ped.load('../pedigree_50_3_6_2_G1.ped')
+        ped.gen_ped('f', 50, 4, 6, 3)
+        pview.graph(ped, f'../jpp', False)
+        print(ped)

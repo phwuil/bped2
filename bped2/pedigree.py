@@ -546,6 +546,10 @@ class Pedigree:
 
         holders_p1 = set(self.old_gen(p1, nbG))
         holders_p2 = set(self.old_gen(p2, nbG))
+
+        if p1 in holders_p2 or p2 in holders_p1:
+            return True
+
         x = holders_p1.intersection(holders_p2)
         return len(x) != 0
 
@@ -562,7 +566,7 @@ class Pedigree:
                     holders_p1 = set(fam.old_gen(p1, nbG-1))
                     holders_p2 = set(fam.old_gen(p2, nbG-1))
                     x = holders_p1.intersection(holders_p2)
-                    if len(x) != 0:
+                    if len(x) != 0 or p1 in holders_p2 or p2 in holders_p1:
                         csg.add(k)
             res.update(csg)
         return res
@@ -807,7 +811,7 @@ class Pedigree:
                         # creer le nouveau mariage
                         new_parent = [k for k in parents_pot if
                                       abs(profondeur[k] - profondeur[parent]) <= prof_mariage_max
-                                      and self.get_people(k).sex != self.get_people(parent).sex and k != parent]
+                                      and self.get_people(k).sex != self.get_people(parent).sex and k != parent and self.is_consanguineous(parent,k,cl) is False]
 
                         if len(new_parent) == 0:
                             #print('mea avec new_p fils',new_p)
@@ -818,28 +822,44 @@ class Pedigree:
 
                         parent2 = random.sample(new_parent, 1)[0]
                         #print('avant',parent, parent2)
-                        while self.is_consanguineous(parent, parent2, cl) is True and len(new_parent)>0:
-                            if len(new_parent) == 0:
-                                profondeur[new_p] = profondeur[parent] + 1
+                        # while self.is_consanguineous(parent, parent2, cl) is True :
+                        #     if len(new_parent) == 0:
+                        #         profondeur[new_p] = profondeur[parent] + 1
+                        #         self.get_people(parent).add_children(new_p)
+                        #         mea.extend([parent, new_p])
+                        #         continue
+                        #     #print(self.get_people(parent).sex == self.get_people(parent2).sex,self.is_consanguineous(parent, parent2, cl))
+                        #     new_parent.remove(parent2)
+                        #     if len(new_parent) == 0:
+                        #         profondeur[new_p] = profondeur[parent] + 1
+                        #         self.get_people(parent).add_children(new_p)
+                        #         mea.extend([parent, new_p])
+                        #         continue
+                        #     parent2 = random.sample(new_parent, 1)[0]
+                        #     #print(parent2)
+                        while True:
+                            if self.is_consanguineous(parent, parent2, cl) is True:
+                                new_parent.remove(parent2)
+                                if len(new_parent) == 0:
+                                    profondeur[new_p] = profondeur[parent] + 1
+                                    self.get_people(parent).add_children(new_p)
+                                    mea.extend([parent, new_p])
+                                    break
+                                parent2 = random.sample(new_parent, 1)[0]
+                            else:
                                 self.get_people(parent).add_children(new_p)
-                                mea.extend([parent, new_p])
-                                continue
-                            #print(self.get_people(parent).sex == self.get_people(parent2).sex,self.is_consanguineous(parent, parent2, cl))
-                            new_parent.remove(parent2)
-                            if len(new_parent) == 0:
-                                profondeur[new_p] = profondeur[parent] + 1
-                                self.get_people(parent).add_children(new_p)
-                                mea.extend([parent, new_p])
-                                continue
-                            parent2 = random.sample(new_parent, 1)[0]
-                            #print(parent2)
+                                self.get_people(parent2).add_children(new_p)
+                                profondeur[new_p] = max(profondeur[parent], profondeur[parent2]) + 1
+                                #print('remariage SANS csg', parent, parent2, new_p)
+                                break
                         #print(self.is_consanguineous(parent, parent2, cl))
                         # print(parent, parent2, self.get_people(parent).sex == self.get_people(parent2).sex,
                         #       self.get_people(parent2).sex, self.get_people(parent).sex, famID, nb)
-                        self.get_people(parent).add_children(new_p)
-                        self.get_people(parent2).add_children(new_p)
-                        profondeur[new_p] = max(profondeur[parent], profondeur[parent2]) + 1
-                        #print('remariage SANS csg',parent,parent2,new_p)
+                        # self.get_people(parent).add_children(new_p)remariage
+                        # self.get_people(parent2).add_children(new_p)
+                        # profondeur[new_p] = max(profondeur[parent], profondeur[parent2]) + 1
+                        # print('remariage SANS csg',parent,parent2,new_p)
+
                         if self.get_people(parent).sex == self.sex_male:
                             self.get_people(parent2).sex = self.sex_female
                             if families.get((parent, parent2)) is None:
@@ -873,15 +893,45 @@ class Pedigree:
                             keys.append(k)
                     # index = tmp.index(min(tmp))
                     # PH calculer gamma^len(v) et faire un tirage aléatoire avec les poids tmp
+
                     index = random.choices(keys, weights=tmp, k=1)
+                    #print('pour attraper les consanguins', keys, type(keys), index)
+                    old_index = index
                     index = tuple(index[0])
-                    families[index].append(new_p)
-                    self.add_people(famID, new_p, index[0], index[1])
-                    self.get_people(index[0]).add_children(new_p)
-                    self.get_people(index[1]).add_children(new_p)
-                    self.get_people(new_p)._set(famID, index[0], index[1])
-                    profondeur[new_p] = max(profondeur[index[0]], profondeur[index[1]]) + 1
-                    #print('pas de consanguins la normalement',index[0],index[1],new_p)
+                    while True:
+                        if self.is_consanguineous(index[0], index[1], cl) is True:
+                            ind = keys.index(index)
+                            keys.remove(index)
+                            del tmp[ind]
+                            if len(keys) == 0 or len(tmp)==0:
+                                if self.get_people(parent).sex == self.sex_male:
+                                    self.add_people(famID, new_p, parent, self.no_people)
+                                else:
+                                    self.add_people(famID, new_p, self.no_people, parent)
+                                profondeur[new_p] = profondeur[parent] + 1
+                                self.get_people(parent).add_children(new_p)
+                                mea.extend([parent, new_p])
+                                break
+                            index = random.choices(keys, weights=tmp, k=1)
+                            index = tuple(index[0])
+                        else:
+                            #print('pour attraper les consanguins apres ', keys, type(keys), index)
+                            families[index].append(new_p)
+                            self.add_people(famID, new_p, index[0], index[1])
+                            self.get_people(index[0]).add_children(new_p)
+                            self.get_people(index[1]).add_children(new_p)
+                            self.get_people(new_p)._set(famID, index[0], index[1])
+                            profondeur[new_p] = max(profondeur[index[0]], profondeur[index[1]]) + 1
+                            #print('pas de consanguins la normalement', index[0], index[1], new_p)
+                            break
+                    # print('pour attraper les consanguins apres ', keys, type(keys), index)
+                    # families[index].append(new_p)
+                    # self.add_people(famID, new_p, index[0], index[1])
+                    # self.get_people(index[0]).add_children(new_p)
+                    # self.get_people(index[1]).add_children(new_p)
+                    # self.get_people(new_p)._set(famID, index[0], index[1])
+                    # profondeur[new_p] = max(profondeur[index[0]], profondeur[index[1]]) + 1
+                    # print('pas de consanguins la normalement',index[0],index[1],new_p)
                     # PH max(genepapa,genemaman)+1
 
             else:
@@ -915,7 +965,7 @@ class Pedigree:
                 else:
                     # On lui cherche un conjoint
                     other_p = random.sample(conjoint, 1)[0]
-                    # while self.is_consanguineous(new_p, other_p, cl) is True:
+                    #while self.is_consanguineous(new_p, other_p, cl) is True:
                     if child == other_p:
                         conjoint.remove(other_p)
                         other_p = random.sample(conjoint, 1)[0]

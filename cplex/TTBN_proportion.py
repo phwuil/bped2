@@ -2,10 +2,8 @@ from bped2.pedigree import *
 import bped2.view as pview
 import sandbox.doLazyProg as laz
 import sandbox.doTTBN as ttbn
-from time import *
 import numpy as np
 import matplotlib.pyplot as plt
-import os, psutil
 import math
 import matplotlib.ticker as ticker
 import TenGeRine as ttgum
@@ -150,5 +148,5 @@ plt.gca().get_yaxis().set_minor_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
-plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
+plt.savefig('../cplex/figure/TTBN/proportion',bbox_inches='tight')
 plt.show()

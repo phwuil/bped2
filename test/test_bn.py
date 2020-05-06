@@ -23,6 +23,12 @@ class TestPedigree(unittest.TestCase):
         ie_no = pview.gum.LazyPropagation(bn_no)
         ie_compact = pview.gum.LazyPropagation(bn_compact)
 
+    def test_graph(self):
+        ped = Pedigree()
+        ped.load("../data/ped/famRh.ped")
+        ped.add_sex_all()
+        pview.graph(ped,'famRh',False)
+
     def test_clique_csg(self):
         nb_ped = 50
         nb_people = [1900]

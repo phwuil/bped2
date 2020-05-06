@@ -8,7 +8,7 @@ def doTTBN(bn_name):
     bn.loadBIF(bn_name)
     try:
         t1 = process_time()
-        ie = ttgum.ShaferShenoyTensorTrain(bn, precision=1e-4, info=False)
+        ie = ttgum.ShaferShenoyTensorTrain(bn, precision=1e-4, info=False, full=True)
         marginalesSSTT, tempsSSTT, nb_param_SSTT = ie.makeInference()
         t2 = process_time()
         return t2 - t1
@@ -18,7 +18,7 @@ def doTTBN(bn_name):
 def ttbn_posterior(bn_name):
     bn = pview.gum.BayesNet()
     bn.loadBIF(bn_name)
-    ie = ttgum.ShaferShenoyTensorTrain(bn, precision=1e-4, info=False)
+    ie = ttgum.ShaferShenoyTensorTrain(bn, precision=1e-4, info=False, full=True)
     marginalesSSTT, tempsSSTT, nb_param_SSTT = ie.makeInference()
     return marginalesSSTT, tempsSSTT, nb_param_SSTT
 
