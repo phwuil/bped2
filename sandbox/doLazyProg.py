@@ -18,6 +18,6 @@ def doLazyProg(bn_name):
 def lazyPosterior(bn_name):
     bn = pview.gum.BayesNet()
     bn.loadBIF(bn_name)
-    ie = ie = pview.gum.LazyPropagation(bn)
+    ie = pview.gum.LazyPropagation(bn)
     ie.makeInference()
     return ie

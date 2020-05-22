@@ -298,6 +298,6 @@ class TestPedigree(unittest.TestCase):
     def test_check_pedigree(self):
         ped = Pedigree()
         #ped.load('../pedigree_50_3_6_2_G1.ped')
-        ped.gen_ped('f', 50, 4, 6, 3)
-        pview.graph(ped, f'../jpp', False)
+        ped.gen_ped('f', 2000, 10, 6, 3)
+        pview.graph(ped, f'../jpp', True)
         print(ped)

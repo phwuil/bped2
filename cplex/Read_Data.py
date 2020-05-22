@@ -15,6 +15,8 @@ import math
 nb_people = [10,20,50,100,200,300,500,1000]
 data = np.zeros((len(nb_people),7),dtype=float)
 
+def data(file):
+    return
 def data_to_plot(file):
     with open(file) as f:
         tab = f.readlines()
