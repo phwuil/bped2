@@ -1,0 +1,281 @@
+network "unnamedBN" {
+// written by aGrUM 0.17.1
+}
+
+variable matX1 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX1 {
+   type discrete[2] {0, 1};
+}
+
+variable X1 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX2 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX2 {
+   type discrete[2] {0, 1};
+}
+
+variable X2 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX3 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX3 {
+   type discrete[2] {0, 1};
+}
+
+variable X3 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX4 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX4 {
+   type discrete[2] {0, 1};
+}
+
+variable X4 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX5 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX5 {
+   type discrete[2] {0, 1};
+}
+
+variable X5 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX6 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX6 {
+   type discrete[2] {0, 1};
+}
+
+variable X6 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX7 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX7 {
+   type discrete[2] {0, 1};
+}
+
+variable X7 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX8 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX8 {
+   type discrete[2] {0, 1};
+}
+
+variable X8 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX9 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX9 {
+   type discrete[2] {0, 1};
+}
+
+variable X9 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+variable matX10 {
+   type discrete[2] {0, 1};
+}
+
+variable fatX10 {
+   type discrete[2] {0, 1};
+}
+
+variable X10 {
+   type discrete[4] {00, 01, 10, 11};
+}
+
+probability (matX1) {
+   default 0.95 0.05;
+}
+probability (fatX1) {
+   default 0.95 0.05;
+}
+probability (X1 | fatX1, matX1) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX2 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX2 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X2 | fatX2, matX2) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX3) {
+   default 0.95 0.05;
+}
+probability (fatX3) {
+   default 0.95 0.05;
+}
+probability (X3 | fatX3, matX3) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX4 | fatX5, matX5) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX4 | fatX2, matX2) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X4 | fatX4, matX4) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX5) {
+   default 0.95 0.05;
+}
+probability (fatX5) {
+   default 0.95 0.05;
+}
+probability (X5 | fatX5, matX5) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX6 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX6 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X6 | fatX6, matX6) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX7 | fatX5, matX5) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX7 | fatX2, matX2) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X7 | fatX7, matX7) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX8 | fatX3, matX3) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX8 | fatX1, matX1) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X8 | fatX8, matX8) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX9 | fatX8, matX8) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (fatX9 | fatX10, matX10) {
+   (0, 0) 1 0;
+   (1, 0) 0.5 0.5;
+   (0, 1) 0.5 0.5;
+   (1, 1) 0 1;
+}
+probability (X9 | fatX9, matX9) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+probability (matX10) {
+   default 0.95 0.05;
+}
+probability (fatX10) {
+   default 0.95 0.05;
+}
+probability (X10 | fatX10, matX10) {
+   (0, 0) 1 0 0 0;
+   (1, 0) 0 1 0 0;
+   (0, 1) 0 0 1 0;
+   (1, 1) 0 0 0 1;
+}
+

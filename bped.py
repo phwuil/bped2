@@ -36,8 +36,10 @@ def main(args=None):
     parser.add_option("", "--verbose", dest="verbose", help="messages while processing", default=False,
                       action="store_true")
     parser.add_option("", "--bn", dest="bnfile", help="Export the BN into a BIF file", metavar="FILE")
-    parser.add_option("","--compact",dest="compact",
-                      help="Decided if the BN is conpacted or not")
+    # parser.add_option("","--compact",dest="compact",
+    #                   help="Decided if the BN is conpacted or not")
+    parser.add_option("","--mode",dest="mode",
+                      help="Choose the type of the generate bn, compact, no compact or multi")
     parser.add_option("","--inference",dest="inference",
                       help="Choose between LP and LBP")
     parser.add_option("","--complete",dest="complete",
@@ -70,15 +72,31 @@ def main(args=None):
         current_ped.load(str(pedfile))
         famID = current_ped.get_domain()
 
-        if options.compact:
-            bn = pview.ped_to_bn_compact(current_ped,options.f)
-            if options.verbose:
-                pview.gnb.showBN(bn,size=100)
-        else:
-            bn = pview.ped_to_bn(current_ped,options.f)
-            if options.verbose:
-                pview.gnb.showBN(bn,size=100)
+        # if options.compact:
+        #     bn = pview.ped_to_bn_compact(current_ped,options.f)
+        #     if options.verbose:
+        #         pview.gnb.showBN(bn,size=100)
+        # else:
+        #     bn = pview.ped_to_bn(current_ped,options.f)
+        #     if options.verbose:
+        #         pview.gnb.showBN(bn,size=100)
 
+        if options.mode == 'compact':
+            bn = pview.ped_to_bn_compact(current_ped, options.f)
+            if options.verbose:
+                pview.gnb.showBN(bn, size=100)
+        elif options.mode == 'no_compact':
+            bn = pview.ped_to_bn(current_ped, options.f)
+            if options.verbose:
+                pview.gnb.showBN(bn, size=100)
+        elif options.mode == 'multi':
+            nb_gen = int(input("Number of genes : "))
+            distance = []
+            for i in range(nb_gen-1):
+                tmp = float(input("distance between genes : "))
+                distance.append(tmp)
+            bn = pview.ped_to_bn_multi(current_ped, options.f, nb_gen, distance)
+            pview.gnb.showBN(bn, size=100)
         # if options.peddotfile:
         #     pview.save(current_ped,options.peddotfile)
         #     if options.verbose:
@@ -151,14 +169,20 @@ def main(args=None):
                     ie = pview.gum.LazyPropagation(bn)
                 ie.setEvidence(evidence)
                 ie.makeInference()
-                pview.create_out(options.out,current_ped,ie)
+                if options.mode == 'multi':
+                    pview.create_out_multi(options.out,current_ped,ie,nb_gen)
+                else:
+                    pview.create_out(options.out,current_ped,ie)
             else:
                 if options.inference == 'LBP':
                     ie = pview.gum.LoopyBeliefPropagation(bn)
                 else:
                     ie = pview.gum.LazyPropagation(bn)
                 ie.makeInference()
-                pview.create_out(options.out,current_ped,ie)
+                if options.mode == 'multi':
+                    pview.create_out_multi(options.out, current_ped, ie, nb_gen)
+                else:
+                    pview.create_out(options.out, current_ped, ie)
 
 if __name__ == "__main__":
     main(sys.argv)

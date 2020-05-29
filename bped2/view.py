@@ -101,6 +101,15 @@ def create_holders(ped, bn, p, f):
     bn.addArc(f"matX{p.pID}", f"X{p.pID}")
     bn.cpt(f"X{p.pID}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
 
+def create_holders_multi(ped, bn, p, f,id_gen):
+
+    bn.add(gum.LabelizedVariable(f"matX{p.pID}_{id_gen}", f"mother of {p.pID}", ["0", "1"]))
+    bn.add(gum.LabelizedVariable(f"fatX{p.pID}_{id_gen}", f"father of {p.pID}", ["0", "1"]))
+    bn.add(gum.LabelizedVariable(f"X{p.pID}_{id_gen}", f"{p.pID}", ["00", "01", "10", "11"]))
+    bn.addArc(f"fatX{p.pID}_{id_gen}", f"X{p.pID}_{id_gen}")
+    bn.addArc(f"matX{p.pID}_{id_gen}", f"X{p.pID}_{id_gen}")
+    bn.cpt(f"X{p.pID}_{id_gen}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
+
 def create_offsprings(ped, bn, p, parent):
     # parent = fat ou mat
     if parent == 'fat':
@@ -129,6 +138,23 @@ def create_offsprings_compact(ped, bn, p, parent):
     bn.addArc(f"matX{parentID}", f"{parent}X{p.pID}")
 
     bn.cpt(f"{parent}X{p.pID}").fillWith([1,0,0.5,0.5,0.5,0.5,0,1])
+
+def create_offsprings_multi(ped, bn, p, parent,id_gen):
+    # parent = fat ou mat
+    if parent == 'fat':
+        parentID = p.fatID
+    else:
+        parentID = p.matID
+
+    # Creating Selector
+    bn.add(gum.LabelizedVariable(f"S{parent}{p.pID}_{id_gen}", f"Selector of {parent}ID", ["fat", "mat"]))
+    bn.cpt(f"S{parent}{p.pID}_{id_gen}").fillWith([0.5, 0.5])
+
+    bn.addArc(f"fatX{parentID}_{id_gen}", f"{parent}X{p.pID}_{id_gen}")
+    bn.addArc(f"matX{parentID}_{id_gen}", f"{parent}X{p.pID}_{id_gen}")
+    bn.addArc(f"S{parent}{p.pID}_{id_gen}", f"{parent}X{p.pID}_{id_gen}")  # Selector to fat/mat
+
+    bn.cpt(f"{parent}X{p.pID}_{id_gen}").fillWith([1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1])
 
 def ped_to_bn(ped, f):
     bn = gum.BayesNet()
@@ -170,6 +196,38 @@ def ped_to_bn_compact(ped,f):
 
     return bn
 
+def ped_to_bn_multi(ped, f, nb_gen, distance):
+
+    if len(distance) != nb_gen-1:
+        return "Difference of size between gene's number and distance's number"
+    bn = gum.BayesNet()
+
+    for i in range(1,nb_gen+1):
+        for p in ped.get_pedigree().values():
+            create_holders_multi(ped,bn, p, f, i) # Creation de tous les noeuds
+
+        for p in ped.get_pedigree().values():
+            if p.fatID == '0':  # Cas parents inconnu
+                bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
+            else:
+                create_offsprings_multi(ped, bn, p, 'fat', i)
+
+            if p.matID == '0':  # Cas parents inconnu
+                bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
+            else:
+                create_offsprings_multi(ped, bn, p, 'mat', i)
+
+    for i in range(1,nb_gen):
+        j = i + 1
+        for p in ped.get_pedigree().values():
+            if p.fatID != '0' and p.matID != 0:
+                bn.addArc(f"Sfat{p.pID}_{i}", f"Sfat{p.pID}_{j}")
+                bn.addArc(f"Smat{p.pID}_{i}", f"Smat{p.pID}_{j}")
+                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([distance[i-1],1-distance[i-1],1-distance[i-1],distance[i-1]])
+                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([distance[i-1],1-distance[i-1],1-distance[i-1],distance[i-1]])
+
+    return bn
+
 def show_proba(bn):
     gnb.showInference(bn,size=15,nodeColor={n:nodevalue(n) for n in bn.names()},cmap=mycmap)
 
@@ -190,6 +248,14 @@ def create_out(filename, ped, inference):
         for i in ped.get_pedigree().keys():
             inf = inference.posterior(f'X{i}')
             f.write(f'{fam}:{i}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
+
+def create_out_multi(filename, ped, inference, nb_gen):
+    fam = list(ped.get_domain())[0]
+    with open(filename+'.out', "w") as f:
+        for n in range(1,nb_gen+1):
+            for i in ped.get_pedigree().keys():
+                inf = inference.posterior(f'X{i}_{n}')
+                f.write(f'{fam}:{i}_{n}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
 
 def audit(bn, ped, filename):
     with open(filename, "w") as f:
