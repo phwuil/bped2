@@ -15,7 +15,7 @@ def main(args=None):
   [--peddot dotfile] export the pedigree into a dot file
   [--audit textfile] introspect pedigree into a text file
   [--verbose] display error/warning messages in stderr
-  [--compact Bool] decide which version between normal and compact version of a  BN
+  [--mode] decide which version between normal, compact and multi version of a BN
   [--inference ] Decide which inference use, LazyPropagation or LoobyBeliefPropagation
   [--complete Bool] Decice which version between complete and compact for the audit file
   [--out outfile] export probabilities into a out file
@@ -40,6 +40,8 @@ def main(args=None):
     #                   help="Decided if the BN is conpacted or not")
     parser.add_option("","--mode",dest="mode",
                       help="Choose the type of the generate bn, compact, no compact or multi")
+    parser.add_option("","--distproba",dest="distproba",type="string",
+                      help="choose the probability's distribution, shape: float;float; ...")
     parser.add_option("","--inference",dest="inference",
                       help="Choose between LP and LBP")
     parser.add_option("","--complete",dest="complete",
@@ -90,13 +92,17 @@ def main(args=None):
             if options.verbose:
                 pview.gnb.showBN(bn, size=100)
         elif options.mode == 'multi':
-            nb_gen = int(input("Number of genes : "))
-            distance = []
-            for i in range(nb_gen-1):
-                tmp = float(input("distance between genes : "))
-                distance.append(tmp)
-            bn = pview.ped_to_bn_multi(current_ped, options.f, nb_gen, distance)
-            pview.gnb.showBN(bn, size=100)
+            if options.distproba:
+                distance = options.distproba.split(';')
+                nb_gen = len(distance)+1
+                for i in range(len(distance)):
+                    distance[i] = float(distance[i])
+                bn = pview.ped_to_bn_multi(current_ped, options.f, nb_gen, distance)
+                if options.verbose:
+                    pview.gnb.showBN(bn, size=100)
+            else:
+                return "missing distproba argument, cannot use the multi mode"
+
         # if options.peddotfile:
         #     pview.save(current_ped,options.peddotfile)
         #     if options.verbose:
