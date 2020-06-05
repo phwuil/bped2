@@ -7,18 +7,21 @@ import bped2.view as pview
 
 def main(args=None):
     """
-    --ped pedfile: format famid, id, patid (0 for founder), matid (0 for founder), gender (1 male, 2 female)
-  [--ev evidencefile]: format famid, id, ev00, ev10 (1 paternal), ev01 (1 maternal), ev11
-  [--freq minorallelefreq (default: freq=0.01)]
-  [--targets list_of_ind (default: all)]
-  [--bndot dotfile] export the BN into a dot file
-  [--peddot dotfile] export the pedigree into a dot file
-  [--audit textfile] introspect pedigree into a text file
-  [--verbose] display error/warning messages in stderr
-  [--mode] decide which version between normal, compact and multi version of a BN
-  [--inference ] Decide which inference use, LazyPropagation or LoobyBeliefPropagation
-  [--complete Bool] Decice which version between complete and compact for the audit file
-  [--out outfile] export probabilities into a out file
+    [--ped pedfile: format famid, id, patid (0 for founder), matid (0 for founder), gender (1 male, 2 female)
+    [--ev evidencefile]: format famid, id, ev00, ev10 (1 paternal), ev01 (1 maternal), ev11
+    [--freq minorallelefreq (default: freq=0.01)]
+    [--targets list_of_ind (default: all)]
+    [--size] size of the rendered graph
+    [--bndot dotfile] export the BN into a dot file
+    [--peddot dotfile] export the pedigree into a dot file
+    [--audit textfile] introspect pedigree into a text file
+    [--verbose] display error/warning messages in stderr
+    [--mode] decide which version between normal, compact and multi version of a BN
+    [--thetha] format [probability, probability, ...]
+    [--centimorgans] format [distance, distance, ...]
+    [--inference ] Decide which inference use, LazyPropagation or LoobyBeliefPropagation
+    [--complete Bool] Decice which version between complete and compact for the audit file
+    [--out outfile] export probabilities into a out file
     """
     parser = OptionParser(version="%prog 0.1", usage="usage: %prog [options] pedfile")
     parser.add_option("", "--ev", dest="evfile",
@@ -40,14 +43,18 @@ def main(args=None):
     #                   help="Decided if the BN is conpacted or not")
     parser.add_option("","--mode",dest="mode",
                       help="Choose the type of the generate bn, compact, no compact or multi")
-    parser.add_option("","--distproba",dest="distproba",type="string",
-                      help="choose the probability's distribution, shape: float;float; ...")
+    parser.add_option("","--theta",dest="theta",type="string",
+                      help="Input a probability's distribution, shape: float;float; ...")
+    parser.add_option("", "--centimorgans", dest="centimorgans", type="string",
+                      help="Input the distance between genes in centimorgans, shape: float;float; ...")
     parser.add_option("","--inference",dest="inference",
                       help="Choose between LP and LBP")
     parser.add_option("","--complete",dest="complete",
                       help="Decide if the audit is a complete version or a compact version")
     parser.add_option("","--out",dest="out",
                       help="Export the evidence into a out file",metavar="FILE")
+    parser.add_option("", "--size", dest="size",
+                      help="Choose the size of the rendered graph", type="int", default=100)
 
     if args is None:
         (options, arguments) = parser.parse_args()
@@ -86,22 +93,30 @@ def main(args=None):
         if options.mode == 'compact':
             bn = pview.ped_to_bn_compact(current_ped, options.f)
             if options.verbose:
-                pview.gnb.showBN(bn, size=100)
+                pview.gnb.showBN(bn, options.size)
         elif options.mode == 'no_compact':
             bn = pview.ped_to_bn(current_ped, options.f)
             if options.verbose:
-                pview.gnb.showBN(bn, size=100)
+                pview.gnb.showBN(bn, options.size)
         elif options.mode == 'multi':
-            if options.distproba:
-                distance = options.distproba.split(';')
+            if options.theta:
+                distance = options.theta.split(';')
                 nb_gen = len(distance)+1
                 for i in range(len(distance)):
                     distance[i] = float(distance[i])
-                bn = pview.ped_to_bn_multi(current_ped, options.f, nb_gen, distance)
+                bn = pview.bn_multi_pb(current_ped, options.f, nb_gen, distance)
                 if options.verbose:
-                    pview.gnb.showBN(bn, size=100)
+                    pview.gnb.showBN(bn, options.size)
+            elif options.centimorgans:
+                centimorgans = options.centimorgans.split(';')
+                nb_gen = len(centimorgans)
+                for i in range(len(centimorgans)):
+                    centimorgans[i] = float(centimorgans[i])
+                bn = pview.bn_multi_morgans(current_ped, options.f, nb_gen, centimorgans)
+                if options.verbose:
+                    pview.gnb.showBN(bn, options.size)
             else:
-                return "missing distproba argument, cannot use the multi mode"
+                return "missing theta or centimorgan argument, cannot use the multi mode"
 
         # if options.peddotfile:
         #     pview.save(current_ped,options.peddotfile)

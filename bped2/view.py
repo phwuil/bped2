@@ -1,9 +1,13 @@
 #!/usr/local/bin/python
+import math
+
 import pyAgrum as gum
 import pyAgrum.lib.notebook as gnb
 import pyAgrum.lib.bn2graph as bng
 import pydotplus as pydot
 import matplotlib.pyplot as plt
+from pyAgrum.lib.notebook import showGraph
+from pyAgrum.lib.dynamicBN import getTimeSlicesRange, noTimeCluster
 
 mycmap=plt.get_cmap('Pastel1')
 
@@ -196,9 +200,9 @@ def ped_to_bn_compact(ped,f):
 
     return bn
 
-def ped_to_bn_multi(ped, f, nb_gen, distance):
+def bn_multi_pb(ped, f, nb_gen, proba):
 
-    if len(distance) != nb_gen-1:
+    if len(proba) != nb_gen-1:
         return "Difference of size between gene's number and distance's number"
     bn = gum.BayesNet()
 
@@ -220,11 +224,44 @@ def ped_to_bn_multi(ped, f, nb_gen, distance):
     for i in range(1,nb_gen):
         j = i + 1
         for p in ped.get_pedigree().values():
-            if p.fatID != '0' and p.matID != 0:
+            if p.fatID != '0' and p.matID != '0':
                 bn.addArc(f"Sfat{p.pID}_{i}", f"Sfat{p.pID}_{j}")
                 bn.addArc(f"Smat{p.pID}_{i}", f"Smat{p.pID}_{j}")
-                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([distance[i-1],1-distance[i-1],1-distance[i-1],distance[i-1]])
-                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([distance[i-1],1-distance[i-1],1-distance[i-1],distance[i-1]])
+                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
+                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
+
+    return bn
+
+def bn_multi_morgans(ped, f, nb_gen, centimorgans):
+    if len(centimorgans) != nb_gen:
+        return "Difference of size between gene's number and position's number"
+    bn = gum.BayesNet()
+
+    for i in range(1,nb_gen+1):
+        for p in ped.get_pedigree().values():
+            create_holders_multi(ped,bn, p, f, i) # Creation de tous les noeuds
+
+        for p in ped.get_pedigree().values():
+            if p.fatID == '0':  # Cas parents inconnu
+                bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
+            else:
+                create_offsprings_multi(ped, bn, p, 'fat', i)
+
+            if p.matID == '0':  # Cas parents inconnu
+                bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
+            else:
+                create_offsprings_multi(ped, bn, p, 'mat', i)
+
+    for i in range(1,nb_gen):
+        x = i - 1
+        j = i + 1
+        theta = (1 - math.exp(-2*(centimorgans[i]-centimorgans[x])/100.))/2.0
+        for p in ped.get_pedigree().values():
+            if p.fatID != '0' and p.matID != '0':
+                bn.addArc(f"Sfat{p.pID}_{i}", f"Sfat{p.pID}_{j}")
+                bn.addArc(f"Smat{p.pID}_{i}", f"Smat{p.pID}_{j}")
+                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1 - theta, theta, theta, 1 - theta])
+                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1 - theta, theta, theta, 1 - theta])
 
     return bn
 
@@ -263,3 +300,43 @@ def audit(bn, ped, filename):
         f.write("---------------------------------------------------\n")
         f.write(f'The size of the bn is {bn.size()}\n')
 
+def _TimeSlicesToDot(dbn):
+    """
+    Try to correctly represent dBN and 2TBN in dot format
+    """
+    timeslices = getTimeSlicesRange(dbn)
+    g = pydot.Dot(graph_type='digraph')
+    for k in sorted(timeslices.keys(), key=lambda x: -1 if x == noTimeCluster else 1e8 if x == 't' else int(x)):
+        if k != noTimeCluster:
+            cluster = pydot.Cluster(k, label="Gene {}".format(
+                k), bgcolor="#DDDDDD")
+            g.add_subgraph(cluster)
+        else:
+            cluster = g  # small trick to add in graph variable in no timeslice
+        for (n, label) in sorted(timeslices[k]):
+            cluster.add_node(pydot.Node('"' + n + '"', label='"' + label + '"', style='filled',
+                                      color='#000000', fillcolor='white'))
+
+    for tail, head in dbn.arcs():
+        g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"',
+                            '"' + dbn.variable(head).name() + '"',
+                            constraint=False, color="blue"))
+
+    for k in sorted(timeslices.keys(), key=lambda x: -1 if x == noTimeCluster else 1e8 if x == 't' else int(x)):
+        if k != noTimeCluster:
+            prec = None
+            for (n, label) in sorted(timeslices[k]):
+                if prec is not None:
+                    g.add_edge(pydot.Edge('"' + prec + '"',
+                                        '"' + n + '"',
+                                        style="invis"))
+                prec = n
+
+    return g
+
+
+def graph_multi(dbn, size=None):
+    if size is None:
+        size = gum.config["dynamicBN", "default_graph_size"]
+
+    showGraph(_TimeSlicesToDot(dbn), size)

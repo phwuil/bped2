@@ -7,13 +7,17 @@ import matplotlib.pyplot as plt
 import math
 
 f = 0.05
-nb_ped = 1
+nb_ped = 30
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
+# nb_people = [10,20,50]
+# nb_Gen_Max = [3,3,3]
+
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
 gene = 4
 distance = [0.8,0.7,0.5]
+centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 
 file_bn = open('../data/multi/data_bn', 'w')
 file_inf = open('../data/multi/data_inf', 'w')
@@ -59,13 +63,13 @@ for i in range(2,gene+1):
     errorValues_inf[i] = []
     errorValues_bn[i] = []
 
-    bn_sen = pview.ped_to_bn_multi(sen, f, i, distance[:i-1])
-    ie = pview.gum.LazyPropagation(bn_sen)
-    t1 = process_time()
-    ie.makeInference()
-    t2 = process_time()
-    time_sen.append(t2 - t1)
-
+    # bn_sen = pview.ped_to_bn_multi(sen, f, i, distance[:i-1])
+    # ie = pview.gum.LazyPropagation(bn_sen)
+    # t1 = process_time()
+    # ie.makeInference()
+    # t2 = process_time()
+    # time_sen.append(t2 - t1)
+    time_sen.append(0)
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     for i in range(2, gene + 1):
@@ -84,14 +88,15 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
         for i in range(2,gene+1):
 
             t3 = process_time()
-            bn = pview.ped_to_bn_multi(ped, f, i, distance[:i-1])
+            #bn = pview.bn_multi_pb(ped, f, i, distance[:i-1])
+            bn = pview.bn_multi_morgans(ped, f, i, centimorgans[:i])
             t4 = process_time()
 
-            pview.save(ped,f'../cplex/multi/samples/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
-            pview.save_bn(bn,f'../cplex/multi/bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
+            pview.save(ped,f'./samples/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
+            pview.save_bn(bn,f'./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
 
             t5 = process_time()
-            laz.doLazyProg(f"../cplex/multi/bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
+            laz.doLazyProg(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
             t6 = process_time()
 
             t4 = t4 - t3
@@ -127,21 +132,30 @@ file_bn.close()
 file_inf.close()
 
 f1 = plt.figure(1)
+legende = []
+
 for i in range(2,gene+1):
-    plt.errorbar(nb_people, mean_bn[i], yerr = errorValues_bn[i], ecolor='red')
+    c = (random.random(), random.random(), random.random())
+    ec = (random.random(),random.random(),random.random())
+    plt.errorbar(nb_people, mean_bn[i], yerr = errorValues_bn[i], ecolor=ec,color=c)
+    legende.append(f'{i}gène(s)')
+plt.legend(legende)
 plt.title('Temps de génération du BN en fonction de la taille du pedigree')
 plt.xlabel('Taille du pedigree')
 plt.ylabel('Temps en sec')
-plt.savefig('../cplex/multi/figure/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
+plt.savefig('./figure/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
 f1.show()
 
-# f5 = plt.figure(5)
-# plt.plot(nb_people, mean_gen_bn, label='mean')
-# plt.plot(nb_people, max_bn, label='max')
-# plt.plot(nb_people, min_bn, label='min')
-# plt.legend(['mean','max','min'])
-# plt.title('Temps de génération du BN en fonction de la taille du pedigree')
-# plt.xlabel('Taille du pedigree')
-# plt.ylabel('Temps en sec')
-# plt.savefig('../cplex/figure/Temps de génération du BN moyen, min et max en fonction de la taille du pedigree')
-# f5.show()
+f2 = plt.figure(1)
+legende = []
+for i in range(2,gene+1):
+    c = (random.random(), random.random(), random.random())
+    ec = (random.random(),random.random(),random.random())
+    plt.errorbar(nb_people, mean_inf[i], yerr = errorValues_inf[i], ecolor=ec,color=c)
+    legende.append(f'{i}gène(s)')
+plt.legend(legende)
+plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec LBP')
+plt.xlabel('Taille du pedigree')
+plt.ylabel('Temps en sec')
+plt.savefig('./figure/Calcul d\'inférence multi-allélique avec LBP')
+f2.show()
