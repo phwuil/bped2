@@ -306,32 +306,28 @@ def _TimeSlicesToDot(dbn):
     """
     timeslices = getTimeSlicesRange(dbn)
     g = pydot.Dot(graph_type='digraph')
+    g.set_edge_defaults(color='blue')
+    g.set_node_defaults(style='filled',color='#000000',fillcolor='white')
     for k in sorted(timeslices.keys(), key=lambda x: -1 if x == noTimeCluster else 1e8 if x == 't' else int(x)):
         if k != noTimeCluster:
-            cluster = pydot.Cluster(k, label="Gene {}".format(
-                k), bgcolor="#DDDDDD")
+            cluster = pydot.Cluster(k, label="Gene {}".format(k), bgcolor="#DDDDDD")
             g.add_subgraph(cluster)
         else:
             cluster = g  # small trick to add in graph variable in no timeslice
         for (n, label) in sorted(timeslices[k]):
-            cluster.add_node(pydot.Node('"' + n + '"', label='"' + label + '"', style='filled',
-                                      color='#000000', fillcolor='white'))
+            cluster.add_node(pydot.Node('"' + n + '"', label='"' + label + '"'))
 
     for tail, head in dbn.arcs():
-        g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"',
-                            '"' + dbn.variable(head).name() + '"',
-                            constraint=False, color="blue"))
+        g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"','"' + dbn.variable(head).name() + '"'))
 
     for k in sorted(timeslices.keys(), key=lambda x: -1 if x == noTimeCluster else 1e8 if x == 't' else int(x)):
         if k != noTimeCluster:
             prec = None
             for (n, label) in sorted(timeslices[k]):
                 if prec is not None:
-                    g.add_edge(pydot.Edge('"' + prec + '"',
-                                        '"' + n + '"',
-                                        style="invis"))
+                    g.add_edge(pydot.Edge('"' + prec + '"','"' + n + '"',style="invis"))
                 prec = n
-
+    print(g.to_string())
     return g
 
 

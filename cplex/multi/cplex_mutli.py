@@ -144,7 +144,7 @@ plt.title('Temps de génération du BN en fonction de la taille du pedigree')
 plt.xlabel('Taille du pedigree')
 plt.ylabel('Temps en sec')
 plt.savefig('./figure/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
-f1.show()
+#f1.show()
 
 f2 = plt.figure(1)
 legende = []
@@ -158,4 +158,4 @@ plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec LB
 plt.xlabel('Taille du pedigree')
 plt.ylabel('Temps en sec')
 plt.savefig('./figure/Calcul d\'inférence multi-allélique avec LBP')
-f2.show()
+#f2.show()
