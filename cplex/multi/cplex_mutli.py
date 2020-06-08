@@ -4,7 +4,8 @@ import sandbox.doLazyProg as laz
 from time import *
 import numpy as np
 import matplotlib.pyplot as plt
-plt.use('Agg')
+import matplotlib as mat
+mat.use('Agg')
 import math
 
 f = 0.05
