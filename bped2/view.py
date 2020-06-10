@@ -314,19 +314,15 @@ def _TimeSlicesToDot(dbn):
             g.add_subgraph(cluster)
         else:
             cluster = g  # small trick to add in graph variable in no timeslice
-        for (n, label) in sorted(timeslices[k]):
+        for (n, label) in (timeslices[k]):
             cluster.add_node(pydot.Node('"' + n + '"', label='"' + label + '"'))
 
     for tail, head in dbn.arcs():
-        g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"','"' + dbn.variable(head).name() + '"'))
+        if dbn.variable(tail).name()[0] == 'S' and dbn.variable(head).name()[0] == 'S':
+            g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"', '"' + dbn.variable(head).name() + '"',color='red'))
+        else:
+            g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"','"' + dbn.variable(head).name() + '"'))
 
-    for k in sorted(timeslices.keys(), key=lambda x: -1 if x == noTimeCluster else 1e8 if x == 't' else int(x)):
-        if k != noTimeCluster:
-            prec = None
-            for (n, label) in sorted(timeslices[k]):
-                if prec is not None:
-                    g.add_edge(pydot.Edge('"' + prec + '"','"' + n + '"',style="invis"))
-                prec = n
     print(g.to_string())
     return g
 

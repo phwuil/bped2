@@ -1,5 +1,9 @@
 network "unnamedBN" {
+<<<<<<< HEAD
 // written by aGrUM 0.17.3
+=======
+// written by aGrUM 0.17.1
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 
 variable matX1_1 {
@@ -338,6 +342,7 @@ variable Smat14_1 {
    type discrete[2] {fat, mat};
 }
 
+<<<<<<< HEAD
 variable Sfat17_1 {
    type discrete[2] {fat, mat};
 }
@@ -362,6 +367,8 @@ variable Smat20_1 {
    type discrete[2] {fat, mat};
 }
 
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 variable matX1_2 {
    type discrete[2] {0, 1};
 }
@@ -698,6 +705,7 @@ variable Smat14_2 {
    type discrete[2] {fat, mat};
 }
 
+<<<<<<< HEAD
 variable Sfat17_2 {
    type discrete[2] {fat, mat};
 }
@@ -722,6 +730,8 @@ variable Smat20_2 {
    type discrete[2] {fat, mat};
 }
 
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 variable matX1_3 {
    type discrete[2] {0, 1};
 }
@@ -1058,6 +1068,7 @@ variable Smat14_3 {
    type discrete[2] {fat, mat};
 }
 
+<<<<<<< HEAD
 variable Sfat17_3 {
    type discrete[2] {fat, mat};
 }
@@ -1082,6 +1093,8 @@ variable Smat20_3 {
    type discrete[2] {fat, mat};
 }
 
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 variable matX1_4 {
    type discrete[2] {0, 1};
 }
@@ -1418,6 +1431,7 @@ variable Smat14_4 {
    type discrete[2] {fat, mat};
 }
 
+<<<<<<< HEAD
 variable Sfat17_4 {
    type discrete[2] {fat, mat};
 }
@@ -1442,6 +1456,8 @@ variable Smat20_4 {
    type discrete[2] {fat, mat};
 }
 
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 probability (matX1_1) {
    default 0.95 0.05;
 }
@@ -1802,6 +1818,7 @@ probability (X16_1 | fatX16_1, matX16_1) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX17_1 | fatX18_1, matX18_1, Smat17_1) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -1821,6 +1838,13 @@ probability (fatX17_1 | fatX16_1, matX16_1, Sfat17_1) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX17_1) {
+   default 0.95 0.05;
+}
+probability (fatX17_1) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X17_1 | fatX17_1, matX17_1) {
    (0, 0) 1 0 0 0;
@@ -1840,6 +1864,7 @@ probability (X18_1 | fatX18_1, matX18_1) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX19_1 | fatX18_1, matX18_1, Smat19_1) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -1859,6 +1884,13 @@ probability (fatX19_1 | fatX16_1, matX16_1, Sfat19_1) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX19_1) {
+   default 0.95 0.05;
+}
+probability (fatX19_1) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X19_1 | fatX19_1, matX19_1) {
    (0, 0) 1 0 0 0;
@@ -1866,6 +1898,7 @@ probability (X19_1 | fatX19_1, matX19_1) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX20_1 | fatX18_1, matX18_1, Smat20_1) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -1885,6 +1918,13 @@ probability (fatX20_1 | fatX16_1, matX16_1, Sfat20_1) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX20_1) {
+   default 0.95 0.05;
+}
+probability (fatX20_1) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X20_1 | fatX20_1, matX20_1) {
    (0, 0) 1 0 0 0;
@@ -1964,6 +2004,7 @@ probability (Sfat14_1) {
 probability (Smat14_1) {
    default 0.5 0.5;
 }
+<<<<<<< HEAD
 probability (Sfat17_1) {
    default 0.5 0.5;
 }
@@ -1982,6 +2023,8 @@ probability (Sfat20_1) {
 probability (Smat20_1) {
    default 0.5 0.5;
 }
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 probability (matX1_2) {
    default 0.95 0.05;
 }
@@ -2342,6 +2385,7 @@ probability (X16_2 | fatX16_2, matX16_2) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX17_2 | fatX18_2, matX18_2, Smat17_2) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -2361,6 +2405,13 @@ probability (fatX17_2 | fatX16_2, matX16_2, Sfat17_2) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX17_2) {
+   default 0.95 0.05;
+}
+probability (fatX17_2) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X17_2 | fatX17_2, matX17_2) {
    (0, 0) 1 0 0 0;
@@ -2380,6 +2431,7 @@ probability (X18_2 | fatX18_2, matX18_2) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX19_2 | fatX18_2, matX18_2, Smat19_2) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -2399,6 +2451,13 @@ probability (fatX19_2 | fatX16_2, matX16_2, Sfat19_2) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX19_2) {
+   default 0.95 0.05;
+}
+probability (fatX19_2) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X19_2 | fatX19_2, matX19_2) {
    (0, 0) 1 0 0 0;
@@ -2406,6 +2465,7 @@ probability (X19_2 | fatX19_2, matX19_2) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX20_2 | fatX18_2, matX18_2, Smat20_2) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -2425,6 +2485,13 @@ probability (fatX20_2 | fatX16_2, matX16_2, Sfat20_2) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX20_2) {
+   default 0.95 0.05;
+}
+probability (fatX20_2) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X20_2 | fatX20_2, matX20_2) {
    (0, 0) 1 0 0 0;
@@ -2528,6 +2595,7 @@ probability (Smat14_2 | Smat14_1) {
    (fat) 0.5 0.5;
    (mat) 0 0;
 }
+<<<<<<< HEAD
 probability (Sfat17_2 | Sfat17_1) {
    (fat) 0.999994 5.56592e-06;
    (mat) 5.56592e-06 0.999994;
@@ -2552,6 +2620,8 @@ probability (Smat20_2 | Smat20_1) {
    (fat) 0.5 0.5;
    (mat) 0 0;
 }
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 probability (matX1_3) {
    default 0.95 0.05;
 }
@@ -2912,6 +2982,7 @@ probability (X16_3 | fatX16_3, matX16_3) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX17_3 | fatX18_3, matX18_3, Smat17_3) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -2931,6 +3002,13 @@ probability (fatX17_3 | fatX16_3, matX16_3, Sfat17_3) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX17_3) {
+   default 0.95 0.05;
+}
+probability (fatX17_3) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X17_3 | fatX17_3, matX17_3) {
    (0, 0) 1 0 0 0;
@@ -2950,6 +3028,7 @@ probability (X18_3 | fatX18_3, matX18_3) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX19_3 | fatX18_3, matX18_3, Smat19_3) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -2969,6 +3048,13 @@ probability (fatX19_3 | fatX16_3, matX16_3, Sfat19_3) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX19_3) {
+   default 0.95 0.05;
+}
+probability (fatX19_3) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X19_3 | fatX19_3, matX19_3) {
    (0, 0) 1 0 0 0;
@@ -2976,6 +3062,7 @@ probability (X19_3 | fatX19_3, matX19_3) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX20_3 | fatX18_3, matX18_3, Smat20_3) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -2995,6 +3082,13 @@ probability (fatX20_3 | fatX16_3, matX16_3, Sfat20_3) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX20_3) {
+   default 0.95 0.05;
+}
+probability (fatX20_3) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X20_3 | fatX20_3, matX20_3) {
    (0, 0) 1 0 0 0;
@@ -3098,6 +3192,7 @@ probability (Smat14_3 | Smat14_2) {
    (fat) 0.5 0.5;
    (mat) 0 0;
 }
+<<<<<<< HEAD
 probability (Sfat17_3 | Sfat17_2) {
    (fat) 0.99997 2.98962e-05;
    (mat) 2.98962e-05 0.99997;
@@ -3122,6 +3217,8 @@ probability (Smat20_3 | Smat20_2) {
    (fat) 0.5 0.5;
    (mat) 0 0;
 }
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 probability (matX1_4) {
    default 0.95 0.05;
 }
@@ -3482,6 +3579,7 @@ probability (X16_4 | fatX16_4, matX16_4) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX17_4 | fatX18_4, matX18_4, Smat17_4) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -3501,6 +3599,13 @@ probability (fatX17_4 | fatX16_4, matX16_4, Sfat17_4) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX17_4) {
+   default 0.95 0.05;
+}
+probability (fatX17_4) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X17_4 | fatX17_4, matX17_4) {
    (0, 0) 1 0 0 0;
@@ -3520,6 +3625,7 @@ probability (X18_4 | fatX18_4, matX18_4) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX19_4 | fatX18_4, matX18_4, Smat19_4) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -3539,6 +3645,13 @@ probability (fatX19_4 | fatX16_4, matX16_4, Sfat19_4) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX19_4) {
+   default 0.95 0.05;
+}
+probability (fatX19_4) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X19_4 | fatX19_4, matX19_4) {
    (0, 0) 1 0 0 0;
@@ -3546,6 +3659,7 @@ probability (X19_4 | fatX19_4, matX19_4) {
    (0, 1) 0 0 1 0;
    (1, 1) 0 0 0 1;
 }
+<<<<<<< HEAD
 probability (matX20_4 | fatX18_4, matX18_4, Smat20_4) {
    (0, 0, fat) 1 0;
    (1, 0, fat) 1 0;
@@ -3565,6 +3679,13 @@ probability (fatX20_4 | fatX16_4, matX16_4, Sfat20_4) {
    (1, 0, mat) 0 1;
    (0, 1, mat) 1 0;
    (1, 1, mat) 0 1;
+=======
+probability (matX20_4) {
+   default 0.95 0.05;
+}
+probability (fatX20_4) {
+   default 0.95 0.05;
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 }
 probability (X20_4 | fatX20_4, matX20_4) {
    (0, 0) 1 0 0 0;
@@ -3668,6 +3789,7 @@ probability (Smat14_4 | Smat14_3) {
    (fat) 0.5 0.5;
    (mat) 0 0;
 }
+<<<<<<< HEAD
 probability (Sfat17_4 | Sfat17_3) {
    (fat) 0.997102 0.00289813;
    (mat) 0.00289813 0.997102;
@@ -3692,4 +3814,6 @@ probability (Smat20_4 | Smat20_3) {
    (fat) 0.5 0.5;
    (mat) 0 0;
 }
+=======
+>>>>>>> 62f524e164db34dedb553d9f2853e5646fc74de2
 

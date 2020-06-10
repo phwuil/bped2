@@ -3,9 +3,9 @@ import bped2.view as pview
 import sandbox.doLazyProg as laz
 from time import *
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib as mat
-mat.use('Agg')
+# import matplotlib.pyplot as plt
+# import matplotlib as mat
+# mat.use('Agg')
 import math
 
 f = 0.05
@@ -133,31 +133,38 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 file_bn.close()
 file_inf.close()
 
-f1 = plt.figure(1)
-legende = []
-
+final = open('../data/multi/final', 'w')
 for i in range(2,gene+1):
-    c = (random.random(), random.random(), random.random())
-    ec = (random.random(),random.random(),random.random())
-    plt.errorbar(nb_people, mean_bn[i], yerr = errorValues_bn[i], ecolor=ec,color=c)
-    legende.append(f'{i}gène(s)')
-plt.legend(legende)
-plt.title('Temps de génération du BN en fonction de la taille du pedigree')
-plt.xlabel('Taille du pedigree')
-plt.ylabel('Temps en sec')
-plt.savefig('./figure/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
-#f1.show()
+    final.write(f'{mean_bn[i]}\t{errorValues_bn[i]}\n')
+    final.write(f'{mean_inf[i]}\t{errorValues_inf[i]}\n')
+final.close()
 
-f2 = plt.figure(1)
-legende = []
-for i in range(2,gene+1):
-    c = (random.random(), random.random(), random.random())
-    ec = (random.random(),random.random(),random.random())
-    plt.errorbar(nb_people, mean_inf[i], yerr = errorValues_inf[i], ecolor=ec,color=c)
-    legende.append(f'{i}gène(s)')
-plt.legend(legende)
-plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec LBP')
-plt.xlabel('Taille du pedigree')
-plt.ylabel('Temps en sec')
-plt.savefig('./figure/Calcul d\'inférence multi-allélique avec LBP')
-#f2.show()
+#
+# f1 = plt.figure(1)
+# legende = []
+#
+# for i in range(2,gene+1):
+#     c = (random.random(), random.random(), random.random())
+#     ec = (random.random(),random.random(),random.random())
+#     plt.errorbar(nb_people, mean_bn[i], yerr = errorValues_bn[i], ecolor=ec,color=c)
+#     legende.append(f'{i}gène(s)')
+# plt.legend(legende)
+# plt.title('Temps de génération du BN en fonction de la taille du pedigree')
+# plt.xlabel('Taille du pedigree')
+# plt.ylabel('Temps en sec')
+# plt.savefig('./figure/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
+# #f1.show()
+#
+# f2 = plt.figure(1)
+# legende = []
+# for i in range(2,gene+1):
+#     c = (random.random(), random.random(), random.random())
+#     ec = (random.random(),random.random(),random.random())
+#     plt.errorbar(nb_people, mean_inf[i], yerr = errorValues_inf[i], ecolor=ec,color=c)
+#     legende.append(f'{i}gène(s)')
+# plt.legend(legende)
+# plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec LBP')
+# plt.xlabel('Taille du pedigree')
+# plt.ylabel('Temps en sec')
+# plt.savefig('./figure/Calcul d\'inférence multi-allélique avec LBP')
+# #f2.show()
