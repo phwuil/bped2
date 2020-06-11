@@ -319,11 +319,22 @@ def _TimeSlicesToDot(dbn):
 
     for tail, head in dbn.arcs():
         if dbn.variable(tail).name()[0] == 'S' and dbn.variable(head).name()[0] == 'S':
-            g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"', '"' + dbn.variable(head).name() + '"',color='red'))
+            g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"', '"' + dbn.variable(head).name() + '"',color='red',constraint=False))
         else:
             g.add_edge(pydot.Edge('"' + dbn.variable(tail).name() + '"','"' + dbn.variable(head).name() + '"'))
 
-    print(g.to_string())
+    for k in sorted(timeslices.keys(), key=lambda x: -1 if x == noTimeCluster else 1e8 if x == 't' else int(x)):
+        if k != noTimeCluster:
+            prec = None
+            for (n, label) in sorted(timeslices[k]):
+                if prec is not None:
+                    if prec[0] == 'S' and n[0] == 'S':
+                        g.add_edge(pydot.Edge('"' + prec + '"',
+                                        '"' + n + '"',
+                                        style="invis"))
+                prec = n
+
+    #print(g.to_string())
     return g
 
 
