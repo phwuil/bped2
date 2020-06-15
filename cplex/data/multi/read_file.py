@@ -24,33 +24,34 @@ def file_to_data(file,g):
         tab_2 = []
         tab_3 = []
         tab_4 = []
+        last_line = data[-1]
         for line in data:
-            if line == '-\n':
-                array_2 = np.array(tab_2)
-                array_3 = np.array(tab_3)
-                array_4 = np.array(tab_4)
+            if line == '-\n' or line==last_line:
+                if len(tab_2) != 0 and len(tab_3) != 0 and len(tab_4) != 0:
+                    array_2 = np.array(tab_2)
+                    array_3 = np.array(tab_3)
+                    array_4 = np.array(tab_4)
 
-                mean_res[2].append(array_2.mean())
-                mean_res[3].append(array_3.mean())
-                mean_res[4].append(array_4.mean())
+                    mean_res[2].append(array_2.mean())
+                    mean_res[3].append(array_3.mean())
+                    mean_res[4].append(array_4.mean())
 
-                max_res[2].append(array_2.max())
-                max_res[3].append(array_3.max())
-                max_res[4].append(array_4.max())
+                    max_res[2].append(array_2.max())
+                    max_res[3].append(array_3.max())
+                    max_res[4].append(array_4.max())
 
-                min_res[2].append(array_2.min())
-                min_res[3].append(array_3.min())
-                min_res[4].append(array_4.min())
+                    min_res[2].append(array_2.min())
+                    min_res[3].append(array_3.min())
+                    min_res[4].append(array_4.min())
 
-                errorValues_res[2].append(array_2.std())
-                errorValues_res[3].append(array_3.std())
-                errorValues_res[4].append(array_4.std())
+                    errorValues_res[2].append(array_2.std())
+                    errorValues_res[3].append(array_3.std())
+                    errorValues_res[4].append(array_4.std())
 
-                tab_2 = []
-                tab_3 = []
-                tab_4 = []
+                    tab_2 = []
+                    tab_3 = []
+                    tab_4 = []
 
-                print('ok je reconnais')
             else:
                 occ,time,gene = line.split('\t')
                 print(gene)
@@ -65,34 +66,68 @@ def file_to_data(file,g):
 
     return mean_res,max_res,min_res,errorValues_res
 
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn', 4)
-f1 = plt.figure(1)
-legende = []
+#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn', 4)
+#mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
+# f1 = plt.figure(1)
+# legende = []
+#
+# for i in range(2,g+1):
+#     c = (random.random(), random.random(), random.random())
+#     ec = (random.random(),random.random(),random.random())
+#     plt.errorbar(nb_people, mean_res[i], yerr = errorValues_res[i], ecolor=ec,color=c)
+#     legende.append(f'{i}gène(s)')
+# plt.legend(legende)
+# plt.title('Temps de génération du BN en fonction de la taille du pedigree')
+# plt.xlabel('Taille du pedigree')
+# plt.ylabel('Temps en sec')
+# plt.savefig('./Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
+# #plt.savefig('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
+# f1.show()
+#
+# mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf', 4)
+# #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
+# f2 = plt.figure(1)
+# legende = []
+# for i in range(2,g+1):
+#     c = (random.random(), random.random(), random.random())
+#     ec = (random.random(),random.random(),random.random())
+#     plt.errorbar(nb_people, mean_res[i], yerr = errorValues_res[i], ecolor=ec,color=c)
+#     legende.append(f'{i}gène(s)')
+# plt.legend(legende)
+# plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec Lazy')
+# plt.xlabel('Taille du pedigree')
+# plt.ylabel('Temps en sec')
+# plt.savefig('./Calcul d\'inférence multi-allélique avec Lazy')
+# #plt.savefig('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec Lazy')
+# f2.show()
 
+
+#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
 for i in range(2,g+1):
-    c = (random.random(), random.random(), random.random())
-    ec = (random.random(),random.random(),random.random())
-    plt.errorbar(nb_people, mean_res[i], yerr = errorValues_res[i], ecolor=ec,color=c)
-    legende.append(f'{i}gène(s)')
-plt.legend(legende)
-plt.title('Temps de génération du BN en fonction de la taille du pedigree')
-plt.xlabel('Taille du pedigree')
-plt.ylabel('Temps en sec')
-plt.savefig('./Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
-f1.show()
+    plt.figure()
+    plt.plot(nb_people, mean_res[i], label='mean')
+    plt.plot(nb_people, max_res[i], label='max')
+    plt.plot(nb_people, min_res[i], label='min')
+    plt.legend(['mean', 'max', 'min'])
+    plt.title(f'Temps de génération du BN en fonction du pedigree avec {i} gènes')
+    plt.xlabel('Taille du pedigree')
+    plt.ylabel('Temps en sec')
+    plt.savefig(f'./Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
+    plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
+    plt.show()
 
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf', 4)
-f2 = plt.figure(1)
-legende = []
+#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
 for i in range(2,g+1):
-    c = (random.random(), random.random(), random.random())
-    ec = (random.random(),random.random(),random.random())
-    plt.errorbar(nb_people, mean_res[i], yerr = errorValues_res[i], ecolor=ec,color=c)
-    legende.append(f'{i}gène(s)')
-plt.legend(legende)
-plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec LBP')
-plt.xlabel('Taille du pedigree')
-plt.ylabel('Temps en sec')
-plt.savefig('./Calcul d\'inférence multi-allélique avec LBP')
-f2.show()
-
+    plt.figure()
+    plt.plot(nb_people, mean_res[i], label='mean')
+    plt.plot(nb_people, max_res[i], label='max')
+    plt.plot(nb_people, min_res[i], label='min')
+    plt.legend(['mean', 'max', 'min'])
+    plt.title(f'Calcul d\'inférence multi-allélique en fonction du pedigree avec {i} gènes')
+    plt.xlabel('Taille du pedigree')
+    plt.ylabel('Temps en sec')
+    #plt.savefig(f'./Calcul d\'inférence multi-allélique avec {i} gènes')
+    plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec {i} gènes')
+    plt.show()

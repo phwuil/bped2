@@ -17,7 +17,7 @@ nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene = 4
+gene = 2
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 
@@ -163,8 +163,8 @@ final.close()
 #     plt.errorbar(nb_people, mean_inf[i], yerr = errorValues_inf[i], ecolor=ec,color=c)
 #     legende.append(f'{i}gène(s)')
 # plt.legend(legende)
-# plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec LBP')
+# plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec Lazy')
 # plt.xlabel('Taille du pedigree')
 # plt.ylabel('Temps en sec')
-# plt.savefig('./figure/Calcul d\'inférence multi-allélique avec LBP')
+# plt.savefig('./figure/Calcul d\'inférence multi-allélique avec Lazy')
 # #f2.show()
