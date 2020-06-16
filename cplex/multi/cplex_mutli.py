@@ -12,17 +12,18 @@ f = 0.05
 nb_ped = 30
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
-# nb_people = [10,20,50]
-# nb_Gen_Max = [3,3,3]
+# nb_people = [10,20,100,2000]
+# nb_Gen_Max = [3,3,4,8]
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
+gene_depart = 2
 gene = 2
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 
-file_bn = open('../data/multi/data_bn', 'w')
-file_inf = open('../data/multi/data_inf', 'w')
+file_bn = open('../data/multi/data_bn_2G', 'w')
+file_inf = open('../data/multi/data_inf_2G', 'w')
 sen = Pedigree()
 sen.load('../../data/ped/senegal2013.ped')
 len_sen = len(sen)
@@ -47,7 +48,7 @@ min_clique = dict()
 mean_clique = dict()
 errorValues_clique = dict()
 
-for i in range(2,gene+1):
+for i in range(gene_depart,gene+1):
 
     max_clique[i] = []
     max_inf[i] = []
@@ -74,7 +75,7 @@ for i in range(2,gene+1):
     time_sen.append(0)
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
-    for i in range(2, gene + 1):
+    for i in range(gene_depart, gene + 1):
         res_bn[i] = np.zeros(nb_ped)
         res_inf[i] = np.zeros(nb_ped)
         res_clique[i] = np.zeros(nb_ped)
@@ -87,7 +88,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
         ped = Pedigree()
         ped.gen_ped(nb, p, g, nbChild, cl, 0.03)
 
-        for i in range(2,gene+1):
+        for i in range(gene_depart,gene+1):
 
             t3 = process_time()
             #bn = pview.bn_multi_pb(ped, f, i, distance[:i-1])
@@ -106,14 +107,17 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             t6 = t6 - t5
             res_inf[i][nb] = t6
             res_clique[i][nb] = pview.max_clique_size(bn)
-
             file_bn.write(f'{nb}\t{t4}\t{i}\n')
+            file_bn.flush()
             file_inf.write(f'{nb}\t{t6}\t{i}\n')
+            file_inf.flush()
 
     file_bn.write('-\n')
+    file_bn.flush()
     file_inf.write('-\n')
+    file_inf.flush()
 
-    for i in range(2,gene+1):
+    for i in range(gene_depart,gene+1):
         max_bn[i].append(res_bn[i].max)
         max_inf[i].append(res_inf[i].max())
         max_clique[i].append(res_clique[i].max())
@@ -133,8 +137,8 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 file_bn.close()
 file_inf.close()
 
-final = open('../data/multi/final', 'w')
-for i in range(2,gene+1):
+final = open('../data/multi/final_2G', 'w')
+for i in range(gene_depart,gene+1):
     final.write(f'{mean_bn[i]}\t{errorValues_bn[i]}\n')
     final.write(f'{mean_inf[i]}\t{errorValues_inf[i]}\n')
 final.close()
@@ -143,7 +147,7 @@ final.close()
 # f1 = plt.figure(1)
 # legende = []
 #
-# for i in range(2,gene+1):
+# for i in range(gene_depart,gene+1):
 #     c = (random.random(), random.random(), random.random())
 #     ec = (random.random(),random.random(),random.random())
 #     plt.errorbar(nb_people, mean_bn[i], yerr = errorValues_bn[i], ecolor=ec,color=c)
@@ -157,7 +161,7 @@ final.close()
 #
 # f2 = plt.figure(1)
 # legende = []
-# for i in range(2,gene+1):
+# for i in range(gene_depart,gene+1):
 #     c = (random.random(), random.random(), random.random())
 #     ec = (random.random(),random.random(),random.random())
 #     plt.errorbar(nb_people, mean_inf[i], yerr = errorValues_inf[i], ecolor=ec,color=c)

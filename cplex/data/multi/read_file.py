@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 nb_people = [10,20,50,100,200,300,500]
-g = 4
+g = 2
+gene_depart = 2
 def file_to_data(file,g):
     res = dict()
     max_res = dict()
@@ -12,7 +13,7 @@ def file_to_data(file,g):
     mean_res = dict()
     errorValues_res = dict()
 
-    for i in range(2, g + 1):
+    for i in range(gene_depart, g + 1):
         res[i] = []
         max_res[i] = []
         min_res[i] = []
@@ -104,7 +105,7 @@ def file_to_data(file,g):
 
 #mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn', 4)
 mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
-for i in range(2,g+1):
+for i in range(gene_depart,g+1):
     plt.figure()
     plt.plot(nb_people, mean_res[i], label='mean')
     plt.plot(nb_people, max_res[i], label='max')
@@ -119,7 +120,7 @@ for i in range(2,g+1):
 
 #mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf', 4)
 mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
-for i in range(2,g+1):
+for i in range(gene_depart,g+1):
     plt.figure()
     plt.plot(nb_people, mean_res[i], label='mean')
     plt.plot(nb_people, max_res[i], label='max')
