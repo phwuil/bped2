@@ -3,9 +3,9 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-nb_people = [10,20,50,100,200,300,500]
-g = 2
-gene_depart = 2
+nb_people = [10,20,50,100]
+g = 4
+gene_depart = 4
 def file_to_data(file,g):
     res = dict()
     max_res = dict()
@@ -28,29 +28,28 @@ def file_to_data(file,g):
         last_line = data[-1]
         for line in data:
             if line == '-\n' or line==last_line:
-                if len(tab_2) != 0 and len(tab_3) != 0 and len(tab_4) != 0:
+                if len(tab_2) != 0 :
                     array_2 = np.array(tab_2)
-                    array_3 = np.array(tab_3)
-                    array_4 = np.array(tab_4)
-
                     mean_res[2].append(array_2.mean())
-                    mean_res[3].append(array_3.mean())
-                    mean_res[4].append(array_4.mean())
-
                     max_res[2].append(array_2.max())
-                    max_res[3].append(array_3.max())
-                    max_res[4].append(array_4.max())
-
                     min_res[2].append(array_2.min())
-                    min_res[3].append(array_3.min())
-                    min_res[4].append(array_4.min())
-
                     errorValues_res[2].append(array_2.std())
-                    errorValues_res[3].append(array_3.std())
-                    errorValues_res[4].append(array_4.std())
-
                     tab_2 = []
+
+                if len(tab_3) != 0 :
+                    array_3 = np.array(tab_3)
+                    mean_res[3].append(array_3.mean())
+                    max_res[3].append(array_3.max())
+                    min_res[3].append(array_3.min())
+                    errorValues_res[3].append(array_3.std())
                     tab_3 = []
+
+                if len(tab_4) != 0 :
+                    array_4 = np.array(tab_4)
+                    mean_res[4].append(array_4.mean())
+                    max_res[4].append(array_4.max())
+                    min_res[4].append(array_4.min())
+                    errorValues_res[4].append(array_4.std())
                     tab_4 = []
 
             else:
@@ -103,8 +102,8 @@ def file_to_data(file,g):
 # f2.show()
 
 
-#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn', 4)
-mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_4G', 4)
+#mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
     plt.plot(nb_people, mean_res[i], label='mean')
@@ -114,12 +113,12 @@ for i in range(gene_depart,g+1):
     plt.title(f'Temps de génération du BN en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    plt.savefig(f'./Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
-    plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
+    plt.savefig(f'./Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes uniquement')
+    #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
     plt.show()
 
-#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf', 4)
-mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf_4G', 4)
+#mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
     plt.plot(nb_people, mean_res[i], label='mean')
@@ -129,6 +128,6 @@ for i in range(gene_depart,g+1):
     plt.title(f'Calcul d\'inférence multi-allélique en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    #plt.savefig(f'./Calcul d\'inférence multi-allélique avec {i} gènes')
-    plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec {i} gènes')
+    plt.savefig(f'./Calcul d\'inférence multi-allélique avec {i} gènes uniquement')
+    #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec {i} gènes')
     plt.show()
