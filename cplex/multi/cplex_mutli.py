@@ -17,13 +17,13 @@ nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene_depart = 2 
-gene = 2 
+gene_depart = 4 
+gene = 4 
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 
-file_bn = open('../data/multi/data_bn_2G_10', 'w')
-file_inf = open('../data/multi/data_inf_2G_10', 'w')
+file_bn = open('../data/multi/data_bn_4G_10', 'w')
+file_inf = open('../data/multi/data_inf_4G_10', 'w')
 sen = Pedigree()
 sen.load('../../data/ped/senegal2013.ped')
 len_sen = len(sen)
