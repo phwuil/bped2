@@ -9,7 +9,7 @@ import numpy as np
 import math
 
 f = 0.05
-nb_ped = 10
+nb_ped = 30
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
 # nb_people = [10,20,100,2000]
@@ -22,8 +22,8 @@ gene = 4
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 
-file_bn = open('../data/multi/data_bn_4G_10', 'w')
-file_inf = open('../data/multi/data_inf_4G_10', 'w')
+file_bn = open('../data/multi/data_bn_4G_30', 'w')
+file_inf = open('../data/multi/data_inf_4G_30', 'w')
 sen = Pedigree()
 sen.load('../../data/ped/senegal2013.ped')
 len_sen = len(sen)

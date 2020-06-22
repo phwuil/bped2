@@ -3,9 +3,10 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-nb_people = [10,20,50,100]
-g = 4
-gene_depart = 4
+nb_people = [10,20,50,100,200,300,500,1000,1500,2000]
+#nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
+g = 2
+gene_depart = 2
 def file_to_data(file,g):
     res = dict()
     max_res = dict()
@@ -102,7 +103,7 @@ def file_to_data(file,g):
 # f2.show()
 
 
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_4G', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_2G_10', 4)
 #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
@@ -113,11 +114,11 @@ for i in range(gene_depart,g+1):
     plt.title(f'Temps de génération du BN en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    plt.savefig(f'./Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes uniquement')
+    plt.savefig(f'./Gen {i} Genes 10 samples')
     #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
     plt.show()
 
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf_4G', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf_2G_10', 4)
 #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
@@ -128,6 +129,6 @@ for i in range(gene_depart,g+1):
     plt.title(f'Calcul d\'inférence multi-allélique en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    plt.savefig(f'./Calcul d\'inférence multi-allélique avec {i} gènes uniquement')
+    plt.savefig(f'./Inf {i} genes 10 samples')
     #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec {i} gènes')
     plt.show()
