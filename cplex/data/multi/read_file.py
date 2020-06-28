@@ -103,7 +103,7 @@ def file_to_data(file,g):
 # f2.show()
 
 
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_2G_10', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_2G_30', 4)
 #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
@@ -114,11 +114,11 @@ for i in range(gene_depart,g+1):
     plt.title(f'Temps de génération du BN en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    plt.savefig(f'./Gen {i} Genes 10 samples')
+    plt.savefig(f'./Gen {i} Genes 30 samples')
     #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
     plt.show()
 
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf_2G_10', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf_2G_30', 4)
 #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
@@ -129,6 +129,6 @@ for i in range(gene_depart,g+1):
     plt.title(f'Calcul d\'inférence multi-allélique en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    plt.savefig(f'./Inf {i} genes 10 samples')
+    plt.savefig(f'./Inf {i} genes 30 samples')
     #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec {i} gènes')
     plt.show()
