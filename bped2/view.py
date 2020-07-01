@@ -343,3 +343,15 @@ def graph_multi(dbn, size=None):
         size = gum.config["dynamicBN", "default_graph_size"]
 
     showGraph(_TimeSlicesToDot(dbn), size)
+
+def load_evidence_multi(file,famID):
+    tab = dict()
+    with open(file,'r') as f:
+        for (line,i) in enumerate(f.readlines()):
+            print(line,'oooo',i)
+            ev = i.split()
+            name = ev[1]
+            if ev[0] == famID:
+                ev = [float(i) for i in ev[2:]]
+                tab[f'X{name}'] = ev
+    return tab

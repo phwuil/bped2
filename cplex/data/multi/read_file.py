@@ -3,10 +3,10 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-nb_people = [10,20,50,100,200,300,500,1000,1500,2000]
+nb_people = [10,20,50,100,200,300,500,1000]
 #nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
-g = 2
-gene_depart = 2
+g = 3
+gene_depart = 3
 def file_to_data(file,g):
     res = dict()
     max_res = dict()
@@ -67,43 +67,9 @@ def file_to_data(file,g):
 
     return mean_res,max_res,min_res,errorValues_res
 
-#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn', 4)
-#mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
-# f1 = plt.figure(1)
-# legende = []
-#
-# for i in range(2,g+1):
-#     c = (random.random(), random.random(), random.random())
-#     ec = (random.random(),random.random(),random.random())
-#     plt.errorbar(nb_people, mean_res[i], yerr = errorValues_res[i], ecolor=ec,color=c)
-#     legende.append(f'{i}gène(s)')
-# plt.legend(legende)
-# plt.title('Temps de génération du BN en fonction de la taille du pedigree')
-# plt.xlabel('Taille du pedigree')
-# plt.ylabel('Temps en sec')
-# plt.savefig('./Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
-# #plt.savefig('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
-# f1.show()
-#
-# mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf', 4)
-# #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
-# f2 = plt.figure(1)
-# legende = []
-# for i in range(2,g+1):
-#     c = (random.random(), random.random(), random.random())
-#     ec = (random.random(),random.random(),random.random())
-#     plt.errorbar(nb_people, mean_res[i], yerr = errorValues_res[i], ecolor=ec,color=c)
-#     legende.append(f'{i}gène(s)')
-# plt.legend(legende)
-# plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec Lazy')
-# plt.xlabel('Taille du pedigree')
-# plt.ylabel('Temps en sec')
-# plt.savefig('./Calcul d\'inférence multi-allélique avec Lazy')
-# #plt.savefig('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec Lazy')
-# f2.show()
 
-
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_2G_30', 4)
+#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_3G_10', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./lbp/data_bn_3G_10', 4)
 #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
@@ -114,11 +80,13 @@ for i in range(gene_depart,g+1):
     plt.title(f'Temps de génération du BN en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    plt.savefig(f'./Gen {i} Genes 30 samples')
+    #plt.savefig(f'./Gen {i} Genes 10 samples')
+    plt.savefig(f'./lbp/Gen {i} Genes 10 samples')
     #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Temps de génération du BN multi-allélique en fonction du pedigree avec {i} gènes')
     plt.show()
 
-mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf_2G_30', 4)
+#mean_res,max_res,min_res,errorValues_res = file_to_data('./data_inf_3G_10', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./lbp/data_inf_3G_10', 4)
 #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_inf', 4)
 for i in range(gene_depart,g+1):
     plt.figure()
@@ -129,6 +97,7 @@ for i in range(gene_depart,g+1):
     plt.title(f'Calcul d\'inférence multi-allélique en fonction du pedigree avec {i} gènes')
     plt.xlabel('Taille du pedigree')
     plt.ylabel('Temps en sec')
-    plt.savefig(f'./Inf {i} genes 30 samples')
+    #plt.savefig(f'./Inf {i} genes 10 samples')
+    plt.savefig(f'./lbp/Inf {i} genes 10 samples')
     #plt.savefig(f'/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/Calcul d\'inférence multi-allélique avec {i} gènes')
     plt.show()

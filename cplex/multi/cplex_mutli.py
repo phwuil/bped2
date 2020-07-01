@@ -1,6 +1,7 @@
 from bped2.pedigree import *
 import bped2.view as pview
 import sandbox.doLazyProg as laz
+import sandbox.doLBP as lbp
 from time import *
 import numpy as np
 # import matplotlib.pyplot as plt
@@ -9,7 +10,7 @@ import numpy as np
 import math
 
 f = 0.05
-nb_ped = 10
+nb_ped = 30
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
 # nb_people = [10,20,100,2000]
@@ -22,8 +23,10 @@ gene = 3
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 
-file_bn = open('../data/multi/data_bn_3G_10', 'w')
-file_inf = open('../data/multi/data_inf_3G_10', 'w')
+# file_bn = open('../data/multi/data_bn_3G_10', 'w')
+# file_inf = open('../data/multi/data_inf_3G_10', 'w')
+file_bn = open('../data/multi/lbp/data_bn_3G_10', 'w')
+file_inf = open('../data/multi/lbp/data_inf_3G_10', 'w')
 sen = Pedigree()
 sen.load('../../data/ped/senegal2013.ped')
 len_sen = len(sen)
@@ -99,7 +102,8 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             pview.save_bn(bn,f'./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
 
             t5 = process_time()
-            laz.doLazyProg(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
+            #laz.doLazyProg(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
+            lbp.doLBP(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
             t6 = process_time()
 
             t4 = t4 - t3
@@ -137,7 +141,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 file_bn.close()
 file_inf.close()
 
-final = open('../data/multi/final_2G', 'w')
+final = open('../data/multi/lbp/final_2G', 'w')
 for i in range(gene_depart,gene+1):
     final.write(f'{mean_bn[i]}\t{errorValues_bn[i]}\n')
     final.write(f'{mean_inf[i]}\t{errorValues_inf[i]}\n')
