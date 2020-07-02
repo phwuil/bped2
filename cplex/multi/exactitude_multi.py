@@ -18,8 +18,8 @@ nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene_depart = 2
-gene = 2
+gene_depart = 3
+gene = 3
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 
@@ -141,38 +141,9 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 file_bn.close()
 file_inf.close()
 
-final = open('../data/multi/lbp/final_2G_30', 'w')
+final = open('../data/multi/lbp/final_2G', 'w')
 for i in range(gene_depart,gene+1):
     final.write(f'{mean_bn[i]}\t{errorValues_bn[i]}\n')
     final.write(f'{mean_inf[i]}\t{errorValues_inf[i]}\n')
 final.close()
 
-#
-# f1 = plt.figure(1)
-# legende = []
-#
-# for i in range(gene_depart,gene+1):
-#     c = (random.random(), random.random(), random.random())
-#     ec = (random.random(),random.random(),random.random())
-#     plt.errorbar(nb_people, mean_bn[i], yerr = errorValues_bn[i], ecolor=ec,color=c)
-#     legende.append(f'{i}gène(s)')
-# plt.legend(legende)
-# plt.title('Temps de génération du BN en fonction de la taille du pedigree')
-# plt.xlabel('Taille du pedigree')
-# plt.ylabel('Temps en sec')
-# plt.savefig('./figure/Temps de génération du BN en fonction de la taille du pedigree avec ecart-type')
-# #f1.show()
-#
-# f2 = plt.figure(1)
-# legende = []
-# for i in range(gene_depart,gene+1):
-#     c = (random.random(), random.random(), random.random())
-#     ec = (random.random(),random.random(),random.random())
-#     plt.errorbar(nb_people, mean_inf[i], yerr = errorValues_inf[i], ecolor=ec,color=c)
-#     legende.append(f'{i}gène(s)')
-# plt.legend(legende)
-# plt.title('Calcul d\'inférence multi-allélique en fonction du pedigree avec Lazy')
-# plt.xlabel('Taille du pedigree')
-# plt.ylabel('Temps en sec')
-# plt.savefig('./figure/Calcul d\'inférence multi-allélique avec Lazy')
-# #f2.show()

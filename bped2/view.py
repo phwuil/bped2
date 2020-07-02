@@ -78,10 +78,12 @@ def load_evidence(file,famID):
         for (line,i) in enumerate(f.readlines()):
             ev = i.split()
             idfam = ev[0].split(':')[0]
+            name = ev[1]
             if ev[0] == famID:
                 # del ev[0],ev[1]
                 ev = [float(i) for i in ev[2:]]
-                tab[f'X{line+1}'] = ev
+                #tab[f'X{line+1}'] = ev
+                tab[f'X{name}'] = ev
     return tab
 
 def load_evidence_out(file,famID):
