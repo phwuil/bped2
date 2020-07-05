@@ -1,10 +1,12 @@
+from matplotlib import ticker
+
 from bped2.pedigree import *
 import bped2.view as pview
 import sandbox.doLazyProg as laz
 import sandbox.doLBP as lbp
 from time import *
 import numpy as np
-# import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 # import matplotlib as mat
 # mat.use('Agg')
 import math
@@ -13,75 +15,21 @@ f = 0.05
 nb_ped = 30
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 nb_Gen_Max = [3,3,4,4,4,4,4,5,5,6,6,6,6,7]
-# nb_people = [10,20,100,2000]
-# nb_Gen_Max = [3,3,4,8]
+# nb_people = [10,20]
+# nb_Gen_Max = [3,3]
+data = np.zeros((len(nb_people),7),dtype=float)
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene_depart = 3
-gene = 3
+gene_depart = 2
+gene = 2
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
+w = 0
 
-# file_bn = open('../data/multi/data_bn_3G_10', 'w')
-# file_inf = open('../data/multi/data_inf_3G_10', 'w')
-file_bn = open('../data/multi/lbp/data_bn_3G_10', 'w')
-file_inf = open('../data/multi/lbp/data_inf_3G_10', 'w')
-sen = Pedigree()
-sen.load('../../data/ped/senegal2013.ped')
-len_sen = len(sen)
-time_sen = []
-
-res_bn = dict()
-res_inf = dict()
-res_clique = dict()
-
-max_bn = dict()
-min_bn = dict()
-mean_bn = dict()
-errorValues_bn = dict()
-
-max_inf = dict()
-min_inf = dict()
-mean_inf = dict()
-errorValues_inf = dict()
-
-max_clique = dict()
-min_clique = dict()
-mean_clique = dict()
-errorValues_clique = dict()
-
-for i in range(gene_depart,gene+1):
-
-    max_clique[i] = []
-    max_inf[i] = []
-    max_bn[i] = []
-
-    min_clique[i] = []
-    min_inf[i] = []
-    min_bn[i] = []
-
-    mean_clique[i] = []
-    mean_bn[i] = []
-    mean_inf[i] = []
-
-    errorValues_clique[i] = []
-    errorValues_inf[i] = []
-    errorValues_bn[i] = []
-
-    # bn_sen = pview.ped_to_bn_multi(sen, f, i, distance[:i-1])
-    # ie = pview.gum.LazyPropagation(bn_sen)
-    # t1 = process_time()
-    # ie.makeInference()
-    # t2 = process_time()
-    # time_sen.append(t2 - t1)
-    time_sen.append(0)
+file = open('../data/multi/lbp/proportion_3G_30', 'w')
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
-    for i in range(gene_depart, gene + 1):
-        res_bn[i] = np.zeros(nb_ped)
-        res_inf[i] = np.zeros(nb_ped)
-        res_clique[i] = np.zeros(nb_ped)
 
     for nb in range(nb_ped):
 
@@ -93,57 +41,105 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 
         for i in range(gene_depart,gene+1):
 
-            t3 = process_time()
             #bn = pview.bn_multi_pb(ped, f, i, distance[:i-1])
             bn = pview.bn_multi_morgans(ped, f, i, centimorgans[:i])
-            t4 = process_time()
-
             pview.save(ped,f'./samples/pedigree_{p}_{g}_{nbChild}_{cl}_G{nb}')
             pview.save_bn(bn,f'./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
 
-            t5 = process_time()
-            #laz.doLazyProg(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
-            lbp.doLBP(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
-            t6 = process_time()
 
-            t4 = t4 - t3
-            res_bn[i][nb] = t4
-            t6 = t6 - t5
-            res_inf[i][nb] = t6
-            res_clique[i][nb] = pview.max_clique_size(bn)
-            file_bn.write(f'{nb}\t{t4}\t{i}\n')
-            file_bn.flush()
-            file_inf.write(f'{nb}\t{t6}\t{i}\n')
-            file_inf.flush()
+            ie1 = laz.lazyPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
+            ie2 = lbp.lbpPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
 
-    file_bn.write('-\n')
-    file_bn.flush()
-    file_inf.write('-\n')
-    file_inf.flush()
+            for j in ped.get_pedigree().keys():
+                for g in range(1,gene+1):
+                    p1 = ie1.posterior(f'X{j}_{g}')
+                    p2 = ie2.posterior(f'X{j}_{g}')
+                    x = [abs(p1[0] - p2[0]), abs(p1[1] - p2[1]), abs(p1[2] - p2[2]), abs(p1[3] - p2[3])]
+                    v = max(x)
+                    file.write(f'{v}\t{100 / (nb_ped * p)}\n')
+                    file.flush()
+                    if v < 10 ** -5:
+                        data[w][0] += 100 / (nb_ped * p * gene)
+                    elif v < 10 ** -4:
+                        data[w][1] += 100 / (nb_ped * p * gene)
+                    elif v < 10 ** -3:
+                        data[w][2] += 100 / (nb_ped * p * gene)
+                    elif v < 10 ** -2:
+                        data[w][3] += 100 / (nb_ped * p * gene)
+                    elif v < 10 ** -1:
+                        data[w][4] += 100 / (nb_ped * p * gene)
+                    elif v < 0.4:
+                        data[w][5] += 100 / (nb_ped * p * gene)
+                    elif v < 0.5:
+                        data[w][6] += 100 / (nb_ped * p * gene)
+    w+=1
 
-    for i in range(gene_depart,gene+1):
-        max_bn[i].append(res_bn[i].max)
-        max_inf[i].append(res_inf[i].max())
-        max_clique[i].append(res_clique[i].max())
+file.close()
 
-        min_bn[i].append(res_bn[i].min())
-        min_inf[i].append(res_inf[i].min())
-        min_clique[i].append(res_clique[i].min())
+#
+# # les tailles des graphes
+# #columns = ('1000', '1500', '2000', '2500', '5000')
+#
+# columns = nb_people
+# # les seuils testés
+# #values=[80,50,20,10,5]
+# #values=[50,40,5,1,0.1]
+# values = [50,40,10,1,10**-1,10**-2,10**-3]
+# # data = données à produire
+# # en supposant qu'il y a
+# # dans le cas N=1000 :
+# #   - 80% des X ont une erreur err<0.05,
+# #   - 20% des X ont une erreur 0.05<err<0.1,
+# # dans le cas N=5O00 :
+# #   -  8% <0.05
+# #   - 32% entre 0.05 et 0.1
+# #   - 36% entre 0.1 et 0.2
+# #   - 20% entre 0.2 et 0.5
+# #   -  4% >0.5
+# # data = np.array([[ 80, 20,  0,  0, 0],
+# #                  [ 60, 30, 10,  0, 0],
+# #                  [ 40, 32, 20,  8, 0],
+# #                  [ 25, 36, 24, 10, 5],
+# #                  [  8, 32, 36, 20, 4]])
+# data=data.transpose()
+# rows = ['<=%3.4f' % (x/100) for x in values]
+#
+# colors = plt.cm.BuPu(np.linspace(0.2, 0.8, len(rows)))
+# n_rows = len(data)
+#
+# index = np.arange(len(columns)) + 0.3
+# bar_width = 0.4
+#
+# # Initialize the vertical-offset for the stacked bar chart.
+# y_offset = np.zeros(len(columns))
+#
+# # Plot bars and create text labels for the table
+# cell_text = []
+# for row in range(n_rows):
+#     plt.bar(index, data[row], bar_width, bottom=y_offset, color=colors[row])
+#     y_offset = y_offset + data[row]
+#     cell_text.append(['%1.4f' % x if x!=0 else "" for x in data[row]])
+# # Reverse colors and text labels to display the last value at the top.
+# colors = colors[::-1]
+# cell_text.reverse()
+#
+# # Add a table at the bottom of the axes
+# the_table = plt.table(cellText=cell_text,
+#                       rowLabels=rows,
+#                       rowColours=colors,
+#                       colLabels=columns,
+#                       loc='bottom')
+# # Adjust layout to make room for the table:
+# plt.subplots_adjust(left=0.2, bottom=0.2)
+#
+# plt.ylabel("Proportion % (logarithmic)")
+# plt.ylim(80)
+# plt.yscale('log')
+# plt.gca().get_yaxis().set_minor_formatter(ticker.FormatStrFormatter('%.2f'))
+# plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
+# plt.xticks([])
+# plt.title('Distribution des erreurs (en %)');
+# plt.savefig('./figure/proportion',bbox_inches='tight')
+# plt.show()
 
-        errorValues_bn[i].append(res_bn[i].std())
-        errorValues_inf[i].append(res_inf[i].std())
-        errorValues_clique[i].append(res_clique[i].std())
-
-        mean_bn[i].append(res_bn[i].mean())
-        mean_inf[i].append(res_inf[i].mean())
-        mean_clique[i].append(res_clique[i].mean())
-
-file_bn.close()
-file_inf.close()
-
-final = open('../data/multi/lbp/final_2G', 'w')
-for i in range(gene_depart,gene+1):
-    final.write(f'{mean_bn[i]}\t{errorValues_bn[i]}\n')
-    final.write(f'{mean_inf[i]}\t{errorValues_inf[i]}\n')
-final.close()
 

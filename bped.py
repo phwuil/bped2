@@ -154,7 +154,10 @@ def main(args=None):
 
         if options.targets:
             if options.evfile:
-                evidence = pview.load_evidence(options.evfile, famID)
+                if options.mode == 'multi':
+                    evidence = pview.load_evidence_multi(options.evfile, famID)
+                else:
+                    evidence = pview.load_evidence(options.evfile, famID)
                 if options.verbose:
                     print(f"{options.evfile} loaded")
 

@@ -12,11 +12,10 @@ import os, psutil
 import math
 
 
-nb_people = [10,20,50,100,200,300,500,1000]
+nb_people = [10,20]
 data = np.zeros((len(nb_people),7),dtype=float)
 
-def data(file):
-    return
+
 def data_to_plot(file):
     with open(file) as f:
         tab = f.readlines()
@@ -48,7 +47,7 @@ def data_to_plot(file):
 
     return data
 
-data = data_to_plot('./ttbn_1e4')
+data = data_to_plot('./data/multi/lbp/proportion_3G_30')
 
 columns = nb_people
 # les seuils testés
@@ -109,5 +108,6 @@ plt.gca().get_yaxis().set_minor_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
-plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
+#plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
+plt.savefig('../cplex/multi/figure/proportion')
 plt.show()
