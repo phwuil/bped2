@@ -217,6 +217,8 @@ def bn_multi_pb(ped, f, nb_gen, proba,name_gen=None):
         for p in ped.get_pedigree().values():
             create_holders_multi(ped,bn, p, f, i,name_gen) # Creation de tous les noeuds
 
+        if name_gen is not None :
+            i = name_gen[i-1]
         for p in ped.get_pedigree().values():
             if p.fatID == '0':  # Cas parents inconnu
                 if name_gen is not None:
@@ -263,22 +265,22 @@ def bn_multi_morgans(ped, f, nb_gen, centimorgans,name_gen=None):
 
         if name_gen is not None :
             i = name_gen[i-1]
-            for p in ped.get_pedigree().values():
-                if p.fatID == '0':  # Cas parents inconnu
-                    if name_gen is not None:
-                        bn.cpt(f"fatX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
-                    else:
-                        bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
+        for p in ped.get_pedigree().values():
+            if p.fatID == '0':  # Cas parents inconnu
+                if name_gen is not None:
+                    bn.cpt(f"fatX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
                 else:
-                    create_offsprings_multi(ped, bn, p, 'fat', i, name_gen)
+                   bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
+            else:
+                create_offsprings_multi(ped, bn, p, 'fat', i, name_gen)
 
-                if p.matID == '0':  # Cas parents inconnu
-                    if name_gen is not None:
-                        bn.cpt(f"matX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
-                    else:
-                        bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
+            if p.matID == '0':  # Cas parents inconnu
+                if name_gen is not None:
+                    bn.cpt(f"matX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
                 else:
-                    create_offsprings_multi(ped, bn, p, 'mat', i, name_gen)
+                    bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
+            else:
+                create_offsprings_multi(ped, bn, p, 'mat', i, name_gen)
 
     for i in range(1,nb_gen):
         x = i - 1
