@@ -106,9 +106,11 @@ def create_holders(ped, bn, p, f):
     bn.addArc(f"fatX{p.pID}", f"X{p.pID}")
     bn.addArc(f"matX{p.pID}", f"X{p.pID}")
     bn.cpt(f"X{p.pID}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
+    bn.set
 
-def create_holders_multi(ped, bn, p, f,id_gen):
-
+def create_holders_multi(ped, bn, p, f,id_gen,name_gen=None):
+    if name_gen is not None :
+        id_gen = name_gen[id_gen-1]
     bn.add(gum.LabelizedVariable(f"matX{p.pID}_{id_gen}", f"mother of {p.pID}", ["0", "1"]))
     bn.add(gum.LabelizedVariable(f"fatX{p.pID}_{id_gen}", f"father of {p.pID}", ["0", "1"]))
     bn.add(gum.LabelizedVariable(f"X{p.pID}_{id_gen}", f"{p.pID}", ["00", "01", "10", "11"]))
@@ -145,12 +147,15 @@ def create_offsprings_compact(ped, bn, p, parent):
 
     bn.cpt(f"{parent}X{p.pID}").fillWith([1,0,0.5,0.5,0.5,0.5,0,1])
 
-def create_offsprings_multi(ped, bn, p, parent,id_gen):
+def create_offsprings_multi(ped, bn, p, parent,id_gen, name_gen=None):
     # parent = fat ou mat
     if parent == 'fat':
         parentID = p.fatID
     else:
         parentID = p.matID
+
+    if name_gen is not None:
+        id_gen = name_gen[id_gen-1]
 
     # Creating Selector
     bn.add(gum.LabelizedVariable(f"S{parent}{p.pID}_{id_gen}", f"Selector of {parent}ID", ["fat", "mat"]))
@@ -202,7 +207,7 @@ def ped_to_bn_compact(ped,f):
 
     return bn
 
-def bn_multi_pb(ped, f, nb_gen, proba):
+def bn_multi_pb(ped, f, nb_gen, proba,name_gen=None):
 
     if len(proba) != nb_gen-1:
         return "Difference of size between gene's number and distance's number"
@@ -210,60 +215,88 @@ def bn_multi_pb(ped, f, nb_gen, proba):
 
     for i in range(1,nb_gen+1):
         for p in ped.get_pedigree().values():
-            create_holders_multi(ped,bn, p, f, i) # Creation de tous les noeuds
+            create_holders_multi(ped,bn, p, f, i,name_gen) # Creation de tous les noeuds
 
         for p in ped.get_pedigree().values():
             if p.fatID == '0':  # Cas parents inconnu
-                bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
+                if name_gen is not None:
+                    bn.cpt(f"fatX{p.pID}_{name_gen[i-1]}").fillWith([1 - f, f])
+                else:
+                    bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
             else:
-                create_offsprings_multi(ped, bn, p, 'fat', i)
+                create_offsprings_multi(ped, bn, p, 'fat', i, name_gen)
 
             if p.matID == '0':  # Cas parents inconnu
-                bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
+                if name_gen is not None:
+                    bn.cpt(f"matX{p.pID}_{name_gen[i-1]}").fillWith([1 - f, f])
+                else:
+                    bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
             else:
-                create_offsprings_multi(ped, bn, p, 'mat', i)
+                create_offsprings_multi(ped, bn, p, 'mat', i, name_gen)
 
     for i in range(1,nb_gen):
         j = i + 1
         for p in ped.get_pedigree().values():
-            if p.fatID != '0' and p.matID != '0':
-                bn.addArc(f"Sfat{p.pID}_{i}", f"Sfat{p.pID}_{j}")
-                bn.addArc(f"Smat{p.pID}_{i}", f"Smat{p.pID}_{j}")
-                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
-                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
+            if name_gen is not None:
+                if p.fatID != '0' and p.matID != '0':
+                    bn.addArc(f"Sfat{p.pID}_{name_gen[i-1]}", f"Sfat{p.pID}_{name_gen[j-1]}")
+                    bn.addArc(f"Smat{p.pID}_{name_gen[i-1]}", f"Smat{p.pID}_{name_gen[j-1]}")
+                    bn.cpt(f"Sfat{p.pID}_{name_gen[j-1]}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
+                    bn.cpt(f"Sfat{p.pID}_{name_gen[j-1]}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
+            else:
+                if p.fatID != '0' and p.matID != '0':
+                    bn.addArc(f"Sfat{p.pID}_{i}", f"Sfat{p.pID}_{j}")
+                    bn.addArc(f"Smat{p.pID}_{i}", f"Smat{p.pID}_{j}")
+                    bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
+                    bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1- proba[i - 1], proba[i - 1], proba[i - 1], 1 - proba[i - 1]])
 
     return bn
 
-def bn_multi_morgans(ped, f, nb_gen, centimorgans):
+def bn_multi_morgans(ped, f, nb_gen, centimorgans,name_gen=None):
     if len(centimorgans) != nb_gen:
         return "Difference of size between gene's number and position's number"
     bn = gum.BayesNet()
 
     for i in range(1,nb_gen+1):
         for p in ped.get_pedigree().values():
-            create_holders_multi(ped,bn, p, f, i) # Creation de tous les noeuds
+            create_holders_multi(ped,bn, p, f, i,name_gen) # Creation de tous les noeuds
 
-        for p in ped.get_pedigree().values():
-            if p.fatID == '0':  # Cas parents inconnu
-                bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
-            else:
-                create_offsprings_multi(ped, bn, p, 'fat', i)
+        if name_gen is not None :
+            i = name_gen[i-1]
+            for p in ped.get_pedigree().values():
+                if p.fatID == '0':  # Cas parents inconnu
+                    if name_gen is not None:
+                        bn.cpt(f"fatX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
+                    else:
+                        bn.cpt(f"fatX{p.pID}_{i}").fillWith([1 - f, f])
+                else:
+                    create_offsprings_multi(ped, bn, p, 'fat', i, name_gen)
 
-            if p.matID == '0':  # Cas parents inconnu
-                bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
-            else:
-                create_offsprings_multi(ped, bn, p, 'mat', i)
+                if p.matID == '0':  # Cas parents inconnu
+                    if name_gen is not None:
+                        bn.cpt(f"matX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
+                    else:
+                        bn.cpt(f"matX{p.pID}_{i}").fillWith([1 - f, f])
+                else:
+                    create_offsprings_multi(ped, bn, p, 'mat', i, name_gen)
 
     for i in range(1,nb_gen):
         x = i - 1
         j = i + 1
         theta = (1 - math.exp(-2*(centimorgans[i]-centimorgans[x])/100.))/2.0
         for p in ped.get_pedigree().values():
-            if p.fatID != '0' and p.matID != '0':
-                bn.addArc(f"Sfat{p.pID}_{i}", f"Sfat{p.pID}_{j}")
-                bn.addArc(f"Smat{p.pID}_{i}", f"Smat{p.pID}_{j}")
-                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1 - theta, theta, theta, 1 - theta])
-                bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1 - theta, theta, theta, 1 - theta])
+            if name_gen is not None:
+                if p.fatID != '0' and p.matID != '0':
+                    bn.addArc(f"Sfat{p.pID}_{name_gen[i-1]}", f"Sfat{p.pID}_{name_gen[j-1]}")
+                    bn.addArc(f"Smat{p.pID}_{name_gen[i-1]}", f"Smat{p.pID}_{name_gen[j-1]}")
+                    bn.cpt(f"Sfat{p.pID}_{name_gen[j-1]}").fillWith([1 - theta, theta, theta, 1 - theta])
+                    bn.cpt(f"Sfat{p.pID}_{name_gen[j-1]}").fillWith([1 - theta, theta, theta, 1 - theta])
+            else:
+                if p.fatID != '0' and p.matID != '0':
+                    bn.addArc(f"Sfat{p.pID}_{i}", f"Sfat{p.pID}_{j}")
+                    bn.addArc(f"Smat{p.pID}_{i}", f"Smat{p.pID}_{j}")
+                    bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1 - theta, theta, theta, 1 - theta])
+                    bn.cpt(f"Sfat{p.pID}_{j}").fillWith([1 - theta, theta, theta, 1 - theta])
 
     return bn
 

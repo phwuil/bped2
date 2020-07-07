@@ -3,10 +3,12 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-nb_people = [10,20,50,100,200,300,500,1000]
-#nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
-g = 3
-gene_depart = 3
+#nb_people = [10,20,50,100,200,300,500,1000]
+nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
+g = 2
+gene_depart = 2
+
+
 def file_to_data(file,g):
     res = dict()
     max_res = dict()
@@ -69,7 +71,7 @@ def file_to_data(file,g):
 
 
 #mean_res,max_res,min_res,errorValues_res = file_to_data('./data_bn_3G_10', 4)
-mean_res,max_res,min_res,errorValues_res = file_to_data('./lbp/data_bn_3G_10', 4)
+mean_res,max_res,min_res,errorValues_res = file_to_data('./lbp/data_bn', 4)
 #mean_res,max_res,min_res,errorValues_res = file_to_data('/home/valentin/Documents/Stage/backup/multi/Nouveau dossier/data_bn', 4)
 for i in range(gene_depart,g+1):
     plt.figure()

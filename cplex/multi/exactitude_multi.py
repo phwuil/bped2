@@ -27,7 +27,7 @@ distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 w = 0
 
-file = open('../data/multi/lbp/proportion_3G_30', 'w')
+file = open('../data/multi/lbp/proportion_2G_30', 'w')
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 
