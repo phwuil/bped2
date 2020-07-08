@@ -22,6 +22,8 @@ def main(args=None):
     [--inference ] Decide which inference use, LazyPropagation or LoobyBeliefPropagation
     [--complete Bool] Decice which version between complete and compact for the audit file
     [--out outfile] export probabilities into a out file
+    [--name_gen] format [str ,str ,str ...]
+    [--name_people] format [number_name, number_name, ... ]
     """
     parser = OptionParser(version="%prog 0.1", usage="usage: %prog [options] pedfile")
     parser.add_option("", "--ev", dest="evfile",
@@ -55,6 +57,10 @@ def main(args=None):
                       help="Export the evidence into a out file",metavar="FILE")
     parser.add_option("", "--size", dest="size",
                       help="Choose the size of the rendered graph", type="int", default=100)
+    parser.add_option("", "--name_gen", dest="name_gen", type="string",
+                      help="Input the gene's name, shape: str;str; ...")
+    parser.add_option("", "--name_people", dest="name_people", type="string",
+                      help="Input the people's name, shape: nb_name;nb_name; ...")
 
     if args is None:
         (options, arguments) = parser.parse_args()
@@ -81,15 +87,18 @@ def main(args=None):
         current_ped.load(str(pedfile))
         famID = current_ped.get_domain()
 
-        # if options.compact:
-        #     bn = pview.ped_to_bn_compact(current_ped,options.f)
-        #     if options.verbose:
-        #         pview.gnb.showBN(bn,size=100)
-        # else:
-        #     bn = pview.ped_to_bn(current_ped,options.f)
-        #     if options.verbose:
-        #         pview.gnb.showBN(bn,size=100)
+        if options.name_people:
+            name = dict()
+            tmp = options.name_people.split(';')
+            for i in tmp:
+                x,y = i.split('_')
+                name[x] = y
+            current_ped.insert_name(name)
 
+        name_gen = None
+        if options.name_gen:
+            name_gen = options.name_gen.split(';')
+            print(name_gen)
         if options.mode == 'compact':
             bn = pview.ped_to_bn_compact(current_ped, options.f)
             if options.verbose:
@@ -104,7 +113,7 @@ def main(args=None):
                 nb_gen = len(distance)+1
                 for i in range(len(distance)):
                     distance[i] = float(distance[i])
-                bn = pview.bn_multi_pb(current_ped, options.f, nb_gen, distance)
+                bn = pview.bn_multi_pb(current_ped, options.f, nb_gen, distance, name_gen)
                 if options.verbose:
                     pview.gnb.showBN(bn, options.size)
             elif options.centimorgans:
@@ -112,7 +121,7 @@ def main(args=None):
                 nb_gen = len(centimorgans)
                 for i in range(len(centimorgans)):
                     centimorgans[i] = float(centimorgans[i])
-                bn = pview.bn_multi_morgans(current_ped, options.f, nb_gen, centimorgans)
+                bn = pview.bn_multi_morgans(current_ped, options.f, nb_gen, centimorgans, name_gen)
                 if options.verbose:
                     pview.gnb.showBN(bn, options.size)
             else:
@@ -194,7 +203,7 @@ def main(args=None):
                 ie.setEvidence(evidence)
                 ie.makeInference()
                 if options.mode == 'multi':
-                    pview.create_out_multi(options.out,current_ped,ie,nb_gen)
+                    pview.create_out_multi(options.out, current_ped, ie, nb_gen, name_gen)
                 else:
                     pview.create_out(options.out,current_ped,ie)
             else:
@@ -204,7 +213,7 @@ def main(args=None):
                     ie = pview.gum.LazyPropagation(bn)
                 ie.makeInference()
                 if options.mode == 'multi':
-                    pview.create_out_multi(options.out, current_ped, ie, nb_gen)
+                    pview.create_out_multi(options.out, current_ped, ie, nb_gen, name_gen)
                 else:
                     pview.create_out(options.out, current_ped, ie)
 

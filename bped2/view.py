@@ -263,8 +263,8 @@ def bn_multi_morgans(ped, f, nb_gen, centimorgans,name_gen=None):
         for p in ped.get_pedigree().values():
             create_holders_multi(ped,bn, p, f, i,name_gen) # Creation de tous les noeuds
 
-        if name_gen is not None :
-            i = name_gen[i-1]
+        # if name_gen is not None :
+        #     i = name_gen[i-1]
         for p in ped.get_pedigree().values():
             if p.fatID == '0':  # Cas parents inconnu
                 if name_gen is not None:
@@ -323,13 +323,17 @@ def create_out(filename, ped, inference):
             inf = inference.posterior(f'X{i}')
             f.write(f'{fam}:{i}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
 
-def create_out_multi(filename, ped, inference, nb_gen):
+def create_out_multi(filename, ped, inference, nb_gen, name_gen=None):
     fam = list(ped.get_domain())[0]
     with open(filename+'.out', "w") as f:
         for n in range(1,nb_gen+1):
             for i in ped.get_pedigree().keys():
-                inf = inference.posterior(f'X{i}_{n}')
-                f.write(f'{fam}:{i}_{n}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
+                if name_gen is not None:
+                    inf = inference.posterior(f'X{i}_{name_gen[n-1]}')
+                    f.write(f'{fam}:{i}_{name_gen[n-1]}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
+                else:
+                    inf = inference.posterior(f'X{i}_{n}')
+                    f.write(f'{fam}:{i}_{n}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
 
 def audit(bn, ped, filename):
     with open(filename, "w") as f:

@@ -21,13 +21,13 @@ data = np.zeros((len(nb_people),7),dtype=float)
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene_depart = 3 
-gene = 3 
+gene_depart = 4
+gene = 4
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 w = 0
 
-file = open('../data/multi/lbp/proportion_3G_30', 'w')
+file = open('../data/multi/lbp/proportion_4G_30', 'w')
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 
