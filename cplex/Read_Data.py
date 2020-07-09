@@ -12,9 +12,9 @@ import os, psutil
 import math
 
 
-nb_people = [10,20]
+nb_people = [10,20,50,100,200,300,500,1000,1500,2000]
 data = np.zeros((len(nb_people),7),dtype=float)
-
+gene = 2
 
 def data_to_plot(file):
     with open(file) as f:
@@ -24,30 +24,32 @@ def data_to_plot(file):
             if data[w].sum() >= 100.0:
                 print('oui')
                 w+=1
+                if w == len(nb_people):
+                    return data
 
             v,x = line.split()
             v = float(v)
             x = float(x)
             if v < 10**-5:
-                data[w][0] += x
+                data[w][0] += x/gene
             elif v < 10**-4:
-                data[w][1] += x
+                data[w][1] += x/gene
             elif v < 10**-3:
-                data[w][2] += x
+                data[w][2] += x/gene
             elif v < 10**-2:
-                data[w][3] += x
+                data[w][3] += x/gene
             # else:
             elif v < 10 ** -1:
-                data[w][4] += x
+                data[w][4] += x/gene
             elif v < 0.4:
-                data[w][5] += x
+                data[w][5] += x/gene
             elif v < 0.5:
-                data[w][6] += x
+                data[w][6] += x/gene
 
 
     return data
 
-data = data_to_plot('./data/multi/lbp/proportion_3G_30')
+data = data_to_plot('./data/multi/lbp/proportion_2G_30')
 
 columns = nb_people
 # les seuils testés
@@ -109,5 +111,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/proportion')
+plt.savefig('../cplex/multi/figure/proportion_2G',bbox_inches='tight')
 plt.show()

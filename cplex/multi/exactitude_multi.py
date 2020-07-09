@@ -27,7 +27,8 @@ distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 w = 0
 
-file = open('../data/multi/lbp/proportion_4G_30', 'w')
+file = open('../data/multi/lbp/proportion_4G_30_bis', 'w')
+#test = open('../data/multi/lbp/test_4G_30', 'w')
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 
@@ -56,7 +57,7 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
                     p2 = ie2.posterior(f'X{j}_{g}')
                     x = [abs(p1[0] - p2[0]), abs(p1[1] - p2[1]), abs(p1[2] - p2[2]), abs(p1[3] - p2[3])]
                     v = max(x)
-                    file.write(f'{v}\t{100 / (nb_ped * p)}\n')
+                    file.write(f'{v}\t{100 / (nb_ped * p * gene)}\n')
                     file.flush()
                     if v < 10 ** -5:
                         data[w][0] += 100 / (nb_ped * p * gene)

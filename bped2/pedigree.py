@@ -998,13 +998,18 @@ class Pedigree:
     def insert_name(self,dict_name):
         for i in dict_name.keys():
             if i in self.get_pedigree():
-                self.get_people(i)._pID = dict_name[i]
-                self.get_pedigree()[dict_name[i]] = self.get_pedigree().pop(i)
+                self.add_people(self.get_people(i).famID, dict_name[i], self.get_people(i).fatID, self.get_people(i).matID)
+                self.add_sex(dict_name[i], self.get_people(i).sex)
+                for c in self.get_people(i).child:
+                    self.get_people(dict_name[i]).add_children(c)
+                self.remove_people(i)
+                # self.get_people(i)._pID = dict_name[i]
+                # self.get_pedigree()[dict_name[i]] = self.get_pedigree().pop(i)
             for p in self.get_pedigree().keys():
                 if self.get_people(p).matID == i:
                     self.get_people(p)._matID = dict_name[i]
                 if self.get_people(p).fatID == i:
                     self.get_people(p)._fatID = dict_name[i]
                 if i in self.get_people(p).child :
-                    self.get_people(p).child.remove(i)
-                    self.get_people(p).child.add(dict_name[i])
+                    self.get_people(p).remove_children(i)
+                    self.get_people(p).add_children(dict_name[i])

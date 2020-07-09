@@ -106,7 +106,6 @@ def create_holders(ped, bn, p, f):
     bn.addArc(f"fatX{p.pID}", f"X{p.pID}")
     bn.addArc(f"matX{p.pID}", f"X{p.pID}")
     bn.cpt(f"X{p.pID}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
-    bn.set
 
 def create_holders_multi(ped, bn, p, f,id_gen,name_gen=None):
     if name_gen is not None :
