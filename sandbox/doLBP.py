@@ -15,9 +15,11 @@ def doLBP(bn_name):
         print('too long')
 
 
-def lbpPosterior(bn_name):
+def lbpPosterior(bn_name,evidence=None):
     bn = pview.gum.BayesNet()
     bn.loadBIF(bn_name)
     ie = pview.gum.LoopyBeliefPropagation(bn)
+    if evidence:
+        ie.setEvidence(evidence)
     ie.makeInference()
     return ie

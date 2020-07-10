@@ -12,7 +12,7 @@ import os, psutil
 import math
 
 
-nb_people = [10,20,50,100,200,300,500,1000,1500,2000]
+nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 data = np.zeros((len(nb_people),7),dtype=float)
 gene = 2
 
@@ -21,7 +21,7 @@ def data_to_plot(file):
         tab = f.readlines()
         w = 0
         for line in tab:
-            if data[w].sum() >= 100.0:
+            if data[w].sum() >= 99.9999999999:
                 print('oui')
                 w+=1
                 if w == len(nb_people):

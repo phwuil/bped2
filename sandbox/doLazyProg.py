@@ -15,9 +15,11 @@ def doLazyProg(bn_name):
         print('too long')
 
 
-def lazyPosterior(bn_name):
+def lazyPosterior(bn_name, evidence=None):
     bn = pview.gum.BayesNet()
     bn.loadBIF(bn_name)
     ie = pview.gum.LazyPropagation(bn)
+    if evidence:
+        ie.setEvidence(evidence)
     ie.makeInference()
     return ie

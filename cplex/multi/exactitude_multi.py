@@ -21,13 +21,13 @@ data = np.zeros((len(nb_people),7),dtype=float)
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene_depart = 4
-gene = 4
+gene_depart = 2
+gene = 2
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 w = 0
 
-file = open('../data/multi/lbp/proportion_4G_30_bis', 'w')
+file = open('../data/multi/lbp/proportion_2G_30_obs', 'w')
 #test = open('../data/multi/lbp/test_4G_30', 'w')
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
@@ -48,10 +48,11 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             pview.save_bn(bn,f'./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
 
 
-            ie1 = laz.lazyPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
-            ie2 = lbp.lbpPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
+            ie1 = laz.lazyPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",{'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0]})
+            ie2 = lbp.lbpPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",{'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0]})
 
             for j in ped.get_pedigree().keys():
+                #for g in range(1, 2):
                 for g in range(1,gene+1):
                     p1 = ie1.posterior(f'X{j}_{g}')
                     p2 = ie2.posterior(f'X{j}_{g}')
