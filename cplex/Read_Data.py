@@ -31,25 +31,25 @@ def data_to_plot(file):
             v = float(v)
             x = float(x)
             if v < 10**-5:
-                data[w][0] += x/gene
+                data[w][0] += x
             elif v < 10**-4:
-                data[w][1] += x/gene
+                data[w][1] += x
             elif v < 10**-3:
-                data[w][2] += x/gene
+                data[w][2] += x
             elif v < 10**-2:
-                data[w][3] += x/gene
+                data[w][3] += x
             # else:
             elif v < 10 ** -1:
-                data[w][4] += x/gene
+                data[w][4] += x
             elif v < 0.4:
-                data[w][5] += x/gene
+                data[w][5] += x
             elif v < 0.5:
-                data[w][6] += x/gene
+                data[w][6] += x
 
 
     return data
 
-data = data_to_plot('./data/multi/lbp/proportion_2G_30')
+data = data_to_plot('./data/multi/lbp/proportion_2G_30_obs')
 
 columns = nb_people
 # les seuils testés
@@ -111,5 +111,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/proportion_2G',bbox_inches='tight')
+plt.savefig('../cplex/multi/figure/proportion_2G_with obs',bbox_inches='tight')
 plt.show()

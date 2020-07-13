@@ -27,7 +27,8 @@ distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 w = 0
 
-file = open('../data/multi/lbp/proportion_2G_30_obs', 'w')
+evidence = {'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0],'X1_2':[0,1,1,0],'X6_2':[0,0,0,1]}
+file = open('../data/multi/lbp/proportion_2G_obs', 'w')
 #test = open('../data/multi/lbp/test_4G_30', 'w')
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
@@ -48,8 +49,8 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             pview.save_bn(bn,f'./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}')
 
 
-            ie1 = laz.lazyPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",{'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0]})
-            ie2 = lbp.lbpPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",{'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0]})
+            ie1 = laz.lazyPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",evidence)
+            ie2 = lbp.lbpPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",evidence)
 
             for j in ped.get_pedigree().keys():
                 #for g in range(1, 2):
