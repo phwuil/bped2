@@ -23,12 +23,10 @@ class People:
 
     @property
     def famID(self) -> str:
-        # def get_famID(self):
         return self._famID
 
     @famID.setter
     def famID(self, famID) -> str:
-        # self._famID=famID
         raise NameError("Cannot change FamID")
 
     @property
@@ -87,7 +85,6 @@ class People:
         self._child.remove(cID)
 
     def __str__(self):
-        # return "[%s %s %s %s %s]"%(self._famID,self.pID,self.matID,self.famID,self.sex)
         return f"[{self._famID} {self._pID} {self._fatID} {self._matID} {self._sex} {self._child}]"
 
     def __repr__(self):
@@ -118,6 +115,10 @@ class Pedigree:
         return len(self.get_pedigree())
 
     def __eq__(self, other):
+        """
+        :param other: Instance of pedigree
+        :return: True if the two pedigree are equals, False if not
+        """
         if len(self._pedigree) != len(other._pedigree):
             return False
 
@@ -275,7 +276,7 @@ class Pedigree:
         Return the olders, people without knowned parents
         """
         for k, v in self._pedigree.items():
-            if v.fatID == self.no_people and v.matID == self.no_people:  # Si l'individu n'a pas de parents -> Racine
+            if v.fatID == self.no_people and v.matID == self.no_people:  # If people doesn't have parents, it's a root
                 yield v.pID
 
     def leaves(self):
@@ -283,7 +284,7 @@ class Pedigree:
         People without childrens are leaves
         """
         for k, v in self._pedigree.items():
-            if v.nbrChild() == 0:  # Si l'individu n'a pas d'enfants -> Feuille
+            if v.nbrChild() == 0:  # If people doesn't have childrens, it's a leave
                 yield v.pID
 
     def get_domain(self):
@@ -301,7 +302,7 @@ class Pedigree:
         """
         father = self.get_people(pID).fatID
         mother = self.get_people(pID).matID
-        if father != self.no_people or mother != self.no_people:  # Au moins 1 des parents est connu
+        if father != self.no_people or mother != self.no_people:
             bros = self.get_people(father).child.intersection(self.get_people(mother).child)
             bros.remove(pID)
         else:
@@ -353,7 +354,7 @@ class Pedigree:
         people = set()
         uncles_aunts = self.get_uncles_aunts(pID)
         for i in uncles_aunts:
-            for j in self.get_people(i).child:  #  Pas opti mais je vois pas comment faire autrement
+            for j in self.get_people(i).child:
                 people.add(j)
         return people
 
@@ -370,7 +371,7 @@ class Pedigree:
 
         return s
 
-    def get_grand_parents(self, pID):  # Probablement inutile
+    def get_grand_parents(self, pID):
         """
         return a set of paternal and mather grandparents
         """
@@ -393,9 +394,8 @@ class Pedigree:
         """
         for k, v in list(self._pedigree.items()):
             if v.famID == famID:
-                # Pas besoin de faire attention aux liens avec les autres puisqu'on supprime toute la famille
                 del self._pedigree[k]
-                # self.remove_people(k)
+
 
     def gen_family_pedigree(self, famID):
         """
@@ -492,7 +492,7 @@ class Pedigree:
             mother.add(v.matID)
         return father.intersection(mother)
 
-    def check_consanguinity(self, pID, nbG):  # Peut etre le faire sur une famille entiere et non sur un unique individu
+    def check_consanguinity(self, pID, nbG):
         """
         Check if a people has consanguinous origin by checking in the nbG older generation
         """
@@ -517,6 +517,11 @@ class Pedigree:
         return holders1.intersection(holders2)
 
     def check_consanguinity_family(self, famID):
+        """
+
+        :param famID: ID of a family in the pedigree
+        :return: a set of people who have consanguinous origin in the family
+        """
         fam = self.gen_family_pedigree(famID)
         res = set()
         for v in fam._pedigree.values():
@@ -524,6 +529,9 @@ class Pedigree:
         return res
 
     def check_consanguinity_pedigree(self):
+        """
+        :return: All people who have consanguinous origin in the pedigree
+        """
         dom = self.get_domain()
         res = set()
         for i in dom:
@@ -554,6 +562,9 @@ class Pedigree:
         return len(x) != 0
 
     def all_consanguineous_ped(self,nbG):
+        """
+        :return: All people who have consanguinous origin in the pedigree
+        """
         dom = self.get_domain()
         res = set()
         for d in dom:
@@ -583,6 +594,10 @@ class Pedigree:
         return errors
 
     def pedigree_overview_file(self, filename, complete):
+        """
+
+        :return: a file which contains informations about the pedigree
+        """
 
         with open(filename, "w") as f:
             stats = self.get_stat_family()
@@ -637,7 +652,10 @@ class Pedigree:
                 gen += 1
 
     def mean_child(self):
+        """
 
+        :return: The mean of child per person
+        """
         mean = 0
         for k, v in self._pedigree.items():
             mean += self.get_people(k).nbrChild()
@@ -698,7 +716,14 @@ class Pedigree:
         """
 
         def waiting_wedding(famID, mea, people, sex):
-            # MEA[0] et people -> parents / MEA[1] -> enfant
+            """
+
+            :param famID: ID of the family
+            :param mea:
+            :param people:
+            :param sex:
+            :return:
+            """
             self.add_people(famID, people, self.no_people, self.no_people)
             profondeur[people] = profondeur[mea[1]] - 1
             self.add_sex(people, sex)
@@ -741,16 +766,16 @@ class Pedigree:
                     families[(people2, people1)].append(child)
                 self.get_people(child)._set(famID, people2, people1)
 
-        prof_mariage_max = 2  # mariage avec 2 générations d'écart autorisé
+        prof_mariage_max = 2  # Wedding with 2 generations gap are available
         gamma = 0.8  # discount factor pour controle de la taille de famille
-        mea = []  # Mariage En Attente
-        profondeur = dict()  # Niveau de profondeur des noeuds
-        families = dict()  # [(père,mère)] -> list(children)
+        mea = []  # Waiting wedding
+        profondeur = dict()  # Node depth
+        families = dict()  # [(Dad,Mom)] -> list(children)
 
         for i in range(1, nb + 1):
             profondeur[str(i)] = -1  # Profondeur pour tous initiale = -1
 
-        # Création du premier people
+        # Création of the first individu
         self.add_people(famID, '1', self.no_people, self.no_people)
         profondeur['1'] = 0
 
@@ -773,17 +798,13 @@ class Pedigree:
             for k, v in self._pedigree.items():
                 if v.nbrChild() < c_max and g_max - 1 > profondeur[k] > -1:
                     parents_pot.append(k)
-            # print(self._pedigree, profondeur['1'])
-            # print(child_pot, parents_pot)
             k1 = len(child_pot)
             k2 = len(parents_pot)
             if k1 + k2 == 0:
-                #print('K1+K2=0')
                 self.add_people(famID, new_p, self.no_people, self.no_people)
                 profondeur[new_p] = random.randint(0, g_max - 1)
                 continue
 
-            # print(k1/(k1+k2))
             choice = random.random()
             ratio = (k1 / (k1 + k2))
             if choice > ratio:
