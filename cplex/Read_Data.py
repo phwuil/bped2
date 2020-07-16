@@ -49,7 +49,9 @@ def data_to_plot(file):
 
     return data
 
-data = data_to_plot('./data/multi/lbp/proportion_2G_30_obs')
+
+
+data = data_to_plot('./data/multi/lbp/proportion_2G_obs')
 
 columns = nb_people
 # les seuils testés
@@ -111,5 +113,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/proportion_2G_with obs',bbox_inches='tight')
+plt.savefig('../cplex/multi/figure/proportion_2G_obs',bbox_inches='tight',dpi=300)
 plt.show()
