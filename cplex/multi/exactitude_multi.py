@@ -21,14 +21,14 @@ data = np.zeros((len(nb_people),7),dtype=float)
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene_depart = 2
-gene = 2
+gene_depart = 4 
+gene = 4 
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 w = 0
 
-evidence = {'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0],'X1_2':[0,1,1,0],'X6_2':[0,0,0,1]}
-file = open('../data/multi/lbp/proportion_2G_obs', 'w')
+evidence = {'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0],'X1_2':[0,1,1,0],'X6_2':[0,0,0,1],'X2_3':[1,1,1,0],'X3_3':[0,1,1,0],'X7_3':[1,0,0,0],'X4_4':[0,1,1,1],'X5_4':[0,1,0,0]}
+file = open('../data/multi/lbp/proportion_4G_obs', 'w')
 #test = open('../data/multi/lbp/test_4G_30', 'w')
 
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
