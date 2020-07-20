@@ -14,7 +14,7 @@ import math
 
 nb_people = [10,20,50,100,200,300,500,1000,1500,2000,2100,2200,2300,2400]
 data = np.zeros((len(nb_people),7),dtype=float)
-gene = 2
+gene = 4
 
 def data_to_plot(file):
     with open(file) as f:
@@ -55,40 +55,41 @@ def data_to_plot_bis(file):
         w = 0
         i = 0
         for line in tab:
-            if line == 'changement':
+            print(line)
+            if line == 'changement\n':
                 print('oui')
                 data[w] = (data[w]/i)*100
                 w+=1
                 i = 0
                 if w == len(nb_people):
                     return data
-
-            v,x = line.split()
-            v = float(v)
-            x = float(x)
-            if v < 10**-5:
-                data[w][0] += 1
-            elif v < 10**-4:
-                data[w][1] += 1
-            elif v < 10**-3:
-                data[w][2] += 1
-            elif v < 10**-2:
-                data[w][3] += 1
-            # else:
-            elif v < 10 ** -1:
-                data[w][4] += 1
-            elif v < 0.4:
-                data[w][5] += 1
-            elif v < 0.5:
-                data[w][6] += 1
-            i += 1
+            else:
+                v,x = line.split()
+                v = float(v)
+                x = float(x)
+                if v < 10**-5:
+                    data[w][0] += 1
+                elif v < 10**-4:
+                    data[w][1] += 1
+                elif v < 10**-3:
+                    data[w][2] += 1
+                elif v < 10**-2:
+                    data[w][3] += 1
+                # else:
+                elif v < 10 ** -1:
+                    data[w][4] += 1
+                elif v < 0.4:
+                    data[w][5] += 1
+                elif v < 0.5:
+                    data[w][6] += 1
+                i += 1
 
     return data
 
 
 
+#data = data_to_plot('./data/multi/lbp/proportion_4G_1_obs')
 data = data_to_plot_bis('./data/multi/lbp/test')
-
 columns = nb_people
 # les seuils testés
 #values=[80,50,20,10,5]
@@ -149,5 +150,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/proportion_2G_obs',bbox_inches='tight',dpi=300)
+plt.savefig('../cplex/multi/figure/test',bbox_inches='tight',dpi=300)
 plt.show()
