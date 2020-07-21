@@ -28,9 +28,9 @@ centimorgans = [0.295797287184]
 
 
 file = open('../data/multi/lbp/jpp', 'a+')
-
+file.write(f'{nb_people[0]}\n')
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
-    i=5
+    i=600
     for nb in range(nb_ped):
 
         nbChild = random.randint(6,12)
@@ -51,6 +51,6 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             t2 = t2 - t1
             file.write(f'{i}\t{t2}\n')
             file.flush()
-            i+=5
+            i+=50
 
 file.close()

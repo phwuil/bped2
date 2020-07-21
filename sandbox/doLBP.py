@@ -8,6 +8,7 @@ def doLBP(bn_name):
     try:
         t1 = process_time()
         ie = pview.gum.LoopyBeliefPropagation(bn)
+        ie.setMaxTime(600)
         ie.makeInference()
         t2 = process_time()
         return t2 - t1
