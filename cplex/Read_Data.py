@@ -21,6 +21,8 @@ def data_to_plot(file):
         tab = f.readlines()
         w = 0
         for line in tab:
+            if line == 'changement\n':
+                continue
             if data[w].sum() >= 99.9999999999:
                 print('oui')
                 w+=1
@@ -52,11 +54,12 @@ def data_to_plot(file):
 def data_to_plot_bis(file):
     with open(file) as f:
         tab = f.readlines()
+        last = tab[-1]
         w = 0
         i = 0
         for line in tab:
             print(line)
-            if line == 'changement\n':
+            if line == f'changement\n' or line == last:
                 print('oui')
                 data[w] = (data[w]/i)*100
                 w+=1
@@ -89,7 +92,7 @@ def data_to_plot_bis(file):
 
 
 #data = data_to_plot('./data/multi/lbp/proportion_4G_1_obs')
-data = data_to_plot_bis('./data/multi/lbp/test')
+data = data_to_plot('./data/multi/lbp/1 sur 2 obs v2')
 columns = nb_people
 # les seuils testés
 #values=[80,50,20,10,5]
@@ -150,5 +153,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/test',bbox_inches='tight',dpi=300)
+plt.savefig('../cplex/multi/figure/4G_Obs_1_3',bbox_inches='tight',dpi=300)
 plt.show()
