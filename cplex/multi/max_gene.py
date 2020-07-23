@@ -15,8 +15,8 @@ f = 0.05
 nb_ped = 1
 #nb_people = [10,50,100,200,300,500,1000,1500,2000,2400]
 #nb_Gen_Max = [3,4,4,4,4,4,5,5,6,7]
-nb_people = [10]
-nb_Gen_Max = [3]
+nb_people = [2400]
+nb_Gen_Max = [7]
 data = np.zeros((len(nb_people),7),dtype=float)
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
@@ -30,7 +30,7 @@ centimorgans = [0.295797287184]
 file = open('../data/multi/lbp/jpp', 'a+')
 file.write(f'{nb_people[0]}\n')
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
-    i=600
+    i=5
     for nb in range(nb_ped):
 
         nbChild = random.randint(6,12)
@@ -49,8 +49,10 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             lbp.doLBP(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif")
             t2 = process_time()
             t2 = t2 - t1
+            print(t2) 
             file.write(f'{i}\t{t2}\n')
             file.flush()
-            i+=50
-
+            i+=1
+            if t2 > 600:
+            	exit()
 file.close()
