@@ -21,18 +21,24 @@ def nodevalue(n):
 def save(ped, filename):
     """
     Save the current Pedigree in a file : filename.ped
+    :param ped: the pedigree
+    :param filename: name of the file created
     """
     with open(f'{filename}.ped', "w") as f:
         for i in ped._pedigree.values():
             f.write(f"{i._famID}\t{i._pID}\t{i._fatID}\t{i._matID}\n")
 
 
-
 def graph(ped, name, bool):
     """
+    Create a graph which is a representation of the pedigree
     DoubleCircle = Roots
     Box = leaves
     Diamond = Nodes
+    :param ped: the current pedigree
+    :param name: the name of the graph created (pdf)
+    :param bool: If True, the graph contains shape and number, if not, only dot
+    :return:
     """
     col_rac_fill = {ped.sex_undefined: "#C2F732", #Green
                     ped.sex_male: "#00ffff", #Cyan
@@ -73,6 +79,12 @@ def graph(ped, name, bool):
 
 
 def load_evidence(file,famID):
+    """
+    Extract evidence from a file and return those evidence in a list
+    :param file: the evidence file
+    :param famID: the family's ID
+    :return: list()
+    """
     tab = dict()
     with open(file,'r') as f:
         for (line,i) in enumerate(f.readlines()):
@@ -87,6 +99,12 @@ def load_evidence(file,famID):
     return tab
 
 def load_evidence_out(file,famID):
+    """
+    Extract evidence_out from a file and return those evidence in a list
+    :param file: the evidence_out file
+    :param famID: the family's ID
+    :return: list()
+    """
     tab = dict()
     with open(file,'r') as f:
         for (line,i) in enumerate(f.readlines()):
@@ -98,7 +116,32 @@ def load_evidence_out(file,famID):
                 tab[f'X{key}'] = ev
     return tab
 
+def load_evidence_multi(file,famID):
+    """
+    Extract evidence_out from a file and return those evidence in a list (multi version)
+    :param file: the evidence_out file
+    :param famID: the family's ID
+    :return: list()
+    """
+    tab = dict()
+    with open(file,'r') as f:
+        for (line,i) in enumerate(f.readlines()):
+            print(line,'oooo',i)
+            ev = i.split()
+            name = ev[1]
+            if ev[0] == famID:
+                ev = [float(i) for i in ev[2:]]
+                tab[f'X{name}'] = ev
+    return tab
+
 def create_holders(ped, bn, p, f):
+    """
+    Create the 3 nodes, for p, his mother and his father
+    :param ped: the current pedigree
+    :param bn: the current bn
+    :param p: the people's ID
+    :param f: probability of the rare gene
+    """
 
     bn.add(gum.LabelizedVariable(f"matX{p.pID}", f"mother of {p.pID}", ["0", "1"]))
     bn.add(gum.LabelizedVariable(f"fatX{p.pID}", f"father of {p.pID}", ["0", "1"]))
@@ -108,6 +151,16 @@ def create_holders(ped, bn, p, f):
     bn.cpt(f"X{p.pID}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
 
 def create_holders_multi(ped, bn, p, f,id_gen,name_gen=None):
+    """
+    Create the 3 nodes, for p, his mother and his father in multi version
+    :param ped: the current pedigree
+    :param bn: the current bn
+    :param p: the people's ID
+    :param f: probability of the rare gene
+    :param id_gen: list of the gene's id
+    :param name_gen: list of the gene's name
+    :return:
+    """
     if name_gen is not None :
         id_gen = name_gen[id_gen-1]
     bn.add(gum.LabelizedVariable(f"matX{p.pID}_{id_gen}", f"mother of {p.pID}", ["0", "1"]))
@@ -118,7 +171,13 @@ def create_holders_multi(ped, bn, p, f,id_gen,name_gen=None):
     bn.cpt(f"X{p.pID}_{id_gen}").fillWith([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
 
 def create_offsprings(ped, bn, p, parent):
-    # parent = fat ou mat
+    """
+
+    :param ped: the current pedigree
+    :param bn: the current bn
+    :param p: the people's ID
+    :param parent: fat or mat
+    """
     if parent == 'fat':
         parentID = p.fatID
     else:
@@ -135,7 +194,13 @@ def create_offsprings(ped, bn, p, parent):
     bn.cpt(f"{parent}X{p.pID}").fillWith([1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1])
 
 def create_offsprings_compact(ped, bn, p, parent):
-    # parent = fat ou mat
+    """
+
+    :param ped: the current pedigree
+    :param bn: the current bn
+    :param p: the people's ID
+    :param parent: fat or mat
+    """
     if parent == 'fat':
         parentID = p.fatID
     else:
@@ -147,6 +212,15 @@ def create_offsprings_compact(ped, bn, p, parent):
     bn.cpt(f"{parent}X{p.pID}").fillWith([1,0,0.5,0.5,0.5,0.5,0,1])
 
 def create_offsprings_multi(ped, bn, p, parent,id_gen, name_gen=None):
+    """
+
+    :param ped: the current ped
+    :param bn: the current bn
+    :param p: the people's ID
+    :param parent: the parent's ID
+    :param id_gen: list of the gene's id
+    :param name_gen: list of the gene's name
+    """
     # parent = fat ou mat
     if parent == 'fat':
         parentID = p.fatID
@@ -167,46 +241,63 @@ def create_offsprings_multi(ped, bn, p, parent,id_gen, name_gen=None):
     bn.cpt(f"{parent}X{p.pID}_{id_gen}").fillWith([1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1])
 
 def ped_to_bn(ped, f):
+    """
+    Convert a ped to a bayesian network
+    :param ped: the current ped
+    :param f: probability of the rare gene
+    :return: Bayesian network
+    """
     bn = gum.BayesNet()
     for p in ped.get_pedigree().values():
         create_holders(ped,bn, p, f)
 
     for p in ped.get_pedigree().values():
-        if p.fatID == '0':  # Cas parents inconnu
+        if p.fatID == '0':  # Unknowned parents
             bn.cpt(f"fatX{p.pID}").fillWith([1 - f, f])
         else:
             create_offsprings(ped,bn, p, 'fat' )
 
-        if p.matID == '0':  # Cas parents inconnu
+        if p.matID == '0':  # Unknowned parents
             bn.cpt(f"matX{p.pID}").fillWith([1 - f, f])
         else:
             create_offsprings(ped,bn, p, 'mat')
 
-    #gnb.showBN(bn, size=100)
-
     return bn
 
 def ped_to_bn_compact(ped,f):
+    """
+    Convert a ped to a bayesian network in compact version
+    :param ped: the current ped
+    :param f: probability of the rare gene
+    :return: Bayesian network
+    """
     bn = gum.BayesNet()
     for p in ped.get_pedigree().values():
         create_holders(ped,bn, p, f)
 
     for p in ped.get_pedigree().values():
-        if p.fatID == '0':  # Cas parents inconnu
+        if p.fatID == '0':  # Unknowned parents
             bn.cpt(f"fatX{p.pID}").fillWith([1 - f, f])
         else:
             create_offsprings_compact(ped,bn, p, 'fat')
 
-        if p.matID == '0':  # Cas parents inconnu
+        if p.matID == '0':  # Unknowned parents
             bn.cpt(f"matX{p.pID}").fillWith([1 - f, f])
         else:
             create_offsprings_compact(ped,bn, p, 'mat')
 
-    #gnb.showBN(bn, size=100)
-
     return bn
 
 def bn_multi_pb(ped, f, nb_gen, proba,name_gen=None):
+    """
+    Convert a ped to a bayesian network in multi version with probability
+    :param ped: the current ped
+    :param f: the probability of the rare gene
+    :param nb_gen: Number of genes
+    :param proba: list of the probabily
+    :param name_gen: list of the gene's name
+    :return:
+    """
 
     if len(proba) != nb_gen-1:
         return "Difference of size between gene's number and distance's number"
@@ -214,12 +305,12 @@ def bn_multi_pb(ped, f, nb_gen, proba,name_gen=None):
 
     for i in range(1,nb_gen+1):
         for p in ped.get_pedigree().values():
-            create_holders_multi(ped,bn, p, f, i,name_gen) # Creation de tous les noeuds
+            create_holders_multi(ped,bn, p, f, i,name_gen) # Creating all nodes
 
         if name_gen is not None :
             i = name_gen[i-1]
         for p in ped.get_pedigree().values():
-            if p.fatID == '0':  # Cas parents inconnu
+            if p.fatID == '0':  # Unknowned parents
                 if name_gen is not None:
                     bn.cpt(f"fatX{p.pID}_{name_gen[i-1]}").fillWith([1 - f, f])
                 else:
@@ -227,7 +318,7 @@ def bn_multi_pb(ped, f, nb_gen, proba,name_gen=None):
             else:
                 create_offsprings_multi(ped, bn, p, 'fat', i, name_gen)
 
-            if p.matID == '0':  # Cas parents inconnu
+            if p.matID == '0':  # Unknowned parents
                 if name_gen is not None:
                     bn.cpt(f"matX{p.pID}_{name_gen[i-1]}").fillWith([1 - f, f])
                 else:
@@ -254,18 +345,25 @@ def bn_multi_pb(ped, f, nb_gen, proba,name_gen=None):
     return bn
 
 def bn_multi_morgans(ped, f, nb_gen, centimorgans,name_gen=None):
+    """
+    Convert a ped to a bayesian network in multi version with centimorgans
+    :param ped: the current ped
+    :param f: the probability of the rare gene
+    :param nb_gen: Number of genes
+    :param centimorgans: list of the gene's position in centimorgans
+    :param name_gen: list of the gene's name
+    :return:
+    """
     if len(centimorgans) != nb_gen:
         return "Difference of size between gene's number and position's number"
     bn = gum.BayesNet()
 
     for i in range(1,nb_gen+1):
         for p in ped.get_pedigree().values():
-            create_holders_multi(ped,bn, p, f, i,name_gen) # Creation de tous les noeuds
+            create_holders_multi(ped,bn, p, f, i,name_gen) # Creating all nodes
 
-        # if name_gen is not None :
-        #     i = name_gen[i-1]
         for p in ped.get_pedigree().values():
-            if p.fatID == '0':  # Cas parents inconnu
+            if p.fatID == '0':  # Unknowned parents
                 if name_gen is not None:
                     bn.cpt(f"fatX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
                 else:
@@ -273,7 +371,7 @@ def bn_multi_morgans(ped, f, nb_gen, centimorgans,name_gen=None):
             else:
                 create_offsprings_multi(ped, bn, p, 'fat', i, name_gen)
 
-            if p.matID == '0':  # Cas parents inconnu
+            if p.matID == '0': # Unknowned parents
                 if name_gen is not None:
                     bn.cpt(f"matX{p.pID}_{name_gen[i - 1]}").fillWith([1 - f, f])
                 else:
@@ -302,20 +400,46 @@ def bn_multi_morgans(ped, f, nb_gen, centimorgans,name_gen=None):
     return bn
 
 def show_proba(bn):
+    """
+    Show the probability of each nodes of a bn
+    :param bn: the current bn
+    """
     gnb.showInference(bn,size=15,nodeColor={n:nodevalue(n) for n in bn.names()},cmap=mycmap)
 
 def save_bn(bn,name):
+    """
+    Save the bn in a name.bif file
+    :param bn: the current bn
+    :param name: the name of the file
+    """
     bn.saveBIF(name+'.bif')
 
 def save_dot(bn,name):
+    """
+    Save the bn in a name.dot file
+    :param bn: the current bn
+    :param name: the file's name
+    :return:
+    """
     bng.BN2dot(bn).write_pdf(name)
 
 def max_clique_size(bn):
+    """
+    Return the largest clique size of a bn
+    :param bn: the current bn
+    :return: int
+    """
     jte = gum.JunctionTreeGenerator()
     jt = jte.junctionTree(bn)
     return max([len(jt.clique(cl)) for cl in jt.nodes()])
 
 def create_out(filename, ped, inference):
+    """
+    Write in a file the posterior results of the inference's calcul
+    :param filename: the file's name
+    :param ped: the current ped
+    :param inference: the inference used
+    """
     fam = list(ped.get_domain())[0]
     with open(filename+'.out', "w") as f:
         for i in ped.get_pedigree().keys():
@@ -323,6 +447,15 @@ def create_out(filename, ped, inference):
             f.write(f'{fam}:{i}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
 
 def create_out_multi(filename, ped, inference, nb_gen, name_gen=None):
+    """
+    Write in a file the posterior results of the inference's calcul in multi case
+    :param filename: the file's name
+    :param ped: the current ped
+    :param inference: the inference used
+    :param nb_gen: the gene's number
+    :param name_gen: list of the gene's name
+    :return:
+    """
     fam = list(ped.get_domain())[0]
     with open(filename+'.out', "w") as f:
         for n in range(1,nb_gen+1):
@@ -334,15 +467,16 @@ def create_out_multi(filename, ped, inference, nb_gen, name_gen=None):
                     inf = inference.posterior(f'X{i}_{n}')
                     f.write(f'{fam}:{i}_{n}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
 
-def audit(bn, ped, filename):
-    with open(filename, "w") as f:
-        ped.pedigree_overview_file(filename)
-        f.write("---------------------------------------------------\n")
-        f.write(f'The size of the bn is {bn.size()}\n')
+# def audit(bn, ped, filename):
+#     with open(filename, "w") as f:
+#         ped.pedigree_overview_file(filename)
+#         f.write("---------------------------------------------------\n")
+#         f.write(f'The size of the bn is {bn.size()}\n')
 
 def _TimeSlicesToDot(dbn):
     """
     Try to correctly represent dBN and 2TBN in dot format
+    :param dbn: the current bn
     """
     timeslices = getTimeSlicesRange(dbn)
     g = pydot.Dot(graph_type='digraph')
@@ -379,19 +513,15 @@ def _TimeSlicesToDot(dbn):
 
 
 def graph_multi(dbn, size=None):
+    """
+    Show a modify graph suitable for the multi case
+    :param dbn:
+    :param size:
+    :return:
+    """
     if size is None:
         size = gum.config["dynamicBN", "default_graph_size"]
 
     showGraph(_TimeSlicesToDot(dbn), size)
 
-def load_evidence_multi(file,famID):
-    tab = dict()
-    with open(file,'r') as f:
-        for (line,i) in enumerate(f.readlines()):
-            print(line,'oooo',i)
-            ev = i.split()
-            name = ev[1]
-            if ev[0] == famID:
-                ev = [float(i) for i in ev[2:]]
-                tab[f'X{name}'] = ev
-    return tab
+

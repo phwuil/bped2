@@ -89,10 +89,25 @@ def data_to_plot_bis(file):
 
     return data
 
+def max_gene():
+    people = [10,50,100,500,1000,1500,2000,2400]
+    gene = [2100,320,170,50,20,12,8,8]
+    time = [599.2461967559993,593.249319598,623.5197487410001,668.930168587,668.8936370470001,613.5003887160001,630.131348657,637.1619972500002]
+    f1 = plt.figure(1)
+    for p,t in zip(people,time):
+        plt.scatter(p, t)
+    legende = [2100,320,170,50,20,12,8,8]
+    plt.legend(legende)
+    plt.title('Nombre de gènes étudiable en 600s')
+    plt.xlabel('Taille du pedigree')
+    plt.ylabel('Temps en sec')
+    plt.savefig('../cplex/multi/figure/Gene max')
+    f1.show()
 
+#max_gene()
 
 #data = data_to_plot('./data/multi/lbp/proportion_4G_1_obs')
-data = data_to_plot('./data/multi/lbp/1 sur 2 obs v2')
+data = data_to_plot_bis('./data/multi/lbp/3G_OBS_sur_G2')
 columns = nb_people
 # les seuils testés
 #values=[80,50,20,10,5]
@@ -153,5 +168,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/4G_Obs_1_3',bbox_inches='tight',dpi=300)
+plt.savefig('../cplex/multi/figure/test',bbox_inches='tight',dpi=300)
 plt.show()
