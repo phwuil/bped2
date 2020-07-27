@@ -107,7 +107,7 @@ def max_gene():
 #max_gene()
 
 #data = data_to_plot('./data/multi/lbp/proportion_4G_1_obs')
-data = data_to_plot('./data/multi/lbp/proportion_4G_30_without')
+data = data_to_plot('./data/multi/lbp/proportion_3G_obs')
 columns = nb_people
 # les seuils testés
 #values=[80,50,20,10,5]
@@ -168,5 +168,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/_4G_without',bbox_inches='tight',dpi=300)
+plt.savefig('../cplex/multi/figure/blabla',bbox_inches='tight',dpi=300)
 plt.show()

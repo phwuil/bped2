@@ -21,17 +21,17 @@ data = np.zeros((len(nb_people),7),dtype=float)
 
 nb_Gen_Min = [math.ceil(x/2) for x in nb_Gen_Max]
 cl = 3
-gene_depart = 4 
-gene = 4 
+gene_depart = 3
+gene = 3
 distance = [0.8,0.7,0.5]
 centimorgans = [0.295797287184, 0.296353882133, 0.299343592142, 0.59]
 w = 0
 
 #{'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0],'X1_2':[0,1,1,0],'X6_2':[0,0,0,1],'X2_3':[1,1,1,0],'X3_3':[0,1,1,0],'X7_3':[1,0,0,0],'X4_4':[0,1,1,1],'X5_4':[0,1,0,0]}
 #evidence = {'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0],'X2_2':[0,1,1,0],'X6_2':[0,0,0,1],'X3_3':[1,1,1,0],'X7_3':[0,1,1,0]}
-#evidence = {'X2_2':[0,1,1,0],'X6_2':[0,0,0,1]}
-evidence = None
-file = open('../data/multi/lbp/proportion_4G_30_without', 'w')
+evidence = {'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0],'X2_2':[0,1,1,0],'X6_2':[0,0,0,1]}
+#evidence = None
+file = open('../data/multi/lbp/Another_test', 'w')
 #file = open('../data/multi/lbp/test', 'w')
 
 
@@ -57,8 +57,8 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             ie2 = lbp.lbpPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",evidence)
 
             for j in ped.get_pedigree().keys():
-                #for g in range(1, 2):
-                for g in range(1,gene+1):
+                for g in range(1, 3):
+                #for g in range(1,gene+1):
                     p1 = ie1.posterior(f'X{j}_{g}')
                     p2 = ie2.posterior(f'X{j}_{g}')
                     x = [abs(p1[0] - p2[0]), abs(p1[1] - p2[1]), abs(p1[2] - p2[2]), abs(p1[3] - p2[3])]
