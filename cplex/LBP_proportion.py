@@ -4,7 +4,6 @@ import sandbox.doLazyProg as laz
 from time import *
 import numpy as np
 import matplotlib.pyplot as plt
-import os, psutil
 import math
 import matplotlib.ticker as ticker
 
@@ -23,6 +22,9 @@ errorValues_diff = []
 max_diff = []
 min_diff = []
 w = 0
+
+#evidence = {'X1_1':[1,0,0,0],'X5_1':[1,1,1,0],'X8_1':[1,1,1,0]}
+file = open('../cplex/lbp_without', 'w')
 for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
 
     tab_diff = np.zeros(nb_ped)
@@ -49,6 +51,8 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             p2 = ie2.posterior(f'X{i}')
             x = [abs(p1[0] - p2[0]),abs(p1[1] - p2[1]),abs(p1[2] - p2[2]),abs(p1[3] - p2[3])]
             v = max(x)
+            file.write(f'{v}\t{100 / (nb_ped * p)}\n')
+            file.flush()
             if v < 10**-5:
                 data[w][0] += 100/(nb_ped*p)
             elif v < 10**-4:
@@ -78,68 +82,69 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
     # mean_gen_diff.append(tab_diff.mean())
 
     w+=1
+file.close()
 
-# les tailles des graphes
-#columns = ('1000', '1500', '2000', '2500', '5000')
-
-columns = nb_people
-# les seuils testés
-#values=[80,50,20,10,5]
-#values=[50,40,5,1,0.1]
-values = [50,40,10,1,10**-1,10**-2,10**-3]
-# data = données à produire
-# en supposant qu'il y a
-# dans le cas N=1000 :
-#   - 80% des X ont une erreur err<0.05,
-#   - 20% des X ont une erreur 0.05<err<0.1,
-# dans le cas N=5O00 :
-#   -  8% <0.05
-#   - 32% entre 0.05 et 0.1
-#   - 36% entre 0.1 et 0.2
-#   - 20% entre 0.2 et 0.5
-#   -  4% >0.5
-# data = np.array([[ 80, 20,  0,  0, 0],
-#                  [ 60, 30, 10,  0, 0],
-#                  [ 40, 32, 20,  8, 0],
-#                  [ 25, 36, 24, 10, 5],
-#                  [  8, 32, 36, 20, 4]])
-data=data.transpose()
-rows = ['<=%3.4f' % (x/100) for x in values]
-
-colors = plt.cm.BuPu(np.linspace(0.2, 0.8, len(rows)))
-n_rows = len(data)
-
-index = np.arange(len(columns)) + 0.3
-bar_width = 0.4
-
-# Initialize the vertical-offset for the stacked bar chart.
-y_offset = np.zeros(len(columns))
-
-# Plot bars and create text labels for the table
-cell_text = []
-for row in range(n_rows):
-    plt.bar(index, data[row], bar_width, bottom=y_offset, color=colors[row])
-    y_offset = y_offset + data[row]
-    cell_text.append(['%1.4f' % x if x!=0 else "" for x in data[row]])
-# Reverse colors and text labels to display the last value at the top.
-colors = colors[::-1]
-cell_text.reverse()
-
-# Add a table at the bottom of the axes
-the_table = plt.table(cellText=cell_text,
-                      rowLabels=rows,
-                      rowColours=colors,
-                      colLabels=columns,
-                      loc='bottom')
-# Adjust layout to make room for the table:
-plt.subplots_adjust(left=0.2, bottom=0.2)
-
-plt.ylabel("Proportion % (logarithmic)")
-plt.ylim(90)
-plt.yscale('log')
-plt.gca().get_yaxis().set_minor_formatter(ticker.FormatStrFormatter('%.2f'))
-plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
-plt.xticks([])
-plt.title('Distribution des erreurs (en %)');
-plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.show()
+# # les tailles des graphes
+# #columns = ('1000', '1500', '2000', '2500', '5000')
+#
+# columns = nb_people
+# # les seuils testés
+# #values=[80,50,20,10,5]
+# #values=[50,40,5,1,0.1]
+# values = [50,40,10,1,10**-1,10**-2,10**-3]
+# # data = données à produire
+# # en supposant qu'il y a
+# # dans le cas N=1000 :
+# #   - 80% des X ont une erreur err<0.05,
+# #   - 20% des X ont une erreur 0.05<err<0.1,
+# # dans le cas N=5O00 :
+# #   -  8% <0.05
+# #   - 32% entre 0.05 et 0.1
+# #   - 36% entre 0.1 et 0.2
+# #   - 20% entre 0.2 et 0.5
+# #   -  4% >0.5
+# # data = np.array([[ 80, 20,  0,  0, 0],
+# #                  [ 60, 30, 10,  0, 0],
+# #                  [ 40, 32, 20,  8, 0],
+# #                  [ 25, 36, 24, 10, 5],
+# #                  [  8, 32, 36, 20, 4]])
+# data=data.transpose()
+# rows = ['<=%3.4f' % (x/100) for x in values]
+#
+# colors = plt.cm.BuPu(np.linspace(0.2, 0.8, len(rows)))
+# n_rows = len(data)
+#
+# index = np.arange(len(columns)) + 0.3
+# bar_width = 0.4
+#
+# # Initialize the vertical-offset for the stacked bar chart.
+# y_offset = np.zeros(len(columns))
+#
+# # Plot bars and create text labels for the table
+# cell_text = []
+# for row in range(n_rows):
+#     plt.bar(index, data[row], bar_width, bottom=y_offset, color=colors[row])
+#     y_offset = y_offset + data[row]
+#     cell_text.append(['%1.4f' % x if x!=0 else "" for x in data[row]])
+# # Reverse colors and text labels to display the last value at the top.
+# colors = colors[::-1]
+# cell_text.reverse()
+#
+# # Add a table at the bottom of the axes
+# the_table = plt.table(cellText=cell_text,
+#                       rowLabels=rows,
+#                       rowColours=colors,
+#                       colLabels=columns,
+#                       loc='bottom')
+# # Adjust layout to make room for the table:
+# plt.subplots_adjust(left=0.2, bottom=0.2)
+#
+# plt.ylabel("Proportion % (logarithmic)")
+# plt.ylim(90)
+# plt.yscale('log')
+# plt.gca().get_yaxis().set_minor_formatter(ticker.FormatStrFormatter('%.2f'))
+# plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
+# plt.xticks([])
+# plt.title('Distribution des erreurs (en %)');
+# plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
+# plt.show()
