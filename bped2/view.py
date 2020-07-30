@@ -89,12 +89,9 @@ def load_evidence(file,famID):
     with open(file,'r') as f:
         for (line,i) in enumerate(f.readlines()):
             ev = i.split()
-            idfam = ev[0].split(':')[0]
             name = ev[1]
             if ev[0] == famID:
-                # del ev[0],ev[1]
                 ev = [float(i) for i in ev[2:]]
-                #tab[f'X{line+1}'] = ev
                 tab[f'X{name}'] = ev
     return tab
 
@@ -467,12 +464,6 @@ def create_out_multi(filename, ped, inference, nb_gen, name_gen=None):
                     inf = inference.posterior(f'X{i}_{n}')
                     f.write(f'{fam}:{i}_{n}\t{inf[0]}\t{inf[1]}\t{inf[2]}\t{inf[3]}\n')
 
-# def audit(bn, ped, filename):
-#     with open(filename, "w") as f:
-#         ped.pedigree_overview_file(filename)
-#         f.write("---------------------------------------------------\n")
-#         f.write(f'The size of the bn is {bn.size()}\n')
-
 def _TimeSlicesToDot(dbn):
     """
     Try to correctly represent dBN and 2TBN in dot format
@@ -508,7 +499,6 @@ def _TimeSlicesToDot(dbn):
                                         style="invis"))
                 prec = n
 
-    #print(g.to_string())
     return g
 
 

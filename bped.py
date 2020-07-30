@@ -9,6 +9,7 @@ def main(args=None):
     """
     [--ped pedfile: format famid, id, patid (0 for founder), matid (0 for founder), gender (1 male, 2 female)
     [--ev evidencefile]: format famid, id, ev00, ev10 (1 paternal), ev01 (1 maternal), ev11
+    [--famID Input the famID]
     [--freq minorallelefreq (default: freq=0.01)]
     [--targets list_of_ind (default: all)]
     [--size] size of the rendered graph
@@ -23,13 +24,14 @@ def main(args=None):
     [--complete Bool] Decice which version between complete and compact for the audit file
     [--out outfile] export probabilities into a out file
     [--name_gen] format [str ,str ,str ...]
-    [--name_people] format [number_name, number_name, ... ]
     """
     parser = OptionParser(version="%prog 0.1", usage="usage: %prog [options] pedfile")
     parser.add_option("", "--ev", dest="evfile",
                       help="Specification of the profile", metavar="FILE")
     parser.add_option("", "--freq", dest="f",
                       help="minor allel freq (gamma)", type="float", default=0.01)
+    parser.add_option("","--famID",dest='famID',
+                      help="Input the famID")
     parser.add_option("", "--targets", dest="targets",
                       help="Specification of a list of targets (comma separated)")
     parser.add_option("", "--bndot", dest="bndotfile",
@@ -40,17 +42,16 @@ def main(args=None):
                       help="Export some stats on pedigree in a text file", metavar="FILE")
     parser.add_option("", "--verbose", dest="verbose", help="messages while processing", default=False,
                       action="store_true")
-    parser.add_option("", "--bn", dest="bnfile", help="Export the BN into a BIF file", metavar="FILE")
-    # parser.add_option("","--compact",dest="compact",
-    #                   help="Decided if the BN is conpacted or not")
+    parser.add_option("", "--bn", dest="bnfile",
+                      help="Export the BN into a BIF file", metavar="FILE")
     parser.add_option("","--mode",dest="mode",
-                      help="Choose the type of the generate bn, compact, no compact or multi")
+                      help="Choose the type of the generate bn, compact, no compact or multi",default='compact')
     parser.add_option("","--theta",dest="theta",type="string",
                       help="Input a probability's distribution, shape: float;float; ...")
     parser.add_option("", "--centimorgans", dest="centimorgans", type="string",
                       help="Input the distance between genes in centimorgans, shape: float;float; ...")
     parser.add_option("","--inference",dest="inference",
-                      help="Choose between LP and LBP")
+                      help="Choose between LP and LBP",default='LP')
     parser.add_option("","--complete",dest="complete",
                       help="Decide if the audit is a complete version or a compact version")
     parser.add_option("","--out",dest="out",
@@ -59,8 +60,6 @@ def main(args=None):
                       help="Choose the size of the rendered graph", type="int", default=100)
     parser.add_option("", "--name_gen", dest="name_gen", type="string",
                       help="Input the gene's name, shape: str;str; ...")
-    parser.add_option("", "--name_people", dest="name_people", type="string",
-                      help="Input the people's name, shape: nb_name;nb_name; ...")
 
     if args is None:
         (options, arguments) = parser.parse_args()
@@ -85,15 +84,14 @@ def main(args=None):
         print(f"working on file : {pedfile}")
         current_ped = ped.Pedigree()
         current_ped.load(str(pedfile))
-        famID = current_ped.get_domain()
-
-        if options.name_people:
-            name = dict()
-            tmp = options.name_people.split(';')
-            for i in tmp:
-                x,y = i.split('_')
-                name[x] = y
-            current_ped.insert_name(name)
+        if options.famID:
+            famID = options.famID
+        else:
+            list_famID = current_ped.get_domain()
+            if len(list_famID) == 1 :
+                famID = list_famID.pop()
+            else:
+                return "missing famID"
 
         name_gen = None
         if options.name_gen:
@@ -127,10 +125,6 @@ def main(args=None):
             else:
                 return "missing theta or centimorgan argument, cannot use the multi mode"
 
-        # if options.peddotfile:
-        #     pview.save(current_ped,options.peddotfile)
-        #     if options.verbose:
-        #         print('ped saved in '+options.peddotfile)
 
         if options.bnfile:
             bn.saveBIF(options.bndotfile)
@@ -146,16 +140,17 @@ def main(args=None):
 
         if options.peddotfile:
             if (len(current_ped)) > 1000 :
-                pview.graph(current_ped,options.graph,True)
+                pview.graph(current_ped,options.peddotfile,True)
             else:
-                pview.graph(current_ped, options.graph, False)
+                pview.graph(current_ped, options.peddotfile, False)
             if options.verbose:
                 print("graph save in "+ options.peddotfile)
 
 
         if options.auditfile:
-            if options.complete == False:
-                current_ped.pedigree_overview_file(options.auditfile)
+            if options.complete == str(False):
+                print('false')
+                current_ped.pedigree_overview_file(options.auditfile,False)
             else:
                 current_ped.pedigree_overview_file(options.auditfile,True)
             if options.verbose:
@@ -192,7 +187,10 @@ def main(args=None):
                 pview.create_out(options.out, current_ped, ie)
         else:
             if options.evfile:
-                evidence = pview.load_evidence(options.evfile, famID)
+                if options.mode == 'multi':
+                    evidence = pview.load_evidence_multi(options.evfile, famID)
+                else:
+                    evidence = pview.load_evidence(options.evfile, famID)
                 if options.verbose:
                     print(f"{options.evfile} loaded")
 

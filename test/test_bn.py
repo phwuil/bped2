@@ -1,7 +1,4 @@
 import unittest
-import os
-import sys
-import psutil
 from bped2.pedigree import *
 import bped2.view as pview
 import sandbox.doLazyProg as lazy
@@ -33,7 +30,7 @@ class TestPedigree(unittest.TestCase):
         nb_ped = 50
         nb_people = [1900]
         nb_Gen_Max = [5]
-        nb_Gen_Min = [5] #[math.ceil(x/2) for x in nb_Gen_Max]
+        nb_Gen_Min = [5]
         cl = 3
         min_clique = 100
         max_clique = 0

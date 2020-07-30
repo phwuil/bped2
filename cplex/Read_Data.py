@@ -168,5 +168,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/blabla',bbox_inches='tight',dpi=300)
+plt.savefig('../cplex/multi/figure/_4G_without',bbox_inches='tight',dpi=300)
 plt.show()
