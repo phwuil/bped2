@@ -57,8 +57,8 @@ for p,g_max,g_min in zip(nb_people,nb_Gen_Max,nb_Gen_Min):
             ie2 = lbp.lbpPosterior(f"./bn/bn_{p}_{g}_{nbChild}_{cl}_G{nb}.bif",evidence)
 
             for j in ped.get_pedigree().keys():
-                for g in range(1, 3):
-                #for g in range(1,gene+1):
+               #for g in range(1, 3):
+                for g in range(1,gene+1):
                     p1 = ie1.posterior(f'X{j}_{g}')
                     p2 = ie2.posterior(f'X{j}_{g}')
                     x = [abs(p1[0] - p2[0]), abs(p1[1] - p2[1]), abs(p1[2] - p2[2]), abs(p1[3] - p2[3])]
