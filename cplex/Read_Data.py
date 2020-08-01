@@ -59,7 +59,7 @@ def data_to_plot_bis(file):
         i = 0
         for line in tab:
             print(line)
-            if sum(data[w]) == 0:
+            if data[w].sum() == 0:
                 return data
             if line == f'changement\n' or line == last:
                 print('oui')
@@ -170,5 +170,5 @@ plt.gca().get_yaxis().set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 plt.xticks([])
 plt.title('Distribution des erreurs (en %)');
 #plt.savefig('../cplex/figure/LBP/proportion',bbox_inches='tight')
-plt.savefig('../cplex/multi/figure/last_test2',bbox_inches='tight',dpi=300)
+plt.savefig('../cplex/multi/figure/last_test3',bbox_inches='tight',dpi=300)
 plt.show()
