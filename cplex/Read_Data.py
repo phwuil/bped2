@@ -109,7 +109,7 @@ def max_gene():
 #max_gene()
 
 #data = data_to_plot('./data/multi/lbp/proportion_4G_1_obs')
-data = data_to_plot('./data/multi/lbp/last_test2')
+data = data_to_plot('./data/multi/lbp/last_test3')
 columns = nb_people
 # les seuils testés
 #values=[80,50,20,10,5]
